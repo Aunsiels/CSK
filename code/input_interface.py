@@ -4,6 +4,8 @@ class InputInterface(object):
         self._seeds = [] # List of FactInterface
         self._patterns = [] # List of PatternInterface
         self._generated_facts = [] # List of GeneratedFactInterface
+        self._subjects = None
+        self._objects = None
 
     def get_seeds(self):
         """get_seeds
@@ -28,3 +30,15 @@ class InputInterface(object):
         :rtype: GeneratedFactInterface
         """
         return self._generated_facts
+
+    def get_subjects(self):
+        return self._subjects
+
+    def get_objects(self):
+        return self._objects
+
+    def has_subjects(self):
+        return self._subjects is not None
+
+    def has_objects(self):
+        return self._objects is not None
