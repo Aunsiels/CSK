@@ -29,7 +29,6 @@ alpaca
 american buffalo (bison)
 american robin
 amphibian
-list
 anaconda
 angelfish
 anglerfish
@@ -45,7 +44,6 @@ arctic wolf
 armadillo
 arrow crab
 asp
-ass (donkey)
 baboon
 badger
 bald eagle
@@ -57,13 +55,11 @@ bass
 bat
 beaked whale
 bear
-list
 beaver
 bedbug
 bee
 beetle
 bird
-list
 bison
 blackbird
 black panther
@@ -92,19 +88,16 @@ cardinal
 caribou
 carp
 cat
-list
 catshark
 caterpillar
 catfish
 cattle
-list
 centipede
 cephalopod
 chameleon
 cheetah
 chickadee
 chicken
-list
 chimpanzee
 chinchilla
 chipmunk
@@ -133,18 +126,14 @@ damselfly
 deer
 dingo
 dinosaur
-list
 dog
-list
 dolphin
 donkey
-list
 dormouse
 dove
 dragonfly
 dragon
 duck
-list
 dung beetle
 eagle
 earthworm
@@ -172,9 +161,7 @@ fox
 frog
 fruit bat
 gamefowl
-list
 galliform
-list
 gazelle
 gecko
 gerbil
@@ -184,10 +171,8 @@ gibbon
 gila monster
 giraffe
 goat
-list
 goldfish
 goose
-list
 gopher
 gorilla
 grasshopper
@@ -198,12 +183,9 @@ ground shark
 ground sloth
 grouse
 guan
-list
 guanaco
 guineafowl
-list
 guinea pig
-list
 gull
 guppy
 haddock
@@ -221,7 +203,6 @@ hippopotamus
 hookworm
 hornet
 horse
-list
 hoverfly
 hummingbird
 humpback whale
@@ -325,7 +306,6 @@ peregrine falcon
 pheasant
 pig
 pigeon
-list
 pike
 pilot whale
 pinniped
@@ -336,7 +316,6 @@ polar bear
 pony
 porcupine
 porpoise
-portuguese man o' war
 possum
 prairie dog
 prawn
@@ -350,14 +329,11 @@ quail
 quelea
 quokka
 rabbit
-list
 raccoon
 rainbow trout
 rat
 rattlesnake
 raven
-ray (batoidea)
-ray (rajiformes)
 red panda
 reindeer
 reptile
@@ -381,9 +357,7 @@ sea lion
 sea slug
 sea snail
 shark
-list
 sheep
-list
 shrew
 shrimp
 silkworm
@@ -395,7 +369,6 @@ slug
 smelt
 snail
 snake
-list
 snipe
 snow leopard
 sockeye salmon
@@ -441,7 +414,6 @@ tree frog
 trout
 tuna
 turkey
-list
 turtle
 tyrannosaurus
 urial
@@ -477,30 +449,12 @@ yak
 yellow perch
 zebra
 zebra finch
-animals by number of neurons
-animals by size
-common household pests
-common names of poisonous animals
 alpaca
 bali cattle
 cat
 cattle
 chicken
 dog
-domestic bactrian camel
-domestic canary
-domestic dromedary camel
-domestic duck
-domestic goat
-domestic goose
-domestic guineafowl
-domestic hedgehog
-domestic pig
-domestic pigeon
-domestic rabbit
-domestic silkmoth
-domestic silver fox
-domestic turkey
 donkey
 fancy mouse
 fancy rat

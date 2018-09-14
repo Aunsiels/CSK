@@ -33,6 +33,7 @@ class SubmoduleGoogleAutocomplete(BrowserAutocompleteSubmodule):
                     sugg = line.strip().split("\t")
                     suggestions.append((sugg[0], int(sugg[1])))
             return (suggestions, True)
+        print(query)
         if query:
             query = quote(query)
             url = baseurl + "hl=%s&q=%s&json=t&ds=%s&client=serp" \

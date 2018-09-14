@@ -3,8 +3,10 @@ import time
 import corenlp
 from generated_fact import GeneratedFact
 from inputs import Inputs
-import inflect
 from string import ascii_lowercase
+import inflect
+
+max_query_length = 100000
 
 class BrowserAutocompleteSubmodule(SubmoduleInterface):
     """BrowserAutocompleteSubmodule
@@ -36,18 +38,10 @@ class BrowserAutocompleteSubmodule(SubmoduleInterface):
             return input_interface
 
         suggestions = []
-        # used for the plurals
-        p = inflect.engine()
-
-        subjects = []
 
         for pattern in input_interface.get_patterns("google-autocomplete"):
             for subject in input_interface.get_subjects():
-                subjects.append(subject.get())
-                # with our patterns, we need plurals
-                # TODO: make it more agile
-                subject = p.plural(subject.get())
-                subjects.append(subject)
+                temp = ""
                 # Generate the query
                 base_query = pattern.to_str_subject(subject)
                 base_suggestions, cache = self.get_suggestion(base_query)
@@ -81,17 +75,17 @@ class BrowserAutocompleteSubmodule(SubmoduleInterface):
                             time.sleep(self.time_between_queries)
                     if temp is None:
                         break
-            # We were kicked by the browser
             if temp is None or base_suggestions is None:
                 break
 
         # OPENIE part
         # Open a server
         # TODO: is there a problem if several in parallel ?
+        # Should play with start_server?
         nlp = corenlp.CoreNLPClient(
             start_server=True,
             endpoint='http://localhost:9000',
-            timeout=5000,
+            timeout=1000000,
             annotators=['openie'],
             properties={'annotators': 'openie',
                         'inputFormat': 'text',
@@ -100,7 +94,16 @@ class BrowserAutocompleteSubmodule(SubmoduleInterface):
                         #"openie.triple.strict" : "true",
                         "openie.max_entailments_per_clause":"1000"})
         generated_facts = []
-        subjects = set(subjects)
+        subjects = set()
+
+        # I still have to transform into a plural for subject checking
+        plural_engine = inflect.engine()
+        for subject in input_interface.get_subjects():
+            subjects.add(subject.get())
+            subjects.add(plural_engine.plural(subject.get()))
+
+        full_sentence = []
+
         for suggestion in suggestions:
             # question to statement
             # TODO Improve it
@@ -117,9 +120,28 @@ class BrowserAutocompleteSubmodule(SubmoduleInterface):
                 elif l[2] in subjects:
                     new_sentence = " ".join([l[2]] + \
                                              ["are"] + l[3:])
+            full_sentence.append(new_sentence)
+
+        full_sentence = list(filter(lambda x: len(x) > 0, full_sentence))
+
+        batches = []
+
+        begin = 0
+        counter = 0
+        for i in range(len(full_sentence)):
+            if counter + 2 + len(full_sentence[i]) > max_query_length:
+                batches.append(". ".join(full_sentence[begin:i]) + ".")
+                begin = i
+                counter = 0
+            counter += len(full_sentence[i]) + 2
+        batches.append(". ".join(full_sentence[begin:]) + ".")
+
+        for batch in batches:
             # We annotate the sentence
             # And extract the triples
-            out = nlp.annotate(new_sentence)
+            print("before")
+            out = nlp.annotate(batch)
+            print("after")
             for sentence in out.sentence:
                 for triple in sentence.openieTriple:
                     subject = triple.subject

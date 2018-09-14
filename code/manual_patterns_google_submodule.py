@@ -13,6 +13,6 @@ class ManualPatternsGoogleSubmodule(SubmoduleInterface):
 
     def process(self, input_interface):
         new_patterns = []
-        new_patterns.append(PatternGoogle("why are"))
-        new_patterns.append(PatternGoogle("why do"))
+        new_patterns.append(PatternGoogle("why are <SUBJS>"))
+        new_patterns.append(PatternGoogle("why do <SUBJS>"))
         return input_interface.add_patterns(new_patterns)

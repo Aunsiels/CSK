@@ -1,4 +1,8 @@
 from pattern_interface import PatternInterface
+import re
+import inflect
+
+plural_engine = inflect.engine()
 
 class PatternGoogle(PatternInterface):
     """PatternGoogle
@@ -9,11 +13,13 @@ class PatternGoogle(PatternInterface):
                  prefix,
                  relation="hasProperty"):
         self._prefix = prefix # we need to give the prefix of the query
-        # TODO: have a placeholder for the subject
         # No score for now
         self._score = 1.0
         self._relation = relation
         self._group = "google-autocomplete"
+        self._regex = re.compile(self._prefix.replace("<SUBJ>", ".*")
+                                 .replace("<OBJ>", ".*")
+                                 .replace("<SUBJS>", ".*"))
 
     def score_sentence(self, sentence):
         if self.match(sentence):
@@ -25,9 +31,9 @@ class PatternGoogle(PatternInterface):
         return self._prefix
 
     def to_str_subject(self, subject):
-        # TODO placeholder for subject
-        return self._prefix + " " + subject
+        return self._prefix.replace("<SUBJ>", subject.get())\
+            .replace("<OBJ>", "")\
+            .replace("<SUBJS>", plural_engine.plural(subject.get()))
 
     def match(self, sentence):
-        # TODO improve for placeholder
-        return sentence.find(self._prefix) == 0
+        return self._regex.search(sentence) is not None

@@ -46,6 +46,6 @@ class WorkflowInterface(object):
         for module in modules:
             temp_input = module.process(temp_input)
             if save:
-                temp_input.save(out_dir + "out_" + module.get_name() + "_" +
-                                str(int(time.time())))
+                temp_input.save(out_dir + "out_" + str(int(time.time())) + "_" +
+                                module.get_name())
         return temp_input
