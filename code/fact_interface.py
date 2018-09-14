@@ -8,6 +8,7 @@ class FactInterface(object):
         self._predicate = None # PredicateInterface
         self._object = None # ObjectInterface
         self._modality = None # Optinal ModalityInterface
+        self._negative = False
 
     def get_subject(self):
         """get_subject
@@ -48,3 +49,10 @@ class FactInterface(object):
         :rtype: Boolean
         """
         return self._modality is not None
+
+    def is_negative(self):
+        """is_negative
+        :return: whether the fact is negative or not
+        :rtype: bool
+        """
+        return self._negative

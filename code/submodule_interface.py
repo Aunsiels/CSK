@@ -1,4 +1,5 @@
 from submodule_reference_interface import SubmoduleReferenceInterface
+from process_interface import ProcessInterface
 
 class SubmoduleInterface(SubmoduleReferenceInterface, ProcessInterface):
     """SubmoduleInterface
@@ -6,4 +7,4 @@ class SubmoduleInterface(SubmoduleReferenceInterface, ProcessInterface):
     """
 
     def __init__(self):
-        pass
+        self._module_reference = None # ModuleReferenceInterface

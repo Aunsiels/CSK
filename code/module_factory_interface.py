@@ -1,5 +1,5 @@
-class ModuleFactortyInterface(object):
-    """ModuleFactortyInterface
+class ModuleFactoryInterface(object):
+    """ModuleFactoryInterface
     Creates modules
     """
 
