@@ -56,3 +56,8 @@ class FactInterface(object):
         :rtype: bool
         """
         return self._negative
+
+    def __str__(self):
+        return "(" + str(self.get_subject()) + ", " + \
+            str(self.get_predicate()) + ", " + \
+            str(self.get_object()) + ")"

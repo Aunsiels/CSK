@@ -91,3 +91,9 @@ class PatternInterface(object):
         :rtype: str
         """
         return self._group
+
+    def __str__(self):
+        return "Pattern(" + self.to_str() + ", " +\
+            "Relation=" + str(self._relation) + ", " +\
+            "Score=" + str(self.get_score()) + ", " +\
+            "Group=" + str(self.get_group()) + ")"

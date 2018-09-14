@@ -10,3 +10,6 @@ class SPOMInterface(object):
         :rtype: str
         """
         raise NotImplementedError
+
+    def __str__(self):
+        return str(self.get())

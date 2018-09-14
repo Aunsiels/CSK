@@ -51,3 +51,11 @@ class GeneratedFactInterface(FactInterface):
         :rtype: SubmoduleReferenceInterface
         """
         return self._submodule_source
+
+    def __str__(self):
+        return super().__str__() +\
+            " Score: " + str(self.get_score()) +\
+            " From pattern: " + str(self.get_pattern()) +\
+            " From module: " + str(self.get_module_source().get_name()) +\
+            " From submodule: " + str(self.get_submodule_source().get_name()) +\
+            " From sentence: " + str(self.get_sentence_source())
