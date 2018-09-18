@@ -3,6 +3,8 @@ from submodule_google_autocomplete import SubmoduleGoogleAutocomplete
 from animal_submodule import AnimalSubmodule
 from manual_patterns_google_submodule import ManualPatternsGoogleSubmodule
 from bing_autocomplete_submodule import BingAutocompleteSubmodule
+from only_subject_submodule import OnlySubjectSubmodule
+from no_personal_submodule import NoPersonalSubmodule
 
 class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
     """DefaultSubmoduleFactory
@@ -18,5 +20,9 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
             return ManualPatternsGoogleSubmodule(module_reference)
         elif submodule_name == "bing-autocomplete":
             return BingAutocompleteSubmodule(module_reference)
+        elif submodule_name == "only-subject":
+            return OnlySubjectSubmodule(module_reference)
+        elif submodule_name == "no-personal":
+            return NoPersonalSubmodule(module_reference)
         else:
             raise NotImplementedError

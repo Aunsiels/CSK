@@ -5,6 +5,7 @@ from generated_fact import GeneratedFact
 from inputs import Inputs
 from string import ascii_lowercase
 import inflect
+import logging
 
 max_query_length = 100000
 
@@ -32,11 +33,7 @@ class BrowserAutocompleteSubmodule(SubmoduleInterface):
         """
         raise NotImplementedError
 
-    def process(self, input_interface):
-        # Needs subjects
-        if not input_interface.has_subjects():
-            return input_interface
-
+    def _get_all_suggestions(self, input_interface):
         suggestions = []
 
         for pattern in input_interface.get_patterns("google-autocomplete"):
@@ -55,6 +52,8 @@ class BrowserAutocompleteSubmodule(SubmoduleInterface):
                 # add to the list of suggestions
                 suggestions += list(filter(lambda x: pattern.match(x[0]),
                                            base_suggestions))
+                base_sentences = list(map(lambda x: x[0],
+                                          base_suggestions))
                 if not cache:
                     time.sleep(self.time_between_queries)
                 # There might be more suggestions
@@ -65,8 +64,13 @@ class BrowserAutocompleteSubmodule(SubmoduleInterface):
                         temp, cache = self.get_suggestion(base_query + " " + c)
                         if temp is None:
                             break
+                        # Check not seen before
+                        temp = list(filter(lambda x: x[0] not in base_sentences,
+                                           temp))
                         temp = list(map(lambda x:
-                                        (x[0], x[1], pattern), temp))
+                                        (x[0],
+                                         x[1] + self.default_number_suggestions,
+                                         pattern), temp))
                         suggestions += list(filter(lambda x:
                                                        pattern.match(x[0]),
                                                    temp))
@@ -77,23 +81,9 @@ class BrowserAutocompleteSubmodule(SubmoduleInterface):
                         break
             if temp is None or base_suggestions is None:
                 break
+        return suggestions
 
-        # OPENIE part
-        # Open a server
-        # TODO: is there a problem if several in parallel ?
-        # Should play with start_server?
-        nlp = corenlp.CoreNLPClient(
-            start_server=True,
-            endpoint='http://localhost:9000',
-            timeout=1000000,
-            annotators=['openie'],
-            properties={'annotators': 'openie',
-                        'inputFormat': 'text',
-                        'outputFormat': 'json',
-                        'serializer': 'edu.stanford.nlp.pipeline.ProtobufAnnotationSerializer',
-                        #"openie.triple.strict" : "true",
-                        "openie.max_entailments_per_clause":"1000"})
-        generated_facts = []
+    def _compute_batch_openie(self, suggestions, input_interface):
         subjects = set()
 
         # I still have to transform into a plural for subject checking
@@ -108,7 +98,6 @@ class BrowserAutocompleteSubmodule(SubmoduleInterface):
             # question to statement
             # TODO Improve it
             # We need this because of OpenIE very bad with questions
-            original = suggestion[0]
             l = suggestion[0].split(" ")
             new_sentence = ""
             if "do" in l[1]:
@@ -120,33 +109,68 @@ class BrowserAutocompleteSubmodule(SubmoduleInterface):
                 elif l[2] in subjects:
                     new_sentence = " ".join([l[2]] + \
                                              ["are"] + l[3:])
-            full_sentence.append(new_sentence)
+            if new_sentence != "":
+                full_sentence.append((new_sentence,
+                                      suggestion[1],
+                                      suggestion[2]))
 
-        full_sentence = list(filter(lambda x: len(x) > 0, full_sentence))
+        full_sentence = list(filter(lambda x: len(x[0]) > 0, full_sentence))
 
         batches = []
 
         begin = 0
         counter = 0
         for i in range(len(full_sentence)):
-            if counter + 2 + len(full_sentence[i]) > max_query_length:
-                batches.append(". ".join(full_sentence[begin:i]) + ".")
+            if counter + 3 + len(full_sentence[i][0]) > max_query_length:
+                batches.append(full_sentence[begin:i])
                 begin = i
                 counter = 0
-            counter += len(full_sentence[i]) + 2
-        batches.append(". ".join(full_sentence[begin:]) + ".")
+            counter += len(full_sentence[i][0]) + 3
+        batches.append(full_sentence[begin:])
+        return batches
+
+    def _get_generated_facts(self, batches):
+        # Open a server
+        # TODO: is there a problem if several in parallel ?
+        # Should play with start_server?
+        nlp = corenlp.CoreNLPClient(
+            start_server=True,
+            endpoint='http://localhost:9000',
+            timeout=1000000,
+            annotators=['openie'],
+            properties={'annotators': 'openie',
+                        'inputFormat': 'text',
+                        'outputFormat': 'json',
+                        'serializer': 'edu.stanford.nlp.pipeline.ProtobufAnnotationSerializer',
+                        #"openie.triple.strict" : "true",
+                        "openie.max_entailments_per_clause":"1000"})
+
+        generated_facts = []
 
         for batch in batches:
             # We annotate the sentence
             # And extract the triples
-            print("before")
-            out = nlp.annotate(batch)
-            print("after")
+            sentences = " . ".join([x[0].replace(".", "").replace("?", "")
+                                    for x in batch])\
+                + " . "
+            out = nlp.annotate(sentences)
+            counter = 0
             for sentence in out.sentence:
+                suggestion = batch[counter]
+                sugg_temp = " ".join(
+                    filter(lambda x: x != ".",
+                           [x.word for x in sentence.token]))
+                sugg_temp = sugg_temp.replace("-LRB-", "(")
+                sugg_temp = sugg_temp.replace("-RRB-", ")")
+                if sugg_temp.replace(" ", "").replace("'", "")\
+                        .replace("`", "").replace(".", "").replace("?", "")\
+                        != suggestion[0].replace(" ", "").replace("'", "")\
+                        .replace("`", "").replace(".", "").replace("?", ""):
+                    logging.error("The subjects do not match. Received: %s,"
+                                  "Expecting: %s", sugg_temp, suggestion)
+                    break
                 for triple in sentence.openieTriple:
                     subject = triple.subject
-                    if subject not in subjects:
-                        continue
                     obj = triple.object
                     predicate = triple.relation
                     score = triple.confidence
@@ -159,13 +183,30 @@ class BrowserAutocompleteSubmodule(SubmoduleInterface):
                             False,
                             # For the score, inverse the ranking (higher is
                             # better) and add the confidence of the triple
-                            self.default_number_suggestions - suggestion[1] +
-                                score,
-                            original,
+                            (2 * self.default_number_suggestions - suggestion[1] +
+                                score - 1.0) /
+                                (2 * self.default_number_suggestions),
+                            suggestion[0],
                             self._module_reference,
                             self,
                             suggestion[2]))
+                counter += 1
         # stop the annotator
         nlp.stop()
+        return generated_facts
+
+    def process(self, input_interface):
+        # Needs subjects
+        logging.info("Start submodule %s", self.get_name())
+        if not input_interface.has_subjects():
+            return input_interface
+
+        suggestions = self._get_all_suggestions(input_interface)
+
+
+        # OPENIE part
+        batches = self._compute_batch_openie(suggestions, input_interface)
+        generated_facts = self._get_generated_facts(batches)
+
 
         return input_interface.add_generated_facts(generated_facts)

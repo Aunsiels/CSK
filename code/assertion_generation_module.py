@@ -1,6 +1,7 @@
 from module_interface import ModuleInterface
 from default_submodule_factory import DefaultSubmoduleFactory
 from inputs import Inputs
+import logging
 
 class AssertionGenerationModule(ModuleInterface):
     """AssertionGenerationModule
@@ -14,6 +15,7 @@ class AssertionGenerationModule(ModuleInterface):
         self._name = "Assertion Generation Module"
 
     def process(self, input_interface):
+        logging.info("Start the assertion generation module")
         new_inputs = []
         # For now in sequence, we could make it be parallel
         for submodule in self._submodules:

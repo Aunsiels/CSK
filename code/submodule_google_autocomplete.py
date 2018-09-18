@@ -3,6 +3,7 @@ from urllib.parse import quote
 import json
 import os
 from browser_autocomplete_submodule import BrowserAutocompleteSubmodule
+import logging
 
 headers = {'User-agent':'Mozilla/5.0'}
 # baseurl = "http://clients1.google.com/complete/search?"
@@ -31,9 +32,8 @@ class SubmoduleGoogleAutocomplete(BrowserAutocompleteSubmodule):
             with open(fname) as f:
                 for line in f:
                     sugg = line.strip().split("\t")
-                    suggestions.append((sugg[0], int(sugg[1])))
+                    suggestions.append((sugg[0], float(sugg[1])))
             return (suggestions, True)
-        print(query)
         if query:
             query = quote(query)
             url = baseurl + "hl=%s&q=%s&json=t&ds=%s&client=serp" \
@@ -45,7 +45,8 @@ class SubmoduleGoogleAutocomplete(BrowserAutocompleteSubmodule):
                 suggestions = [(result[1][i], i) for i in range(len(result[1]))]
             else:
                 # Kicked by the search engine
-                print("Problem with", query)
+                logging.warning("The number of requests for the google " +
+                                "autocomplete submodule was probably exceeded")
                 return (None, False)
         # Cache
         with open(fname, "w") as f:

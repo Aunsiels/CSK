@@ -1,6 +1,7 @@
 from submodule_interface import SubmoduleInterface
 from inputs import Inputs
 from pattern_google import PatternGoogle
+import logging
 
 class ManualPatternsGoogleSubmodule(SubmoduleInterface):
     """ManualPatternsGoogleSubmodule
@@ -12,6 +13,7 @@ class ManualPatternsGoogleSubmodule(SubmoduleInterface):
         self._name = "Manual patterns google"
 
     def process(self, input_interface):
+        logging.info("Start the manual patterns for browsers submodule")
         new_patterns = []
         new_patterns.append(PatternGoogle("why are <SUBJS>"))
         new_patterns.append(PatternGoogle("why do <SUBJS>"))

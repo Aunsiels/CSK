@@ -4,11 +4,16 @@ import http.client, urllib.parse, json
 from string import ascii_lowercase
 import os
 from browser_autocomplete_submodule import BrowserAutocompleteSubmodule
+import logging
 
 # Where the cache data are saved
 cache_dir = "bing-cache/"
 # The subscription key from azure
-subscriptionKey = "0eb22ae227ff4a84a6c4d8c38eb9a965"
+with open("parameters.tsv") as f:
+    for line in f:
+        l = line.strip().split("\t")
+        if len(l) == 2 and l[0] == "bing-key":
+            subscriptionKey = l[1]
 
 # Location of the api
 host = 'api.cognitive.microsoft.com'
@@ -27,7 +32,7 @@ class BingAutocompleteSubmodule(BrowserAutocompleteSubmodule):
         self._name = "Bing Autocomplete"
         if not os.path.exists(cache_dir):
                 os.makedirs(cache_dir)
-        self.time_between_queries = 1.0
+        self.time_between_queries = 0.02
         self.default_number_suggestions = 8
 
     def get_suggestion(self, query, lang="en-US", ds=''):
@@ -39,7 +44,7 @@ class BingAutocompleteSubmodule(BrowserAutocompleteSubmodule):
             with open(fname) as f:
                 for line in f:
                     sugg = line.strip().split("\t")
-                    suggestions.append((sugg[0], int(sugg[1])))
+                    suggestions.append((sugg[0], float(sugg[1])))
             return (suggestions, True)
 
         params = '?mkt=' + lang + '&q=' + quote(query)
@@ -63,4 +68,7 @@ class BingAutocompleteSubmodule(BrowserAutocompleteSubmodule):
             return (suggestions, False)
         else:
             # We surely exceded the number of requests
+            logging.warning("The number of requests for the bing autocomplete" +
+                            " submodule was" +
+                            " probably exceeded")
             return (None, False)

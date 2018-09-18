@@ -1,6 +1,7 @@
 from submodule_interface import SubmoduleInterface
 from subject import Subject
 from inputs import Inputs
+import logging
 
 # A file containing a list of animals
 filename = "data/anitemp.txt"
@@ -15,6 +16,7 @@ class AnimalSubmodule(SubmoduleInterface):
         self._name = "Animal Seeds"
 
     def process(self, input_interface):
+        logging.info("Start Animal Submodule")
         subjects = []
         # Read the subjects from a file
         with open(filename) as f:

@@ -1,6 +1,7 @@
 from module_interface import ModuleInterface
 from default_submodule_factory import DefaultSubmoduleFactory
 from inputs import Inputs
+import logging
 
 class PatternModule(ModuleInterface):
     """PatternModule
@@ -14,6 +15,7 @@ class PatternModule(ModuleInterface):
         self._name = "Pattern Module"
 
     def process(self, input_interface):
+        logging.info("Start the Pattern Generation module")
         new_inputs = []
         for submodule in self._submodules:
             new_inputs.append(submodule.process(input_interface))
