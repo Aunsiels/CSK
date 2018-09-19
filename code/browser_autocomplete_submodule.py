@@ -142,8 +142,9 @@ class BrowserAutocompleteSubmodule(SubmoduleInterface):
                         'inputFormat': 'text',
                         'outputFormat': 'json',
                         'serializer': 'edu.stanford.nlp.pipeline.ProtobufAnnotationSerializer',
+                        'openie.affinity_probability_cap': '1.0',
                         #"openie.triple.strict" : "true",
-                        "openie.max_entailments_per_clause":"1000"})
+                        "openie.max_entailments_per_clause":"500"})
 
         generated_facts = []
 
@@ -169,11 +170,18 @@ class BrowserAutocompleteSubmodule(SubmoduleInterface):
                     logging.error("The subjects do not match. Received: %s,"
                                   "Expecting: %s", sugg_temp, suggestion)
                     break
+                maxi_length_predicate = 1
+                for triple in sentence.openieTriple:
+                    predicate = triple.relation
+                    maxi_length_predicate = max(len(predicate.split(" ")),
+                                                maxi_length_predicate)
                 for triple in sentence.openieTriple:
                     subject = triple.subject
                     obj = triple.object
                     predicate = triple.relation
                     score = triple.confidence
+                    # prefer longer predicate ?
+                    score *= len(predicate.split(" ")) / maxi_length_predicate
                     generated_facts.append(
                         GeneratedFact(
                             subject,
@@ -183,9 +191,10 @@ class BrowserAutocompleteSubmodule(SubmoduleInterface):
                             False,
                             # For the score, inverse the ranking (higher is
                             # better) and add the confidence of the triple
-                            (2 * self.default_number_suggestions - suggestion[1] +
-                                score - 1.0) /
-                                (2 * self.default_number_suggestions),
+                            (2 * self.default_number_suggestions - suggestion[1]
+                                ) /
+                                (2 * self.default_number_suggestions) *
+                                score,
                             suggestion[0],
                             self._module_reference,
                             self,

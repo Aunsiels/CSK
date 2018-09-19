@@ -1,6 +1,4 @@
 from submodule_interface import SubmoduleInterface
-from subject import Subject
-from inputs import Inputs
 import logging
 
 
@@ -11,9 +9,9 @@ class NoPersonalSubmodule(SubmoduleInterface):
         self._name = "No Personnal"
 
     def process(self, input_interface):
-        logging.info("Starts the removal of personal words")
+        logging.info("Start the removal of personal words")
         personals = ["my", "your", "our", "I", "you", "it", "he", "she", "so",
-                     "such", "much", "me"]
+                     "such", "much", "me", "this", "that"]
         new_generated_facts = list(filter(
             lambda x: not any([y in personals
                                for y in x.get_object().get().split(" ")]),

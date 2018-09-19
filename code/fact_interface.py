@@ -58,6 +58,66 @@ class FactInterface(object):
         return self._negative
 
     def __str__(self):
+        if self.has_modality():
+            return "(" + str(self.get_subject()) + ", " + \
+                str(self.get_predicate()) + ", " + \
+                str(self.get_object()) + ")[" + str(self.get_modality()) + "]"
         return "(" + str(self.get_subject()) + ", " + \
             str(self.get_predicate()) + ", " + \
             str(self.get_object()) + ")"
+
+    def __hash__(self):
+        return hash(self.get_subject()) +\
+            hash(self.get_modality()) +\
+            hash(self.get_object()) +\
+            hash(self.get_predicate()) +\
+            hash(self.is_negative())
+
+    def __eq__(self, other):
+        if not isinstance(other, FactInterface):
+            return False
+        return self.get_subject() == other.get_subject() and\
+            self.get_predicate() == other.get_predicate() and\
+            self.get_object() == other.get_object() and\
+            self.get_modality() == other.get_modality() and\
+            self.is_negative() == other.is_negative()
+
+    def change_subject(self, new_subject):
+        """change_subject
+        Return a new fact with the subject changed
+        :param new_subject: the new subject to put
+        :type new_subject: str or SubjectInterface
+        :return: the new fact
+        :rtype: FactInterface
+        """
+        raise NotImplementedError
+
+    def change_predicate(self, new_predicate):
+        """change_predicate
+        Change the predicate of the fact
+        :param new_predicate: the predicate to write
+        :type new_predicate: str or PredicateInterface
+        :return: a new fact
+        :rtype: FactInterface
+        """
+        raise NotImplementedError
+
+    def change_object(self, new_object):
+        """change_object
+        Change the object of the fact
+        :param new_object: the object to update
+        :type new_object: str or ObjectInterface
+        :return: a new fact
+        :rtype: FactInterface
+        """
+        raise NotImplementedError
+
+    def change_modality(self, new_modality):
+        """change_modality
+        Change the modality of the fact
+        :param new_modality: the new modality to update
+        :type new_modality: str or ModalityInterface
+        :return: a new fact
+        :rtype: FactInterface
+        """
+        raise NotImplementedError

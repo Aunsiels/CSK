@@ -13,3 +13,11 @@ class SPOMInterface(object):
 
     def __str__(self):
         return str(self.get())
+
+    def __hash__(self):
+        return hash(self.get())
+
+    def __eq__(self, other):
+        if not isinstance(other, SPOMInterface):
+            return False
+        return self.get() == other.get()

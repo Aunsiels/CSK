@@ -9,12 +9,13 @@ class AssertionFusionModule(ModuleInterface):
     """
 
     def __init__(self):
-        module_names = []
+        module_names = ["linear-combination"]
         super(AssertionFusionModule, self).__init__(
             module_names, DefaultSubmoduleFactory())
         self._name = "Assertion Fusion Module"
 
     def process(self, input_interface):
-        # Nothing for now
         logging.info("Start the assertion fusion module")
+        for submodule in self._submodules:
+            input_interface = submodule.process(input_interface)
         return input_interface

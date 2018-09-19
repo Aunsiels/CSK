@@ -59,3 +59,11 @@ class GeneratedFactInterface(FactInterface):
             " From module: " + str(self.get_module_source().get_name()) +\
             " From submodule: " + str(self.get_submodule_source().get_name()) +\
             " From sentence: " + str(self.get_sentence_source())
+
+    def get_fact(self):
+        """get_fact
+        Get the fact
+        :return: The fact
+        :rtype: FactInterface
+        """
+        raise NotImplementedError
