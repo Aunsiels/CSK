@@ -19,6 +19,6 @@ class CleaningPredicateSubmodule(SubmoduleInterface):
                 if p not in dirty_words:
                     new_pred.append(p)
             if len(pred) != len(new_pred):
-                g = g.change_predicate(" ".join(new_pred))
+                g = g.change_predicate(" ".join(new_pred).strip())
             new_generated_facts.append(g)
         return input_interface.replace_generated_facts(new_generated_facts)

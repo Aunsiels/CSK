@@ -98,3 +98,60 @@ class GeneratedFact(GeneratedFactInterface):
                              self.get_module_source(),
                              self.get_submodule_source(),
                              self.get_pattern())
+
+    def change_score(self, new_score):
+        """change_score
+        Change the score of the generated fact
+        :param new_score: the new score to put
+        :type new_score: Float
+        :return: A generated fact with the new score
+        :rtype: GeneratedFactInterface
+        """
+        return GeneratedFact(self.get_subject(),
+                             self.get_predicate(),
+                             self.get_object(),
+                             self.get_modality(),
+                             self.is_negative(),
+                             new_score,
+                             self.get_sentence_source(),
+                             self.get_module_source(),
+                             self.get_submodule_source(),
+                             self.get_pattern())
+
+    def change_module_source(self, new_module_source):
+        """change_module_source
+        Change the source module
+        :param new_module_source: The new source module reference
+        :type new_module_source: ModuleReferenceInterface
+        :return: A new generated fact with the new module source
+        :rtype: GeneratedFactInterface
+        """
+        return GeneratedFact(self.get_subject(),
+                             self.get_predicate(),
+                             self.get_object(),
+                             self.get_modality(),
+                             self.is_negative(),
+                             self.get_score(),
+                             self.get_sentence_source(),
+                             new_module_source,
+                             self.get_submodule_source(),
+                             self.get_pattern())
+
+    def change_submodule_source(self, new_submodule_source):
+        """change_submodule_source
+        Change the source submodule
+        :param new_submodule_source: The new source submodule reference
+        :type new_submodule_source: SubmoduleReferenceInterface
+        :return: A new generated fact with the new submodule source
+        :rtype: GeneratedFactInterface
+        """
+        return GeneratedFact(self.get_subject(),
+                             self.get_predicate(),
+                             self.get_object(),
+                             self.get_modality(),
+                             self.is_negative(),
+                             self.get_score(),
+                             self.get_sentence_source(),
+                             self.get_module_source(),
+                             new_submodule_source,
+                             self.get_pattern())

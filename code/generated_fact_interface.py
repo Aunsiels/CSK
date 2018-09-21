@@ -67,3 +67,33 @@ class GeneratedFactInterface(FactInterface):
         :rtype: FactInterface
         """
         raise NotImplementedError
+
+    def change_score(self, new_score):
+        """change_score
+        Change the score of the generated fact
+        :param new_score: the new score to put
+        :type new_score: Float
+        :return: A generated fact with the new score
+        :rtype: GeneratedFactInterface
+        """
+        raise NotImplementedError
+
+    def change_module_source(self, new_module_source):
+        """change_module_source
+        Change the source module
+        :param new_module_source: The new source module reference
+        :type new_module_source: ModuleReferenceInterface
+        :return: A new generated fact with the new module source
+        :rtype: GeneratedFactInterface
+        """
+        raise NotImplementedError
+
+    def change_submodule_source(self, new_submodule_source):
+        """change_submodule_source
+        Change the source submodule
+        :param new_submodule_source: The new source submodule reference
+        :type new_submodule_source: SubmoduleReferenceInterface
+        :return: A new generated fact with the new submodule source
+        :rtype: GeneratedFactInterface
+        """
+        raise NotImplementedError

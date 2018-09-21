@@ -10,6 +10,7 @@ from to_singular_subject_submodule import ToSingularSubjectSubmodule
 from present_continuous_submodule import PresentContinuousSubmodule
 from basic_modality_submodule import BasicModalitySubmodule
 from cleaning_predicate_submodule import CleaningPredicateSubmodule
+from wikipedia_cooccurrence_submodule import WikipediaCooccurrenceSubmodule
 
 
 class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
@@ -40,5 +41,7 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
             return BasicModalitySubmodule(module_reference)
         elif submodule_name == "cleaning-predicate":
             return CleaningPredicateSubmodule(module_reference)
+        elif submodule_name == "wikipedia-cooccurrence":
+            return WikipediaCooccurrenceSubmodule(module_reference)
         else:
             raise NotImplementedError

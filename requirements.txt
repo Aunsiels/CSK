@@ -1,3 +1,5 @@
 corenlp
 inflect
 pickle
+nltk
+wikipedia

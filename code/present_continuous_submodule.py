@@ -19,8 +19,8 @@ class PresentContinuousSubmodule(SubmoduleInterface):
             if len(pred_l) > 1 and pred_l[0] == "are" and \
                     "ing" == pred_l[1][-3:]:
                 new_generated_facts.append(
-                    g.change_predicate(lemmatizer.lemmatize(pred_l[1], pos="v")
-                                       + " " + " ".join(pred_l[2:])))
+                    g.change_predicate((lemmatizer.lemmatize(pred_l[1], pos="v")
+                                       + " " + " ".join(pred_l[2:])).strip()))
             else:
                 new_generated_facts.append(g)
         return input_interface.replace_generated_facts(new_generated_facts)

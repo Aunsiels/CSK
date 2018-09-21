@@ -222,7 +222,7 @@ kingfisher
 kite
 kiwi
 koala
-koi
+koi carp
 komodo dragon
 krill
 ladybug
