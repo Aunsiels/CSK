@@ -6,6 +6,9 @@ from pattern_fusion_module import PatternFusionModule
 from assertion_normalization_module import AssertionNormalizationModule
 from assertion_validation_module import AssertionValidationModule
 from assertion_fusion_module import AssertionFusionModule
+from occupations_seed_module import OccupationsSeedModule
+from all_seeds_module import AllSeedsModule
+
 
 class DefaultModuleFactory(ModuleFactoryInterface):
     """DefaultModuleFactory
@@ -27,4 +30,8 @@ class DefaultModuleFactory(ModuleFactoryInterface):
             return AssertionValidationModule()
         elif module_name == "assertion-fusion":
             return AssertionFusionModule()
+        elif module_name == "occupations-seeds":
+            return OccupationsSeedModule()
+        elif module_name == "all-seeds":
+            return AllSeedsModule()
         raise NotImplementedError

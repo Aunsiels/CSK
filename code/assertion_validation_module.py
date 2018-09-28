@@ -10,13 +10,12 @@ class AssertionValidationModule(ModuleInterface):
     """
 
     def __init__(self):
-        module_names = ["wikipedia-cooccurrence"]
+        module_names = ["wikipedia-cooccurrence", "antonym-checking"]
         super(AssertionValidationModule, self).__init__(
             module_names, DefaultSubmoduleFactory())
         self._name = "Assertion Validation Module"
 
     def process(self, input_interface):
-        # Nothing for now
         logging.info("Start the assertion validation module")
         for submodule in self._submodules:
             input_interface = submodule.process(input_interface)

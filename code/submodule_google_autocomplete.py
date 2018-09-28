@@ -27,7 +27,7 @@ class SubmoduleGoogleAutocomplete(BrowserAutocompleteSubmodule):
         """Query Google suggest service"""
         suggestions = []
         # Cache
-        fname = cache_dir + query.replace(" ", "-")
+        fname = cache_dir + query.replace(" ", "-").replace("'", "_")
         if os.path.isfile(fname):
             with open(fname) as f:
                 for line in f:

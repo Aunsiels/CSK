@@ -11,10 +11,12 @@ class PatternGoogle(PatternInterface):
 
     def __init__(self,
                  prefix,
-                 relation="hasProperty"):
+                 relation="hasProperty",
+                 negative=False):
         self._prefix = prefix # we need to give the prefix of the query
         # No score for now
         self._score = 1.0
+        self._negative = negative
         self._relation = relation
         self._group = "google-autocomplete"
         self._regex = re.compile(self._prefix.replace("<SUBJ>", ".*")

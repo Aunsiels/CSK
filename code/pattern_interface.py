@@ -7,6 +7,7 @@ class PatternInterface(object):
         self._score = 0.0 # a float
         self._relation = None
         self._group = ""
+        self._negative = False
 
     def match(self, sentence):
         """match
@@ -97,3 +98,6 @@ class PatternInterface(object):
             "Relation=" + str(self._relation) + ", " +\
             "Score=" + str(self.get_score()) + ", " +\
             "Group=" + str(self.get_group()) + ")"
+
+    def is_negative(self):
+        return self._negative

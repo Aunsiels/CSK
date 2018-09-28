@@ -2,6 +2,7 @@ from submodule_interface import SubmoduleInterface
 import logging
 import os
 import wikipedia
+from nltk.tokenize import word_tokenize
 
 
 cache_dir = "wikipedia-cache/"
@@ -28,8 +29,18 @@ class WikipediaCooccurrenceSubmodule(SubmoduleInterface):
                 try:
                     content = wikipedia.page(search[0]).content
                 except wikipedia.DisambiguationError as e:
+                    # Not clear how often it happens
                     if e.options:
-                        content = wikipedia.page(e.options[0]).content
+                        try:
+                            content = wikipedia.page(e.options[0]).content
+                        except wikipedia.DisambiguationError as e2:
+                            if e2.options:
+                                temp = e2.options[0].replace("(", "")\
+                                    .replace(")", "")
+                                try:
+                                    content = wikipedia.page(temp).content
+                                except wikipedia.DisambiguationError as e3:
+                                    pass
             with open(fname, "w") as f:
                 f.write(content)
         return content
@@ -50,6 +61,7 @@ class WikipediaCooccurrenceSubmodule(SubmoduleInterface):
         # Retreive page
         for subj in by_subject:
             content = self._get_wikipidia_page_content(subj).lower()
+            content = word_tokenize(content)
             # TODO: Some preprocessing?
             for g in by_subject[subj]:
                 if g.get_object().get().lower() in content:

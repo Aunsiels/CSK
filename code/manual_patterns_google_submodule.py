@@ -17,4 +17,6 @@ class ManualPatternsGoogleSubmodule(SubmoduleInterface):
         new_patterns = []
         new_patterns.append(PatternGoogle("why are <SUBJS>"))
         new_patterns.append(PatternGoogle("why do <SUBJS>"))
+        new_patterns.append(PatternGoogle("why can <SUBJS>", "CAN"))
+        new_patterns.append(PatternGoogle("why can't <SUBJS>", "CAN", True))
         return input_interface.add_patterns(new_patterns)

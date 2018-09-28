@@ -1,6 +1,5 @@
 from module_interface import ModuleInterface
 from default_submodule_factory import DefaultSubmoduleFactory
-from inputs import Inputs
 import logging
 
 class AnimalSeedModule(ModuleInterface):

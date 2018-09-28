@@ -5,6 +5,7 @@ from string import ascii_lowercase
 import os
 from browser_autocomplete_submodule import BrowserAutocompleteSubmodule
 import logging
+import time
 
 # Where the cache data are saved
 cache_dir = "bing-cache/"
@@ -35,10 +36,10 @@ class BingAutocompleteSubmodule(BrowserAutocompleteSubmodule):
         self.time_between_queries = 0.02
         self.default_number_suggestions = 8
 
-    def get_suggestion(self, query, lang="en-US", ds=''):
+    def get_suggestion(self, query, lang="en-US", ds=0):
         "Gets Autosuggest results for a query and returns the information."
         suggestions = []
-        fname = cache_dir + query.replace(" ", "-")
+        fname = cache_dir + query.replace(" ", "-").replace("'", "_")
         # check if the query was done before
         if os.path.isfile(fname):
             with open(fname) as f:
@@ -71,4 +72,8 @@ class BingAutocompleteSubmodule(BrowserAutocompleteSubmodule):
             logging.warning("The number of requests for the bing autocomplete" +
                             " submodule was" +
                             " probably exceeded")
+            # We force it, sometimes it does not work well...
+            if ds < 10:
+                time.sleep(1.0)
+                return self.get_suggestion(query, lang, ds + 1)
             return (None, False)

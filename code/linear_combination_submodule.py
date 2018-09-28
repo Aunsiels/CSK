@@ -13,12 +13,15 @@ class LinearCombinationSubmodule(SubmoduleInterface):
         logging.info("Start linear combining submodule")
         # group the tuples
         d_gf = dict()
+        d_gf_sentences = dict()
         for g in input_interface.get_generated_facts():
             fact = g.get_fact()
             if fact in d_gf:
                 d_gf[fact] += g.get_score()
+                d_gf_sentences[fact] += " // " + g.get_sentence_source()
             else:
                 d_gf[fact] = g.get_score()
+                d_gf_sentences[fact] = g.get_sentence_source()
         # Find the maximum
         maxi = 0.000001
         for key in d_gf:
@@ -36,7 +39,7 @@ class LinearCombinationSubmodule(SubmoduleInterface):
                 key.get_modality(),
                 key.is_negative(),
                 d_gf[key],
-                "",
+                d_gf_sentences[key],
                 self._module_reference,
                 self,
                 None))

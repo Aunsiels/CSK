@@ -10,8 +10,10 @@ class AssertionNormalizationModule(ModuleInterface):
 
     def __init__(self):
         module_names = ["only-subject", "no-personal", "singular-subject",
+                        "incomplete-modality", # Before can/are transformations
                         "cleaning-predicate", "basic-modality",
-                        "present-continuous"]
+                        "present-continuous", "are-transformation",
+                        "can-transformation", "filter-object"]
         super(AssertionNormalizationModule, self).__init__(
             module_names, DefaultSubmoduleFactory())
         self._name = "Assertion Normalization Module"

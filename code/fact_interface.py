@@ -58,11 +58,14 @@ class FactInterface(object):
         return self._negative
 
     def __str__(self):
+        negation = ""
+        if self.is_negative():
+            negation = "not "
         if self.has_modality():
-            return "(" + str(self.get_subject()) + ", " + \
+            return negation + "(" + str(self.get_subject()) + ", " + \
                 str(self.get_predicate()) + ", " + \
                 str(self.get_object()) + ")[" + str(self.get_modality()) + "]"
-        return "(" + str(self.get_subject()) + ", " + \
+        return negation + "(" + str(self.get_subject()) + ", " + \
             str(self.get_predicate()) + ", " + \
             str(self.get_object()) + ")"
 
