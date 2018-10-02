@@ -13,7 +13,8 @@ class BasicModalitySubmodule(SubmoduleInterface):
         # still has several meanings...
         modality_words = ["always", "commonly", "often", "sometimes",
                           "only", "rarely", "mostly", "especially",
-                          "generally", "at_time", "still", "constantly"]
+                          "generally", "at_time", "still", "constantly",
+                          "almost"]
         modality_pred = ["now"]
         new_generated_facts = []
         for g in input_interface.get_generated_facts():
