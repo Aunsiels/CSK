@@ -91,8 +91,14 @@ class BrowserAutocompleteSubmodule(SubmoduleInterface):
         tokens = []
         pos = []
         for token in nlp(question):
-            tokens.append(token.text)
-            pos.append((token.text, token.tag_))
+            if token.text == "'s":
+                tokens[-1] = tokens[-1] + "'s"
+                pos[-1] = (pos[-1][0] + "'s", pos[-1][1])
+            elif token.text == "?":
+                continue
+            else:
+                tokens.append(token.text)
+                pos.append((token.text, token.tag_))
         begin = []
         middle = []
         end = []

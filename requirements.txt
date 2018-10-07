@@ -3,3 +3,4 @@ inflect
 pickle
 nltk
 wikipedia
+spacy

@@ -5,7 +5,8 @@ import logging
 class AllSeedsModule(ModuleInterface):
 
     def __init__(self):
-        module_names = ["animal-seeds", "occupations-seeds"]
+        module_names = ["animal-seeds", "occupations-seeds",
+                        "conceptnet-subjects"]
         super(AllSeedsModule, self).__init__(
             module_names, DefaultSubmoduleFactory())
         self._name = "All Seeds module"

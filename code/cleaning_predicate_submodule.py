@@ -11,8 +11,11 @@ class CleaningPredicateSubmodule(SubmoduleInterface):
     def process(self, input_interface):
         logging.info("Start cleaning predicates")
         dirty_words = ["so", "also"]
+        forbidden_predicate = ["during"]
         new_generated_facts = []
         for g in input_interface.get_generated_facts():
+            if g.get_predicate().get() in forbidden_predicate:
+                continue
             pred = g.get_predicate().get().split(" ")
             new_pred = []
             for p in pred:

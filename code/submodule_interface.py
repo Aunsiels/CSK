@@ -8,3 +8,6 @@ class SubmoduleInterface(SubmoduleReferenceInterface, ProcessInterface):
 
     def __init__(self):
         self._module_reference = None # ModuleReferenceInterface
+
+    def __str__(self):
+        return "----> SUBMODULE: " + self.get_name()

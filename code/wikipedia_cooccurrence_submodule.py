@@ -5,19 +5,18 @@ import wikipedia
 from nltk.tokenize import word_tokenize
 
 
-cache_dir = "wikipedia-cache/"
-
-
 class WikipediaCooccurrenceSubmodule(SubmoduleInterface):
 
     def __init__(self, module_reference):
         self._module_reference = module_reference
         self._name = "Wikipedia Cooccurrence"
-        if not os.path.exists(cache_dir):
-            os.makedirs(cache_dir)
+        self._cache_dir = "wikipedia-cache/"
+        self._lang = "en"
+        if not os.path.exists(self._cache_dir):
+            os.makedirs(self._cache_dir)
 
     def _get_wikipidia_page_content(self, name):
-        fname = cache_dir + name.replace(" ", "_")
+        fname = self._cache_dir + name.replace(" ", "_")
         content = ""
         if os.path.isfile(fname):
             with open(fname) as f:
@@ -47,6 +46,7 @@ class WikipediaCooccurrenceSubmodule(SubmoduleInterface):
 
     def process(self, input_interface):
         logging.info("Start the wikipedia cooccurence checking")
+        wikipedia.set_lang(self._lang)
         gf = input_interface.get_generated_facts()
         # Groupby subject
         by_subject = dict()

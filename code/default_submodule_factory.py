@@ -11,12 +11,14 @@ from present_continuous_submodule import PresentContinuousSubmodule
 from basic_modality_submodule import BasicModalitySubmodule
 from cleaning_predicate_submodule import CleaningPredicateSubmodule
 from wikipedia_cooccurrence_submodule import WikipediaCooccurrenceSubmodule
+from simple_wikipedia_cooccurrence_submodule import SimpleWikipediaCooccurrenceSubmodule
 from antonym_checking_submodule import AntonymCheckingSubmodule
 from are_transformation_submodule import AreTransformationSubmodule
 from filter_object_submodule import FilterObjectSubmodule
 from can_transformation_submodule import CanTransformationSubmodule
 from incomplete_modality_submodule import IncompleteModalitySubmodule
 from occupations_submodule import OccupationsSubmodule
+from conceptnet_subjects_submodule import ConceptnetSubjectsSubmodule
 
 
 class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
@@ -49,6 +51,8 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
             return CleaningPredicateSubmodule(module_reference)
         elif submodule_name == "wikipedia-cooccurrence":
             return WikipediaCooccurrenceSubmodule(module_reference)
+        elif submodule_name == "simple-wikipedia-cooccurrence":
+            return SimpleWikipediaCooccurrenceSubmodule(module_reference)
         elif submodule_name == "antonym-checking":
             return AntonymCheckingSubmodule(module_reference)
         elif submodule_name == "are-transformation":
@@ -61,5 +65,7 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
             return IncompleteModalitySubmodule(module_reference)
         elif submodule_name == "occupations-seeds":
             return OccupationsSubmodule(module_reference)
+        elif submodule_name == "conceptnet-subjects":
+            return ConceptnetSubjectsSubmodule(module_reference)
         else:
             raise NotImplementedError

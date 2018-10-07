@@ -27,3 +27,10 @@ class ModuleInterface(ModuleReferenceInterface, ProcessInterface):
             submodules.append(self._submodules_factory.get_submodule(name,
                                                                      self))
         return submodules
+
+    def __str__(self):
+        res = []
+        res.append("--> MODULE: " + self.get_name())
+        for submodule in self._submodules:
+            res.append(str(submodule))
+        return "\n".join(res)

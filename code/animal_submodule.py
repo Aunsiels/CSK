@@ -1,5 +1,6 @@
 from subject_file_submodule import SubjectFileSubmodule
 
+
 class AnimalSubmodule(SubjectFileSubmodule):
     """AnimalSubmodule
     A submodule to produce animals of the subjects of the input

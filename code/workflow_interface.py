@@ -49,3 +49,10 @@ class WorkflowInterface(object):
                 temp_input.save(out_dir + "out_" + str(int(time.time())) + "_" +
                                 module.get_name())
         return temp_input
+
+    def __str__(self):
+        res = []
+        res.append("WORKFLOW")
+        for module in self._workflow:
+            res.append(str(module))
+        return "\n".join(res)
