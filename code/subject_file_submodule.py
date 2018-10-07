@@ -14,7 +14,7 @@ class SubjectFileSubmodule(SubmoduleInterface):
         logging.info("Start Subject generation from the file " + self._filename)
         subjects = []
         # Read the subjects from a file
-        with open(self._filename) as f:
+        with open(self._filename, encoding="utf-8") as f:
             for line in f:
                 subjects.append(Subject(line.strip()))
         return input_interface.add_subjects(subjects)
