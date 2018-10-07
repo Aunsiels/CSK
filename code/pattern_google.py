@@ -1,6 +1,7 @@
 from pattern_interface import PatternInterface
 import re
 import inflect
+from nltk.corpus import wordnet
 
 plural_engine = inflect.engine()
 
@@ -33,9 +34,21 @@ class PatternGoogle(PatternInterface):
         return self._prefix
 
     def to_str_subject(self, subject):
-        return self._prefix.replace("<SUBJ>", subject.get())\
-            .replace("<OBJ>", "")\
-            .replace("<SUBJS>", plural_engine.plural(subject.get()))
+        sing = plural_engine.singular_noun(subject.get())
+        plur = plural_engine.plural(subject.get())
+        last_sing = ""
+        if sing:
+            last_sing = sing.split(" ")[-1]
+        last_plur = plur.split(" ")[-1]
+        if (not sing and\
+                wordnet.synsets(last_plur)) or not wordnet.synsets(last_sing):
+            return self._prefix.replace("<SUBJ>", subject.get())\
+                .replace("<OBJ>", "")\
+                .replace("<SUBJS>", plur)
+        else:
+            return self._prefix.replace("<SUBJ>", subject.get())\
+                .replace("<OBJ>", "")\
+                .replace("<SUBJS>", subject.get())
 
     def match(self, sentence):
         return self._regex.search(sentence) is not None
