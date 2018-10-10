@@ -19,6 +19,11 @@ class OnlySubjectSubmodule(SubmoduleInterface):
         for subject in input_interface.get_subjects():
             subjects.add(subject.get())
             subjects.add(plural_engine.plural(subject.get()))
+            sing = plural_engine.singular_noun(subject.get())
+            if sing:
+                subjects.add(sing)
+
+        subjects.remove("it", "its")
 
         new_generated_facts = list(filter(
             lambda x: x.get_subject().get() in subjects,

@@ -16,7 +16,7 @@ class SubmoduleGoogleAutocomplete(BrowserAutocompleteSubmodule):
     """
 
     def __init__(self, module_reference):
-        self._module_reference = module_reference
+        super().__init__(module_reference)
         self._name = "Google Autocomplete"
         if not os.path.exists(cache_dir):
                 os.makedirs(cache_dir)

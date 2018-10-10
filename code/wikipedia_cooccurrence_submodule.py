@@ -40,6 +40,12 @@ class WikipediaCooccurrenceSubmodule(SubmoduleInterface):
                                     content = wikipedia.page(temp).content
                                 except wikipedia.DisambiguationError as e3:
                                     pass
+                                except wikipedia.exceptions.PageError:
+                                    logging.warning("Wikipedia page not found: " + name)
+                        except wikipedia.exceptions.PageError:
+                            logging.warning("Wikipedia page not found: " + name)
+                except wikipedia.exceptions.PageError:
+                    logging.warning("Wikipedia page not found: " + name)
             with open(fname, "w") as f:
                 f.write(content)
         return content

@@ -10,8 +10,18 @@ class FilterObjectSubmodule(SubmoduleInterface):
 
     def process(self, input_interface):
         logging.info("Start the filtering object")
-        forbidden = ["used", "called"]
-        new_generated_facts = list(filter(
-            lambda x: x.get_object().get() not in forbidden,
-            input_interface.get_generated_facts()))
+        dirty_words = ["their"]
+        forbidden = ["used", "called", "xbox", "youtube", "xo", "quote"]
+        new_generated_facts = []
+        for g in input_interface.get_generated_facts():
+            if g.get_object().get() in forbidden:
+                continue
+            obj = g.get_object().get().split(" ")
+            new_obj = []
+            for p in obj:
+                if p not in dirty_words:
+                    new_obj.append(p)
+            if len(obj) != len(new_obj):
+                g = g.change_object(" ".join(new_obj).strip())
+            new_generated_facts.append(g)
         return input_interface.replace_generated_facts(new_generated_facts)
