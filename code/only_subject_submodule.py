@@ -23,7 +23,8 @@ class OnlySubjectSubmodule(SubmoduleInterface):
             if sing:
                 subjects.add(sing)
 
-        subjects.remove("it", "its")
+        subjects.discard("it")
+        subjects.discard("its")
 
         new_generated_facts = list(filter(
             lambda x: x.get_subject().get() in subjects,

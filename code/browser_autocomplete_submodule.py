@@ -187,7 +187,7 @@ class BrowserAutocompleteSubmodule(SubmoduleInterface):
                 statement = " ".join(begin) + " have " + " ".join(middle) + \
                     " " +\
                     " ".join(end)
-        elif tokens[1] == "do":
+        elif tokens[1] == "do" or tokens[1] == "does":
             statement = " ".join(tokens[2:])
         elif tokens[1] == "can" or tokens[1] == "could" or \
                 tokens[1] == "cannot":

@@ -11,7 +11,8 @@ class FilterObjectSubmodule(SubmoduleInterface):
     def process(self, input_interface):
         logging.info("Start the filtering object")
         dirty_words = ["their"]
-        forbidden = ["used", "called", "xbox", "youtube", "xo", "quote"]
+        forbidden = ["used", "called", "xbox", "youtube", "xo", "quote",
+                     "quotes", "minecraft", "important", "considered"]
         new_generated_facts = []
         for g in input_interface.get_generated_facts():
             if g.get_object().get() in forbidden:
