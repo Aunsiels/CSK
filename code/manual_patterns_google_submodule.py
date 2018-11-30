@@ -16,6 +16,7 @@ class ManualPatternsGoogleSubmodule(SubmoduleInterface):
         logging.info("Start the manual patterns for browsers submodule")
         new_patterns = []
         new_patterns.append(PatternGoogle("why are <SUBJS>"))
+        new_patterns.append(PatternGoogle("why is <SUBJ>"))
         new_patterns.append(PatternGoogle("why do <SUBJS>"))
         new_patterns.append(PatternGoogle("why does <SUBJ>"))
         new_patterns.append(PatternGoogle("why can <SUBJS>", "CAN"))

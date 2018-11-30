@@ -25,6 +25,7 @@ class OnlySubjectSubmodule(SubmoduleInterface):
 
         subjects.discard("it")
         subjects.discard("its")
+        subjects.discard("me")
 
         new_generated_facts = list(filter(
             lambda x: x.get_subject().get() in subjects,

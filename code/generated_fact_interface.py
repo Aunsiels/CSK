@@ -60,6 +60,9 @@ class GeneratedFactInterface(FactInterface):
             " From submodule: " + str(self.get_submodule_source().get_name()) +\
             " From sentence: " + str(self.get_sentence_source())
 
+    def __repr__(self):
+        return str(self)
+
     def get_fact(self):
         """get_fact
         Get the fact

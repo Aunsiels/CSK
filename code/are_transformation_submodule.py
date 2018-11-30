@@ -13,7 +13,8 @@ class AreTransformationSubmodule(SubmoduleInterface):
     def _replace_are(self, gfs):
         new_gfs = []
         for gf in gfs:
-            if gf.get_predicate().get() != "are":
+            if gf.get_predicate().get() != "are" and\
+                    gf.get_predicate().get() != "is":
                 new_gfs.append(gf)
             elif gf.get_pattern() is not None and\
                     gf.get_pattern().get_relation() is not None:
@@ -27,7 +28,8 @@ class AreTransformationSubmodule(SubmoduleInterface):
         new_gfs = []
         attr = wn.synsets("attribute")[1]
         for gf in gfs:
-            if gf.get_predicate().get() != "are":
+            if gf.get_predicate().get() != "are" and\
+                    gf.get_predicate().get() != "is":
                 new_gfs.append(gf)
             else:
                 # TODO Preprocessing on the object
@@ -74,7 +76,8 @@ class AreTransformationSubmodule(SubmoduleInterface):
         part = wn.synsets("body_part")[0]
         for gf in gfs:
             if gf.get_predicate().get() != "are" and\
-                    gf.get_predicate().get() != "have":
+                    gf.get_predicate().get() != "have" and\
+                    gf.get_predicate().get() != "is":
                 new_gfs.append(gf)
             else:
                 obj_synsets = wn.synsets(gf.get_object().get())

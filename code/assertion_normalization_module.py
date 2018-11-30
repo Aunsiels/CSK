@@ -13,7 +13,8 @@ class AssertionNormalizationModule(ModuleInterface):
                         "incomplete-modality", # Before can/are transformations
                         "cleaning-predicate", "basic-modality",
                         "present-continuous", "are-transformation",
-                        "can-transformation", "filter-object"]
+                        "can-transformation", "filter-object",
+                        "be-normalization"]
         super(AssertionNormalizationModule, self).__init__(
             module_names, DefaultSubmoduleFactory())
         self._name = "Assertion Normalization Module"

@@ -16,8 +16,6 @@ class DefaultWorkflow(WorkflowInterface):
                         "assertion-fusion"]
         super(DefaultWorkflow, self).__init__(
             module_names, DefaultModuleFactory())
-        # self._seeds = self._factory.get_module("animal-seeds")
-        # self._seeds = self._factory.get_module("occupations-seeds")
         self._seeds = self._factory.get_module("all-seeds")
 
     def generate_input(self):

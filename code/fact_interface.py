@@ -69,6 +69,9 @@ class FactInterface(object):
             str(self.get_predicate()) + ", " + \
             str(self.get_object()) + ")"
 
+    def __repr__(self):
+        return str(self)
+
     def __hash__(self):
         return hash(self.get_subject()) +\
             hash(self.get_modality()) +\

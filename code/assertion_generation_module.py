@@ -9,7 +9,12 @@ class AssertionGenerationModule(ModuleInterface):
     """
 
     def __init__(self):
-        module_names = ["google-autocomplete"] #, "bing-autocomplete"]
+        module_names = ["answerscom-questions",
+                        "quora-questions",
+                        "reddit-questions",
+                        "google-autocomplete",
+                        "bing-autocomplete"]
+        # ["google-autocomplete"] #, "bing-autocomplete"]
         super(AssertionGenerationModule, self).__init__(
             module_names, DefaultSubmoduleFactory())
         self._name = "Assertion Generation Module"

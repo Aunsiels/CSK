@@ -23,6 +23,9 @@ path = '/bing/v7.0/suggestions'
 # language
 mkt = 'en-US'
 
+# Look for new sentences?
+look_new = False
+
 class BingAutocompleteSubmodule(BrowserAutocompleteSubmodule):
     """BingAutocompleteSubmodule
     Submodule which generetes assertions using the autocomplete from Bing
@@ -47,6 +50,8 @@ class BingAutocompleteSubmodule(BrowserAutocompleteSubmodule):
                     sugg = line.strip().split("\t")
                     suggestions.append((sugg[0], float(sugg[1])))
             return (suggestions, True)
+        elif not look_new:
+            return (None, False)
 
         params = '?mkt=' + lang + '&q=' + quote(query)
         headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}

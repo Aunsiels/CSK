@@ -6,6 +6,7 @@ from bing_autocomplete_submodule import BingAutocompleteSubmodule
 from only_subject_submodule import OnlySubjectSubmodule
 from no_personal_submodule import NoPersonalSubmodule
 from linear_combination_submodule import LinearCombinationSubmodule
+from linear_combination_weighted_submodule import LinearCombinationWeightedSubmodule
 from to_singular_subject_submodule import ToSingularSubjectSubmodule
 from present_continuous_submodule import PresentContinuousSubmodule
 from basic_modality_submodule import BasicModalitySubmodule
@@ -19,6 +20,11 @@ from can_transformation_submodule import CanTransformationSubmodule
 from incomplete_modality_submodule import IncompleteModalitySubmodule
 from occupations_submodule import OccupationsSubmodule
 from conceptnet_subjects_submodule import ConceptnetSubjectsSubmodule
+from be_normalization_submodule import BeNormalizationSubmodule
+from reddit_questions_submodule import RedditQuestionsSubmodule
+from conceptnet_seeds_submodule import ConceptNetSeedsSubmodule
+from quora_questions_submodule import QuoraQuestionsSubmodule
+from answerscom_questions_submodule import AnswerscomQuestionsSubmodule
 
 
 class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
@@ -41,6 +47,8 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
             return NoPersonalSubmodule(module_reference)
         elif submodule_name == "linear-combination":
             return LinearCombinationSubmodule(module_reference)
+        elif submodule_name == "linear-combination-weighted":
+            return LinearCombinationWeightedSubmodule(module_reference)
         elif submodule_name == "singular-subject":
             return ToSingularSubjectSubmodule(module_reference)
         elif submodule_name == "present-continuous":
@@ -67,5 +75,15 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
             return OccupationsSubmodule(module_reference)
         elif submodule_name == "conceptnet-subjects":
             return ConceptnetSubjectsSubmodule(module_reference)
+        elif submodule_name == "be-normalization":
+            return BeNormalizationSubmodule(module_reference)
+        elif submodule_name == "reddit-questions":
+            return RedditQuestionsSubmodule(module_reference)
+        elif submodule_name == "quora-questions":
+            return QuoraQuestionsSubmodule(module_reference)
+        elif submodule_name == "conceptnet-seeds":
+            return ConceptNetSeedsSubmodule(module_reference)
+        elif submodule_name == "answerscom-questions":
+            return AnswerscomQuestionsSubmodule(module_reference)
         else:
             raise NotImplementedError
