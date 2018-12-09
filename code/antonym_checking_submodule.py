@@ -35,9 +35,4 @@ class AntonymCheckingSubmodule(SubmoduleInterface):
                     g.change_score(1.0)
                     .change_module_source(self._module_reference)
                     .change_submodule_source(self))
-            else:
-                new_generated_facts.append(
-                    g.change_score(0.0)
-                    .change_module_source(self._module_reference)
-                    .change_submodule_source(self))
         return input_interface.add_generated_facts(new_generated_facts)
