@@ -70,6 +70,18 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
             tokens.append(token.text)
         if len(tokens) == 3 and tokens[1].lower() in ["can", "cannot"]:
             return tokens
+        elif len(tokens) == 2:
+            return [tokens[0], "can", tokens[1]]
+        return None
+
+    def _try_extend(self, subj, pred, obj, sentence):
+        # works for short sentences
+        end = obj + " and "
+        pos = sentence.find(end)
+        if pos != -1:
+            new_obj = sentence[pos + len(end):].strip()
+            if " " not in new_obj:
+                return (subj, pred, new_obj)
         return None
 
     def get_generated_facts(self, suggestions, input_interface):
@@ -163,6 +175,7 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                                 self._module_reference,
                                 self,
                                 suggestion[2]))
+                additional_triples = []
                 for triple in sentence.openieTriple:
                     subject = triple.subject
                     obj = triple.object
@@ -174,6 +187,10 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                     score = triple.confidence
                     # prefer longer predicate ?
                     score *= len(predicate.split(" ")) / maxi_length_predicate
+                    # prefer longer extractions
+                    # 2 spaces at least
+                    score_extr = (len(subject) + len(obj) + len(predicate) + 2)\
+                        / len(suggestion[0])
                     negative = False
                     if suggestion[2] is not None:
                         negative = suggestion[2].is_negative()
@@ -189,11 +206,36 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                             (2 * self.default_number_suggestions - suggestion[1]
                                 ) /
                                 (2 * self.default_number_suggestions) *
-                                score,
+                                score * score_extr,
                             suggestion[0],
                             self._module_reference,
                             self,
                             suggestion[2]))
+                    spo = self._try_extend(subject,
+                                           obj,
+                                           predicate,
+                                           suggestion[0])
+                    if spo is not None:
+                        score_extr = (len(spo[0]) + len(spo[1]) + len(spo[2])
+                                          + 2)\
+                            / len(suggestion[0])
+                        generated_facts.append(
+                            GeneratedFact(
+                                spo[0],
+                                spo[1],
+                                spo[2],
+                                None,
+                                negative,
+                                # For the score, inverse the ranking (higher is
+                                # better) and add the confidence of the triple
+                                (2 * self.default_number_suggestions -
+                                        suggestion[1]) /
+                                    (2 * self.default_number_suggestions) *
+                                    score * score_extr,
+                                suggestion[0],
+                                self._module_reference,
+                                self,
+                                suggestion[2]))
                 counter += 1
         # stop the annotator
         nlp.stop()

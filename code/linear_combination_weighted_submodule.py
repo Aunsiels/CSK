@@ -18,15 +18,18 @@ class LinearCombinationWeightedSubmodule(SubmoduleInterface):
         self._weights = dict()
         # Put weights here
         # Manual for now
-        self._weights["Google Autocomplete"] = 0.51
-        self._weights["Bing Autocomplete"] = -2.46
-        self._weights["Reddit Questions"] = 0.77
-        self._weights["Quora Questions"] = 0.73
-        self._weights["Antonym Checking"] = -1.0
-        self._weights["Simple Wikipedia Cooccurrence"] = 1.77
-        self._weights["Wikipedia Cooccurrence"] = 1.2
-        self._weights["Answers.com Questions"] = 0.8
-        self._total_weights = sum(self._weights.values())
+        self._weights["Google Autocomplete"] = 0.431
+        self._weights["Bing Autocomplete"] = -3.73
+        self._weights["Reddit Questions"] = 0.772
+        self._weights["Quora Questions"] = 0.911
+        self._weights["Antonym Checking"] = -0.507
+        self._weights["Simple Wikipedia Cooccurrence"] = 1.48
+        self._weights["Wikipedia Cooccurrence"] = 0.834
+        self._weights["Image Tag submodule"] = 1.69
+        self._weights["Answers.com Questions"] = 0.738
+        self._weights["Flickr"] = 1.33
+        self._total_weights = sum([abs(x) for x in self._weights.values()])
+        self._intercept = 3.05
 
     def _save_weights(self, d_gf, d_max):
         save = []
@@ -35,6 +38,7 @@ class LinearCombinationWeightedSubmodule(SubmoduleInterface):
         temp.append("subject")
         temp.append("predicate")
         temp.append("object")
+        temp.append("modality")
         for name in names:
             temp.append(name)
         save.append("\t".join(temp))
@@ -43,9 +47,16 @@ class LinearCombinationWeightedSubmodule(SubmoduleInterface):
             temp.append(fact.get_subject().get())
             temp.append(fact.get_predicate().get())
             temp.append(fact.get_object().get())
+            if fact.has_modality():
+                temp.append(fact.get_modality().get())
+            else:
+                temp.append(" ")
             for name in names:
-                temp.append(str(d_gf[fact].setdefault(name, 0.0) /
-                                d_max.setdefault(name, 1.0)))
+                if name in d_gf[fact]:
+                    temp.append(str(d_gf[fact][name] /
+                                    d_max.setdefault(name, 1.0)))
+                else:
+                    temp.append(str(d_gf[fact].setdefault(name, -1.0)))
             save.append("\t".join(temp))
         with open(save_file, "w") as f:
             f.write("\n".join(save))
@@ -106,14 +117,8 @@ class LinearCombinationWeightedSubmodule(SubmoduleInterface):
             for name in self._weights:
                 temp += self._weights[name] * d_gf[fact].setdefault(name, -1.0)\
                     / d_max.setdefault(name, 1.0)
+            temp += self._intercept
             d_gf[fact] = 1.0 / (1.0 + math.exp(-temp))
-        # Find the maximum
-        maxi = 0.000001
-        for key in d_gf:
-            maxi = max(maxi, d_gf[key])
-        # Normalize
-        for key in d_gf:
-            d_gf[key] /= maxi
         # Transform to generated facts
         new_generated_facts = []
         for key in d_gf:

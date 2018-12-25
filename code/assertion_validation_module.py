@@ -10,7 +10,9 @@ class AssertionValidationModule(ModuleInterface):
     """
 
     def __init__(self):
-        module_names = ["wikipedia-cooccurrence",
+        module_names = ["flickr-clusters",
+                        "imagetag",
+                        "wikipedia-cooccurrence",
                         "simple-wikipedia-cooccurrence",
                         "antonym-checking"]
         super(AssertionValidationModule, self).__init__(

@@ -25,6 +25,8 @@ from reddit_questions_submodule import RedditQuestionsSubmodule
 from conceptnet_seeds_submodule import ConceptNetSeedsSubmodule
 from quora_questions_submodule import QuoraQuestionsSubmodule
 from answerscom_questions_submodule import AnswerscomQuestionsSubmodule
+from imagetag_submodule import ImagetagSubmodule
+from flickr_clusters_submodule import FlickrClustersSubmodule
 
 
 class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
@@ -32,58 +34,41 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
     The default submodule factory
     """
 
+    def __init__(self):
+        self._submodules = {
+            "google-autocomplete": SubmoduleGoogleAutocomplete,
+            "animal-seeds": AnimalSubmodule,
+            "manual-patterns-google": ManualPatternsGoogleSubmodule,
+            "bing-autocomplete": BingAutocompleteSubmodule,
+            "only-subject": OnlySubjectSubmodule,
+            "no-personal": NoPersonalSubmodule,
+            "linear-combination": LinearCombinationSubmodule,
+            "linear-combination-weighted": LinearCombinationWeightedSubmodule,
+            "singular-subject": ToSingularSubjectSubmodule,
+            "present-continuous": PresentContinuousSubmodule,
+            "basic-modality": BasicModalitySubmodule,
+            "cleaning-predicate": CleaningPredicateSubmodule,
+            "wikipedia-cooccurrence": WikipediaCooccurrenceSubmodule,
+            "simple-wikipedia-cooccurrence": SimpleWikipediaCooccurrenceSubmodule,
+            "antonym-checking": AntonymCheckingSubmodule,
+            "are-transformation": AreTransformationSubmodule,
+            "filter-object": FilterObjectSubmodule,
+            "can-transformation": CanTransformationSubmodule,
+            "incomplete-modality": IncompleteModalitySubmodule,
+            "occupations-seeds": OccupationsSubmodule,
+            "conceptnet-subjects": ConceptnetSubjectsSubmodule,
+            "be-normalization": BeNormalizationSubmodule,
+            "reddit-questions": RedditQuestionsSubmodule,
+            "quora-questions": QuoraQuestionsSubmodule,
+            "conceptnet-seeds": ConceptNetSeedsSubmodule,
+            "answerscom-questions": AnswerscomQuestionsSubmodule,
+            "imagetag": ImagetagSubmodule,
+            "flickr-clusters": FlickrClustersSubmodule
+        }
+
+
     def get_submodule(self, submodule_name, module_reference):
-        if submodule_name == "google-autocomplete":
-            return SubmoduleGoogleAutocomplete(module_reference)
-        elif submodule_name == "animal-seeds":
-            return AnimalSubmodule(module_reference)
-        elif submodule_name == "manual-patterns-google":
-            return ManualPatternsGoogleSubmodule(module_reference)
-        elif submodule_name == "bing-autocomplete":
-            return BingAutocompleteSubmodule(module_reference)
-        elif submodule_name == "only-subject":
-            return OnlySubjectSubmodule(module_reference)
-        elif submodule_name == "no-personal":
-            return NoPersonalSubmodule(module_reference)
-        elif submodule_name == "linear-combination":
-            return LinearCombinationSubmodule(module_reference)
-        elif submodule_name == "linear-combination-weighted":
-            return LinearCombinationWeightedSubmodule(module_reference)
-        elif submodule_name == "singular-subject":
-            return ToSingularSubjectSubmodule(module_reference)
-        elif submodule_name == "present-continuous":
-            return PresentContinuousSubmodule(module_reference)
-        elif submodule_name == "basic-modality":
-            return BasicModalitySubmodule(module_reference)
-        elif submodule_name == "cleaning-predicate":
-            return CleaningPredicateSubmodule(module_reference)
-        elif submodule_name == "wikipedia-cooccurrence":
-            return WikipediaCooccurrenceSubmodule(module_reference)
-        elif submodule_name == "simple-wikipedia-cooccurrence":
-            return SimpleWikipediaCooccurrenceSubmodule(module_reference)
-        elif submodule_name == "antonym-checking":
-            return AntonymCheckingSubmodule(module_reference)
-        elif submodule_name == "are-transformation":
-            return AreTransformationSubmodule(module_reference)
-        elif submodule_name == "filter-object":
-            return FilterObjectSubmodule(module_reference)
-        elif submodule_name == "can-transformation":
-            return CanTransformationSubmodule(module_reference)
-        elif submodule_name == "incomplete-modality":
-            return IncompleteModalitySubmodule(module_reference)
-        elif submodule_name == "occupations-seeds":
-            return OccupationsSubmodule(module_reference)
-        elif submodule_name == "conceptnet-subjects":
-            return ConceptnetSubjectsSubmodule(module_reference)
-        elif submodule_name == "be-normalization":
-            return BeNormalizationSubmodule(module_reference)
-        elif submodule_name == "reddit-questions":
-            return RedditQuestionsSubmodule(module_reference)
-        elif submodule_name == "quora-questions":
-            return QuoraQuestionsSubmodule(module_reference)
-        elif submodule_name == "conceptnet-seeds":
-            return ConceptNetSeedsSubmodule(module_reference)
-        elif submodule_name == "answerscom-questions":
-            return AnswerscomQuestionsSubmodule(module_reference)
+        if submodule_name in self._submodules:
+            return self._submodules[submodule_name](module_reference)
         else:
             raise NotImplementedError

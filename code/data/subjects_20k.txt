@@ -1,4 +1,3 @@
-aa
 aaa
 aar
 aardvark
@@ -616,7 +615,6 @@ annuloplasty ring
 annulus
 anode
 anomaly
-another
 answer
 answering machine
 answering questions
@@ -2203,10 +2201,8 @@ brushes
 brushing of teeth
 brush teeth
 brussels sprout
-bs
 bse
 bso
-bt
 bub
 bubble
 bubble and squeak
@@ -2408,7 +2404,6 @@ bypass
 bypass graft
 byte
 by way
-ca
 cab
 cabbage
 cabin
@@ -2879,9 +2874,7 @@ cervix
 cesium
 cesium hydroxide
 ceylon
-cf
 cgi
-ch
 cha
 chachka
 chad
@@ -3184,7 +3177,6 @@ churchyard
 churn
 chute
 chutney
-ci
 cicada
 cicero
 cicutoxin
@@ -3233,7 +3225,6 @@ city
 city hall
 civilization
 civil war
-cl
 claim
 clam
 clambake
@@ -3363,11 +3354,9 @@ clutch
 clutch bag
 clutter
 cms
-cn
 cnn
 cno
 cn tower
-co
 coach
 coach airline seat
 coach airplane seat
@@ -3977,7 +3966,6 @@ cpa
 cpo
 cpr
 cpu
-cr
 crab
 crab apple
 crabs
@@ -4119,10 +4107,8 @@ crypt
 cryptovirus
 crystal
 crystalline lens
-cs
 c sharp
 css
-ct
 ctm
 ctr
 cub
@@ -4233,7 +4219,6 @@ cytosol
 czar
 czech
 czech republic
-da
 dab
 dachshund
 dad
@@ -4328,7 +4313,6 @@ day of days
 days
 dc
 ddr
-de
 deacon
 dead
 dead bird
@@ -4769,7 +4753,6 @@ divvie
 dixie
 djibouti
 djiboutian
-dl
 dms
 dna
 dna molecular segment
@@ -4900,8 +4883,6 @@ downhill skiing
 down low
 downset
 downtown
-dp
-dr
 drachm
 draco
 draft
@@ -5003,7 +4984,6 @@ dry ice
 dry storage
 drywall
 dsm
-dt
 dual
 duality
 dub
@@ -5128,7 +5108,6 @@ eat vegetables
 ebay
 ebola zaire
 ebony
-ec
 ecce homo
 eccentricity
 ecclesiastes
@@ -5149,7 +5128,6 @@ economy
 ecosystem
 ecstasy
 ectoplasm
-ed
 edd
 edema
 eden
@@ -5169,7 +5147,6 @@ edo
 education
 educational system
 edward weston
-ee
 eel
 een
 effect
@@ -5200,7 +5177,6 @@ ejaculating
 ejaculatory duct
 ekg
 ekker
-el
 elaidic acid
 elastic
 elasticity
@@ -5273,7 +5249,6 @@ elt
 elves
 elvis
 elvis costello
-em
 emacs
 email
 e mail
@@ -5320,7 +5295,6 @@ emu
 emulation
 emulsion
 emus
-en
 enamel
 encapsulation
 encephalitis
@@ -5446,7 +5420,6 @@ equipment
 equity
 equivalence
 equivalent
-er
 era
 eraser
 eraser holder
@@ -5469,7 +5442,6 @@ ernest rutherford
 ernst mach
 erosion
 error
-es
 esc
 escalator
 escape
@@ -5495,7 +5467,6 @@ estrogen
 estrogen molecule
 estrone
 estuary
-et
 etching
 eternity
 etfe
@@ -6022,7 +5993,6 @@ fixer
 fixing computer
 fixture
 fizgig
-fl
 flag
 flag day
 flagellum
@@ -6125,7 +6095,6 @@ fly kite
 flyover
 flyweight
 flywheel
-fo
 foal
 foam
 fob
@@ -6537,7 +6506,6 @@ gay men
 gaze
 gazebo
 gazelle
-gb
 gdi
 gear
 gearbox
@@ -6661,7 +6629,6 @@ get up early
 get warm
 get wet
 geyser
-gg
 ghana
 gharry
 ghetto
@@ -6949,7 +6916,6 @@ governments
 governor
 governor general
 gown
-gp
 gpl
 grace
 grace kelly
@@ -7103,7 +7069,6 @@ grub
 grundy
 grunt
 grus
-gs
 guacamole
 guadalajara
 guam
@@ -7415,8 +7380,6 @@ haze
 hazel
 hazelnut
 hazing
-hb
-hc
 he
 head
 headache
@@ -7558,7 +7521,6 @@ hex
 hexagon
 hexane
 hey
-hf
 hiatus
 hibernation
 hiberno english
@@ -7970,7 +7932,6 @@ idle
 idol
 idolatry
 ied
-if
 ign
 igneous rock
 igniting
@@ -7991,7 +7952,6 @@ illustrate point
 illustrating point
 illustration
 illy
-im
 imac
 image
 imaginary number
@@ -8026,7 +7986,6 @@ improve image
 improve yourself
 improving image
 improving yourself
-in
 inaction
 incarnation
 incendiary bomb
@@ -8307,7 +8266,6 @@ issue
 issues
 istanbul
 isthmus
-it
 italian
 italian dressing
 italian language
@@ -8319,7 +8277,6 @@ ite
 item
 items
 itinérance
-iv
 ivan turgenev
 ivory
 ivy
@@ -8587,7 +8544,6 @@ kate
 katie
 kava
 kayak
-kb
 kea
 kebab
 keel
@@ -8627,7 +8583,6 @@ keys
 keystone
 khaya
 khyber pass
-ki
 kick
 kickback
 kickboxing
@@ -9048,7 +9003,6 @@ lexicon
 lexington
 lexus
 lhotse
-li
 lia
 liar
 liars
@@ -9230,11 +9184,9 @@ living things
 livonia
 lizard
 lizards
-ll
 llama
 lloyd
 llullaillaco
-lm
 lmfao
 lms
 load
@@ -9363,7 +9315,6 @@ low life
 loyalist
 loyalty
 lozenge
-lp
 lsd
 lua
 lubrication
@@ -9430,7 +9381,6 @@ lysergic acid diethylamide
 lysine
 lysis
 lysosome
-ma
 mab
 mac
 macadamia nut
@@ -9623,7 +9573,6 @@ manufacturers
 manufacturing
 manure
 manuscript
-many
 many animals
 many games
 many houses
@@ -9773,10 +9722,7 @@ mayor
 mayors
 mazda
 mazurka
-mb
-mc
 mcdonalds
-md
 mda
 mdi
 mead
@@ -9976,7 +9922,6 @@ mexico city
 mezuzah
 mezzanine
 mfs
-mi
 mia
 miami
 mic
@@ -10149,9 +10094,7 @@ mix
 mixer
 mlb
 mls
-mm
 mmorpg
-mo
 moais
 mob
 mobile
@@ -10387,17 +10330,14 @@ moxibustion
 mozambican
 mozambique
 mozart
-mp
 mpd
 m phase
 mptp
 mri
 mri machine
 mrt
-ms
 msc
 msf
-mt
 mu
 mucker
 muckraker
@@ -10481,7 +10421,6 @@ mute swan
 mutt
 mutton
 muzzle
-my
 my ass
 myeloblast
 myocardial infarction
@@ -10768,7 +10707,6 @@ nitroglycerine
 nitrous acid
 nitrous oxide
 nix
-nn
 noah
 noam chomsky
 nob
@@ -10848,7 +10786,6 @@ novocaine
 now
 nowt
 nozzle
-np
 nsi
 nub
 nubian
@@ -10898,7 +10835,6 @@ oasis
 oat
 oath
 oatmeal
-ob
 obelisk
 obesity
 obfuscation
@@ -10946,7 +10882,6 @@ octillion
 october
 octopi
 octopus
-od
 odessa
 odin
 odometer
@@ -10970,7 +10905,6 @@ ogre
 oh
 ohio
 ohm
-oi
 oil
 oil change
 oilcloth
@@ -11026,7 +10960,6 @@ omega
 omentopexy
 omeprazole
 omission
-on
 onager
 onawa
 once
@@ -11064,7 +10997,6 @@ ood
 oogenesis
 oogonium
 ootid
-op
 opal
 open
 open ball
@@ -11099,7 +11031,6 @@ optical fiber
 optic nerve
 optics
 option
-or
 oracle
 orange
 orange juice
@@ -11168,10 +11099,8 @@ ostracism
 ostrich
 ostriches
 oswald spengler
-ot
 ota
 otc
-other
 other morbidity
 other people
 other place
@@ -11243,7 +11172,6 @@ oxytocin
 oyster
 ozone
 ozzy osbourne
-pa
 pablo neruda
 pac
 pace
@@ -11550,11 +11478,9 @@ pays
 pbs
 pc
 pca
-pd
 pda
 pdf
 pdp
-pe
 pea
 peace
 peace corps
@@ -11724,7 +11650,6 @@ peugeot
 pew
 pewee
 pewter
-pg
 phagocytosis
 phalanx
 pharmaceuticals
@@ -11928,8 +11853,6 @@ pizza
 pizza nigger
 pizza parlor
 pizzeria
-pk
-pl
 place
 place baseball
 place basketball
@@ -12096,14 +12019,12 @@ pluto
 plutonium
 plyers
 plymouth
-pm
 pmo
 pms
 pneumonia
 pneumonic plague
 pneumothorax
 pnp
-po
 poa
 poacher
 pocket
@@ -12311,9 +12232,7 @@ power saw
 power screwdriver
 power shovel excavator
 pozzy
-pp
 ppi
-pr
 practice
 praetor
 prairie dog
@@ -12552,7 +12471,6 @@ prune
 pruning
 pruning shears
 prussia
-ps
 psalm
 pseudomonadaceae
 psi
@@ -12676,8 +12594,6 @@ pyruvic acid
 python
 pyxis
 qatar
-qi
-qt
 q tip
 quack
 quad
@@ -12887,7 +12803,6 @@ razor blade
 rbc
 rbd
 rca
-re
 reach advantage
 reach impasse
 reaching advantage
@@ -13316,7 +13231,6 @@ ritonavir
 ritual
 river
 rivers
-rm
 rmi
 rna molecule
 rna polymerase
@@ -13466,7 +13380,6 @@ rowing
 royal
 royal flush
 royalty
-rs
 rubber
 rubber band
 rubber bands
@@ -13543,7 +13456,6 @@ ruthenium
 rutherfordium
 rutile
 rutter
-rv
 rwanda
 rwandan
 rye
@@ -13720,7 +13632,6 @@ saxon
 saxons
 saxophone
 sayeret matkal
-sc
 scab
 scaffold
 scala
@@ -13844,7 +13755,6 @@ scurvy
 scut
 scutum
 sdr
-se
 sea
 sea bass
 seaborgium
@@ -14224,7 +14134,6 @@ shrubs
 shtik
 shunt
 shutter
-si
 siamese
 siberia
 sibling
@@ -14497,7 +14406,6 @@ smoking pipe
 smooth
 smoothie
 smurf
-sn
 snacks
 snafu
 snag
@@ -14714,7 +14622,6 @@ sox
 soy
 soybean
 soy sauce
-sp
 spa
 space
 space cadet
@@ -14907,7 +14814,6 @@ squilla
 squirrel
 squirrels
 squirt
-sr
 srb
 srs
 ss
@@ -14915,7 +14821,6 @@ ssi
 ssl
 ssn
 ssr
-st
 stabbing
 stabbing to death
 stabilization
@@ -15697,11 +15602,9 @@ taxiway turn off
 taxman
 taxonomy
 taxpayer
-tb
 tbs
 tca
 tcl
-te
 tea
 teacake
 teacher
@@ -15994,7 +15897,6 @@ thymol
 thymus
 thyroid
 thyroid problem
-ti
 tibia
 tic
 tick
@@ -16073,10 +15975,8 @@ tits
 tlc
 tlingit
 tlingit language
-tm
 tmi
 tnt
-to
 toad
 toast
 toaster
@@ -16232,7 +16132,6 @@ toy marble
 toyota
 toys
 toy soldier
-tr
 trace
 tracer
 trachea
@@ -16513,7 +16412,6 @@ tutorial
 tuvalu
 tuvan language
 tuxedo
-tv
 tv set
 tv show
 tv shows
@@ -16562,7 +16460,6 @@ tyramine
 tyrant
 tyre gauge
 tyrosine
-ua
 uber
 ubs
 udder
@@ -16578,7 +16475,6 @@ ultra
 ultralight
 ultrasound
 ultraviolet
-um
 umbilical cord
 umbilicus
 umbo
@@ -16643,7 +16539,6 @@ upright
 upright piano
 ups
 upset
-ur
 uracil
 uranium
 uranus
@@ -16661,7 +16556,6 @@ url
 urn
 urtication
 uruguay
-us
 usa
 use
 use calculator
@@ -16969,7 +16863,6 @@ vulgar latin
 vulture
 vultures
 vulva
-vx
 wad
 wafer
 waffle
@@ -17145,7 +17038,6 @@ waw
 wax
 waxed dental floss
 way
-we
 weakfish
 weakness
 wealth
@@ -17459,7 +17351,6 @@ worthing
 wound
 wounds
 wow
-wr
 wrack
 wrapper
 wreath
@@ -17497,7 +17388,6 @@ writing story
 writing term paper
 wrong
 wryneck
-wu
 wynton marsalis
 wyoming
 xanax
@@ -17506,18 +17396,15 @@ xanthophyll
 xbox
 xenon
 xerox
-xi
 xian
 xing
 xml
 xor
-xp
 xquery
 x ray
 x raying
 x ray machine
 x rays
-xx
 xylem
 xylophone
 yacht
@@ -17533,7 +17420,6 @@ yards
 yarn
 yawn
 yaws
-ye
 year
 yearling
 years
@@ -17586,7 +17472,6 @@ yukon
 yure
 yuri
 yvette
-za
 zambezi
 zambia
 zanella

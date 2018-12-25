@@ -32,6 +32,24 @@ class StatementMaker(object):
             f.write(question.strip() + "\t" + statement.strip() +
                     "\t" + subject + "\n")
 
+    def _correct_tokens(self, tokens, pos):
+        merge_next = False
+        res_tokens = []
+        res_pos = []
+        for i in range(len(tokens)):
+            if tokens[i] == "-":
+                res_tokens[-1] = res_tokens[-1] + "-"
+                res_pos[-1] = (res_pos[-1][0] + "-", res_pos[-1][1])
+                merge_next = True
+            elif merge_next:
+                merge_next = False
+                res_tokens[-1] = res_tokens[-1] + tokens[i]
+                res_pos[-1] = (res_pos[-1][0] + pos[i][0], pos[i][1])
+            else:
+                res_tokens.append(tokens[i])
+                res_pos.append(pos[i])
+        return res_tokens, res_pos
+
     def to_statement(self, question, subject):
         subject2 = _plural_engine.plural(subject)
         if question.strip() in self._q2s:
@@ -39,6 +57,7 @@ class StatementMaker(object):
         tokens = []
         pos = []
         statement = ""
+        question = question.replace(" cant ", " can't ")
         for token in _nlp(question):
             if token.text == "'s":
                 tokens[-1] = tokens[-1] + "'s"
@@ -51,6 +70,9 @@ class StatementMaker(object):
         begin = []
         middle = []
         end = []
+        # Correct nano - particule
+        tokens, pos = self._correct_tokens(tokens, pos)
+        tokens_begin = []
         if tokens[1] == "are" or tokens[1] == "is":
             found_noun = False
             found_second = False
@@ -63,13 +85,16 @@ class StatementMaker(object):
                         ((subject in " ".join(begin) + " " + p[0] or \
                          subject2 in " ".join(begin) + " " + p[0]) \
                          and (not found_cc or "NN" in p[1] or "VBZ" in p[1])):
-                    found_noun = True
+                    if tokens[1] != "are" or "NNS" == p[1]:
+                        found_noun = True
                     begin.append(p[0])
+                    tokens_begin.append(p[1])
                 elif found_noun and not found_something_else and \
                         not found_second and ("CC" in p[1] or "of" == p[0]):
                     found_cc = True
                     found_noun = False
                     begin.append(p[0])
+                    tokens_begin.append(p[1])
                 elif found_noun and not found_something_else and found_second\
                         and ("CC" in p[1] or "of" == p[0]):
                     found_second = False
@@ -103,28 +128,38 @@ class StatementMaker(object):
                     " ".join(middle) + \
                     " " + \
                     " ".join(end)
-            else:
+            elif tokens[1] == "are" and "NN" in tokens_begin[-1]\
+                    and tokens[0] == "why":
                 statement = " ".join(begin) + " have " + " ".join(middle) + \
                     " " +\
                     " ".join(end)
-        # elif (tokens[1] == "do" or tokens[1] == "does") and\
-        #         (tokens[2] == "n't" or tokens[2] == "not"):
-        #     # Transformation into positive
-        #     # TODO CAREFUL HERE if no pattern
-        #     statement = " ".join(tokens[3:])
+            else:
+                mid = " ".join(middle)
+                if mid.startswith(tokens[1]+ " "):
+                    statement = " ".join(begin) + " " + " ".join(end) + " " + \
+                        mid
+                else:
+                    statement = " ".join(begin) + " " + " ".join(end) + " " + \
+                        tokens[1] + " " + mid
         elif tokens[1] == "do" or tokens[1] == "does":
             statement = " ".join(tokens[2:])
         elif tokens[1] == "can" or tokens[1] == "could" or \
                 tokens[1] == "cannot":
-            # Look for first verb, in base form
-            for i in range(len(pos)):
-                p = pos[i]
-                if p[1] == "VBP" or p[1] == "VB":
-                    statement = " ".join(tokens[2:i]) + " " + tokens[1] + " " +\
-                        " ".join(tokens[i:])
-                    break
+            if len(tokens) == 4:
+                statement = tokens[2] + " " + tokens[1] + " " + tokens[3]
+            else:
+                # Look for first verb, in base form
+                found_noun = False
+                for i in range(len(pos)):
+                    p = pos[i]
+                    if p[1] == "VBP" or p[1] == "VB" and found_noun:
+                        statement = " ".join(tokens[2:i]) + " " + tokens[1] + " " +\
+                            " ".join(tokens[i:])
+                        break
+                    elif "NN" in p[1]:
+                        found_noun = True
         elif tokens[1] == "ca" and tokens[2] == "n't":
-            # I have to turn it to an affirmation to make openIE work
+            # I have to turn it to an affirmato_station to make openIE work
             temp = self.to_statement(tokens[0] + " can " +
                                       " ".join(tokens[3:]), subject)
             statement = temp

@@ -9,7 +9,9 @@ class AssertionFusionModule(ModuleInterface):
     """
 
     def __init__(self):
-        module_names = ["linear-combination-weighted"]
+        module_names = ["linear-combination-weighted",
+                        "incomplete-modality",
+                        ]
         super(AssertionFusionModule, self).__init__(
             module_names, DefaultSubmoduleFactory())
         self._name = "Assertion Fusion Module"
