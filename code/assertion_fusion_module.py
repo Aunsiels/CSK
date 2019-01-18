@@ -10,7 +10,7 @@ class AssertionFusionModule(ModuleInterface):
 
     def __init__(self):
         module_names = ["linear-combination-weighted",
-                        "incomplete-modality",
+                        #"incomplete-modality"
                         ]
         super(AssertionFusionModule, self).__init__(
             module_names, DefaultSubmoduleFactory())

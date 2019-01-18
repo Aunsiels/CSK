@@ -73,20 +73,39 @@ class StatementMaker(object):
         # Correct nano - particule
         tokens, pos = self._correct_tokens(tokens, pos)
         tokens_begin = []
-        if tokens[1] == "are" or tokens[1] == "is":
+        if (tokens[1] == "are" or tokens[1] == "is" \
+                or tokens[1] == "was" or tokens[1] == "were") and \
+                len(tokens) == 4:
+            statement = " ".join([tokens[2], tokens[1], tokens[3]])
+        elif tokens[1] == "are" or tokens[1] == "is" \
+                or tokens[1] == "was" or tokens[1] == "were" and\
+                tokens[2] in ["there", "it", "i", "they", "she", "he", "we",
+                              "you"]:
+            statement = " ".join([tokens[2], tokens[1]] + tokens[3:])
+        elif tokens[1] == "are" or tokens[1] == "is" \
+                or tokens[1] == "was" or tokens[1] == "were":
             found_noun = False
             found_second = False
             found_something_else = False
             found_final_adj = False
             found_cc = False
             found_in = False
-            for p in pos[2:]:
+            for i in range(2, len(pos)):
+                p = pos[i]
                 if not found_noun and \
                         ((subject in " ".join(begin) + " " + p[0] or \
-                         subject2 in " ".join(begin) + " " + p[0]) \
+                         subject2 in " ".join(begin) + " " + p[0])\
                          and (not found_cc or "NN" in p[1] or "VBZ" in p[1])):
-                    if tokens[1] != "are" or "NNS" == p[1]:
-                        found_noun = True
+                    if (tokens[1] != "are" or "NNS" == p[1] or found_cc or "CC" in p[1]\
+                            or (i != len(pos) -1 and "NN" in p[1] and ("RB" in pos[i+1][1] or "JJ" in pos[i+1][1])))\
+                            and (p[1] != "VBG" and p[1] != "DT" and\
+                                 ("JJ" not in p[1] or len(pos) < 8)):
+                        if "CC" in p[1]:
+                            found_cc = True
+                        elif found_cc and "NN" in p[1]:
+                            found_noun = True
+                        elif not found_cc:
+                            found_noun = True
                     begin.append(p[0])
                     tokens_begin.append(p[1])
                 elif found_noun and not found_something_else and \
@@ -113,6 +132,13 @@ class StatementMaker(object):
                         found_final_adj = True
                     found_something_else = True
                     middle.append(p[0])
+            if middle and middle[0] == tokens[1]:
+                middle = middle[1:]
+            if end and end[0] == tokens[1]:
+                end = end[1:]
+            if begin[-1] == "not":
+                begin = begin[:-1]
+                middle = ["not"] + middle
             if len(begin) == 0:
                 statement = ""
             elif len(middle) == 0 and len(end) == 0:

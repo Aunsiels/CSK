@@ -28,6 +28,7 @@ class FlickrClustersSubmodule(AssociationSubmodule):
     def _get_assos(self, subjects):
         d = dict()
         s_found = set()
+        subjects = set([x.get() for x in subjects])
         if os.path.isfile(filename):
             with open(filename) as f:
                 for line in f:
@@ -46,7 +47,6 @@ class FlickrClustersSubmodule(AssociationSubmodule):
                             d[subj][s] = 1
         for subject in subjects:
             res = []
-            subject = subject.get()
             if subject not in s_found:
                 clusters = self._get_clusters(subject)
                 if len(clusters) == 0:

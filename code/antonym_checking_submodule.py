@@ -13,21 +13,36 @@ class AntonymCheckingSubmodule(SubmoduleInterface):
         logging.info("Start the antonym checking")
         antonyms = dict()
         for g in input_interface.get_generated_facts():
-            for synset in wn.synsets(g.get_object().get()):
+            subj = g.get_subject().get()
+            obj = g.get_object().get()
+            pred = g.get_predicate().get()
+            if g.is_negative():
+                pred = "not " + pred
+            for synset in wn.synsets(obj):
                 for lemma in synset.lemmas():
                     for antonym in lemma.antonyms():
-                        if g.get_subject().get() in antonyms:
-                            antonyms[g.get_subject().get()].add(antonym)
+                        if subj in antonyms:
+                            if pred in antonyms[subj]:
+                                antonyms[subj][pred].add(antonym)
+                            else:
+                                antonyms[subj][pred] = {antonym}
                         else:
-                            antonyms[g.get_subject().get()] = {antonym}
+                            antonyms[subj] = dict()
+                            antonyms[subj][pred] = {antonym}
         new_generated_facts = []
         for g in input_interface.get_generated_facts():
             found = False
-            for synset in wn.synsets(g.get_object().get()):
+            subj = g.get_subject().get()
+            obj = g.get_object().get()
+            pred = g.get_predicate().get()
+            if g.is_negative():
+                pred = "not " + pred
+            for synset in wn.synsets(obj):
                 if found:
                     break
                 for lemma in synset.lemmas():
-                    if lemma in antonyms.setdefault(g.get_subject().get(), []):
+                    if lemma in antonyms.setdefault(subj, dict())\
+                            .setdefault(pred, []):
                         found = True
                         break
             if not found:

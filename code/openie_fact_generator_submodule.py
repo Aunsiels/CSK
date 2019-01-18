@@ -7,6 +7,7 @@ from generated_fact import GeneratedFact
 from statement_maker import StatementMaker
 from inputs import Inputs
 from submodule_interface import SubmoduleInterface
+from modality import Modality
 
 _nlp = spacy.load('en_core_web_sm')
 _plural_engine = inflect.engine()
@@ -76,6 +77,8 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
 
     def _try_extend(self, subj, pred, obj, sentence):
         # works for short sentences
+        # But some problems with adjectives
+        # eg african people have big nose and lips
         end = obj + " and "
         pos = sentence.find(end)
         if pos != -1:
@@ -144,10 +147,17 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                     else:
                         counter -= 1
                 maxi_length_predicate = 1
+                maxi_length_object = 1
                 for triple in sentence.openieTriple:
                     predicate = triple.relation
                     maxi_length_predicate = max(len(predicate.split(" ")),
                                                 maxi_length_predicate)
+                for triple in sentence.openieTriple:
+                    predicate = triple.relation
+                    obj = triple.object
+                    if maxi_length_predicate == len(predicate.split(" ")):
+                        maxi_length_object = max(len(obj.split(" ")),
+                                                 maxi_length_object)
                 if len(sentence.openieTriple) == 0:
                     # Try simple extraction as OpenIE is bad for this
                     se = self._simple_extraction(suggestion[0])
@@ -194,12 +204,22 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                     negative = False
                     if suggestion[2] is not None:
                         negative = suggestion[2].is_negative()
+                    modality = None
+                    modality_temp = ""
+                    if maxi_length_object != len(obj.split(" ")):
+                        modality_temp = "TBC"
+                    if suggestion[0].find(subject) != 0 and \
+                            suggestion[0].find("a " + subject) != 0 and\
+                            suggestion[0].find("the " + subject) != 0:
+                        if modality_temp:
+                            modality_temp += " "
+                        modality = Modality(modality_temp + "some")
                     generated_facts.append(
                         GeneratedFact(
                             subject,
                             predicate,
                             obj,
-                            None,
+                            modality,
                             negative,
                             # For the score, inverse the ranking (higher is
                             # better) and add the confidence of the triple
@@ -212,19 +232,22 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                             self,
                             suggestion[2]))
                     spo = self._try_extend(subject,
-                                           obj,
                                            predicate,
+                                           obj,
                                            suggestion[0])
                     if spo is not None:
                         score_extr = (len(spo[0]) + len(spo[1]) + len(spo[2])
                                           + 2)\
                             / len(suggestion[0])
+                        modality = None
+                        if suggestion[0].find(spo[0]) != 0:
+                            modality = Modality("some")
                         generated_facts.append(
                             GeneratedFact(
                                 spo[0],
                                 spo[1],
                                 spo[2],
-                                None,
+                                modality,
                                 negative,
                                 # For the score, inverse the ranking (higher is
                                 # better) and add the confidence of the triple

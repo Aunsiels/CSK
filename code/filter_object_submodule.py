@@ -21,12 +21,13 @@ class FilterObjectSubmodule(SubmoduleInterface):
         forbidden = ["used", "called", "xbox", "youtube", "xo", "quote",
                      "quotes", "minecraft", "important", "considered", "why"]
         totally_forbidden = ["xbox", "youtube", "xo", "quote",
-                     "quotes", "minecraft", "why"]
+                     "quotes", "minecraft", "why", "quizlet", "nz"]
         new_generated_facts = []
         for g in input_interface.get_generated_facts():
             obj = g.get_object().get()
             if obj in forbidden or \
-                    self._is_totally_forbidden(obj, totally_forbidden):
+                    self._is_totally_forbidden(obj, totally_forbidden) or\
+                    len(obj) == 1:
                 continue
             obj = g.get_object().get().split(" ")
             new_obj = []

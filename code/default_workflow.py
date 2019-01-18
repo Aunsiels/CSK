@@ -17,6 +17,7 @@ class DefaultWorkflow(WorkflowInterface):
         super(DefaultWorkflow, self).__init__(
             module_names, DefaultModuleFactory())
         self._seeds = self._factory.get_module("all-seeds")
+        #self._seeds = self._factory.get_module("occupations-seeds")
 
     def generate_input(self):
         # just give an empty input to the seed module

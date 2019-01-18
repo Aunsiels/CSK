@@ -11,7 +11,8 @@ class NoPersonalSubmodule(SubmoduleInterface):
     def process(self, input_interface):
         logging.info("Start the removal of personal words")
         personals = ["my", "your", "our", "I", "you", "it", "he", "she", "so",
-                     "such", "much", "me", "this", "that", "here", "there"]
+                     "such", "much", "me", "this", "that", "here", "there",
+                     "his", "her", "its"]
         new_generated_facts = list(filter(
             lambda x: not any([y in personals
                                for y in x.get_object().get().split(" ")]),

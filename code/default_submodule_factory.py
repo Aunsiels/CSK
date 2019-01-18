@@ -27,6 +27,7 @@ from quora_questions_submodule import QuoraQuestionsSubmodule
 from answerscom_questions_submodule import AnswerscomQuestionsSubmodule
 from imagetag_submodule import ImagetagSubmodule
 from flickr_clusters_submodule import FlickrClustersSubmodule
+from google_book_submodule import GoogleBookSubmodule
 
 
 class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
@@ -63,7 +64,8 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
             "conceptnet-seeds": ConceptNetSeedsSubmodule,
             "answerscom-questions": AnswerscomQuestionsSubmodule,
             "imagetag": ImagetagSubmodule,
-            "flickr-clusters": FlickrClustersSubmodule
+            "flickr-clusters": FlickrClustersSubmodule,
+            "google-book": GoogleBookSubmodule
         }
 
 

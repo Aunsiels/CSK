@@ -10,11 +10,13 @@ class AssertionValidationModule(ModuleInterface):
     """
 
     def __init__(self):
-        module_names = ["flickr-clusters",
+        module_names = ["google-book",
+                        "antonym-checking",
+                        "flickr-clusters",
                         "imagetag",
                         "wikipedia-cooccurrence",
-                        "simple-wikipedia-cooccurrence",
-                        "antonym-checking"]
+                        "simple-wikipedia-cooccurrence"
+                        ]
         super(AssertionValidationModule, self).__init__(
             module_names, DefaultSubmoduleFactory())
         self._name = "Assertion Validation Module"

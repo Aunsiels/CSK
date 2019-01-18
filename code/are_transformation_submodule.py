@@ -14,7 +14,8 @@ class AreTransformationSubmodule(SubmoduleInterface):
         new_gfs = []
         for gf in gfs:
             if gf.get_predicate().get() != "are" and\
-                    gf.get_predicate().get() != "is":
+                    gf.get_predicate().get() != "is" and\
+                    gf.get_predicate().get() != "be":
                 new_gfs.append(gf)
             elif gf.get_pattern() is not None and\
                     gf.get_pattern().get_relation() is not None:
