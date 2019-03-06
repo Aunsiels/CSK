@@ -148,16 +148,21 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                         counter -= 1
                 maxi_length_predicate = 1
                 maxi_length_object = 1
+                maxi_obj = ""
+                contains_than = False
                 for triple in sentence.openieTriple:
                     predicate = triple.relation
-                    maxi_length_predicate = max(len(predicate.split(" ")),
+                    maxi_length_predicate = max(predicate.count(" ") + 1,
                                                 maxi_length_predicate)
                 for triple in sentence.openieTriple:
                     predicate = triple.relation
                     obj = triple.object
-                    if maxi_length_predicate == len(predicate.split(" ")):
-                        maxi_length_object = max(len(obj.split(" ")),
-                                                 maxi_length_object)
+                    if " than " in obj:
+                        contains_than = True
+                    if maxi_length_predicate == predicate.count(" ") + 1:
+                        if obj.count(" ") + 1 > maxi_length_object:
+                            maxi_length_object = obj.count(" ") + 1
+                            maxi_obj = obj
                 if len(sentence.openieTriple) == 0:
                     # Try simple extraction as OpenIE is bad for this
                     se = self._simple_extraction(suggestion[0])
@@ -192,11 +197,11 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                     predicate = triple.relation
                     # This is to prevent too many extractions
                     # If it useful in practice to extract more than one fact?
-                    if maxi_length_predicate != len(predicate.split(" ")):
+                    if maxi_length_predicate != predicate.count(" ") + 1:
                         continue
                     score = triple.confidence
                     # prefer longer predicate ?
-                    score *= len(predicate.split(" ")) / maxi_length_predicate
+                    score *= (predicate.count(" ") + 1) / maxi_length_predicate
                     # prefer longer extractions
                     # 2 spaces at least
                     score_extr = (len(subject) + len(obj) + len(predicate) + 2)\
@@ -206,14 +211,19 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                         negative = suggestion[2].is_negative()
                     modality = None
                     modality_temp = ""
-                    if maxi_length_object != len(obj.split(" ")):
-                        modality_temp = "TBC"
+                    # For comparisons only full objects
+                    if maxi_length_object != obj.count(" ") + 1 and contains_than:
+                        continue
+                    if maxi_length_object != obj.count(" ") + 1:
+                        modality_temp = "TBC[" + maxi_obj + "]"
                     if suggestion[0].find(subject) != 0 and \
                             suggestion[0].find("a " + subject) != 0 and\
                             suggestion[0].find("the " + subject) != 0:
                         if modality_temp:
                             modality_temp += " "
                         modality = Modality(modality_temp + "some")
+                    else:
+                        modality = Modality(modality_temp)
                     generated_facts.append(
                         GeneratedFact(
                             subject,

@@ -11,6 +11,7 @@ class DefaultWorkflow(WorkflowInterface):
         module_names = ["patterns",
                         "pattern-fusion",
                         "assertion-generation",
+                        "archit",
                         "assertion-normalization",
                         "assertion-validation",
                         "assertion-fusion"]

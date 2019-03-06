@@ -8,6 +8,7 @@ from assertion_validation_module import AssertionValidationModule
 from assertion_fusion_module import AssertionFusionModule
 from occupations_seed_module import OccupationsSeedModule
 from all_seeds_module import AllSeedsModule
+from archit_module import ArchitModule
 
 
 class DefaultModuleFactory(ModuleFactoryInterface):
@@ -34,4 +35,6 @@ class DefaultModuleFactory(ModuleFactoryInterface):
             return OccupationsSeedModule()
         elif module_name == "all-seeds":
             return AllSeedsModule()
+        elif module_name == "archit":
+            return ArchitModule()
         raise NotImplementedError

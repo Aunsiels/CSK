@@ -3,7 +3,8 @@ import logging
 import inflect
 
 p = inflect.engine()
-non_plural = ["texas", "star wars", "gas", "people"]
+non_plural = ["texas", "star wars", "gas", "people", "chaos", "fetus", "moses",
+              "jesus"]
 
 class ToSingularSubjectSubmodule(SubmoduleInterface):
 
@@ -14,10 +15,12 @@ class ToSingularSubjectSubmodule(SubmoduleInterface):
     def process(self, input_interface):
         logging.info("Turn subject to singular")
         new_generated_facts = []
+        subjects = [x.get() for x in input_interface.get_subjects()]
         for g in input_interface.get_generated_facts():
             subj = g.get_subject().get()
             sing = p.singular_noun(subj)
-            if not sing or subj in non_plural or subj.endswith("sis"):
+            if not sing or subj in non_plural or subj.endswith("sis") or\
+                    sing not in subjects:
                 new_generated_facts.append(g)
             else:
                 new_generated_facts.append(g.change_subject(sing))

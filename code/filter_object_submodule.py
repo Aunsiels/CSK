@@ -19,9 +19,11 @@ class FilterObjectSubmodule(SubmoduleInterface):
         logging.info("Start the filtering object")
         dirty_words = ["their"]
         forbidden = ["used", "called", "xbox", "youtube", "xo", "quote",
-                     "quotes", "minecraft", "important", "considered", "why"]
+                     "quotes", "minecraft", "important", "considered", "why",
+                     "using"]
         totally_forbidden = ["xbox", "youtube", "xo", "quote",
-                     "quotes", "minecraft", "why", "quizlet", "nz"]
+                     "quotes", "minecraft", "why", "quizlet", "nz", "wz",
+                             "quora", "reddit", "skyrim", "shippuden"]
         new_generated_facts = []
         for g in input_interface.get_generated_facts():
             obj = g.get_object().get()
@@ -34,7 +36,8 @@ class FilterObjectSubmodule(SubmoduleInterface):
             for p in obj:
                 if p not in dirty_words:
                     new_obj.append(p)
-            if len(obj) != len(new_obj):
+            if len(obj) != len(new_obj) and len(new_obj) != 0:
                 g = g.change_object(" ".join(new_obj).strip())
-            new_generated_facts.append(g)
+            if len(new_obj) != 0:
+                new_generated_facts.append(g)
         return input_interface.replace_generated_facts(new_generated_facts)

@@ -70,12 +70,20 @@ class WikipediaCooccurrenceSubmodule(SubmoduleInterface):
             content = word_tokenize(content)
             # TODO: Some preprocessing?
             for g in by_subject[subj]:
-                if g.get_object().get().lower() in content:
-                    # Better score ?
-                    new_score = 0.5
-                    if g.get_predicate().get().lower() in content:
-                        new_score += 0.5
-                    new_generated_facts.append(g.change_score(new_score)
+                obj = g.get_object().get().lower().split(" ")
+                pred = g.get_predicate().get().lower().split(" ")
+                po = pred + obj
+                score = 0
+                counter = 0
+                for i in range(len(po)):
+                    for j in range(i+1, len(po) + 1):
+                        po_temp = " ".join(po[i:j])
+                        counter += j-i
+                        if po_temp in content:
+                            score += j-i
+                score /= counter
+                if score != 0:
+                    new_generated_facts.append(g.change_score(score)
                                                .change_module_source(
                                                    self._module_reference)
                                                .change_submodule_source(

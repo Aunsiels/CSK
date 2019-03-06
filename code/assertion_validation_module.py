@@ -11,7 +11,7 @@ class AssertionValidationModule(ModuleInterface):
 
     def __init__(self):
         module_names = ["google-book",
-                        "antonym-checking",
+                        #"antonym-checking",
                         "flickr-clusters",
                         "imagetag",
                         "wikipedia-cooccurrence",

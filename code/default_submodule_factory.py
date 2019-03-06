@@ -28,6 +28,16 @@ from answerscom_questions_submodule import AnswerscomQuestionsSubmodule
 from imagetag_submodule import ImagetagSubmodule
 from flickr_clusters_submodule import FlickrClustersSubmodule
 from google_book_submodule import GoogleBookSubmodule
+from web_count_submodule import WebCountSubmodule
+from web_regression_submodule import WebRegressionSubmodule
+from youtube_count_submodule import YoutubeCountSubmodule
+from youtube_regression_submodule import YoutubeRegressionSubmodule
+from flickr_count_submodule import FlickrCountSubmodule
+from flickr_regression_submodule import FlickrRegressionSubmodule
+from pinterest_count_submodule import PinterestCountSubmodule
+from pinterest_regression_submodule import PinterestRegressionSubmodule
+from istockphoto_count_submodule import IstockphotoCountSubmodule
+from istockphoto_regression_submodule import IstockphotoRegressionSubmodule
 
 
 class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
@@ -65,7 +75,17 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
             "answerscom-questions": AnswerscomQuestionsSubmodule,
             "imagetag": ImagetagSubmodule,
             "flickr-clusters": FlickrClustersSubmodule,
-            "google-book": GoogleBookSubmodule
+            "google-book": GoogleBookSubmodule,
+            "web-count": WebCountSubmodule,
+            "web-regression": WebRegressionSubmodule,
+            "youtube-count": YoutubeCountSubmodule,
+            "youtube-regression": YoutubeRegressionSubmodule,
+            "flickr-count": FlickrCountSubmodule,
+            "flickr-regression": FlickrRegressionSubmodule,
+            "pinterest-count": PinterestCountSubmodule,
+            "pinterest-regression": PinterestRegressionSubmodule,
+            "istockphoto-count": IstockphotoCountSubmodule,
+            "istockphoto-regression": IstockphotoRegressionSubmodule
         }
 
 

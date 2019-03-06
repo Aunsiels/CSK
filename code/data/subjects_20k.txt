@@ -4763,7 +4763,6 @@ dobbin
 dock
 docking
 docky
-do crossword puzzle
 doctor
 doctor examination room
 doctor office
@@ -4779,7 +4778,7 @@ dodge
 dodgers
 dodo
 doe
-do exercises
+doing exercises
 dog
 doge
 dogfight
@@ -4789,11 +4788,11 @@ doggie
 dog poop
 dogs
 dogs and cats
-do housework
+doing housework
 doing crossword puzzle
 doing exercises
 doing housework
-do in gym
+doing in gym
 dol
 doldrums
 dole
@@ -16239,7 +16238,6 @@ treasury
 treatment
 tree
 tree branch
-trees
 trehalose
 trek
 trekker
