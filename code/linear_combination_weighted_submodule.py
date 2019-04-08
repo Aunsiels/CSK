@@ -17,29 +17,6 @@ class LinearCombinationWeightedSubmodule(SubmoduleInterface):
         self._name = "Linear Combination Per Module Submodule"
         self._weights = dict()
         # Put weights here
-        # Manual for now
-        # self._weights["Google Autocomplete"] = 0.9083
-        # self._weights["Bing Autocomplete"] = 0.0
-        # self._weights["Reddit Questions"] = 0.5075
-        # self._weights["Quora Questions"] = 1.4118
-        # self._weights["Antonym Checking"] = 0.0
-        # self._weights["Simple Wikipedia Cooccurrence"] = 0.2652
-        # self._weights["Wikipedia Cooccurrence"] = 0.2733
-        # self._weights["Image Tag submodule"] = 0.9313
-        # self._weights["Answers.com Questions"] = 1.0294
-        # self._weights["Flickr"] = 0.8722
-        # self._weights["Google Book Submodule"] = 0.9277
-        # self._weights["Web count"] = 0.0
-        # self._weights["Web regression"] = 0.0
-        # self._weights["Youtube count"] = 0.0
-        # self._weights["Youtube regression"] = 0.0
-        # self._weights["Flickr count"] = 0.0
-        # self._weights["Flickr regression"] = 0.0
-        # self._weights["Pinterest count"] = 0.0
-        # self._weights["Pinterest regression"] = 0.0
-        # self._weights["Istockphoto count"] = 0.0
-        # self._weights["Istockphoto regression"] = 0.0
-        # self._weights["TBC"] = -0.245
         self._weights["Google Autocomplete"] = 0.8727
         self._weights["Bing Autocomplete"] = 0.0
         self._weights["Reddit Questions"] = 0.5240
@@ -66,7 +43,7 @@ class LinearCombinationWeightedSubmodule(SubmoduleInterface):
         # self._intercept = 5.7423
         self._intercept = 5.6673
 
-    def _save_weights(self, d_gf, d_max, d_gf_modality):
+    def _save_weights(self, d_gf, d_max, d_gf_modality, d_gf_patterns):
         save = []
         temp = []
         names = self._weights.keys()
@@ -75,6 +52,7 @@ class LinearCombinationWeightedSubmodule(SubmoduleInterface):
         temp.append("object")
         temp.append("modality")
         temp.append("is negative")
+        temp.append("patterns")
         for name in names:
             temp.append(name)
         save.append("\t".join(temp))
@@ -92,6 +70,7 @@ class LinearCombinationWeightedSubmodule(SubmoduleInterface):
                 temp.append("1")
             else:
                 temp.append("0")
+            temp.append(d_gf_patterns[fact].to_str())
             for name in names:
                 if name in d_gf[fact]:
                     if name in d_max:
@@ -203,7 +182,7 @@ class LinearCombinationWeightedSubmodule(SubmoduleInterface):
                 else:
                     d_max[name] = d_gf[fact][name]
         if save_weights:
-            self._save_weights(d_gf, d_max, d_gf_modality)
+            self._save_weights(d_gf, d_max, d_gf_modality, d_gf_patterns)
         d_scores = dict()
         # Compute the scores
         for fact in d_gf:
@@ -218,10 +197,6 @@ class LinearCombinationWeightedSubmodule(SubmoduleInterface):
                         / d_max.setdefault(name, 1.0)
                 else:
                     temp += self._weights[name] * -1.0
-            # tbc = -1
-            # if "TBC" in d_gf_modality[fact]:
-            #     tbc = 1
-            # temp += tbc * self._weights["TBC"]
             temp += self._intercept
             d_scores[fact] = 1.0 / (1.0 + math.exp(-temp))
         # Transform to generated facts

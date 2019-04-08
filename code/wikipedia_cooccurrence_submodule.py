@@ -2,8 +2,10 @@ from submodule_interface import SubmoduleInterface
 import logging
 import os
 import wikipedia
-from nltk.tokenize import word_tokenize
 
+import spacy
+
+nlp = spacy.load('en_core_web_sm', disable=["tagger", "parser", "ner"])
 
 class WikipediaCooccurrenceSubmodule(SubmoduleInterface):
 
@@ -57,6 +59,8 @@ class WikipediaCooccurrenceSubmodule(SubmoduleInterface):
         # Groupby subject
         by_subject = dict()
         for g in gf:
+            if g.get_module_source().get_name() == self._module_reference.get_name():
+                continue
             subj = g.get_subject().get()
             if subj in by_subject:
                 by_subject[subj].append(g)
@@ -67,12 +71,26 @@ class WikipediaCooccurrenceSubmodule(SubmoduleInterface):
         # Retreive page
         for subj in by_subject:
             content = self._get_wikipidia_page_content(subj).lower()
-            content = word_tokenize(content)
+            content = lemmatize(content)
             # TODO: Some preprocessing?
             for g in by_subject[subj]:
                 obj = g.get_object().get().lower().split(" ")
-                pred = g.get_predicate().get().lower().split(" ")
-                po = pred + obj
+                pred = g.get_predicate().get().lower()
+                neg = g.is_negative()
+                if pred.startswith("has_") or pred == "hasProperty":
+                    pred = "are"
+                    if neg:
+                        pred += " not"
+                else:
+                    if neg:
+                        pred_l = pred.split(" ")
+                        if pred_l[0] == "can":
+                            pred = "cannot"
+                            if len(pred_l) > 1:
+                                pred += " " + " ".join(pred_l[1:])
+                        else:
+                            pred = "do not " + pred
+                po = lemmatize(pred + " ".join(obj))
                 score = 0
                 counter = 0
                 for i in range(len(po)):
@@ -87,5 +105,12 @@ class WikipediaCooccurrenceSubmodule(SubmoduleInterface):
                                                .change_module_source(
                                                    self._module_reference)
                                                .change_submodule_source(
-                                                   self))
+                                                   self).remove_sentence())
         return input_interface.add_generated_facts(new_generated_facts)
+
+def lemmatize(s):
+    doc = nlp(s)
+    res = []
+    for x in doc:
+        res.append(x.lemma_)
+    return " ".join(res)

@@ -155,3 +155,15 @@ class GeneratedFact(GeneratedFactInterface):
                              self.get_module_source(),
                              new_submodule_source,
                              self.get_pattern())
+
+    def remove_sentence(self):
+        return GeneratedFact(self.get_subject(),
+                             self.get_predicate(),
+                             self.get_object(),
+                             self.get_modality(),
+                             self.is_negative(),
+                             self.get_score(),
+                             "",
+                             self.get_module_source(),
+                             self.get_submodule_source(),
+                             self.get_pattern())

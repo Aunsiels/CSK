@@ -221,7 +221,7 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                             suggestion[0].find("the " + subject) != 0:
                         if modality_temp:
                             modality_temp += " "
-                        modality = Modality(modality_temp + "some")
+                        modality = Modality(modality_temp + "some[subj]")
                     else:
                         modality = Modality(modality_temp)
                     generated_facts.append(
@@ -251,7 +251,7 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                             / len(suggestion[0])
                         modality = None
                         if suggestion[0].find(spo[0]) != 0:
-                            modality = Modality("some")
+                            modality = Modality("some[subj]")
                         generated_facts.append(
                             GeneratedFact(
                                 spo[0],

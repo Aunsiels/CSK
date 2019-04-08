@@ -85,6 +85,8 @@ class GoogleBookSubmodule(SubmoduleInterface):
         new_gfs = []
         maxi = 0
         for gf in input_interface.get_generated_facts():
+            if gf.get_module_source().get_name() == self._module_reference.get_name():
+                continue
             query = self._get_query_from_fact(gf)
             occurences = 0
             try:
@@ -95,7 +97,8 @@ class GoogleBookSubmodule(SubmoduleInterface):
             maxi = max(maxi, occurences)
             new_gf = gf.change_score(occurences)\
                        .change_module_source(self._module_reference)\
-                       .change_submodule_source(self)
+                       .change_submodule_source(self)\
+                       .remove_sentence()
             new_gfs.append(new_gf)
         for i in range(len(new_gfs)):
             new_score = new_gfs[i].get_score() / maxi
