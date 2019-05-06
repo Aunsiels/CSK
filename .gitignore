@@ -111,3 +111,5 @@ out/
 parameters.tsv
 temp
 log.txt
+
+*ipynb

@@ -41,7 +41,7 @@ class BrowserAutocompleteSubmodule(OpenIEFactGeneratorSubmodule):
                 base_suggestions, cache = self.get_suggestion(base_query)
                 # Exceeded number of requests
                 if base_suggestions is None:
-                    break
+                    continue
                 # Append the patterns
                 base_suggestions = list(map(lambda x:
                                             (x[0], x[1], pattern,
@@ -77,9 +77,9 @@ class BrowserAutocompleteSubmodule(OpenIEFactGeneratorSubmodule):
                         if not cache:
                             time.sleep(self.time_between_queries)
                     if temp is None:
-                        break
+                        continue
             if temp is None or base_suggestions is None:
-                break
+                continue
         return suggestions
 
     def process(self, input_interface):
@@ -90,6 +90,7 @@ class BrowserAutocompleteSubmodule(OpenIEFactGeneratorSubmodule):
 
         suggestions = self._get_all_suggestions(input_interface)
 
+        logging.info("We collected " + str(len(suggestions)) + " suggestions.")
 
         # OPENIE part
         generated_facts = self.get_generated_facts(suggestions, input_interface)

@@ -3,7 +3,7 @@ import flickr_api
 import logging
 import os
 
-filename = "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/assos_flickr_clusters.tsv"
+filename = "data/assos_flickr_clusters.tsv"
 
 class FlickrClustersSubmodule(AssociationSubmodule):
 
@@ -17,6 +17,8 @@ class FlickrClustersSubmodule(AssociationSubmodule):
             clusters = flickr_api.Tag.getClusters(tag=subject)
         except flickr_api.flickrerrors.FlickrAPIError:
             logging.info(subject + " has no cluster")
+        except TypeError:
+            logging.info("Problem of type with " + subject)
         res = []
         for cluster in clusters:
             temp = []

@@ -1,7 +1,7 @@
 from association_submodule import AssociationSubmodule
 import logging
 
-filename = "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/assos_imagestags_openimage.tsv"
+filename = "data/assos_imagestags_openimage.tsv"
 
 class ImagetagSubmodule(AssociationSubmodule):
 

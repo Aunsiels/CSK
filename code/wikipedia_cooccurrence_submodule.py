@@ -18,7 +18,7 @@ class WikipediaCooccurrenceSubmodule(SubmoduleInterface):
             os.makedirs(self._cache_dir)
 
     def _get_wikipidia_page_content(self, name):
-        fname = self._cache_dir + name.replace(" ", "_")
+        fname = self._cache_dir + name.replace(" ", "_").replace("/", "_")
         content = ""
         if os.path.isfile(fname):
             with open(fname) as f:

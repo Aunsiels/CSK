@@ -183,6 +183,9 @@ class InputInterface(object):
         """
         raise NotImplementedError
 
+    def get_number_subjects(self):
+        return len(self._subjects)
+
     def replace_objects(self, new_objects):
         """replace_objects
         Replaces objects to the input

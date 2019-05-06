@@ -38,6 +38,8 @@ from pinterest_count_submodule import PinterestCountSubmodule
 from pinterest_regression_submodule import PinterestRegressionSubmodule
 from istockphoto_count_submodule import IstockphotoCountSubmodule
 from istockphoto_regression_submodule import IstockphotoRegressionSubmodule
+from subjects_wordnet_submodule import SubjectsWordnetSubmodule
+from yahoo_questions_submodule import YahooQuestionsSubmodule
 
 
 class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
@@ -85,7 +87,9 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
             "pinterest-count": PinterestCountSubmodule,
             "pinterest-regression": PinterestRegressionSubmodule,
             "istockphoto-count": IstockphotoCountSubmodule,
-            "istockphoto-regression": IstockphotoRegressionSubmodule
+            "istockphoto-regression": IstockphotoRegressionSubmodule,
+            "subjects-wordnet": SubjectsWordnetSubmodule,
+            "yahoo-questions": YahooQuestionsSubmodule
         }
 
 

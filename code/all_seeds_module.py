@@ -6,7 +6,7 @@ class AllSeedsModule(ModuleInterface):
 
     def __init__(self):
         module_names = ["animal-seeds", "occupations-seeds",
-                        "conceptnet-subjects"]
+                        "conceptnet-subjects", "subjects-wordnet"]
         super(AllSeedsModule, self).__init__(
             module_names, DefaultSubmoduleFactory())
         self._name = "All Seeds module"
@@ -15,4 +15,6 @@ class AllSeedsModule(ModuleInterface):
         logging.info("Generate all seeds")
         for sm in self._submodules:
             input_interface = sm.process(input_interface)
+        logging.info("We have " + str(input_interface.get_number_subjects()) +
+                     " subjects")
         return input_interface

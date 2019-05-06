@@ -111,10 +111,13 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
         for batch in batches:
             # We annotate the sentence
             # And extract the triples
-            sentences = " . ".join([x[0].replace(".", "").replace("?", "")
+            sentences = " . ".join([x[0].replace(".", "").replace("?", "").replace("!", "")
                                     for x in batch])\
                 + " . "
-            out = nlp.annotate(sentences)
+            try:
+                out = nlp.annotate(sentences)
+            except corenlp.client.AnnotationException:
+                logging.info("Annotation Error with: " + sentences)
             counter = 0
             for sentence in out.sentence:
                 if counter >= len(batch):
@@ -136,6 +139,7 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                 sugg_temp = sugg_temp.replace("-RSB-", "]")
                 sugg_temp = sugg_temp.replace("-LCB-", "{")
                 sugg_temp = sugg_temp.replace("-RCB-", "}")
+                sugg_temp = sugg_temp.replace("&amp;", "&")
                 if regex.sub("", sugg_temp) != regex.sub("", suggestion[0]):
                     logging.error("The subjects do not match. Received: %s,"
                                   "Expecting: %s", sugg_temp, suggestion)

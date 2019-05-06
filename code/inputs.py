@@ -14,7 +14,7 @@ class Inputs(InputInterface):
         self._seeds = seeds
         self._patterns = patterns
         self._generated_facts = generated_facts
-        self._subjects = subjects
+        self._subjects = set(subjects)
         self._objects = objs
 
     def add_patterns(self, new_patterns):
@@ -56,7 +56,7 @@ class Inputs(InputInterface):
         :return: a new input
         :rtype: InputInterface
         """
-        return self.replace_subjects(self.get_subjects() + new_subjects)
+        return self.replace_subjects(self.get_subjects().union(set(new_subjects)))
 
     def add_objects(self, new_objects):
         """add_objects
@@ -121,7 +121,7 @@ class Inputs(InputInterface):
         return Inputs(self.get_seeds(),
                       self.get_patterns(),
                       self.get_generated_facts(),
-                      new_subjects,
+                      set(new_subjects),
                       self.get_objects())
 
     def replace_objects(self, new_objects):
