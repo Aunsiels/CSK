@@ -113,3 +113,12 @@ temp
 log.txt
 
 *ipynb
+
+# CoreNLP files
+quasimodo/tests/core*
+
+# Coverage
+quasimodo/tests/coverage
+
+# IDEA
+.idea

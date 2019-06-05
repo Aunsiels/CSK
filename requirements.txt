@@ -1,5 +1,12 @@
+gensim
+scikit-learn
+requests
+pymongo
+stanfordnlp
 corenlp
 inflect
 nltk
 wikipedia
 spacy
+pytest
+pytest-cov

@@ -1,0 +1,195 @@
+import unittest
+from quasimodo import OpenIEFactGeneratorSubmodule, Inputs
+from quasimodo.referencable_interface import ReferencableInterface
+from quasimodo import PatternGoogle
+from quasimodo.statement_maker import StatementMaker
+
+
+class TestOpenIEFactGenerator(unittest.TestCase):
+
+    def setUp(self) -> None:
+        dummy_reference = ReferencableInterface("Dummy reference")
+        self.openie_fact_generator = OpenIEFactGeneratorSubmodule(dummy_reference)
+        self.openie_fact_generator.statement_maker = StatementMaker(use_cache=False)
+        self.openie_fact_generator._name = "OPENIE"  # Dummy name only useful for testing
+        self.empty_input = Inputs()
+
+    def test_no_suggestion(self):
+        new_gfs = self.openie_fact_generator.get_generated_facts([])
+        self.assertEqual(len(new_gfs), 0)
+
+    def test_one_suggestion(self):
+        suggestion = ("why do lions eat zebras", 1.0, None, "lion")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertEqual(len(new_gfs), 1)
+        self.assertEqual(new_gfs[0].get_subject(), "lions")
+        self.assertEqual(new_gfs[0].get_predicate(), "eat")
+        self.assertEqual(new_gfs[0].get_object(), "zebras")
+
+    def test_one_suggestion_with_a(self):
+        suggestion = ("why does a lion eat zebras", 1.0, None, "lion")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertEqual(len(new_gfs), 1)
+        self.assertEqual(new_gfs[0].get_subject(), "lion")
+        self.assertEqual(new_gfs[0].get_predicate(), "eat")
+        self.assertEqual(new_gfs[0].get_object(), "zebras")
+
+    def test_one_suggestion_with_the(self):
+        suggestion = ("why does the lion eat zebras", 1.0, None, "lion")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertEqual(len(new_gfs), 1)
+        self.assertEqual(new_gfs[0].get_subject(), "lion")
+        self.assertEqual(new_gfs[0].get_predicate(), "eat")
+        self.assertEqual(new_gfs[0].get_object(), "zebras")
+
+    def test_very_short_suggestion(self):
+        suggestion = ("why do lions eat", 1.0, None, "lion")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertEqual(len(new_gfs), 1)
+        self.assertEqual(new_gfs[0].get_subject(), "lions")
+        self.assertEqual(new_gfs[0].get_predicate(), "can")
+        self.assertEqual(new_gfs[0].get_object(), "eat")
+
+    def test_can_short_suggestion(self):
+        suggestion = ("why can lions eat", 1.0, None, "lion")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertEqual(len(new_gfs), 1)
+        self.assertEqual(new_gfs[0].get_subject(), "lions")
+        self.assertEqual(new_gfs[0].get_predicate(), "can")
+        self.assertEqual(new_gfs[0].get_object(), "eat")
+
+    def test_cannot_short_suggestion(self):
+        suggestion = ("why cannot lions eat", 1.0, None, "lion")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertEqual(len(new_gfs), 1)
+        self.assertEqual(new_gfs[0].get_subject(), "lions")
+        self.assertEqual(new_gfs[0].get_predicate(), "can")
+        self.assertEqual(new_gfs[0].get_object(), "eat")
+        self.assertTrue(new_gfs[0].is_negative())
+
+    def test_cannot_short_suggestion_pattern(self):
+        pattern = PatternGoogle("why cannot", "can", True)
+        suggestion = ("why cannot lions eat", 1.0, pattern, "lion")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertEqual(len(new_gfs), 1)
+        self.assertEqual(new_gfs[0].get_subject(), "lions")
+        self.assertEqual(new_gfs[0].get_predicate(), "can")
+        self.assertEqual(new_gfs[0].get_object(), "eat")
+        self.assertTrue(new_gfs[0].is_negative())
+
+    def test_cannot_short_suggestion1(self):
+        suggestion = ("why can't lions eat", 1.0, None, "lion")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertEqual(len(new_gfs), 1)
+        self.assertEqual(new_gfs[0].get_subject(), "lions")
+        self.assertEqual(new_gfs[0].get_predicate(), "can")
+        self.assertEqual(new_gfs[0].get_object(), "eat")
+        self.assertTrue(new_gfs[0].is_negative())
+
+    def test_can_short_suggestion_1(self):
+        suggestion = ("why can a lion eat", 1.0, None, "lion")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertEqual(len(new_gfs), 1)
+        self.assertEqual(new_gfs[0].get_subject(), "a lion")
+        self.assertEqual(new_gfs[0].get_predicate(), "can")
+        self.assertEqual(new_gfs[0].get_object(), "eat")
+
+    def test_short_incorrect_suggestion(self):
+        suggestion = ("why do lion proutkoko eat", 1.0, None, "lion")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertEqual(len(new_gfs), 0)
+
+    def test_single_can_suggestion(self):
+        suggestion = ("why can lion", 1.0, None, "lion")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertEqual(len(new_gfs), 0)
+
+    def test_extend(self):
+        suggestion = ("why do african people have noses and lips", 1.0, None, "african people")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertEqual(len(new_gfs), 6)
+        objs = list(map(lambda x: x.get_object(), new_gfs))
+        self.assertIn("noses", objs)
+        self.assertIn("lips", objs)
+
+    def test_extend_2(self):
+        suggestion = ("why are pandas black and white", 1.0, None, "pandas")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertEqual(len(new_gfs), 2)
+        objs = list(map(lambda x: x.get_object(), new_gfs))
+        self.assertIn("black", objs)
+        self.assertIn("white", objs)
+
+    def test_than(self):
+        suggestion = ("why are elephants better than lions", 1.0, None, "elephants")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertEqual(len(new_gfs), 1)
+        self.assertEqual(new_gfs[0].get_subject(), "elephants")
+        self.assertEqual(new_gfs[0].get_predicate(), "are better than")
+        self.assertEqual(new_gfs[0].get_object(), "lions")
+
+    def test_long_object(self):
+        suggestion = ("why do elephants have long noses", 1.0, None, "elephants")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertTrue(len(new_gfs) >= 2)
+        objs = list(map(lambda x: x.get_object(), new_gfs))
+        self.assertIn("noses", objs)
+        self.assertIn("long noses", objs)
+
+    def test_long_object_with_multiple_modalities(self):
+        suggestion = ("why do african elephants have long noses", 1.0, None, "elephants")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertTrue(len(new_gfs) >= 2)
+        objs = list(map(lambda x: x.get_object(), new_gfs))
+        self.assertIn("noses", objs)
+        self.assertIn("long noses", objs)
+        self.assertIn("TBC[", new_gfs[0].get_modality().get())
+        self.assertIn("some[", new_gfs[0].get_modality().get())
+        self.assertIn("long noses", new_gfs[0].get_modality().get())
+
+    def test_are_not(self):
+        suggestion = ("why are elephants not in africa", 1.0, None, "elephants")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertTrue(len(new_gfs) >= 1)
+        self.assertEqual(new_gfs[0].get_subject(), "elephants")
+        self.assertEqual(new_gfs[0].get_predicate(), "are in")
+        self.assertEqual(new_gfs[0].get_object(), "africa")
+        self.assertTrue(new_gfs[0].is_negative())
+
+    def test_is_not(self):
+        suggestion = ("why is thomas not in africa", 1.0, None, "thomas")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertTrue(len(new_gfs) >= 1)
+        self.assertEqual(new_gfs[0].get_subject(), "thomas")
+        self.assertEqual(new_gfs[0].get_predicate(), "is in")
+        self.assertEqual(new_gfs[0].get_object(), "africa")
+        self.assertTrue(new_gfs[0].is_negative())
+
+    def test_there(self):
+        suggestion = ("why are there elephants in africa", 1.0, None, "elephants")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertTrue(len(new_gfs) >= 1)
+        self.assertEqual(new_gfs[0].get_subject(), "elephants")
+        self.assertEqual(new_gfs[0].get_predicate(), "are in")
+        self.assertEqual(new_gfs[0].get_object(), "africa")
+        self.assertFalse(new_gfs[0].is_negative())
+
+    def test_does(self):
+        suggestion = ("why does panda climb tree", 1.0, None, "panda")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertTrue(len(new_gfs) >= 1)
+        self.assertEqual(new_gfs[0].get_subject(), "panda")
+        self.assertEqual(new_gfs[0].get_predicate(), "climb")
+        self.assertEqual(new_gfs[0].get_object(), "tree")
+
+    def test_always(self):
+        suggestion = ("why does pandas climb always in tree", 1.0, None, "panda")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertTrue(len(new_gfs) >= 1)
+        self.assertEqual(new_gfs[0].get_subject(), "pandas")
+        self.assertEqual(new_gfs[0].get_predicate(), "always climb in")
+        self.assertEqual(new_gfs[0].get_object(), "tree")
+
+
+if __name__ == '__main__':
+    unittest.main()

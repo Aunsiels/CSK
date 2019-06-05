@@ -1,0 +1,103 @@
+import time
+from string import ascii_lowercase
+import logging
+
+from .openie_fact_generator_submodule import OpenIEFactGeneratorSubmodule
+
+RANK = 1
+
+SUGGESTION = 0
+
+LIMIT_DEPTH = 2
+
+
+def get_base_sentences(base_suggestions):
+    return list(map(lambda ranked_suggestion: ranked_suggestion[SUGGESTION],
+                    base_suggestions))
+
+
+class BrowserAutocompleteSubmodule(OpenIEFactGeneratorSubmodule):
+    """BrowserAutocompleteSubmodule
+    Represents the autocomplete from a web search engine
+    """
+
+    def __init__(self, module_reference):
+        super().__init__(module_reference)
+        self.time_between_queries = 1.0  # The time between two queries
+        self.default_number_suggestions = 8  # The maximum number of suggestions
+
+    def get_suggestion(self, query, lang="en", ds=""):
+        """get_suggestion
+        Gets suggestion from the browser to a give query
+        :param query: the query to autocomplete
+        :type query: str
+        :param lang: the language to use
+        :type lang: str
+        :param ds: An additional parameter
+        :type ds: str
+        :return: A list of scored autosuggestions with a whether the cache was
+        used or not
+        :rtype: List[((str, float), bool)]
+        """
+        raise NotImplementedError
+
+    def _get_all_suggestions(self, input_interface):
+        suggestions = []
+        for subject in input_interface.get_subjects():
+            for pattern in input_interface.get_patterns("google-autocomplete"):
+                # Generate the query
+                base_query = pattern.to_str_subject(subject)
+                base_sentences = []
+                # Artificially add more suggestions
+                to_process = [[]]
+                while to_process:
+                    current_state = to_process.pop()
+                    if len(current_state) >= LIMIT_DEPTH:
+                        continue
+                    new_query = (base_query + " " + "".join(current_state)).strip()
+                    base_suggestions, cache = self.get_suggestion(new_query)
+                    if base_suggestions is None:
+                        break
+                    if len(base_suggestions) == self.default_number_suggestions:
+                        # We go deeper
+                        for c in ascii_lowercase:
+                            to_process.append(current_state[:] + [c])
+                    suggestions += self.clean_suggestions(base_suggestions, base_sentences, current_state,
+                                                          pattern, subject)
+                    base_sentences += get_base_sentences(base_suggestions)
+                    # We sleep only if the data was not cached
+                    if not cache:
+                        time.sleep(self.time_between_queries)
+                    if base_suggestions is None:
+                        continue
+        return suggestions
+
+    def clean_suggestions(self, base_suggestions, base_sentences, new_state, pattern, subject):
+        base_suggestions = filter(
+            lambda ranked_suggestion: ranked_suggestion[SUGGESTION] not in base_sentences,
+            base_suggestions)
+        base_suggestions = map(
+            lambda ranked_suggestion:
+            (ranked_suggestion[SUGGESTION],
+             ranked_suggestion[RANK] + len(new_state) * self.default_number_suggestions,
+             pattern, subject.get()), base_suggestions)
+        base_suggestions = list(
+            filter(lambda ranked_suggestion: pattern.match(ranked_suggestion[SUGGESTION]),
+                   base_suggestions))
+        return base_suggestions
+
+    def process(self, input_interface):
+        # Needs subjects
+        logging.info("Start submodule %s", self.get_name())
+        if not input_interface.has_subjects():
+            return input_interface
+
+        suggestions = self._get_all_suggestions(input_interface)
+
+        logging.info("We collected " + str(len(suggestions)) + " suggestions.")
+
+        # OPENIE part
+        generated_facts = self.get_generated_facts(suggestions)
+        generated_facts_bis = self._openie_from_file(suggestions)
+
+        return input_interface.add_generated_facts(generated_facts_bis).add_generated_facts(generated_facts)
