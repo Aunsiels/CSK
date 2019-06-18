@@ -74,10 +74,13 @@ class GoogleAutocompleteSubmodule(BrowserAutocompleteSubmodule):
 
     def get_suggestions_from_response(self, response, query, ds, lang):
         if response.ok:
+            begin_time = time.time()
             result = json.loads(response.content.decode("utf-8"))
             suggestions = [(result[1][ranking], ranking) for ranking in range(len(result[1]))]
             if self.use_cache:
                 self.write_cache(query, suggestions)
+            # We sleep only if the data was not cached
+            time.sleep(max(0, self.time_between_queries - (time.time() - begin_time)))
             return suggestions, False
         else:
             # Kicked by the search engine
@@ -87,11 +90,13 @@ class GoogleAutocompleteSubmodule(BrowserAutocompleteSubmodule):
 
     def read_cache(self, query):
         filename = query.replace(" ", "-").replace("'", "_").replace("/", "-")
-        filename_regex = get_regex_from_query(filename)
         if filename in self.local_cache:
             return self.local_cache[filename], True
         else:
-            self.local_cache = self.cache.read_regex(filename_regex)
+            filename_regex = get_regex_from_query(filename)
+            if self.local_cache.get("query_regex", "") != filename_regex:
+                self.local_cache = self.cache.read_regex(filename_regex)
+                self.local_cache["query_regex"] = filename_regex
         if filename in self.local_cache:
             return self.local_cache[filename], True
         return None

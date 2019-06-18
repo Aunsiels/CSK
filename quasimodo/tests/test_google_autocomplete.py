@@ -19,6 +19,8 @@ class TestGoogleAutocomplete(unittest.TestCase):
 
     def test_cache(self):
         _, _ = self.autocomplete_cache.get_suggestion("why are elephants")
+        # Remove information of the previous query
+        self.autocomplete_cache.local_cache["query_regex"] = ""
         suggestions, from_cache = self.autocomplete_cache.get_suggestion("why are elephants")
         self.assertTrue(from_cache)
         self.assertEqual(len(suggestions), 10)

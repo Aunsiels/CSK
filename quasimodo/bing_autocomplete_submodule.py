@@ -61,6 +61,7 @@ class BingAutocompleteSubmodule(BrowserAutocompleteSubmodule):
 
     def process_response(self, response, query, lang, ds):
         if response.status == OK:
+            begin_time = time.time()
             res_json = json.loads(response.read())
             suggestions_temp = []
             for suggestion_group in res_json.setdefault("suggestionGroups", []):
@@ -71,6 +72,7 @@ class BingAutocompleteSubmodule(BrowserAutocompleteSubmodule):
             if self.use_cache:
                 filename = query.replace(" ", "-").replace("'", "_")
                 self.cache.write_cache(filename, suggestions)
+            time.sleep(max(0, self.time_between_queries - (time.time() - begin_time)))
             return suggestions, False
         else:
             # We surely exceeded the number of requests

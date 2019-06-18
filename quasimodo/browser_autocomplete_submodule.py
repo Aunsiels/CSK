@@ -44,6 +44,7 @@ class BrowserAutocompleteSubmodule(OpenIEFactGeneratorSubmodule):
     def _get_all_suggestions(self, input_interface):
         suggestions = []
         for subject in input_interface.get_subjects():
+            logging.info("Processing %s", subject.get())
             for pattern in input_interface.get_patterns("google-autocomplete"):
                 # Generate the query
                 base_query = pattern.to_str_subject(subject)
@@ -65,9 +66,6 @@ class BrowserAutocompleteSubmodule(OpenIEFactGeneratorSubmodule):
                     suggestions += self.clean_suggestions(base_suggestions, base_sentences, current_state,
                                                           pattern, subject)
                     base_sentences += get_base_sentences(base_suggestions)
-                    # We sleep only if the data was not cached
-                    if not cache:
-                        time.sleep(self.time_between_queries)
                     if base_suggestions is None:
                         continue
         return suggestions
