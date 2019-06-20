@@ -1,7 +1,7 @@
-import time
 from string import ascii_lowercase
 import logging
 
+from quasimodo.parameters_reader import ParametersReader
 from .openie_fact_generator_submodule import OpenIEFactGeneratorSubmodule
 
 RANK = 1
@@ -9,6 +9,9 @@ RANK = 1
 SUGGESTION = 0
 
 LIMIT_DEPTH = 2
+
+parameters_reader = ParametersReader()
+PATTERN_FIRST = (parameters_reader.get_parameter("pattern-first") or "true") == "true"
 
 
 def get_base_sentences(base_suggestions):
@@ -43,9 +46,26 @@ class BrowserAutocompleteSubmodule(OpenIEFactGeneratorSubmodule):
 
     def _get_all_suggestions(self, input_interface):
         suggestions = []
-        for subject in input_interface.get_subjects():
-            logging.info("Processing %s", subject.get())
-            for pattern in input_interface.get_patterns("google-autocomplete"):
+        if PATTERN_FIRST:
+            collection_first = input_interface.get_patterns("google-autocomplete")
+            collection_second = input_interface.get_subjects()
+        else:
+            collection_first = input_interface.get_subjects()
+            collection_second = input_interface.get_patterns("google-autocomplete")
+        for i, first_collection_element in enumerate(collection_first):
+            if PATTERN_FIRST:
+                logging.info("Going for pattern" + str(first_collection_element) +
+                             "[" + str(i / len(collection_first) * 100.0) + "%]")
+            else:
+                logging.info("Going for subject" + str(first_collection_element) +
+                             "[" + str(i / len(collection_first) * 100.0) + "%]")
+            for second_collection_element in collection_second:
+                if PATTERN_FIRST:
+                    pattern = first_collection_element
+                    subject = second_collection_element
+                else:
+                    pattern = second_collection_element
+                    subject = first_collection_element
                 # Generate the query
                 base_query = pattern.to_str_subject(subject)
                 base_sentences = []

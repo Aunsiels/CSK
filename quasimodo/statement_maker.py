@@ -231,6 +231,8 @@ class StatementMaker(object):
             return self._q2s[question.strip()]
         question = question.replace(" cant ", " can't ")
         pos, tokens = get_pos_and_tokens_from_question(question)
+        if len(pos) <= 2:
+            return ""
         # Correct nano - particule
         tokens, pos = _correct_tokens(tokens, pos)
         if is_form_of_be(tokens[1]) and len(tokens) == 4:

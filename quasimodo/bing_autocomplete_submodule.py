@@ -2,6 +2,7 @@ from urllib.parse import quote
 import http.client, json
 import os
 
+from quasimodo.cachable_querying_system import CachableQueryingSystem
 from .mongodb_cache import MongoDBCache
 from .parameters_reader import ParametersReader
 from .browser_autocomplete_submodule import BrowserAutocompleteSubmodule
@@ -31,16 +32,16 @@ def get_response(query, lang):
     return response
 
 
-class BingAutocompleteSubmodule(BrowserAutocompleteSubmodule):
+class BingAutocompleteSubmodule(BrowserAutocompleteSubmodule, CachableQueryingSystem):
     """BingAutocompleteSubmodule
     Submodule which generetes assertions using the autocomplete from Bing
     """
 
     def __init__(self, module_reference, use_cache=True, cache_name="bing-cache", look_new=False):
-        super().__init__(module_reference)
+        BrowserAutocompleteSubmodule.__init__(self, module_reference)
+        CachableQueryingSystem.__init__(self, MongoDBCache(cache_name, mongodb_location=DEFAULT_MONGODB_LOCATION))
         self._name = "Bing Autocomplete"
         self.use_cache = use_cache
-        self.cache = MongoDBCache(cache_name, mongodb_location=DEFAULT_MONGODB_LOCATION)
         self.time_between_queries = 0.02
         self.default_number_suggestions = 8
         self.look_new = look_new
@@ -48,8 +49,7 @@ class BingAutocompleteSubmodule(BrowserAutocompleteSubmodule):
     def get_suggestion(self, query, lang="en-US", ds=0):
         "Gets Autosuggest results for a query and returns the information."
         if self.use_cache:
-            filename = query.replace(" ", "-").replace("'", "_")
-            cache_value = self.cache.read_cache(filename)
+            cache_value = self.read_cache(query)
             if cache_value is not None:
                 suggestions, is_cached = cache_value
                 suggestions = [(suggestion[0], float(suggestion[1])) for suggestion in suggestions]
@@ -70,9 +70,8 @@ class BingAutocompleteSubmodule(BrowserAutocompleteSubmodule):
                     suggestions_temp.append(suggestion.setdefault("query", ""))
             suggestions = [(suggestions_temp[i], i) for i in range(len(suggestions_temp))]
             if self.use_cache:
-                filename = query.replace(" ", "-").replace("'", "_")
-                self.cache.write_cache(filename, suggestions)
-            time.sleep(max(0, self.time_between_queries - (time.time() - begin_time)))
+                self.write_cache(query, suggestions)
+            time.sleep(max([0, self.time_between_queries - (time.time() - begin_time)]))
             return suggestions, False
         else:
             # We surely exceeded the number of requests

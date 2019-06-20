@@ -2,6 +2,7 @@ import unittest
 from quasimodo.statement_maker import StatementMaker
 
 dataset = [
+    ("why is", "is", ""),
     ("how is software piracy illegal in the first place?", "software", 'software piracy is illegal in the first place'),
     ("why are white monkeys superior to other races?", "white", 'white monkeys are superior to other races'),
     ("why can nebraska recruit?", "nebraska", 'nebraska can recruit'),
