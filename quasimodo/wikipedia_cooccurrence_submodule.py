@@ -1,28 +1,23 @@
+from quasimodo.content_comparator import ContentComparator
 from quasimodo.mongodb_cache import MongoDBCache
 from quasimodo.parameters_reader import ParametersReader
-from .submodule_interface import SubmoduleInterface
 import logging
 import wikipedia
-
-import spacy
-
-nlp = spacy.load('en_core_web_sm', disable=["tagger", "parser", "ner"])
 
 parameters_reader = ParametersReader()
 DEFAULT_MONGODB_LOCATION = parameters_reader.get_parameter("default-mongodb-location") or "mongodb://localhost:27017/"
 
 
-class WikipediaCooccurrenceSubmodule(SubmoduleInterface):
+class WikipediaCooccurrenceSubmodule(ContentComparator):
 
     def __init__(self, module_reference, use_cache=True, cache_name="wikipedia-cache"):
-        super().__init__()
-        self._module_reference = module_reference
+        super().__init__(module_reference)
         self._name = "Wikipedia Cooccurrence"
         self.use_cache = use_cache
         self._lang = "en"
         self.cache = MongoDBCache(cache_name, mongodb_location=DEFAULT_MONGODB_LOCATION)
 
-    def _get_wikipidia_page_content(self, name):
+    def _get_wikipedia_page_content(self, name):
         content = self.read_cache(name)
         if content is not None:
             return content
@@ -66,64 +61,10 @@ class WikipediaCooccurrenceSubmodule(SubmoduleInterface):
                 return cache_value[0]
         return None
 
-    def process(self, input_interface):
-        logging.info("Start the wikipedia cooccurence checking")
+    def get_contents(self, subject):
+        return [self._get_wikipedia_page_content(subject)]
+
+    def setup_processing(self):
         wikipedia.set_lang(self._lang)
-        gf = input_interface.get_generated_facts()
-        # Groupby subject
-        by_subject = dict()
-        for g in gf:
-            subj = g.get_subject().get().lower()
-            if subj in by_subject:
-                by_subject[subj].append(g)
-            else:
-                by_subject[subj] = [g]
-
-        # Retreive page
-        for subj in by_subject:
-            try:
-                content = self._get_wikipidia_page_content(subj).lower()
-            except:
-                logging.info("Problem with " + subj)
-                continue
-            content = lemmatize(content)
-            # TODO: Some preprocessing?
-            for g in by_subject[subj]:
-                obj = g.get_object().get().lower().split(" ")
-                pred = g.get_predicate().get().lower()
-                neg = g.is_negative()
-                if pred.startswith("has_") or pred == "hasProperty":
-                    pred = "are"
-                    if neg:
-                        pred += " not"
-                else:
-                    if neg:
-                        pred_l = pred.split(" ")
-                        if pred_l[0] == "can":
-                            pred = "cannot"
-                            if len(pred_l) > 1:
-                                pred += " " + " ".join(pred_l[1:])
-                        else:
-                            pred = "do not " + pred
-                po = lemmatize(pred + " ".join(obj))
-                score = 0
-                counter = 0
-                po = po.split(" ")
-                for i in range(len(po)):
-                    for j in range(i+1, len(po) + 1):
-                        po_temp = " ".join(po[i:j])
-                        counter += j-i
-                        if po_temp in content:
-                            score += j-i
-                score /= counter
-                if score != 0:
-                    g.get_score().add_score(score, self._module_reference, self)
-        return input_interface
 
 
-def lemmatize(s):
-    doc = nlp(s)
-    res = []
-    for x in doc:
-        res.append(x.lemma_)
-    return " ".join(res)

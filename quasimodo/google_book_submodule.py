@@ -15,7 +15,11 @@ parameters_reader = ParametersReader()
 api_key = parameters_reader.get_parameter("google-book-key") or ""
 DEFAULT_MONGODB_LOCATION = parameters_reader.get_parameter("default-mongodb-location") or "mongodb://localhost:27017/"
 
-service = apiclient.discovery.build('books', 'v1', developerKey=api_key)
+try:
+    service = apiclient.discovery.build('books', 'v1', developerKey=api_key)
+except:
+    service = None
+
 plural_engine = inflect.engine()
 
 cache_dir = os.path.dirname(__file__) + "/googlebook-cache/"
@@ -59,7 +63,7 @@ class GoogleBookSubmodule(SubmoduleInterface):
         cache_value = self.read_cache(query)
         if cache_value is not None:
             return cache_value
-        if only_cache:
+        if only_cache or service is None:
             return -1
         req = service.volumes().list(q=query, maxResults=1)
         response = req.execute()
@@ -73,6 +77,8 @@ class GoogleBookSubmodule(SubmoduleInterface):
 
     def process(self, input_interface):
         logging.info("Start the verification using google book")
+        if service is None:
+            logging.info("No service found for Google Book")
         maxi = 0
         only_cache = True
         for generated_fact in input_interface.get_generated_facts():
