@@ -122,3 +122,12 @@ quasimodo/tests/coverage
 
 # IDEA
 .idea
+
+# Cache questions
+question2statement/
+
+# Data
+data/
+
+# Personal notes
+notes/

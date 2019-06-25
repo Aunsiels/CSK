@@ -8,3 +8,5 @@ conceptnet-seeds	XXX
 flickr-clusters	XXX
 imagetag-associations	XXX
 pattern-first	true
+out-dir ./out/
+question-cache-dir ./question2statement/

@@ -1,9 +1,17 @@
 import os
+import logging
+import sys
+
+if len(sys.argv) > 1:
+    DEFAULT_PARAMETERS_FILE = sys.argv[1]
+else:
+    logging.info("No parameter file given. Use parameters.tsv by default")
+    DEFAULT_PARAMETERS_FILE = os.path.dirname(__file__) + "/parameters.tsv"
 
 
 class ParametersReader(object):
 
-    def __init__(self, parameters_file=os.path.dirname(__file__) + "/parameters.tsv"):
+    def __init__(self, parameters_file=DEFAULT_PARAMETERS_FILE):
         self.parameters = dict()
         with open(parameters_file) as f:
             for line in f:

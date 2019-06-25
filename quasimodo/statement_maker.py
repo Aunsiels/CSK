@@ -2,7 +2,13 @@ import os
 import spacy
 import inflect
 import language_check
+import logging
+import time
 
+from quasimodo.parameters_reader import ParametersReader
+
+parameters_reader = ParametersReader()
+CACHE_DIR = parameters_reader.get_parameter("question-cache-dir") or os.path.dirname(__file__) + "/question2statement/"
 
 _tool = language_check.LanguageTool('en-US')
 _plural_engine = inflect.engine()
@@ -191,17 +197,28 @@ def process_can_form(pos, tokens):
 
 
 def correct_statement(statement):
-    matches = _tool.check(statement)
+    global _tool
+    try:
+        matches = _tool.check(statement)
+    except:
+        try:
+            time.sleep(60)
+            del _tool
+            time.sleep(60)
+            _tool = language_check.LanguageTool('en-US')
+            matches = _tool.check(statement)
+        except:
+            logging.error("Problem with LanguageTools for " + statement)
+            raise
     return language_check.correct(statement, matches).lower()
 
 
 class StatementMaker(object):
 
     def __init__(self, use_cache=True):
-        self._cache_dir = os.path.dirname(__file__) + "/question2statement/"
         self._filename = "cache.tsv"
-        if not os.path.exists(self._cache_dir):
-            os.makedirs(self._cache_dir)
+        if not os.path.exists(CACHE_DIR):
+            os.makedirs(CACHE_DIR)
         self._use_cache = use_cache
         # Load previous q2s
         self._q2s = dict()
@@ -210,8 +227,8 @@ class StatementMaker(object):
     def _load_q2s(self):
         if not self._use_cache:
             return
-        if os.path.isfile(self._cache_dir + self._filename):
-            with open(self._cache_dir + self._filename) as f:
+        if os.path.isfile(CACHE_DIR + self._filename):
+            with open(CACHE_DIR + self._filename) as f:
                 for line in f:
                     line = line.strip().split("\t")
                     if len(line) < 2:
@@ -222,7 +239,7 @@ class StatementMaker(object):
         if not self._use_cache:
             return
         self._q2s[question] = statement
-        with open(self._cache_dir + self._filename, "a") as f:
+        with open(CACHE_DIR + self._filename, "a") as f:
             f.write(question.strip() + "\t" + statement.strip() +
                     "\t" + subject + "\n")
 

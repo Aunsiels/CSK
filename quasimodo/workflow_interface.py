@@ -3,8 +3,10 @@ import os
 import logging
 import pickle
 
-out_dir = os.path.dirname(__file__) + "/out/"
+from quasimodo.parameters_reader import ParametersReader
 
+parameters_reader = ParametersReader()
+OUT_DIR = parameters_reader.get_parameter("out-dir") or os.path.dirname(__file__) + "/out/"
 
 class WorkflowInterface(object):
     """WorkflowInterface
@@ -15,8 +17,8 @@ class WorkflowInterface(object):
         self._module_names = module_names
         self._factory = module_factory
         self._workflow = self.get_workflow()
-        if not os.path.exists(out_dir):
-                os.makedirs(out_dir)
+        if not os.path.exists(OUT_DIR):
+            os.makedirs(OUT_DIR)
 
     def get_workflow(self):
         """get_workflow
@@ -60,7 +62,7 @@ class WorkflowInterface(object):
             logging.info("We have " + str(len(temp_input.get_generated_facts())) + " facts")
             temp_input = module.process(temp_input)
             if save:
-                temp_input.save(out_dir + "out_" + str(int(time.time())) + "_" +
+                temp_input.save(OUT_DIR + "out_" + str(int(time.time())) + "_" +
                                 module.get_name())
         return temp_input
 
