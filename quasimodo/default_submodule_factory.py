@@ -1,3 +1,4 @@
+from quasimodo.conceptual_captions_comparator_submodule import ConceptualCaptionsComparatorSubmodule
 from .submodule_factory_interface import SubmoduleFactoryInterface
 from .google_autocomplete_submodule import GoogleAutocompleteSubmodule
 from .animal_submodule import AnimalSubmodule
@@ -97,7 +98,8 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
             "subject-removal": SubjectRemovalSubmodule,
             "lower-case": ToLowerCaseSubmodule,
             "fact-combinor": FactCombinor,
-            "identical-subj-obj" : IdenticalSubjectObjectSubmodule
+            "identical-subj-obj" : IdenticalSubjectObjectSubmodule,
+            "conceptual-captions": ConceptualCaptionsComparatorSubmodule
         }
 
 

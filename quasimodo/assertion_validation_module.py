@@ -14,7 +14,8 @@ class AssertionValidationModule(ModuleInterface):
                         "flickr-clusters",
                         "imagetag",
                         "wikipedia-cooccurrence",
-                        "simple-wikipedia-cooccurrence"
+                        "simple-wikipedia-cooccurrence",
+                        "conceptual-captions"
                         ]
         super(AssertionValidationModule, self).__init__(
             module_names, DefaultSubmoduleFactory())

@@ -44,7 +44,8 @@ The fields are:
 - imagetag-associations: A file containing the associations from OpenImage
 - pattern-first: If true, loop over patterns first. Otherwise, loop over subjects
 - out-dir: A file where intermediate and final results are saved
-- question-cache-dir A directory where the transformation from question to statement is saved
+- question-cache-dir: A directory where the transformation from question to statement is saved
+- conceptual-caption-file: A file containing the captions from the Conceptual Caption Dataset
 
 
 ## References
@@ -87,3 +88,8 @@ A script is given to download and prepare the files.
 cd notes
 bash get_openimages.sh
 ```
+
+### Conceptual Captions
+
+Conceptual captions can be downloaded at [https://ai.google.com/research/ConceptualCaptions](https://ai.google.com/research/ConceptualCaptions)
+The captions must be placed in a single file, containing one caption per line.

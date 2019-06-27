@@ -2,7 +2,7 @@ import os
 import logging
 import sys
 
-if len(sys.argv) > 1:
+if len(sys.argv) > 1 and ".tsv" in sys.argv[1]:
     DEFAULT_PARAMETERS_FILE = sys.argv[1]
 else:
     logging.info("No parameter file given. Use parameters.tsv by default")

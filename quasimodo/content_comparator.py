@@ -7,6 +7,11 @@ from quasimodo.submodule_interface import SubmoduleInterface
 nlp = spacy.load('en_core_web_sm', disable=["tagger", "parser", "ner"])
 
 
+def lemmatize_contents(contents):
+    for i in range(len(contents)):
+        contents[i] = lemmatize(contents[i].lower())
+
+
 class ContentComparator(SubmoduleInterface):
 
     def __init__(self, module_reference):
@@ -15,7 +20,7 @@ class ContentComparator(SubmoduleInterface):
 
     def process(self, input_interface):
         logging.info("Start the wikipedia cooccurrence checking")
-        self.setup_processing()
+        self.setup_processing(input_interface)
         generated_facts = input_interface.get_generated_facts()
         # Group by subject
         by_subject = self.group_by_subject(generated_facts)
@@ -24,16 +29,19 @@ class ContentComparator(SubmoduleInterface):
         for subject in by_subject:
             try:
                 contents = self.get_contents(subject)
-            except:
-                logging.info("Problem with " + subject)
+            except Exception as e:
+                logging.info("Problem with " + subject + " " + str(e))
                 continue
-            for content in contents:
-                content = lemmatize(content.lower())
-                for generated_fact in by_subject[subject]:
-                    self.add_score_to_generated_fact_given_lemmatized_content(content, generated_fact)
+            lemmatize_contents(contents)
+            for generated_fact in by_subject[subject]:
+                scores = []
+                for content in contents:
+                    scores.append(self.get_score_generated_fact_given_lemmatized_content(content, generated_fact))
+                if scores:
+                    generated_fact.get_score().add_score(sum(scores) / len(scores), self._module_reference, self)
         return input_interface
 
-    def add_score_to_generated_fact_given_lemmatized_content(self, lemmatized_content, generated_fact):
+    def get_score_generated_fact_given_lemmatized_content(self, lemmatized_content, generated_fact):
         obj = generated_fact.get_object().get().lower().split(" ")
         pred = generated_fact.get_predicate().get().lower()
         neg = generated_fact.is_negative()
@@ -50,7 +58,8 @@ class ContentComparator(SubmoduleInterface):
                         pred += " " + " ".join(pred_l[1:])
                 else:
                     pred = "do not " + pred
-        po = lemmatize(pred + " ".join(obj))
+        po = lemmatize(pred + " " + " ".join(obj))
+        popo = po
         score = 0
         counter = 0
         po = po.split(" ")
@@ -61,7 +70,8 @@ class ContentComparator(SubmoduleInterface):
                 if po_temp in lemmatized_content:
                     score += j - i
         score /= counter
-        generated_fact.get_score().add_score(score, self._module_reference, self)
+        return score
+
 
     def group_by_subject(self, generated_facts):
         by_subject = dict()
@@ -73,7 +83,7 @@ class ContentComparator(SubmoduleInterface):
                 by_subject[subj] = [g]
         return by_subject
 
-    def setup_processing(self):
+    def setup_processing(self, input_interface):
         raise NotImplementedError
 
     def get_contents(self, subject):

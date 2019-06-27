@@ -8,3 +8,4 @@ imagetag-associations	XXX
 pattern-first	true
 out-dir ./out/
 question-cache-dir ./question2statement/
+conceptual-caption-file	XXX

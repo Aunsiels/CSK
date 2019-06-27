@@ -64,7 +64,7 @@ class WikipediaCooccurrenceSubmodule(ContentComparator):
     def get_contents(self, subject):
         return [self._get_wikipedia_page_content(subject)]
 
-    def setup_processing(self):
+    def setup_processing(self, input_interface):
         wikipedia.set_lang(self._lang)
 
 
