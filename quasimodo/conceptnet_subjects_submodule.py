@@ -5,7 +5,7 @@ from quasimodo.parameters_reader import ParametersReader
 
 
 parameters_reader = ParametersReader()
-FILENAME = parameters_reader.get_parameter("subjects_20k") or \
+FILENAME = parameters_reader.get_parameter("conceptnet-subjects") or \
         os.path.dirname(__file__) + "/data/conceptnet_subjects.txt"
 
 
