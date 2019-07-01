@@ -13,6 +13,7 @@ from .statement_maker import StatementMaker
 from .submodule_interface import SubmoduleInterface
 from .modality import Modality
 from .referencable_interface import ReferencableInterface
+from quasimodo.parameters_reader import ParametersReader
 
 PATTERN = 2
 
@@ -29,6 +30,9 @@ _plural_engine = inflect.engine()
 
 reference_corenlp = ReferencableInterface("CoreNLP")
 reference_openie5 = ReferencableInterface("OpenIE5")
+
+parameters_reader = ParametersReader()
+memory_corenlp = parameters_reader.get_parameter("memory-corenlp") or "10G"
 
 
 def _simple_extraction(sentence):
@@ -68,10 +72,11 @@ def start_corenlp_client():
     corenlp_client = CoreNLPClient(
         start_server=True,
         endpoint='http://localhost:9000',
-        memory="10G",
-        threads=5,
+        memory=memory_corenlp,
+        threads=50,
         timeout=10000000,
         annotators=['openie'],
+        output_format="json",
         properties={'annotators': 'openie',
                     'inputFormat': 'text',
                     'outputFormat': 'json',

@@ -6,8 +6,8 @@ filename = None
 
 parameters_reader = ParametersReader()
 filename = parameters_reader.get_parameter("openie-file") or None
-
-filename_no_found = os.path.dirname(__file__) + "/data/no_found_openie_sentences.txt"
+filename_no_found = parameters_reader.get_parameter("openie-file-no-found") or\
+        os.path.dirname(__file__) + "/data/no_found_openie_sentences.txt"
 
 
 class OpenIEReader(object):

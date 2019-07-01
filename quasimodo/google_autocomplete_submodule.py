@@ -11,13 +11,16 @@ from quasimodo.parameters_reader import ParametersReader
 from .browser_autocomplete_submodule import BrowserAutocompleteSubmodule
 
 
+parameters_reader = ParametersReader()
+PATTERN_FIRST = (parameters_reader.get_parameter("pattern-first") or "true") == "true"
+
 headers = {'User-agent': 'Mozilla/5.0'}
 # baseurl = "http://clients1.google.com/complete/search?"
 baseurl = "http://google.com/complete/search?"
 RELOADTIME = 60
 
 # Look for new sentences?
-look_new = True
+look_new = not PATTERN_FIRST
 
 parameters_reader = ParametersReader()
 DEFAULT_MONGODB_LOCATION = parameters_reader.get_parameter("default-mongodb-location") or "mongodb://localhost:27017/"

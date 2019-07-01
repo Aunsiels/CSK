@@ -1,9 +1,14 @@
-from .default_workflow import DefaultWorkflow
+from quasimodo.default_workflow import DefaultWorkflow
+from quasimodo.parameters_reader import ParametersReader
 import logging
-
 import socket
 
 name = str(socket.gethostname())
+
+parameters_reader = ParametersReader()
+PATTERN_FIRST = (parameters_reader.get_parameter("pattern-first") or "true") == "true"
+if PATTERN_FIRST:
+    name += "by_pattern"
 
 logging.basicConfig(level=logging.DEBUG,
         format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',

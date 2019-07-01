@@ -115,7 +115,7 @@ class BrowserAutocompleteSubmodule(OpenIEFactGeneratorSubmodule):
         logging.info("We collected " + str(len(suggestions)) + " suggestions.")
 
         # OPENIE part
-        generated_facts = self.get_generated_facts(suggestions)
         generated_facts_bis = self._openie_from_file(suggestions)
+        generated_facts = self.get_generated_facts(suggestions)
 
         return input_interface.add_generated_facts(generated_facts_bis).add_generated_facts(generated_facts)
