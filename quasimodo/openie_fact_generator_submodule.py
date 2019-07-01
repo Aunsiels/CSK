@@ -1,3 +1,4 @@
+import json
 import re
 import inflect
 import logging
@@ -5,6 +6,7 @@ from stanfordnlp.server import CoreNLPClient, AnnotationException, TimeoutExcept
 import stanfordnlp.server.client
 from nltk.corpus import wordnet as wn
 import spacy
+import os
 
 from quasimodo.openie_reader import OpenIEReader
 from .multiple_scores import MultipleScore
@@ -25,6 +27,8 @@ NEGATIVITY = 3
 
 STATEMENT = 0
 
+QUESTION = 4
+
 _nlp = spacy.load('en_core_web_sm')
 _plural_engine = inflect.engine()
 
@@ -32,7 +36,9 @@ reference_corenlp = ReferencableInterface("CoreNLP")
 reference_openie5 = ReferencableInterface("OpenIE5")
 
 parameters_reader = ParametersReader()
-memory_corenlp = parameters_reader.get_parameter("memory-corenlp") or "10G"
+MEMORY_CORENLP = parameters_reader.get_parameter("memory-corenlp") or "10G"
+CACHE_CORENLP = parameters_reader.get_parameter("cache-corenlp") or \
+                os.path.dirname(__file__) + "/data/cache_corenlp.tsv"
 
 
 def _simple_extraction(sentence):
@@ -43,7 +49,7 @@ def _simple_extraction(sentence):
         idx_can = tokens.index("can")
         if tokens[0] == "not":
             return [' '.join(tokens[1:idx_can]), "can", " ".join(tokens[idx_can + 1:]), True]
-        return [' '.join(tokens[:idx_can]), "can", " ".join(tokens[idx_can+1:]), False]
+        return [' '.join(tokens[:idx_can]), "can", " ".join(tokens[idx_can + 1:]), False]
     if len(tokens) == 2:
         return [tokens[0], "can", tokens[1], False]
     if len(tokens) == 3:
@@ -72,7 +78,7 @@ def start_corenlp_client():
     corenlp_client = CoreNLPClient(
         start_server=True,
         endpoint='http://localhost:9000',
-        memory=memory_corenlp,
+        memory=MEMORY_CORENLP,
         threads=50,
         timeout=10000000,
         annotators=['openie'],
@@ -216,8 +222,10 @@ def get_modality(subject, obj, maxi_length_object, maxi_obj, suggestion):
 
 class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
 
-    def __init__(self, module_reference):
+    def __init__(self, module_reference, use_cache=True):
         super().__init__()
+        self.use_cache = use_cache
+        self.cache_filename = CACHE_CORENLP
         self.statement_maker = StatementMaker()
         self._max_query_length = 99990
         self.default_number_suggestions = 8  # The maximum number of suggestions
@@ -252,7 +260,8 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                 begin = i
                 counter = 0
             counter += len(full_sentence[i][0]) + 3
-        batches.append(full_sentence[begin:])
+        if begin < len(full_sentence):
+            batches.append(full_sentence[begin:])
         return batches
 
     def transforms_suggestion_into_batch_component(self, suggestion, full_sentence):
@@ -268,12 +277,14 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
             full_sentence.append((new_sentence.replace(" are not ", " are "),
                                   suggestion[SCORE],
                                   suggestion[PATTERN],
-                                  True))
+                                  True,
+                                  suggestion[STATEMENT]))
         elif " is not " in new_sentence[6:]:
             full_sentence.append((new_sentence.replace(" is not ", " is "),
                                   suggestion[SCORE],
                                   suggestion[PATTERN],
-                                  True))
+                                  True,
+                                  suggestion[STATEMENT]))
         elif new_sentence != "":
             negativity = False
             if "cannot" in suggestion[STATEMENT] or "can't" in suggestion[STATEMENT]:
@@ -281,13 +292,19 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
             full_sentence.append((new_sentence,
                                   suggestion[SCORE],
                                   suggestion[PATTERN],
-                                  negativity))
+                                  negativity,
+                                  suggestion[STATEMENT]))
 
     def get_generated_facts(self, suggestions):
-        batches = self._compute_batch_openie(suggestions)
-        corenlp_client = start_corenlp_client()
-
         generated_facts = []
+
+        suggestions = self.read_and_filter_from_cache(suggestions, generated_facts)
+        batches = self._compute_batch_openie(suggestions)
+        was_started = False
+        corenlp_client = None
+        if batches:
+            was_started = True
+            corenlp_client = start_corenlp_client()
 
         while batches:
             logging.info("%d batches remaining", len(batches))
@@ -306,7 +323,8 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                     break
                 self.process_corenlp_result(corenlp_result_sentence, batch, generated_facts)
         # stop the annotator
-        corenlp_client.stop()
+        if was_started:
+            corenlp_client.stop()
         return generated_facts
 
     def process_corenlp_result(self, corenlp_result_sentence, batch, generated_facts):
@@ -334,6 +352,11 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                 return
             else:
                 self.counter -= 1
+        self.process_corenlp_result_knowing_suggestion(suggestion, corenlp_result_sentence, generated_facts)
+        self.write_result_suggestion(suggestion, corenlp_result_sentence)
+        self.counter += 1
+
+    def process_corenlp_result_knowing_suggestion(self, suggestion, corenlp_result_sentence, generated_facts):
         maxi_length_predicate = get_maximal_length_of_a_predicate(corenlp_result_sentence)
         maxi_obj = get_maximal_object(corenlp_result_sentence, maxi_length_predicate)
         maxi_length_object = get_number_words(maxi_obj)
@@ -349,7 +372,6 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
         for triple in corenlp_result_sentence["openie"]:
             self.process_triple(triple, suggestion, contains_than, generated_facts, maxi_length_object,
                                 maxi_length_predicate, maxi_obj, score_based_on_ranking)
-        self.counter += 1
 
     def process_triple(self, triple, suggestion, contains_than, generated_facts, maxi_length_object,
                        maxi_length_predicate, maxi_obj, score_based_on_ranking):
@@ -406,7 +428,8 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
             sentence = suggestion[STATEMENT]
             facts = openie_reader.get_from_sentence(sentence)
             negative = get_negativity(suggestion)
-            facts = [fact for fact in facts if len(fact) > 0 and len(fact[0]) > 1 and len(fact[1]) > 1 and len(fact[2]) > 1]
+            facts = [fact for fact in facts if
+                     len(fact) > 0 and len(fact[0]) > 1 and len(fact[1]) > 1 and len(fact[2]) > 1]
             for fact in facts:
                 multiple_score = MultipleScore()
                 multiple_score.add_score(float(fact[3].replace(",", ".")), self._module_reference, reference_openie5)
@@ -421,3 +444,33 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                         sentence,
                         suggestion[2]))
         return generated_facts
+
+    def write_result_suggestion(self, suggestion, corenlp_result_sentence):
+        if self.use_cache:
+            with open(self.cache_filename, "a") as f:
+                f.write(suggestion[STATEMENT] + "\t" + str(suggestion[NEGATIVITY]) +
+                        "\t" + suggestion[QUESTION] + "\t" +
+                        json.dumps(corenlp_result_sentence) + "\n")
+
+    def read_and_filter_from_cache(self, suggestions, generated_facts):
+        if not self.use_cache or not os.path.isfile(self.cache_filename):
+            return suggestions
+        cache = dict()
+        with open(self.cache_filename) as f:
+            for line in f:
+                line = line.strip().split("\t")
+                statement, negativity, question, json_str = line
+                cache[question] = (statement, negativity, json.loads(json_str))
+        new_suggestions = []
+        for suggestion in suggestions:
+            suggestion_statement = suggestion[STATEMENT]
+            if suggestion_statement in cache:
+                statement, negativity, corenlp_result = cache[suggestion_statement]
+                suggestion = (statement, suggestion[SCORE], suggestion[PATTERN], negativity == "True",
+                              suggestion[STATEMENT])
+                self.process_corenlp_result_knowing_suggestion(suggestion,
+                                                               corenlp_result,
+                                                               generated_facts)
+            else:
+                new_suggestions.append(suggestion)
+        return new_suggestions
