@@ -1,5 +1,11 @@
 import os
 from .subject_file_submodule import SubjectFileSubmodule
+from quasimodo.parameters_reader import ParametersReader
+
+
+parameters_reader = ParametersReader()
+FILENAME = parameters_reader.get_parameter("animal-subjects") or \
+        os.path.dirname(__file__) + "/data/anitemp.txt"
 
 
 class AnimalSubmodule(SubjectFileSubmodule):
@@ -11,4 +17,4 @@ class AnimalSubmodule(SubjectFileSubmodule):
         super().__init__(module_reference)
         self._module_reference = module_reference
         self._name = "Animal Seeds"
-        self._filename = os.path.dirname(__file__) + "/data/anitemp.txt"
+        self._filename = FILENAME

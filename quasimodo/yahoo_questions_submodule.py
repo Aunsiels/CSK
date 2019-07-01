@@ -1,6 +1,12 @@
 import os
 
-from .question_file_submodule import QuestionFileSubmodule
+from quasimodo.question_file_submodule import QuestionFileSubmodule
+from quasimodo.parameters_reader import ParametersReader
+
+
+parameters_reader = ParametersReader()
+FILENAME = parameters_reader.get_parameter("yahoo-questions") or \
+        os.path.dirname(__file__) + "/data/questions-yahoo.txt"
 
 
 class YahooQuestionsSubmodule(QuestionFileSubmodule):
@@ -17,5 +23,5 @@ class YahooQuestionsSubmodule(QuestionFileSubmodule):
 
     def __init__(self, module_reference):
         super().__init__(module_reference)
-        self._filename = os.path.dirname(__file__) + "/data/questions-yahoo.txt"
+        self._filename = FILENAME
         self._name = "Yahoo Questions"

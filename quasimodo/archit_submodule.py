@@ -4,8 +4,12 @@ import os
 from .multiple_scores import MultipleScore
 from .submodule_interface import SubmoduleInterface
 from .generated_fact import GeneratedFact
+from quasimodo.parameters_reader import ParametersReader
 
-filename = os.path.dirname(__file__) + "/data/anioccu_all.tsv"
+
+parameters_reader = ParametersReader()
+FILENAME = parameters_reader.get_parameter("stats-snippets") or \
+        os.path.dirname(__file__) + "/data/stats_animal_occupations_snippets.tsv"
 
 
 class ArchitSubmodule(SubmoduleInterface):
@@ -25,7 +29,7 @@ class ArchitSubmodule(SubmoduleInterface):
                       gf.get_predicate().get(),
                       gf.get_object().get()))
         new_gfs = []
-        with open(filename) as f:
+        with open(FILENAME) as f:
             for line in f:
                 if first:
                     first = False

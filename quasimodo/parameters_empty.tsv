@@ -4,6 +4,9 @@ openie-file	/tmp
 openie-file-no-found	/tmp/no_found_openie_sentences.txt
 default-mongodb-location	mongodb://localhost:5000/
 conceptnet-seeds	XXX
+conceptnet-subjects	XXX
+occupations-subjects	XXX
+animal-subjects	XXX
 flickr-clusters	XXX
 imagetag-associations	XXX
 pattern-first	true
@@ -11,3 +14,8 @@ out-dir ./out/
 question-cache-dir ./question2statement/
 memory-corenlp	5G
 conceptual-caption-file        XXX
+answercom-questions	XXX
+quora-questions	XXX
+reddit-questions	XXX
+yahoo-questions	XXX
+stats-snippets	XXX
