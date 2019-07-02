@@ -67,11 +67,11 @@ class WorkflowInterface(object):
         return temp_input
 
     def _load_last(self, module):
-        outs = os.listdir("out/")
+        outs = os.listdir(OUT_DIR)
         outs = [x for x in outs if module.get_name() in x]
         if outs:
             filename = sorted(outs)[-1]
-            with open("out/" + filename, "rb") as f:
+            with open(OUT_DIR + filename, "rb") as f:
                 logging.info("Loading " + filename)
                 return pickle.loads(f.read())
         return self.generate_input()
