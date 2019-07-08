@@ -37,8 +37,8 @@ reference_openie5 = ReferencableInterface("OpenIE5")
 
 parameters_reader = ParametersReader()
 MEMORY_CORENLP = parameters_reader.get_parameter("memory-corenlp") or "10G"
-CACHE_CORENLP = parameters_reader.get_parameter("cache-corenlp") or \
-                os.path.dirname(__file__) + "/data/cache_corenlp.tsv"
+CACHE_CORENLP_FILENAME = parameters_reader.get_parameter("cache-corenlp") or \
+                         os.path.dirname(__file__) + "/data/cache_corenlp.tsv"
 
 
 def _simple_extraction(sentence):
@@ -220,12 +220,28 @@ def get_modality(subject, obj, maxi_length_object, maxi_obj, suggestion):
     return modality
 
 
+CACHE_CORENLP = None
+
+
+def get_cache_corenlp():
+    global CACHE_CORENLP
+    if CACHE_CORENLP is not None:
+        return CACHE_CORENLP
+    cache = dict()
+    with open(CACHE_CORENLP_FILENAME) as f:
+        for line in f:
+            line = line.strip().split("\t")
+            statement, negativity, question, json_str = line
+            cache[question] = (statement, negativity, json.loads(json_str))
+    CACHE_CORENLP = cache
+    return cache
+
+
 class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
 
     def __init__(self, module_reference, use_cache=True):
         super().__init__()
         self.use_cache = use_cache
-        self.cache_filename = CACHE_CORENLP
         self.statement_maker = StatementMaker()
         self._max_query_length = 99990
         self.default_number_suggestions = 8  # The maximum number of suggestions
@@ -447,20 +463,15 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
 
     def write_result_suggestion(self, suggestion, corenlp_result_sentence):
         if self.use_cache:
-            with open(self.cache_filename, "a") as f:
+            with open(CACHE_CORENLP_FILENAME, "a") as f:
                 f.write(suggestion[STATEMENT] + "\t" + str(suggestion[NEGATIVITY]) +
                         "\t" + suggestion[QUESTION] + "\t" +
                         json.dumps(corenlp_result_sentence) + "\n")
 
     def read_and_filter_from_cache(self, suggestions, generated_facts):
-        if not self.use_cache or not os.path.isfile(self.cache_filename):
+        if not self.use_cache or not os.path.isfile(CACHE_CORENLP_FILENAME):
             return suggestions
-        cache = dict()
-        with open(self.cache_filename) as f:
-            for line in f:
-                line = line.strip().split("\t")
-                statement, negativity, question, json_str = line
-                cache[question] = (statement, negativity, json.loads(json_str))
+        cache = get_cache_corenlp()
         new_suggestions = []
         for suggestion in suggestions:
             suggestion_statement = suggestion[STATEMENT]
