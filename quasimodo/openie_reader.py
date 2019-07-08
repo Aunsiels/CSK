@@ -1,4 +1,5 @@
 import os
+import logging
 
 from quasimodo.parameters_reader import ParametersReader
 
@@ -40,8 +41,13 @@ class OpenIEReader(object):
         if sentence in self.sentence_to_fact:
             return self.sentence_to_fact[sentence]
         else:
-            with open(filename_no_found, "a") as f:
-                f.write(sentence + "\n")
+            while True:
+                try:
+                    with open(filename_no_found, "a") as f:
+                        f.write(sentence + "\n")
+                        break
+                except:
+                    logging.info("Error while writting the sentence in openie_reader")
             return []
 
 
