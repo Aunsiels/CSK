@@ -10,12 +10,12 @@ class AssertionGenerationModule(ModuleInterface):
 
     def __init__(self):
         module_names = [
+                        "google-autocomplete",
                         "bing-autocomplete",
                         "yahoo-questions",
                         "answerscom-questions",
                         "quora-questions",
                         "reddit-questions",
-                        "google-autocomplete",
                         "fact-combinor"
                         ]
         super(AssertionGenerationModule, self).__init__(

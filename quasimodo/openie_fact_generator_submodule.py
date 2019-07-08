@@ -447,10 +447,15 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
 
     def write_result_suggestion(self, suggestion, corenlp_result_sentence):
         if self.use_cache:
-            with open(self.cache_filename, "a") as f:
-                f.write(suggestion[STATEMENT] + "\t" + str(suggestion[NEGATIVITY]) +
-                        "\t" + suggestion[QUESTION] + "\t" +
-                        json.dumps(corenlp_result_sentence) + "\n")
+            while True:
+                try:
+                    with open(self.cache_filename, "a") as f:
+                        f.write(suggestion[STATEMENT] + "\t" + str(suggestion[NEGATIVITY]) +
+                                "\t" + suggestion[QUESTION] + "\t" +
+                                json.dumps(corenlp_result_sentence) + "\n")
+                        break
+                except:
+                    logging.info("Error while write in the cache of the corenlp")
 
     def read_and_filter_from_cache(self, suggestions, generated_facts):
         if not self.use_cache or not os.path.isfile(self.cache_filename):
