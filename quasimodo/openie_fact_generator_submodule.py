@@ -53,7 +53,12 @@ def _simple_extraction(sentence):
     if len(tokens) == 2:
         return [tokens[0], "can", tokens[1], False]
     if len(tokens) == 3:
-        synsets = wn.synsets(tokens[1])
+        while True:
+            try:
+                synsets = wn.synsets(tokens[1])
+                break
+            except OSError as e:
+                logging.info("Failed in finding synsets")
         # We want a verb!
         for synset in synsets:
             if synset.pos() == "v":
