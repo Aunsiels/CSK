@@ -1,4 +1,19 @@
-class MultipleScore(object):
+from quasimodo.serializable import Serializable
+
+
+class MultipleScore(Serializable):
+
+    def to_dict(self):
+        res = dict()
+        res["type"] = "MultipleScore"
+        res["scores"] = []
+        for score in self.scores:
+            res["scores"].append(
+                {"score": score[0],
+                "module_from": score[1].to_dict(),
+                "submodule_from": score[2].to_dict()}
+            )
+        return res
 
     def __init__(self):
         self.scores = []

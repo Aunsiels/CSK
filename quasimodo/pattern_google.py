@@ -1,3 +1,4 @@
+from quasimodo.serializable import Serializable
 from .pattern_interface import PatternInterface
 import re
 import inflect
@@ -6,10 +7,24 @@ from nltk.corpus import wordnet
 plural_engine = inflect.engine()
 
 
-class PatternGoogle(PatternInterface):
+class PatternGoogle(PatternInterface, Serializable):
     """PatternGoogle
     Represents patterns used of autocomplete in search engine
     """
+
+    def to_dict(self):
+        res = dict()
+        res["type"] = "PatternGoogle"
+        res["prefix"] = self._prefix
+        res["relation"] = self._relation
+        res["negative"] = self._negative
+        return res
+
+    def to_str_object(self, obj):
+        raise NotImplementedError
+
+    def to_str_so(self, subj, obj):
+        raise NotImplementedError
 
     def __init__(self, prefix, relation="hasProperty", negative=False):
         super().__init__()

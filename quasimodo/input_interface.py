@@ -1,5 +1,3 @@
-import pickle
-
 class InputInterface(object):
 
     def __init__(self):
@@ -77,9 +75,7 @@ class InputInterface(object):
         :return: True
         :rtype: bool
         """
-        with open(filename, "wb") as f:
-            pickle.dump(self, f, pickle.HIGHEST_PROTOCOL)
-        return True
+        raise NotImplementedError
 
     def load(self, filename):
         """load
@@ -89,9 +85,7 @@ class InputInterface(object):
         :return: a new input
         :rtype: InputInterface
         """
-        with open(filename, "rb") as f:
-            return pickle.load(f)
-        return None
+        raise NotImplementedError
 
     def add_patterns(self, new_patterns):
         """add_patterns

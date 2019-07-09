@@ -1,4 +1,18 @@
+import json
+
+from quasimodo import serialized_object_reader
 from .input_interface import InputInterface
+
+OBJECTS = "objects"
+
+SUBJECTS = "subjects"
+
+GENERATED_FACTS = "generated_facts"
+
+PATTERNS = "patterns"
+
+SEEDS = "seeds"
+
 
 class Inputs(InputInterface):
     """Inputs
@@ -133,3 +147,40 @@ class Inputs(InputInterface):
                       self.get_generated_facts(),
                       self.get_subjects(),
                       new_objects)
+
+    def save(self, filename):
+        """save
+        Saves the object into a file
+        :param filename: the file where to save the object
+        :type filename: str
+        :return: True
+        :rtype: bool
+        """
+        dump = dict()
+        dump[SEEDS] = [x.to_dict() for x in self._seeds]
+        dump[PATTERNS] = [x.to_dict() for x in self._patterns]
+        dump[GENERATED_FACTS] = [x.to_dict() for x in self._generated_facts]
+        dump[SUBJECTS] = [x.to_dict() for x in self._subjects]
+        dump[OBJECTS] = [x.to_dict() for x in self._objects]
+        with open(filename, "w") as f:
+            json.dump(dump, f)
+        return True
+
+    def load(self, filename):
+        """load
+        Loads an input
+        :param filename: the file containing the input
+        :type filename: str
+        :return: a new input
+        :rtype: InputInterface
+        """
+        read_input = Inputs()
+        with open(filename, "r") as f:
+            input_json = json.load(f)
+            read_input = read_input.replace_seeds(serialized_object_reader.read_seeds(input_json[SEEDS]))
+            read_input = read_input.replace_patterns(serialized_object_reader.read_patterns(input_json[PATTERNS]))
+            read_input = read_input.replace_generated_facts(
+                serialized_object_reader.read_generated_facts(input_json[GENERATED_FACTS]))
+            read_input = read_input.replace_subjects(serialized_object_reader.read_subjects(input_json[SUBJECTS]))
+            read_input = read_input.replace_objects(serialized_object_reader.read_objects(input_json[OBJECTS]))
+        return read_input
