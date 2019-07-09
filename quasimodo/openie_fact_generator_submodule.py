@@ -17,6 +17,8 @@ from .submodule_interface import SubmoduleInterface
 from .modality import Modality
 from quasimodo.parameters_reader import ParametersReader
 
+FORBIDDEN_BEFORE_SUBJECT = ["a", "the", "an"]
+
 PATTERN = 2
 
 SCORE = 1
@@ -216,10 +218,11 @@ def get_modality(subject, obj, maxi_length_object, maxi_obj, suggestion):
     if maxi_length_object != get_number_words(obj):
         modality_temp = "TBC[" + maxi_obj + "]"
     position_subject = get_position_subject(subject, suggestion)
-    if position_subject != 0:
+    before_subject = suggestion[STATEMENT][:position_subject].strip()
+    if position_subject != 0 and before_subject not in FORBIDDEN_BEFORE_SUBJECT:
         if len(modality_temp) > 0:
             modality_temp += " // "
-        modality = Modality(modality_temp + "some[subj" + "/" + suggestion[STATEMENT][:position_subject] + "]")
+        modality = Modality(modality_temp + "some[subj" + "/" + before_subject + "]")
     else:
         modality = Modality(modality_temp)
     return modality
