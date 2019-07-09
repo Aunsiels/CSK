@@ -6,6 +6,18 @@ class GeneratedFactInterface(FactInterface):
     Represents a fact which was generated
     """
 
+    def change_subject(self, new_subject):
+        raise NotImplementedError
+
+    def change_predicate(self, new_predicate):
+        raise NotImplementedError
+
+    def change_object(self, new_object):
+        raise NotImplementedError
+
+    def change_modality(self, new_modality):
+        raise NotImplementedError
+
     def __init__(self):
         super().__init__()
         self._score = None

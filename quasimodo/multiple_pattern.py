@@ -1,7 +1,16 @@
+from quasimodo.serializable import Serializable
 from .pattern_interface import PatternInterface
 
 
-class MultiplePattern(PatternInterface):
+class MultiplePattern(PatternInterface, Serializable):
+
+    def to_dict(self):
+        res = dict()
+        res["type"] = "MultiplePattern"
+        res["patterns"] = []
+        for pattern in self._patterns:
+            res["patterns"].append(pattern.to_dict())
+        return res
 
     def __init__(self, pattern=None):
         super().__init__()

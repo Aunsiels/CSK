@@ -9,12 +9,12 @@ import spacy
 import os
 
 from quasimodo.openie_reader import OpenIEReader
+from quasimodo.submodule_reference_interface import SubmoduleReferenceInterface
 from .multiple_scores import MultipleScore
 from .generated_fact import GeneratedFact
 from .statement_maker import StatementMaker
 from .submodule_interface import SubmoduleInterface
 from .modality import Modality
-from .referencable_interface import ReferencableInterface
 from quasimodo.parameters_reader import ParametersReader
 
 PATTERN = 2
@@ -32,8 +32,8 @@ QUESTION = 4
 _nlp = spacy.load('en_core_web_sm')
 _plural_engine = inflect.engine()
 
-reference_corenlp = ReferencableInterface("CoreNLP")
-reference_openie5 = ReferencableInterface("OpenIE5")
+reference_corenlp = SubmoduleReferenceInterface("CoreNLP")
+reference_openie5 = SubmoduleReferenceInterface("OpenIE5")
 
 parameters_reader = ParametersReader()
 MEMORY_CORENLP = parameters_reader.get_parameter("memory-corenlp") or "10G"
@@ -382,8 +382,7 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
         maxi_obj = get_maximal_object(corenlp_result_sentence, maxi_length_predicate)
         maxi_length_object = get_number_words(maxi_obj)
         contains_than = contains_than_in_object(corenlp_result_sentence)
-        score_based_on_ranking = (2 * self.default_number_suggestions - suggestion[1]) / \
-                                 (2 * self.default_number_suggestions)
+        score_based_on_ranking = self.get_score_based_on_ranking(suggestion)
         if len(corenlp_result_sentence["openie"]) == 0:
             # Try simple extraction as OpenIE is bad for this
             se = _simple_extraction(suggestion[0])
@@ -451,9 +450,11 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
             negative = get_negativity(suggestion)
             facts = [fact for fact in facts if
                      len(fact) > 0 and len(fact[0]) > 1 and len(fact[1]) > 1 and len(fact[2]) > 1]
+            score_based_on_ranking = self.get_score_based_on_ranking(suggestion)
             for fact in facts:
                 multiple_score = MultipleScore()
                 multiple_score.add_score(float(fact[3].replace(",", ".")), self._module_reference, reference_openie5)
+                multiple_score.add_score(score_based_on_ranking, self._module_reference, self)
                 generated_facts.append(
                     GeneratedFact(
                         fact[0],
@@ -465,6 +466,11 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                         sentence,
                         suggestion[2]))
         return generated_facts
+
+    def get_score_based_on_ranking(self, suggestion):
+        score_based_on_ranking = (2 * self.default_number_suggestions - suggestion[1]) / \
+                                 (2 * self.default_number_suggestions)
+        return score_based_on_ranking
 
     def write_result_suggestion(self, suggestion, corenlp_result_sentence):
         if self.use_cache:

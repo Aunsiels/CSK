@@ -1,3 +1,4 @@
+from quasimodo.serializable import Serializable
 from .fact_interface import FactInterface
 from .subject import Subject
 from .object import Object
@@ -5,12 +6,25 @@ from .predicate import Predicate
 from .modality import Modality
 
 
-class Fact(FactInterface):
+class Fact(FactInterface, Serializable):
     """Fact
     The default implementation of FactInterface
     """
 
-    def __init__(self, subject, predicate, obj, negative=False, modality=None):
+    def to_dict(self):
+        res = dict()
+        res["type"] = "Fact"
+        res["subject"] = self._subject.to_dict()
+        res["predicate"] = self._predicate.to_dict()
+        res["object"] = self._object.to_dict()
+        if self._modality is not None:
+            res["modality"] = self._modality.to_dict()
+        else:
+            res["modality"] = {"type": "NO_MODALITY"}
+        res["negative"] = self._negative
+        return res
+
+    def __init__(self, subject, predicate, obj, modality=None, negative=False):
         super().__init__()
         if type(subject) == str:
             self._subject = Subject(subject)
@@ -34,26 +48,26 @@ class Fact(FactInterface):
         return Fact(new_subject,
                     self.get_predicate(),
                     self.get_object(),
-                    self.is_negative(),
-                    self.get_modality())
+                    self.get_modality(),
+                    self.is_negative())
 
     def change_predicate(self, new_predicate):
         return Fact(self.get_subject(),
                     new_predicate,
                     self.get_object(),
-                    self.is_negative(),
-                    self.get_modality())
+                    self.get_modality(),
+                    self.is_negative())
 
     def change_object(self, new_object):
         return Fact(self.get_subject(),
                     self.get_predicate(),
                     new_object,
-                    self.is_negative(),
-                    self.get_modality())
+                    self.get_modality(),
+                    self.is_negative())
 
     def change_modality(self, new_modality):
         return Fact(self.get_subject(),
                     self.get_predicate(),
                     self.get_object(),
-                    self.is_negative(),
-                    new_modality)
+                    new_modality,
+                    self.is_negative())
