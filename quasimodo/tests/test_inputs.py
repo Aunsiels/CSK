@@ -81,6 +81,10 @@ class MyTestCase(unittest.TestCase):
         inputs.save("temp.json")
         inputs_read = inputs.load("temp.json")
         self.assertEqual(len(inputs.get_generated_facts()), len(inputs_read.get_generated_facts()))
+        self.assertEqual(len(inputs.get_subjects()), len(inputs_read.get_generated_facts()))
+        self.assertEqual(len(inputs.get_patterns()), len(inputs_read.get_patterns()))
+        self.assertEqual(len(inputs.get_seeds()), len(inputs_read.get_seeds()))
+        self.assertEqual(len(inputs.get_objects()), len(inputs_read.get_objects()))
 
 
 if __name__ == '__main__':
