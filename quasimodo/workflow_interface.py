@@ -4,6 +4,7 @@ import logging
 import pickle
 
 from quasimodo.parameters_reader import ParametersReader
+from .inputs import Inputs
 
 parameters_reader = ParametersReader()
 OUT_DIR = parameters_reader.get_parameter("out-dir") or os.path.dirname(__file__) + "/out/"
@@ -71,9 +72,8 @@ class WorkflowInterface(object):
         outs = [x for x in outs if module.get_name() in x]
         if outs:
             filename = sorted(outs)[-1]
-            with open(OUT_DIR + filename, "rb") as f:
-                logging.info("Loading " + filename)
-                return pickle.loads(f.read())
+            in_temp = Inputs()
+            return in_temp.load(OUT_DIR + filename)
         return self.generate_input()
 
     def __str__(self):
