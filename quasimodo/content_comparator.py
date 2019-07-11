@@ -9,7 +9,8 @@ nlp = spacy.load('en_core_web_sm', disable=["tagger", "parser", "ner"])
 
 def lemmatize_contents(contents):
     for i in range(len(contents)):
-        contents[i] = lemmatize(contents[i].lower())
+        if contents[i] is not None:
+            contents[i] = lemmatize(contents[i].lower())
 
 
 class ContentComparator(SubmoduleInterface):
@@ -20,7 +21,12 @@ class ContentComparator(SubmoduleInterface):
 
     def process(self, input_interface):
         logging.info("Start the wikipedia cooccurrence checking")
-        self.setup_processing(input_interface)
+        while True:
+            try:
+                self.setup_processing(input_interface)
+                break
+            except:
+                logging.info("Failed to setup the content comparator")
         generated_facts = input_interface.get_generated_facts()
         # Group by subject
         by_subject = self.group_by_subject(generated_facts)
@@ -29,6 +35,7 @@ class ContentComparator(SubmoduleInterface):
         for subject in by_subject:
             try:
                 contents = self.get_contents(subject)
+                contents = [x for x in contents if x is not None]
             except Exception as e:
                 logging.info("Problem with " + subject + " " + str(e))
                 continue

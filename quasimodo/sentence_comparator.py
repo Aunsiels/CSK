@@ -18,13 +18,12 @@ class SentenceComparator(ContentComparator):
             for line in f:
                 line = line.strip()
                 for subject in subjects:
-                    if subject in subjects:
-                        subject = subject.get()
-                        if subject in line:
-                            if subject in self.per_subject:
-                                self.per_subject[subject].append(line)
-                            else:
-                                self.per_subject[subject] = [line]
+                    subject = subject.get()
+                    if subject in line:
+                        if subject in self.per_subject:
+                            self.per_subject[subject].append(line)
+                        else:
+                            self.per_subject[subject] = [line]
 
     def get_contents(self, subject):
         if len(self.filename) == 0:
