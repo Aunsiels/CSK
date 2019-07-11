@@ -1,0 +1,16 @@
+clear
+cloudy
+damp
+dry
+foggy
+frosty
+icy
+mild
+misty
+overcast
+rainy
+snowy
+stormy
+sunny
+wet
+windy

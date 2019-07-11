@@ -1,0 +1,8 @@
+vegan
+vegetarian
+keto
+omnivore
+carnivore
+herbivore
+pestivore
+zoophage

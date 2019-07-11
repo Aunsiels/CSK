@@ -31,20 +31,44 @@ class TestAreTransformation(unittest.TestCase):
         self.assertEqual(inputs.get_generated_facts()[0].get_predicate(), "has_color")
 
     def test_body(self):
-        suggestion = ("why are pandas hands", 1.0, None, "panda")
+        suggestion = ("why do pandas have hands", 1.0, None, "panda")
         new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
         inputs = self.empty_input.add_generated_facts(new_gfs)
         inputs = self.are_transformation.process(inputs)
         self.assertEqual(1, len(inputs.get_generated_facts()))
-        self.assertEqual(inputs.get_generated_facts()[0].get_predicate(), "has_physical_part")
+        self.assertEqual(inputs.get_generated_facts()[0].get_predicate(), "has_body_part")
 
-    def test_pattern(self):
+    def test_trait(self):
         suggestion = ("why are pandas nice", 1.0, PatternGoogle("why are", "has_property", 1.0), "panda")
         new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
         inputs = self.empty_input.add_generated_facts(new_gfs)
         inputs = self.are_transformation.process(inputs)
         self.assertEqual(1, len(inputs.get_generated_facts()))
+        self.assertEqual(inputs.get_generated_facts()[0].get_predicate(), "has_trait")
+
+    def test_property(self):
+        suggestion = ("why are pandas dead", 1.0, PatternGoogle("why are", "has_property", 1.0), "panda")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        inputs = self.empty_input.add_generated_facts(new_gfs)
+        inputs = self.are_transformation.process(inputs)
+        self.assertEqual(1, len(inputs.get_generated_facts()))
         self.assertEqual(inputs.get_generated_facts()[0].get_predicate(), "has_property")
+
+    def test_property_no_relation(self):
+        suggestion = ("why are pandas dead", 1.0, PatternGoogle("why are"), "panda")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        inputs = self.empty_input.add_generated_facts(new_gfs)
+        inputs = self.are_transformation.process(inputs)
+        self.assertEqual(1, len(inputs.get_generated_facts()))
+        self.assertEqual(inputs.get_generated_facts()[0].get_predicate(), "are")
+
+    def test_quick(self):
+        suggestion = ("why are pandas quick", 1.0, PatternGoogle("why are", "has_property", 1.0), "panda")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        inputs = self.empty_input.add_generated_facts(new_gfs)
+        inputs = self.are_transformation.process(inputs)
+        self.assertEqual(1, len(inputs.get_generated_facts()))
+        self.assertEqual(inputs.get_generated_facts()[0].get_predicate(), "has_movement")
 
     def test_ignore(self):
         suggestion = ("why do pandas eat bamboo", 1.0, PatternGoogle("why do", "has_property", 1.0), "panda")

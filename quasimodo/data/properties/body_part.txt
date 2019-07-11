@@ -1,0 +1,145 @@
+abdomen
+anal fin
+ankle
+antenna
+arm
+beak
+beard
+belly
+blood
+body
+bone
+brain
+breast
+brisket
+cannon
+carpus
+caudal fin
+cephalothorax
+cheek
+chest
+chest floor
+chin
+claw
+claw or chela
+comb
+compound eye
+coronet
+costal shell
+crest
+croup
+crown
+dactyl
+dewclaw
+dewlap
+dock
+dorsal fins
+ear
+ears
+elbow
+ergot
+eye
+eyes
+face
+feet
+finger
+fingers
+flank
+flesh
+foot
+forearm
+forehead
+foreleg
+fore udder
+forewing
+front cannon
+front leg
+fur
+gaskin
+gill
+gill cover
+hackles
+hair
+hand
+hands
+head
+heart
+heel
+hindleg
+hind leg
+hindwing
+hip
+hock
+hoof
+hook
+horn
+jaw
+knee
+knees
+lateral line
+leg
+legs
+lip
+lips
+loin
+mandible
+mandibles
+marginal shield
+merus
+middle leg
+moustache
+mouth
+muscle
+muzzle
+nail
+nape
+neck
+nose
+nostril
+nuchal shell
+pastern
+paw
+pectoral fin
+pelvic fin
+point of hip
+poll
+propodus
+pygal shield
+rear cannon
+rump
+scales
+shoulder
+shoulders
+skin
+spiracle
+stifle
+stomach
+swimming legs
+switch
+tail
+tarsus
+teat
+teeth
+thigh
+thorax
+throat
+throat latch
+thumb
+thumbs
+toe
+toes
+tongue
+tooth
+trunk
+tusk
+udder
+undertail feathers
+uppertail feathers
+vertebral shell
+walking legs
+wattle
+whisker
+whiskers
+wing
+withers
+wrist

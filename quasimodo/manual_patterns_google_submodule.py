@@ -15,10 +15,13 @@ class ManualPatternsGoogleSubmodule(SubmoduleInterface):
 
     def process(self, input_interface):
         logging.info("Start the manual patterns for browsers submodule")
-        new_patterns = [PatternGoogle("why are <SUBJS>"), PatternGoogle("why is <SUBJ>"),
+        new_patterns = [PatternGoogle("why are <SUBJS>", relation="has_property"),
+                        PatternGoogle("why is <SUBJ>", relation="has_property"),
                         PatternGoogle("why do <SUBJS>"), PatternGoogle("why does <SUBJ>"),
-                        PatternGoogle("why can <SUBJS>", "CAN"), PatternGoogle("how are <SUBJS>"),
-                        PatternGoogle("how is <SUBJ>"), PatternGoogle("how do <SUBJS>"),
+                        PatternGoogle("why can <SUBJS>", "CAN"),
+                        PatternGoogle("how are <SUBJS>", relation="has_property"),
+                        PatternGoogle("how is <SUBJ>", relation="has_property"),
+                        PatternGoogle("how do <SUBJS>"),
                         PatternGoogle("how does <SUBJ>"), PatternGoogle("how can <SUBJS>", "CAN"),
                         PatternGoogle("why can't <SUBJS>", "CAN", True),
                         PatternGoogle("why <SUBJ>")]

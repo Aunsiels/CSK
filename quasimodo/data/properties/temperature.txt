@@ -1,0 +1,10 @@
+freezing
+chilly
+cold
+cool
+lukewarm
+boiling
+muggy
+hot
+warm
+pleasant

@@ -1,0 +1,10 @@
+short
+very short
+rather short
+not very tall
+of average height
+above average height
+quite tall
+rather tall
+very tall
+really tall

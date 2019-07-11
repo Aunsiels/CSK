@@ -46,6 +46,7 @@ The fields are:
 - out-dir: A file where intermediate and final results are saved
 - question-cache-dir: A directory where the transformation from question to statement is saved
 - conceptual-caption-file: A file containing the captions from the Conceptual Caption Dataset
+- properties-dir: A directory containing files which group categories for hasProperty
 
 
 ## References
@@ -93,3 +94,19 @@ bash get_openimages.sh
 
 Conceptual captions can be downloaded at [https://ai.google.com/research/ConceptualCaptions](https://ai.google.com/research/ConceptualCaptions)
 The captions must be placed in a single file, containing one caption per line.
+
+### Traits
+
+Extracted from [http://ideonomy.mit.edu/essays/traits.html](http://ideonomy.mit.edu/essays/traits.html)
+
+### Colors
+
+Extracted from [https://simple.wikipedia.org/wiki/List_of_colors](https://simple.wikipedia.org/wiki/List_of_colors)
+
+### Movements
+
+Extracted from [https://thedramateacher.com/words-used-to-describe-movement-in-performance/](https://thedramateacher.com/words-used-to-describe-movement-in-performance/)
+
+### Adjectives and Adverbs list
+
+Extracted from [https://www.englishclub.com](https://www.englishclub.com)
