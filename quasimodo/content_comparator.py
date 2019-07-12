@@ -25,7 +25,7 @@ class ContentComparator(SubmoduleInterface):
             try:
                 self.setup_processing(input_interface)
                 break
-            except:
+            except Exception as e:
                 logging.info("Failed to setup the content comparator")
         generated_facts = input_interface.get_generated_facts()
         # Group by subject
