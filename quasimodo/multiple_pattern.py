@@ -40,7 +40,7 @@ class MultiplePattern(PatternInterface, Serializable):
                                for pattern in self._patterns]) / \
                 len(self._patterns)
             self._relation = "; ".join(set([pattern.get_relation()
-                                            for pattern in self._patterns]))
+                                            for pattern in self._patterns if pattern.get_relation() is not None]))
             self._group = "; ".join(set([pattern.get_group()
                                          for pattern in self._patterns]))
             # TODO: something more clever?
