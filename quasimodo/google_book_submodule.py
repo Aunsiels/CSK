@@ -80,7 +80,7 @@ class GoogleBookSubmodule(SubmoduleInterface):
         if service is None:
             logging.info("No service found for Google Book")
         maxi = 0
-        only_cache = True
+        only_cache = False
         for generated_fact in input_interface.get_generated_facts():
             query = _get_query_from_fact(generated_fact)
             occurrences = -1
