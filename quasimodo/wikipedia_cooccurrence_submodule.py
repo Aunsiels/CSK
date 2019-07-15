@@ -57,8 +57,7 @@ class WikipediaCooccurrenceSubmodule(ContentComparator):
         if self.use_cache:
             filename = wikipedia_page.replace(" ", "_").replace("/", "_")
             cache_value = self.cache.read_cache(filename)
-            if cache_value is not None:
-                return cache_value[0]
+            return cache_value
         return None
 
     def get_contents(self, subject):

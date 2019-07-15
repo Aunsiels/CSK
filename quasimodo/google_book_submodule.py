@@ -36,6 +36,7 @@ class GoogleBookSubmodule(SubmoduleInterface):
         self._name = "Google Book Submodule"
         self.use_cache = use_cache
         self.cache = MongoDBCache(cache_name, mongodb_location=DEFAULT_MONGODB_LOCATION)
+        self.internal_cache = None
 
     def _setup_cache(self):
         self._cache = dict()
@@ -50,9 +51,10 @@ class GoogleBookSubmodule(SubmoduleInterface):
 
     def read_cache(self, query):
         if self.use_cache:
-            cache_value = self.cache.read_cache(query)
-            if cache_value is not None:
-                return float(cache_value[0])
+            if self.internal_cache is None:
+                self.internal_cache = self.cache.read_all()
+            if query in self.internal_cache:
+                return float(self.internal_cache[query])
         return None
 
     def write_cache(self, query, total):
