@@ -1,6 +1,8 @@
+import re
+import logging
+
 from quasimodo.content_comparator import ContentComparator
 from quasimodo.only_subject_submodule import get_subjects_in_all_forms
-from nltk import ngrams
 
 
 class SentenceComparator(ContentComparator):
@@ -16,19 +18,18 @@ class SentenceComparator(ContentComparator):
             return
         self.per_subject = dict()
         subjects, variations = get_subjects_in_all_forms(input_interface)
+        logging.info("Reading sentence file...")
         with open(self.filename) as f:
-            for line in f:
-                new_line = line.strip().split(" ")
-                for n in range(1, 5):
-                    sub_words = ngrams(new_line, n)
-                    for words in sub_words:
-                        word = " ".join(words)
-                        if word in subjects:
-                            subject = variations[word]
-                            if subject in self.per_subject:
-                                self.per_subject[subject].append(line)
-                            else:
-                                self.per_subject[subject] = [line]
+            sentences = f.read()
+        logging.info("Start finding subjects")
+        for subject in subjects:
+            original = variations[subject]
+            if original not in self.per_subject:
+                self.per_subject[original] = set()
+            regex = re.compile("(^|\n)[^\n]*" + subject + "[^\n]*(\n|$)")
+            for match in regex.finditer(sentences):
+                self.per_subject[original].add(match.group().strip())
+        logging.info("End of preprocessing")
 
     def get_contents(self, subject):
         if len(self.filename) == 0:
