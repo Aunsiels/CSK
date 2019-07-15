@@ -23,7 +23,7 @@ class FileCache(object):
                 for line in f:
                     suggestion = line.strip().split("\t")
                     suggestions.append((suggestion[0], float(suggestion[1])))
-            return suggestions, True
+            return suggestions
         else:
             return None
 
@@ -33,4 +33,7 @@ class FileCache(object):
             shutil.rmtree(self.cache_dir, ignore_errors=True)
 
     def read_regex(self, regex):
+        raise NotImplementedError
+
+    def read_all(self):
         raise NotImplementedError
