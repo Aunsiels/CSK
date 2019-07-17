@@ -74,17 +74,17 @@ class Node:
         self.value = None
 
     def add(self, word):
-        self._add(word, word)
+        self.add_with_final_value(word, word)
 
-    def _add(self, word, remaining):
+    def add_with_final_value(self, final_value, remaining):
         if len(remaining) == 0:
-            self.create_terminal_node(word)
+            self.create_terminal_node(final_value)
         else:
             self._create_transition_to_new_node_if_required(remaining)
-            self._add_to_next_node(remaining, word)
+            self._add_to_next_node(remaining, final_value)
 
     def _add_to_next_node(self, remaining, word):
-        self.nexts[remaining[0]]._add(word, remaining[1:])
+        self.nexts[remaining[0]].add_with_final_value(word, remaining[1:])
 
     def _create_transition_to_new_node_if_required(self, remaining):
         if remaining[0] not in self.nexts:
