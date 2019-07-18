@@ -114,7 +114,6 @@ def compute_final_score(scores):
 
 def get_score_generated_fact_given_parsing_node(generated_fact, parsing_node):
     if parsing_node.value is None:
-        logging.info("No content found for " + str(generated_fact.get_subject().get()))
         return 0.0
     part_to_find = get_part_to_find_in_content(generated_fact)
     score = 0
@@ -156,6 +155,8 @@ class ContentComparator(SubmoduleInterface):
             try:
                 contents = self.get_contents(subject)
                 contents = [x for x in contents if x is not None]
+                if len(contents) == 0:
+                    logging.info("No content found for " + subject)
             except Exception as e:
                 logging.info("Problem with " + subject + " " + str(e))
                 continue
