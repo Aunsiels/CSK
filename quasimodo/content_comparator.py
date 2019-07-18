@@ -4,6 +4,8 @@ import spacy
 
 from quasimodo.submodule_interface import SubmoduleInterface
 
+MAX_SIZE_TO_LOOK_FOR = 6
+
 _nlp = spacy.load('en_core_web_sm', disable=["tagger", "parser", "ner"])
 
 
@@ -85,7 +87,7 @@ def get_score_generated_fact_given_lemmatized_content(lemmatized_content, genera
     counter = 0
     part_to_find = part_to_find.split(" ")
     for i in range(len(part_to_find)):
-        for j in range(i + 1, len(part_to_find) + 1):
+        for j in range(i + 1, min(i + MAX_SIZE_TO_LOOK_FOR + 1, len(part_to_find) + 1)):
             po_temp = " ".join(part_to_find[i:j])
             counter += j - i
             if po_temp in lemmatized_content:
@@ -125,7 +127,12 @@ class ContentComparator(SubmoduleInterface):
                 logging.info("Failed to setup the content comparator, " + str(e))
         generated_facts = input_interface.get_generated_facts()
         by_subject = group_by_subject(generated_facts)
+        n_subjects = len(by_subject.keys())
+        counter = 0
         for subject in by_subject:
+            if counter % 1000 == 0:
+                logging.info("%d done over %d", counter, n_subjects)
+            counter += 1
             try:
                 contents = self.get_contents(subject)
                 contents = [x for x in contents if x is not None]

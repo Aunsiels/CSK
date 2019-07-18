@@ -3,9 +3,11 @@ This is a skeleton for building your own solver.
 
 You just need to find and fix the two TODOs in this file.
 """
+from pprint import pprint
 from typing import List
 import re
 
+import math
 import nltk
 import spacy
 
@@ -51,50 +53,77 @@ class BasicCSKSolver(SolverBase):
 
         question_text = question.stem.lower()
         choices = question.choices
+        choice_texts = [x.text for x in choices]
 
         question_text = self.lemmatize(question_text)
 
-        confidences: List[float] = []
-
-        # This frequency helps us to know what are the distinctive elements
-        w_freq = self.get_frequency_sequences_in_choices(choices)
-
-        for i, choice in enumerate(question.choices):
-            label = choice.label
-            choice_text = self.lemmatize(choice.text)
-
-            propositions = choice_text.lower().split(" ")
-            propositions_subparts = []
-            for i in range(len(propositions)):
-                for j in range(i + 1, len(propositions) + 1):
-                    propositions_subparts.append(" ".join(propositions[i:j]))
-
-            confidence = 0
-
-            for subpart in propositions_subparts:
-                if len(subpart) <= 3:
-                    continue
-                association_score_pairs = self.subject_to_objects.get(subpart, [])
-                association_score_pairs += self.object_to_subjects.get(subpart, [])
-                confidence_temp = self.get_confidence_associations_for_text(association_score_pairs, question_text)
-                confidence_temp /= w_freq[subpart]
-                confidence += confidence_temp
-            confidences.append(confidence)
-
+        confidences = self.compute_confidences_method2(question_text, choice_texts)
 
         return MultipleChoiceAnswer(
             [ChoiceConfidence(choice, confidence)
              for choice, confidence in zip(choices, confidences)]
         )
 
+    def compute_confidences_method2(self, question_text, choices):
+        confidences: List[float] = []
+        associations_question = self.get_subject_associated_words(question_text)
+        for choice in choices:
+            choice_text = self.lemmatize(choice)
+            associations_choice = self.get_subject_associated_words(choice_text)
+            confidences.append(self.compare_two_associations(associations_question, associations_choice))
+        return confidences
+
+    def compute_confidences_method1(self, question_text, choices):
+        confidences: List[float] = []
+        # This frequency helps us to know what are the distinctive elements
+        w_freq = self.get_frequency_sequences_in_choices(choices)
+        for choice in choices:
+            confidence = self.compute_confident_choice_method1(question_text, choice, w_freq)
+            confidences.append(confidence)
+        return confidences
+
+    def compute_confident_choice_method1(self, question_text, choice, w_freq):
+        choice_text = self.lemmatize(choice)
+        propositions = choice_text.lower().split(" ")
+        propositions_sub_parts = []
+        for i in range(len(propositions)):
+            for j in range(i + 1, len(propositions) + 1):
+                propositions_sub_parts.append(" ".join(propositions[i:j]))
+        confidence = 0
+        for subpart in propositions_sub_parts:
+            if len(subpart) <= 3:
+                continue
+            association_score_pairs = self.subject_to_objects.get(subpart, []).copy()
+            association_score_pairs += self.object_to_subjects.get(subpart, [])
+            confidence_temp = self.get_confidence_associations_for_text(association_score_pairs, question_text)
+            confidence_temp /= w_freq.get(subpart, 1.0)
+            confidence += confidence_temp
+        return confidence
+
     def get_subject_associated_words(self, sentence):
         association_score_pairs = dict()
-        for word in nltk.word_tokenize(sentence):
-            association_score_pairs[word] = association_score_pairs.get(word, 0.0) + 1.0
+        maxi = 0.01
+        n_subjects = 0
         for subject in self.subject_to_objects:
             if subject in sentence:
+                n_subjects += 1
                 for association, score in self.subject_to_objects[subject]:
-                    association_score_pairs[association] = association_score_pairs.get(association, 0.0) + score
+                    association_score_pairs[association] = association_score_pairs.get(association, 0.0) + math.exp(score)
+                    maxi = max(maxi, association_score_pairs[association])
+        for obj in self.object_to_subjects:
+            if obj in sentence:
+                n_subjects += 1
+                for association, score in self.object_to_subjects[obj]:
+                    association_score_pairs[association] = association_score_pairs.get(association, 0.0) + math.exp(score)
+                    maxi = max(maxi, association_score_pairs[association])
+        if n_subjects != 0:
+            for association in association_score_pairs:
+                association_score_pairs[association] /= n_subjects
+        tokens = nltk.word_tokenize(sentence)
+        for i in range(len(tokens)):
+            for j in range(i + 1, len(tokens) + 1):
+                word = " ".join(tokens[i:j])
+                association_score_pairs[word] = association_score_pairs.get(word, 0.0) + 10.0 * maxi
         return association_score_pairs
 
     def compare_two_associations(self, association_score_pairs0, association_score_pairs1):
@@ -103,7 +132,9 @@ class BasicCSKSolver(SolverBase):
         keys1 = set(association_score_pairs1.keys())
         final_keys = keys0.intersection(keys1)
         for key in final_keys:
-            score += association_score_pairs0[key] * association_score_pairs1[key]
+            score0 = association_score_pairs0[key]
+            score1 = association_score_pairs1[key]
+            score += score0 * score1 * key.count(" ")
         return score
 
     def get_confidence_associations_for_text(self, association_score_pairs, question_text):
@@ -120,7 +151,7 @@ class BasicCSKSolver(SolverBase):
     def get_frequency_sequences_in_choices(self, choices):
         w_freq = dict()
         for i, choice in enumerate(choices):
-            propositions = self.lemmatize(choice.text.lower()).split(" ")
+            propositions = self.lemmatize(choice.lower()).split(" ")
             for i in range(len(propositions)):
                 for j in range(i + 1, len(propositions) + 1):
                     sub_part_choice = " ".join(propositions[i:j])

@@ -8,13 +8,13 @@ class TupleKBBasicCSKSolver(BasicCSKSolver):
         self.object_to_subjects = dict()
         with open("/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/"
                   "commonsense_data/TupleKB/aristo-tuple-kb-v5-mar2017/"
-                  "tuplekb_20k.tsv") as f:
+                  "tuplekb_spor.tsv") as f:
             for line in f:
                 line = line.strip().split("\t")
                 subj = line[0]
-                pred = line[1]
+                pred = line[1].replace("-", " ")
                 obj = line[2]
-                score = 1.0
+                score = float(line[3])
                 if subj in self.subject_to_objects:
                     self.subject_to_objects[subj].append((obj, score))
                     self.subject_to_objects[subj].append((pred, score))
