@@ -1,14 +1,14 @@
 import logging
 
-import spacy
+import nltk
+from nltk.stem import WordNetLemmatizer
 
 from quasimodo.submodule_interface import SubmoduleInterface
 from quasimodo.parsing_node import ParsingNode
 
 MAX_SIZE_TO_LOOK_FOR = 6
 
-_nlp = spacy.load('en_core_web_sm', disable=["tagger", "parser", "ner"])
-
+lemmatizer = WordNetLemmatizer()
 
 def lemmatize_contents(contents):
     for i in range(len(contents)):
@@ -113,6 +113,9 @@ def compute_final_score(scores):
 
 
 def get_score_generated_fact_given_parsing_node(generated_fact, parsing_node):
+    if parsing_node.value is None:
+        logging.info("No content found for " + str(generated_fact.get_subject().get()))
+        return 0.0
     part_to_find = get_part_to_find_in_content(generated_fact)
     score = 0
     counter = 0
@@ -177,8 +180,4 @@ class ContentComparator(SubmoduleInterface):
 
 
 def lemmatize(s):
-    doc = _nlp(s)
-    res = []
-    for x in doc:
-        res.append(x.lemma_)
-    return " ".join(res)
+    return " ".join([lemmatizer.lemmatize(x) for x in nltk.word_tokenize(s)])

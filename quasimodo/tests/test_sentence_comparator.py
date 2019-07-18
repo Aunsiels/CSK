@@ -12,13 +12,34 @@ from quasimodo.subject import Subject
 
 class TestSentenceComparator(unittest.TestCase):
 
+    def test_get_content(self):
+        sc = ConceptualCaptionsComparatorSubmodule(None)
+        self.empty_input = Inputs()
+        subjects = {Subject("elephant"), Subject("penguin"), Subject("lion")}
+        inputs = self.empty_input.add_subjects(subjects)
+        sc.setup_processing(inputs)
+        contents = sc.get_contents("elephant")
+        self.assertEqual(3748, len(contents))
+        contents = sc.get_contents("penguin")
+        self.assertEqual(1273, len(contents))
+        contents = sc.get_contents("lion")
+        self.assertEqual(2616, len(contents))
+
     def test_conceptual_caption(self):
         sc = ConceptualCaptionsComparatorSubmodule(None)
         self.empty_input = Inputs()
-        self.dummy_reference = ReferencableInterface("Dummy reference")
+        self.dummy_reference = ReferencableInterface("DUMMY")
 
-        dataset = [("elephant", "download", "baby", 0), ("elephant", "have", "tusks", 1)]
-        subjects = {Subject("elephant")}
+        dataset = [("elephant", "download", "baby", 0),
+                   ("elephant", "have", "tusks", 1),
+                   ("lion", "eat", "gazella", 0),
+                   ("penguin", "eat", "fish", 0),
+                   ("gorilla", "eat", "banana", 0),
+                   ("sky", "hasProperty", "blue", 0),
+                   ("computer", "is", "working", 1)]
+        subjects = {Subject("elephant"), Subject("penguin"), Subject("lion"),
+                    Subject("gorilla"), Subject("sky"), Subject("computer")}
+
         gfs = []
         pos = 0
         for subject, predicate, obj, truth in dataset:
