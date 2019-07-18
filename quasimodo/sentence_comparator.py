@@ -64,4 +64,4 @@ class SentenceComparator(ContentComparator):
     def get_contents(self, subject):
         if len(self.filename) == 0:
             return []
-        return self.per_subject.get(subject, [])
+        return self.per_subject.get(self.variations.get(subject, subject), [])

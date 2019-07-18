@@ -15,7 +15,7 @@ class TestSentenceComparator(unittest.TestCase):
     def test_get_content(self):
         sc = ConceptualCaptionsComparatorSubmodule(None)
         self.empty_input = Inputs()
-        subjects = {Subject("elephant"), Subject("penguin"), Subject("lion")}
+        subjects = {Subject("elephant"), Subject("penguin"), Subject("lion"), Subject("raccoon")}
         inputs = self.empty_input.add_subjects(subjects)
         sc.setup_processing(inputs)
         contents = sc.get_contents("elephant")
@@ -24,6 +24,8 @@ class TestSentenceComparator(unittest.TestCase):
         self.assertEqual(1273, len(contents))
         contents = sc.get_contents("lion")
         self.assertEqual(2616, len(contents))
+        contents = sc.get_contents("raccoon")
+        self.assertEqual(365, len(contents))
 
     def test_conceptual_caption(self):
         sc = ConceptualCaptionsComparatorSubmodule(None)
@@ -36,9 +38,12 @@ class TestSentenceComparator(unittest.TestCase):
                    ("penguin", "eat", "fish", 0),
                    ("gorilla", "eat", "banana", 0),
                    ("sky", "hasProperty", "blue", 0),
-                   ("computer", "is", "working", 1)]
+                   ("computer", "is", "working", 1),
+                   ("raccoon", "hasProperty", "blue", 0)
+                   ]
         subjects = {Subject("elephant"), Subject("penguin"), Subject("lion"),
-                    Subject("gorilla"), Subject("sky"), Subject("computer")}
+                    Subject("gorilla"), Subject("sky"), Subject("computer"),
+                    Subject("raccoon")}
 
         gfs = []
         pos = 0
