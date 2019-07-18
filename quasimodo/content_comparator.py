@@ -3,6 +3,7 @@ import logging
 import spacy
 
 from quasimodo.submodule_interface import SubmoduleInterface
+from quasimodo.parsing_node import ParsingNode
 
 MAX_SIZE_TO_LOOK_FOR = 6
 
@@ -111,6 +112,22 @@ def compute_final_score(scores):
     return final_score
 
 
+def get_score_generated_fact_given_parsing_node(generated_fact, parsing_node):
+    part_to_find = get_part_to_find_in_content(generated_fact)
+    score = 0
+    counter = 0
+    part_to_find = part_to_find.split(" ")
+    for i in range(len(part_to_find)):
+        for j in range(i + 1, min(i + MAX_SIZE_TO_LOOK_FOR + 1, len(part_to_find) + 1)):
+            po_temp = " ".join(part_to_find[i:j])
+            counter += (j - i) * parsing_node.value
+            final_node = parsing_node.read_word(po_temp)
+            if final_node is not None:
+                score += (j - i) * final_node.value
+    score /= counter
+    return score
+
+
 class ContentComparator(SubmoduleInterface):
 
     def __init__(self, module_reference):
@@ -140,10 +157,17 @@ class ContentComparator(SubmoduleInterface):
                 logging.info("Problem with " + subject + " " + str(e))
                 continue
             lemmatize_contents(contents)
+            parsing_node = self.create_parsing_node_from_contents(contents)
             for generated_fact in by_subject[subject]:
-                final_score = get_score_generated_fact_given_all_contents(generated_fact, contents)
+                final_score = get_score_generated_fact_given_parsing_node(generated_fact, parsing_node)
                 generated_fact.get_score().add_score(final_score, self._module_reference, self)
         return input_interface
+
+    def create_parsing_node_from_contents(self, contents):
+        parsing_node = ParsingNode()
+        for content in contents:
+            parsing_node.add_sentence(content)
+        return parsing_node
 
     def setup_processing(self, input_interface):
         raise NotImplementedError

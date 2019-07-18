@@ -13,10 +13,14 @@ class TestWikipediaCooccurrence(unittest.TestCase):
         self.empty_input = Inputs()
 
     def test_lion(self):
-        generated_fact = GeneratedFact("lion", "is a", "cat", "", False, MultipleScore(), "")
-        inputs = self.empty_input.add_generated_facts([generated_fact])
+        n_copies = 10
+        gfs = []
+        for _ in range(n_copies):
+            generated_fact = GeneratedFact("lion", "is a", "cat", "", False, MultipleScore(), "")
+            gfs.append(generated_fact)
+        inputs = self.empty_input.add_generated_facts(gfs)
         inputs = self.wikipedia_no_cache.process(inputs)
-        self.assertEqual(1, len(inputs.get_generated_facts()))
+        self.assertEqual(n_copies, len(inputs.get_generated_facts()))
         scores = inputs.get_generated_facts()[0].get_score()
         scores_wikipedia = [x for x in scores.scores if x[2].get_name() == "Wikipedia Cooccurrence"]
         self.assertEqual(1, len(scores_wikipedia))
