@@ -170,7 +170,8 @@ class ContentComparator(SubmoduleInterface):
     def create_parsing_node_from_contents(self, contents):
         parsing_node = ParsingNode()
         for content in contents:
-            parsing_node.add_sentence(content)
+            for sentence in nltk.sent_tokenize(content):
+                parsing_node.add_sentence(sentence)
         return parsing_node
 
     def setup_processing(self, input_interface):
