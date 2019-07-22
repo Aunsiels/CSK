@@ -14,7 +14,7 @@ to_keep_columns = ['is negative', "Yahoo Questions",
                    'Quora Questions',  'Simple Wikipedia Cooccurrence',
                    'Wikipedia Cooccurrence', 'Image Tag submodule',
                    'Answers.com Questions', 'Flickr', 'Google Book Submodule', 'TBC',
-                   "CoreNLP", "OpenIE5", "number sentences"]
+                   "CoreNLP", "OpenIE5", "number sentences", "Conceptual Caption"]
 
 use_embeddings = False
 
@@ -31,6 +31,9 @@ class Trainer(object):
         self._filter = [i for i, x in enumerate(self._df.columns)
                         if x in to_keep_columns]
         self._to_keep_columns = [x for x in self._df.columns if x in to_keep_columns]
+        for x in self._df.columns:
+            if x not in to_keep_columns:
+                logging.info(str(x) + " was ignored")
         self.scaler = preprocessing.StandardScaler()
         self.inputer = SimpleImputer(missing_values=np.nan, strategy='constant', fill_value=np.nan)
 

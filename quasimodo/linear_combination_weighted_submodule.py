@@ -8,11 +8,13 @@ from .multiple_module_reference import MultipleModuleReference
 from .multiple_submodule_reference import MultipleSubmoduleReference
 from .multiple_pattern import MultiplePattern
 from .trainer import Trainer
+from quasimodo.parameters_reader import ParametersReader
 
 
 save_weights = True
 save_file = os.path.dirname(__file__) + "/temp/weights.tsv"
-annotations_file = os.path.dirname(__file__) + "/temp/all_manual_annotations.tsv"
+parameters_reader = ParametersReader()
+annotations_file = parameters_reader.get_parameter("annotations-file") or "data/all_manual_annotations.tsv"
 
 
 def read_sentence(sentence):

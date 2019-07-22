@@ -10,12 +10,13 @@ class AssertionValidationModule(ModuleInterface):
     """
 
     def __init__(self):
-        module_names = ["google-book",
+        module_names = [
+                        "google-book",
                         "flickr-clusters",
                         "imagetag",
                         "wikipedia-cooccurrence",
                         "simple-wikipedia-cooccurrence",
-                        "conceptual-captions"
+                        "conceptual-captions",
                         ]
         super(AssertionValidationModule, self).__init__(
             module_names, DefaultSubmoduleFactory())

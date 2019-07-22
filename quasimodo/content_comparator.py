@@ -171,7 +171,11 @@ class ContentComparator(SubmoduleInterface):
         parsing_node = ParsingNode()
         for content in contents:
             for sentence in nltk.sent_tokenize(content):
-                parsing_node.add_sentence(sentence)
+                try:
+                    parsing_node.add_sentence(sentence)
+                except RecursionError as re:
+                    logging.info('Recursion error for {}'.format(re.args[0]))
+                    logging.info(sentence)
         return parsing_node
 
     def setup_processing(self, input_interface):
