@@ -26,7 +26,6 @@ class Trainer(object):
         if use_embeddings:
             self._model = api.load("word2vec-google-news-300")
         self._df = pd.read_csv(df_file, sep="\t", index_col=False)
-        self._df = self._df[self._df["label"] != -1]
         self._clf = GaussianNBWithMissingValues()
         self._filter = [i for i, x in enumerate(self._df.columns)
                         if x in to_keep_columns]
@@ -34,6 +33,11 @@ class Trainer(object):
         for x in self._df.columns:
             if x not in to_keep_columns:
                 logging.info(str(x) + " was ignored")
+        for x in self._to_keep_columns:
+            self._df[x + "_is_nan"] = self._df[x].isna().astype(float)
+        self._to_keep_columns += [x + "_is_nan" for x in self._to_keep_columns]
+        self._all_df = self._df
+        self._df = self._df[self._df["label"] != -1]
         self.scaler = preprocessing.StandardScaler()
         self.inputer = SimpleImputer(missing_values=np.nan, strategy='constant', fill_value=np.nan)
 

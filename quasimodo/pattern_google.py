@@ -26,7 +26,7 @@ class PatternGoogle(PatternInterface, Serializable):
     def to_str_so(self, subj, obj):
         raise NotImplementedError
 
-    def __init__(self, prefix, relation=None, negative=False):
+    def __init__(self, prefix, relation="has_property", negative=False):
         super().__init__()
         self._prefix = prefix # we need to give the prefix of the query
         # No score for now

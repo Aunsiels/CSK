@@ -57,7 +57,7 @@ class BasicCSKSolver(SolverBase):
 
         question_text = self.lemmatize(question_text)
 
-        confidences = self.compute_confidences_method2(question_text, choice_texts)
+        confidences = self.compute_confidences_method1(question_text, choice_texts)
 
         return MultipleChoiceAnswer(
             [ChoiceConfidence(choice, confidence)

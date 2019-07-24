@@ -132,15 +132,12 @@ waltz
 fly
 scramble
 west
-free
 scuttle
 whisk
-freeze
 shake
 wiggle
 gallop
 shove
-worm
 glide
 shrug
 wriggle

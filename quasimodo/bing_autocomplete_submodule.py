@@ -1,6 +1,5 @@
 from urllib.parse import quote
 import http.client, json
-import os
 
 from quasimodo.cachable_querying_system import CachableQueryingSystem
 from .mongodb_cache import MongoDBCache
@@ -11,9 +10,11 @@ import time
 
 parameters_reader = ParametersReader()
 
-OK = 200
+
 DEFAULT_MONGODB_LOCATION = parameters_reader.get_parameter("default-mongodb-location") or "mongodb://localhost:27017/"
 subscriptionKey = parameters_reader.get_parameter("bing-key") or ""
+
+OK = 200
 
 # Location of the api
 host = 'api.cognitive.microsoft.com'

@@ -19,6 +19,10 @@ from quasimodo.parameters_reader import ParametersReader
 
 FORBIDDEN_BEFORE_SUBJECT = ["a", "the", "an"]
 
+NEGATE_VERB = ["am", "is", "are", "was", "were", "do", "does", "did"
+               "should", "must", "would", "may", "have", "has",
+               "might", "shall", "will", "could"]
+
 PATTERN = 2
 
 SCORE = 1
@@ -297,18 +301,20 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
             new_sentence = new_sentence[6:]
             new_sentence = self.statement_maker.to_statement("why " + new_sentence,
                                                              suggestion[SUBJECT])
-        if " are not " in new_sentence:
-            full_sentence.append((new_sentence.replace(" are not ", " are "),
-                                  suggestion[SCORE],
-                                  suggestion[PATTERN],
-                                  True,
-                                  suggestion[STATEMENT]))
-        elif " is not " in new_sentence[6:]:
-            full_sentence.append((new_sentence.replace(" is not ", " is "),
-                                  suggestion[SCORE],
-                                  suggestion[PATTERN],
-                                  True,
-                                  suggestion[STATEMENT]))
+        # Deal with negative sentences
+        new_sentence.replace(" n't ", " not ").replace("n't ", " not ")
+        contains_negation = any([" " + verb + " not " in new_sentence
+                                 for verb in NEGATE_VERB])
+        if contains_negation:
+            for verb in NEGATE_VERB:
+                negation = " " + verb + " not "
+                if negation in new_sentence:
+                    full_sentence.append((new_sentence.replace(negation, " " + verb + " "),
+                                          suggestion[SCORE],
+                                          suggestion[PATTERN],
+                                          True,
+                                          suggestion[STATEMENT]))
+                    break
         elif new_sentence != "":
             negativity = False
             if "cannot" in suggestion[STATEMENT] or "can't" in suggestion[STATEMENT]:

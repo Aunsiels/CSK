@@ -7,7 +7,7 @@ class OurBasicCSKSolver(BasicCSKSolver):
         self.subject_to_objects = dict()
         self.object_to_subjects = dict()
         with open("/home/julien/Documents/phd/CSK/quasimodo/temp/"
-                  "quasimodo14.tsv") as f:
+                  "quasimodo15.tsv") as f:
             for line in f:
                 line = line.strip().split("\t")
                 subj = self.lemmatize(line[0])
