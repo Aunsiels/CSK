@@ -31,7 +31,9 @@ class OpenIEReader(object):
                     sentence = ""
                 else:
                     if sentence != "":
-                        temp.append(read_fact(line))
+                        fact = read_fact(line)
+                        if fact is not None:
+                            temp.append(fact)
                     else:
                         sentence = line
             if sentence != "":
@@ -52,14 +54,16 @@ class OpenIEReader(object):
 
 
 def read_fact(line):
+    if "Context" in line:
+        return None
     line = line.strip()
     temp = line.split(" (")
     if len(temp) != 2 or temp[1].startswith("Context"):
-        return []
+        return None
     score = temp[0].strip()
     fact = temp[1][:-1].split("; ")
     if len(fact) < 3:
-        return []
+        return None
     subject = fact[0]
     predicate = fact[1]
     obj = []

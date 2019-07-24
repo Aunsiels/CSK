@@ -455,8 +455,13 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                      len(fact) > 0 and len(fact[0]) > 1 and len(fact[1]) > 1 and len(fact[2]) > 1]
             score_based_on_ranking = self.get_score_based_on_ranking(suggestion)
             for fact in facts:
+                try:
+                    score = float(fact[3].replace(",", "."))
+                except:
+                    logging.info("Problem in score reading in openie5 reader with " + fact[3])
+                    continue
                 multiple_score = MultipleScore()
-                multiple_score.add_score(float(fact[3].replace(",", ".")), self._module_reference, reference_openie5)
+                multiple_score.add_score(score, self._module_reference, reference_openie5)
                 multiple_score.add_score(score_based_on_ranking, self._module_reference, self)
                 generated_facts.append(
                     GeneratedFact(
