@@ -1,3 +1,4 @@
+from quasimodo.output_module import OutputModule
 from .module_factory_interface import ModuleFactoryInterface
 from .assertion_generation_module import AssertionGenerationModule
 from .animal_seed_module import AnimalSeedModule
@@ -37,4 +38,6 @@ class DefaultModuleFactory(ModuleFactoryInterface):
             return AllSeedsModule()
         elif module_name == "archit":
             return ArchitModule()
+        elif module_name == "output":
+            return OutputModule()
         raise NotImplementedError

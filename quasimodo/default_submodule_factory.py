@@ -1,4 +1,6 @@
 from quasimodo.conceptual_captions_comparator_submodule import ConceptualCaptionsComparatorSubmodule
+from quasimodo.tbc_cleaner import TBCCleaner
+from quasimodo.tsv_output_submodule import TSVOutputSubmodule
 from .submodule_factory_interface import SubmoduleFactoryInterface
 from .google_autocomplete_submodule import GoogleAutocompleteSubmodule
 from .animal_submodule import AnimalSubmodule
@@ -99,7 +101,9 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
             "lower-case": ToLowerCaseSubmodule,
             "fact-combinor": FactCombinor,
             "identical-subj-obj" : IdenticalSubjectObjectSubmodule,
-            "conceptual-captions": ConceptualCaptionsComparatorSubmodule
+            "conceptual-captions": ConceptualCaptionsComparatorSubmodule,
+            "tbc-cleaner": TBCCleaner,
+            "tsv-output": TSVOutputSubmodule
         }
 
 

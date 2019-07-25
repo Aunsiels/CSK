@@ -147,3 +147,12 @@ class GeneratedFact(GeneratedFactInterface, Serializable):
                              self.get_score(),
                              "",
                              self.get_pattern())
+
+    def get_tsv(self):
+        return "\t".join((self.get_subject().get(),
+                          self.get_predicate().get(),
+                          self.get_object().get(),
+                          self.get_modality().get() or " ",
+                          str(int(self.is_negative())),
+                          str(self.get_score().scores[0][0]),
+                          self.get_sentence_source()))
