@@ -18,20 +18,20 @@ class BasicModalitySubmodule(SubmoduleInterface):
                           "almost"]
         modality_pred = ["now"]
         new_generated_facts = []
-        for g in input_interface.get_generated_facts():
-            predicate = g.get_predicate().get().split(" ")
-            obj = g.get_object().get().split(" ")
+        for generated_fact in input_interface.get_generated_facts():
+            predicate_split = generated_fact.get_predicate().get().split(" ")
+            obj = generated_fact.get_object().get().split(" ")
             modality = []
             new_predicate = []
             new_obj = []
-            if len(predicate) > 1:
-                for pred in predicate:
-                    if pred in modality_words or pred in modality_pred:
-                        modality.append(pred)
+            if len(predicate_split) > 1:
+                for predicate_part in predicate_split:
+                    if predicate_part in modality_words or predicate_part in modality_pred:
+                        modality.append(predicate_part)
                     else:
-                        new_predicate.append(pred)
+                        new_predicate.append(predicate_part)
             else:
-                new_predicate = predicate
+                new_predicate = predicate_split
             if len(obj) > 1:
                 for o in obj:
                     if o in modality_words:
@@ -41,10 +41,10 @@ class BasicModalitySubmodule(SubmoduleInterface):
             else:
                 new_obj = obj
             if len(modality) != 0:
-                g = g.change_modality(" ".join(modality).strip())
-                if len(predicate) != len(new_predicate):
-                    g = g.change_predicate(" ".join(new_predicate).strip())
+                generated_fact = generated_fact.change_modality(" ".join(modality).strip())
+                if len(predicate_split) != len(new_predicate):
+                    generated_fact = generated_fact.change_predicate(" ".join(new_predicate).strip())
                 if len(obj) != len(new_obj):
-                    g = g.change_object(" ".join(new_obj).strip())
-            new_generated_facts.append(g)
+                    generated_fact = generated_fact.change_object(" ".join(new_obj).strip())
+            new_generated_facts.append(generated_fact)
         return input_interface.replace_generated_facts(new_generated_facts)

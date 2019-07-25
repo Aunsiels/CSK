@@ -1,6 +1,7 @@
 import logging
 import os
 
+from quasimodo.modality import Modality, get_multiple_parts_combination, read_sentence
 from .multiple_scores import MultipleScore
 from .submodule_interface import SubmoduleInterface
 from .generated_fact import GeneratedFact
@@ -15,18 +16,6 @@ save_weights = True
 save_file = os.path.dirname(__file__) + "/temp/weights.tsv"
 parameters_reader = ParametersReader()
 annotations_file = parameters_reader.get_parameter("annotations-file") or "data/all_manual_annotations.tsv"
-
-
-def read_sentence(sentence):
-    res = []
-    sentence_parts = sentence.split(" // ")
-    for part in sentence_parts:
-        part_score = part.split("x#x")
-        if len(part_score) == 1:
-            res.append((part_score[0].strip(), 1))
-        else:
-            res.append((part_score[0].strip(), int(part_score[1])))
-    return res
 
 
 class LinearCombinationWeightedSubmodule(SubmoduleInterface):
@@ -106,15 +95,11 @@ class LinearCombinationWeightedSubmodule(SubmoduleInterface):
         for generated_fact in input_interface.get_generated_facts():
             fact = generated_fact.get_fact()
             modality = fact.get_modality()
-            if modality is not None:
-                modality = modality.get()
-            else:
-                modality = ""
             fact = fact.change_modality("")
             sentence_source = generated_fact.get_sentence_source()
             for _, module_source, submodule_source in generated_fact.get_score().scores:
                 self._weights.add(submodule_source.get_name())
-            if len(modality) ==  0 or "TBC" not in modality:
+            if modality.is_empty() or modality.contains_completing_part():
                 df_valid.add(fact)
             if fact in d_gf:
                 for score, module_source, submodule_source in generated_fact.get_score().scores:
@@ -127,8 +112,8 @@ class LinearCombinationWeightedSubmodule(SubmoduleInterface):
                 if len(sentence_source) > 0:
                     for sentence, score in read_sentence(sentence_source):
                         d_gf_sentences[fact][sentence] = d_gf_sentences[fact].get(sentence, 0) + score
-                if len(modality) > 0:
-                    for modality_temp, score in read_sentence(modality):
+                if not modality.is_empty():
+                    for modality_temp, score in modality.get_modalities_and_scores():
                         d_gf_modality[fact][modality_temp] = d_gf_modality[fact].get(modality_temp, 0) + score
                 d_gf_patterns[fact].add_pattern(generated_fact.get_pattern())
             else:
@@ -145,8 +130,8 @@ class LinearCombinationWeightedSubmodule(SubmoduleInterface):
                 if len(sentence_source) > 0:
                     for sentence, score in read_sentence(sentence_source):
                         d_gf_sentences[fact][sentence] = d_gf_sentences[fact].get(sentence, 0) + score
-                if len(modality) > 0:
-                    for modality_temp, score in read_sentence(modality):
+                if not modality.is_empty():
+                    for modality_temp, score in modality.get_modalities_and_scores():
                         d_gf_modality[fact][modality_temp] = d_gf_modality[fact].get(modality_temp, 0) + score
         # Remove completely incomplete facts
         to_delete = []
@@ -165,17 +150,15 @@ class LinearCombinationWeightedSubmodule(SubmoduleInterface):
         for fact in d_gf_modality:
             number_tbc = 0
             total = 0
-            for modality in d_gf_modality[fact]:
-                total += d_gf_modality[fact][modality]
-                if "TBC" in modality:
-                    number_tbc += d_gf_modality[fact][modality]
+            for modality_raw in d_gf_modality[fact]:
+                total += d_gf_modality[fact][modality_raw]
+                if "TBC" in modality_raw:
+                    number_tbc += d_gf_modality[fact][modality_raw]
             d_gf[fact]["TBC"] = 0.0
             if total > 0:
                 if total == number_tbc:
                     d_gf[fact]["TBC"] = 1.0
-            d_gf_modality[fact] = " // ".join([x[0] + " x#x" + str(x[1])
-                                               for x in d_gf_modality[fact].items()
-                                               if x[0] != ""])
+            d_gf_modality[fact] = Modality.from_modalities_and_scores(d_gf_modality[fact].items())
         # Get the max of each name for normalization
         logging.info("Computing max")
         d_max = dict()
@@ -199,8 +182,7 @@ class LinearCombinationWeightedSubmodule(SubmoduleInterface):
 
         # Compute the new sentences
         for fact in d_gf_sentences:
-            d_gf_sentences[fact] = " // ".join([x[0] + " x#x" + str(x[1])
-                                        for x in d_gf_sentences[fact].items()])
+            d_gf_sentences[fact] = get_multiple_parts_combination(d_gf_sentences[fact].items())
 
         # Transform to generated facts
         new_generated_facts = []

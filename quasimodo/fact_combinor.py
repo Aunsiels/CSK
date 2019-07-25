@@ -1,17 +1,6 @@
+from quasimodo.modality import Modality, read_sentence
 from quasimodo.multiple_pattern import MultiplePattern
 from .submodule_interface import SubmoduleInterface
-
-
-def read_sentence(sentence):
-    res = []
-    sentence_parts = sentence.split(" // ")
-    for part in sentence_parts:
-        part_score = part.split("x#x")
-        if len(part_score) == 1:
-            res.append((part_score[0].strip(), 1))
-        else:
-            res.append((part_score[0].strip(), int(part_score[1])))
-    return res
 
 
 class FactCombinor(SubmoduleInterface):
@@ -54,7 +43,7 @@ class FactCombinor(SubmoduleInterface):
         for fact in found:
             generated_fact = found[fact]
             new_sentence = " // ".join([x[0] + " x#x" + str(x[1]) for x in sentences[fact].items()])
-            new_modality = " // ".join([x[0] + " x#x" + str(x[1]) for x in modalities[fact].items()])
+            new_modality = Modality.from_modalities_and_scores(modalities[fact].items())
             new_gfs.append(generated_fact.change_sentence(new_sentence)
                            .change_modality(new_modality)
                            .change_pattern(patterns[fact]))

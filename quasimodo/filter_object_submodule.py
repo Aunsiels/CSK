@@ -5,7 +5,7 @@ import logging
 dirty_words = ["their", "so", "also"]
 forbidden = ["used", "called", "xbox", "youtube", "xo", "quote",
              "quotes", "minecraft", "important", "considered", "why",
-             "using"]
+             "using", "as", "for", "as a"]
 totally_forbidden = ["xbox", "youtube", "xo", "quote",
                      "quotes", "minecraft", "why", "quizlet", "nz", "wz",
                      "quora", "reddit", "skyrim", "shippuden", "yahoo",
