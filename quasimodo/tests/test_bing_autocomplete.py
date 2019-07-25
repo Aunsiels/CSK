@@ -1,7 +1,8 @@
 import unittest
 
-from quasimodo import Inputs, PatternGoogle
 from quasimodo.bing_autocomplete_submodule import BingAutocompleteSubmodule
+from quasimodo.inputs import Inputs
+from quasimodo.pattern_google import PatternGoogle
 from quasimodo.subject import Subject
 
 

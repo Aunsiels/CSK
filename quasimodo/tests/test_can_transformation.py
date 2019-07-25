@@ -1,8 +1,9 @@
 import unittest
 
-from quasimodo import Inputs, PatternGoogle
 from quasimodo.can_transformation_submodule import CanTransformationSubmodule
 from quasimodo.generated_fact import GeneratedFact
+from quasimodo.inputs import Inputs
+from quasimodo.pattern_google import PatternGoogle
 
 
 class TestCanTransformation(unittest.TestCase):

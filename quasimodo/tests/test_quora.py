@@ -1,6 +1,6 @@
 import unittest
 
-from quasimodo import Inputs
+from quasimodo.inputs import Inputs
 from quasimodo.quora_questions_submodule import QuoraQuestionsSubmodule
 from quasimodo.subject import Subject
 

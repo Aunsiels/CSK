@@ -1,14 +1,15 @@
 import unittest
 
-from quasimodo import Inputs, PatternGoogle
 from quasimodo.fact import Fact
 from quasimodo.generated_fact import GeneratedFact
+from quasimodo.inputs import Inputs
 from quasimodo.module_reference_interface import ModuleReferenceInterface
 from quasimodo.multiple_module_reference import MultipleModuleReference
 from quasimodo.multiple_pattern import MultiplePattern
 from quasimodo.multiple_scores import MultipleScore
 from quasimodo.multiple_submodule_reference import MultipleSubmoduleReference
 from quasimodo.object import Object
+from quasimodo.pattern_google import PatternGoogle
 from quasimodo.subject import Subject
 from quasimodo.submodule_reference_interface import SubmoduleReferenceInterface
 

@@ -21,3 +21,6 @@ class ParametersReader(object):
 
     def get_parameter(self, parameter_name):
         return self.parameters.get(parameter_name, None)
+
+
+parameters_reader = ParametersReader()

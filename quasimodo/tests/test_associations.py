@@ -1,10 +1,11 @@
 import unittest
 
-from quasimodo import OpenIEFactGeneratorSubmodule, Inputs
 from quasimodo.flickr_clusters_submodule import FlickrClustersSubmodule
 from quasimodo.generated_fact import GeneratedFact
 from quasimodo.imagetag_submodule import ImagetagSubmodule
+from quasimodo.inputs import Inputs
 from quasimodo.multiple_scores import MultipleScore
+from quasimodo.openie_fact_generator_submodule import OpenIEFactGeneratorSubmodule
 from quasimodo.referencable_interface import ReferencableInterface
 from quasimodo.subject import Subject
 

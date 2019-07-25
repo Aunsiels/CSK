@@ -1,6 +1,6 @@
 import unittest
 
-from quasimodo import Inputs
+from quasimodo.inputs import Inputs
 from quasimodo.generated_fact import GeneratedFact
 from quasimodo.multiple_scores import MultipleScore
 from quasimodo.wikipedia_cooccurrence_submodule import WikipediaCooccurrenceSubmodule

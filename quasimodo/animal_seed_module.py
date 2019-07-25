@@ -2,6 +2,7 @@ from .module_interface import ModuleInterface
 from .default_submodule_factory import DefaultSubmoduleFactory
 import logging
 
+
 class AnimalSeedModule(ModuleInterface):
     """AnimalSeedModule
     A module which only produced subjects which are animals and nothing else

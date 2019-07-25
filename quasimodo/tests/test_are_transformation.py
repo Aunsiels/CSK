@@ -1,7 +1,9 @@
 import unittest
 
-from quasimodo import OpenIEFactGeneratorSubmodule, Inputs, PatternGoogle
 from quasimodo.are_transformation_submodule import AreTransformationSubmodule
+from quasimodo.inputs import Inputs
+from quasimodo.openie_fact_generator_submodule import OpenIEFactGeneratorSubmodule
+from quasimodo.pattern_google import PatternGoogle
 from quasimodo.referencable_interface import ReferencableInterface
 
 

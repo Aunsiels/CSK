@@ -1,6 +1,6 @@
 import unittest
 
-from quasimodo import Inputs
+from quasimodo.inputs import Inputs
 from quasimodo.generated_fact import GeneratedFact
 from quasimodo.google_book_submodule import GoogleBookSubmodule
 from quasimodo.multiple_scores import MultipleScore

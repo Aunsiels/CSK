@@ -1,6 +1,6 @@
 import unittest
 
-from quasimodo import Inputs
+from quasimodo.inputs import Inputs
 from quasimodo.default_module_factory import DefaultModuleFactory
 from quasimodo.subject import Subject
 from quasimodo.workflow_interface import WorkflowInterface

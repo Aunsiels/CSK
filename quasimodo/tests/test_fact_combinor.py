@@ -1,9 +1,10 @@
 import unittest
 
-from quasimodo import OpenIEFactGeneratorSubmodule, Inputs
 from quasimodo.fact_combinor import FactCombinor
 from quasimodo.generated_fact import GeneratedFact
+from quasimodo.inputs import Inputs
 from quasimodo.multiple_scores import MultipleScore
+from quasimodo.openie_fact_generator_submodule import OpenIEFactGeneratorSubmodule
 from quasimodo.referencable_interface import ReferencableInterface
 
 
@@ -51,7 +52,6 @@ class TestFactCombinor(unittest.TestCase):
         self.assertEqual(1, len(inputs.get_generated_facts()))
         self.assertIn("some", inputs.get_generated_facts()[0].get_modality().get())
         self.assertIn("often", inputs.get_generated_facts()[0].get_modality().get())
-
 
 
 if __name__ == '__main__':

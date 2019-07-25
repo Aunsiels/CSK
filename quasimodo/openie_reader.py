@@ -3,8 +3,6 @@ import logging
 
 from quasimodo.parameters_reader import ParametersReader
 
-filename = None
-
 parameters_reader = ParametersReader()
 filename = parameters_reader.get_parameter("openie-file") or None
 filename_no_found = parameters_reader.get_parameter("openie-file-no-found") or\

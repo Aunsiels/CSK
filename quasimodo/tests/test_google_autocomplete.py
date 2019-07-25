@@ -1,7 +1,8 @@
 import unittest
 
-from quasimodo import Inputs, PatternGoogle
+from quasimodo.inputs import Inputs
 from quasimodo.google_autocomplete_submodule import GoogleAutocompleteSubmodule
+from quasimodo.pattern_google import PatternGoogle
 from quasimodo.subject import Subject
 
 

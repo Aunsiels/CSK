@@ -1,4 +1,5 @@
 import unittest
+
 from quasimodo.statement_maker import StatementMaker
 
 dataset = [

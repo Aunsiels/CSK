@@ -1,6 +1,6 @@
 import unittest
 
-from quasimodo import Inputs
+from quasimodo.inputs import Inputs
 from quasimodo.filter_object_submodule import FilterObjectSubmodule
 from quasimodo.generated_fact import GeneratedFact
 

@@ -1,6 +1,6 @@
 import unittest
 
-from quasimodo import Inputs
+from quasimodo.inputs import Inputs
 from quasimodo.bing_autocomplete_submodule import BingAutocompleteSubmodule
 from quasimodo.generated_fact import GeneratedFact
 from quasimodo.google_autocomplete_submodule import GoogleAutocompleteSubmodule

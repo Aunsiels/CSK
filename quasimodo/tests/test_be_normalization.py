@@ -1,8 +1,8 @@
 import unittest
 
-from quasimodo import Inputs
 from quasimodo.be_normalization_submodule import BeNormalizationSubmodule
 from quasimodo.generated_fact import GeneratedFact
+from quasimodo.inputs import Inputs
 
 
 class TestBeNormalization(unittest.TestCase):

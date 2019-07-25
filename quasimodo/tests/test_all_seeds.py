@@ -1,6 +1,7 @@
 import unittest
 
-from quasimodo import AllSeedsModule, Inputs
+from quasimodo.all_seeds_module import AllSeedsModule
+from quasimodo.inputs import Inputs
 
 
 class TestAllSeeds(unittest.TestCase):

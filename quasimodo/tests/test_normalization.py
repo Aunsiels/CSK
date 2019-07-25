@@ -1,9 +1,10 @@
 import unittest
 
-from quasimodo import Inputs, PatternGoogle
+from quasimodo.inputs import Inputs
 from quasimodo.default_module_factory import DefaultModuleFactory
 from quasimodo.generated_fact import GeneratedFact
 from quasimodo.multiple_scores import MultipleScore
+from quasimodo.pattern_google import PatternGoogle
 
 
 class TestComplete(unittest.TestCase):

@@ -1,7 +1,8 @@
 import unittest
 
-from quasimodo import AnimalSubmodule, Inputs
 from quasimodo.animal_seed_module import AnimalSeedModule
+from quasimodo.animal_submodule import AnimalSubmodule
+from quasimodo.inputs import Inputs
 
 
 class TestAnimalSubmodule(unittest.TestCase):

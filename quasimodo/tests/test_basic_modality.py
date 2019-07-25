@@ -1,7 +1,8 @@
 import unittest
 
-from quasimodo import OpenIEFactGeneratorSubmodule, Inputs
 from quasimodo.basic_modality_submodule import BasicModalitySubmodule
+from quasimodo.inputs import Inputs
+from quasimodo.openie_fact_generator_submodule import OpenIEFactGeneratorSubmodule
 from quasimodo.referencable_interface import ReferencableInterface
 
 

@@ -1,8 +1,8 @@
 import unittest
 
-from quasimodo import Inputs
 from quasimodo.cleaning_predicate_submodule import CleaningPredicateSubmodule
 from quasimodo.generated_fact import GeneratedFact
+from quasimodo.inputs import Inputs
 
 
 class TestCleaningPredicate(unittest.TestCase):
