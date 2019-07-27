@@ -45,7 +45,9 @@ class GeneratedFact(GeneratedFactInterface, Serializable):
             self._object = Object(obj)
         else:
             self._object = obj # ObjectInterface
-        if type(modality) == str:
+        if modality is None:
+            self._modality = Modality()
+        elif type(modality) == str:
             self._modality = Modality(modality)
         else:
             self._modality = modality # Optional ModalityInterface

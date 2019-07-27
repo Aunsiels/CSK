@@ -100,7 +100,8 @@ class GoogleBookSubmodule(SubmoduleInterface):
                 occurrences = self._get_occurrences_books(query, only_cache)
             except Exception as e:
                 logging.warning(str(e))
-                break
+                only_cache = True
+                continue
             if occurrences != -1:
                 generated_fact.get_score().add_score(occurrences / maxi, self._module_reference, self)
         return input_interface
