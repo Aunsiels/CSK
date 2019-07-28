@@ -12,16 +12,12 @@ from quasimodo.openie_reader import OpenIEReader
 from quasimodo.submodule_reference_interface import SubmoduleReferenceInterface
 from .multiple_scores import MultipleScore
 from .generated_fact import GeneratedFact
-from .statement_maker import StatementMaker
+from .statement_maker import StatementMaker, NEGATE_VERB
 from .submodule_interface import SubmoduleInterface
 from .modality import Modality
 from quasimodo.parameters_reader import ParametersReader
 
 FORBIDDEN_BEFORE_SUBJECT = ["a", "the", "an"]
-
-NEGATE_VERB = ["am", "is", "are", "was", "were", "do", "does", "did"
-               "should", "must", "would", "may", "have", "has",
-               "might", "shall", "will", "could"]
 
 PATTERN = 2
 

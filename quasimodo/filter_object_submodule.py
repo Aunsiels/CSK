@@ -43,4 +43,8 @@ class FilterObjectSubmodule(SubmoduleInterface):
                 generated_fact = generated_fact.change_object(" ".join(new_obj).strip())
             if len(new_obj) != 0:
                 new_generated_facts.append(generated_fact)
+
+        logging.info("%d facts were removed by the object cleaner",
+                     len(input_interface.get_generated_facts()) - len(new_generated_facts))
+
         return input_interface.replace_generated_facts(new_generated_facts)

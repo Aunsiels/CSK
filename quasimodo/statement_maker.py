@@ -19,6 +19,11 @@ TEXT = 0
 POS = 1
 
 
+NEGATE_VERB = ["am", "is", "are", "was", "were", "do", "does", "did"
+               "should", "must", "would", "may", "have", "has",
+               "might", "shall", "will", "could"]
+
+
 def _correct_tokens(tokens, pos):
     merge_next = False
     res_tokens = []
@@ -252,6 +257,19 @@ class StatementMaker(object):
             return ""
         # Correct nano - particule
         tokens, pos = _correct_tokens(tokens, pos)
+
+        # replace n't by not
+        to_negate = None
+        negated_verb = None
+        for i, token in enumerate(tokens):
+            if token == "n't" and i - 1 >= 0 and tokens[i - 1] in NEGATE_VERB:
+                to_negate = i - 1
+                break
+        if to_negate is not None:
+            del tokens[to_negate + 1]
+            del pos[to_negate + 1]
+            negated_verb = tokens[to_negate]
+
         if is_form_of_be(tokens[1]) and len(tokens) == 4:
             statement = " ".join([tokens[2], tokens[1], tokens[3]])
         elif is_form_of_be(tokens[1]) and is_personal_pronoun(tokens[2]):
@@ -268,6 +286,18 @@ class StatementMaker(object):
             statement = " ".join(tokens[1:])
         else:
             statement = question
+
+        if negated_verb is not None:
+            statement_split = statement.split(" ")
+            position_verb = None
+            for i, word in enumerate(statement_split):
+                if word == negated_verb:
+                    position_verb = i
+                    break
+            if position_verb is not None:
+                statement_split.insert(i + 1, "not")
+                statement = " ".join(statement_split)
+
         statement = correct_statement(statement)
         self._save_q2s(question, statement, subject)
         return statement

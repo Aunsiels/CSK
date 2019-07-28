@@ -54,10 +54,10 @@ class BrowserAutocompleteSubmodule(OpenIEFactGeneratorSubmodule):
             collection_second = input_interface.get_patterns("google-autocomplete")
         for i, first_collection_element in enumerate(collection_first):
             if PATTERN_FIRST:
-                logging.info("Going for pattern" + str(first_collection_element) +
+                logging.info("Going for pattern " + str(first_collection_element) +
                              "[" + str(i / len(collection_first) * 100.0) + "%]")
             else:
-                logging.info("Going for subject" + str(first_collection_element) +
+                logging.info("Going for subject " + str(first_collection_element) +
                              "[" + str(i / len(collection_first) * 100.0) + "%]")
             for second_collection_element in collection_second:
                 if PATTERN_FIRST:

@@ -39,4 +39,7 @@ class OnlySubjectSubmodule(SubmoduleInterface):
             lambda x: x.get_subject().get().lower() in subjects,
             input_interface.get_generated_facts()))
 
+        logging.info("%d facts were removed by the subject cleaner",
+                     len(input_interface.get_generated_facts()) - len(new_generated_facts))
+
         return input_interface.replace_generated_facts(new_generated_facts)

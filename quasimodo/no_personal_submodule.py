@@ -18,4 +18,8 @@ class NoPersonalSubmodule(SubmoduleInterface):
             lambda x: not any([y in personals
                                for y in x.get_object().get().split(" ")]),
             input_interface.get_generated_facts()))
+
+        logging.info("%d facts were removed by the personal words cleaner",
+                     len(input_interface.get_generated_facts()) - len(new_generated_facts))
+
         return input_interface.replace_generated_facts(new_generated_facts)

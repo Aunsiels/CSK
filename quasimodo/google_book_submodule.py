@@ -9,7 +9,7 @@ import inflect
 
 from quasimodo.mongodb_cache import MongoDBCache
 from quasimodo.parameters_reader import ParametersReader
-from .submodule_interface import SubmoduleInterface
+from quasimodo.submodule_interface import SubmoduleInterface
 
 parameters_reader = ParametersReader()
 api_key = parameters_reader.get_parameter("google-book-key") or ""
@@ -17,7 +17,8 @@ DEFAULT_MONGODB_LOCATION = parameters_reader.get_parameter("default-mongodb-loca
 
 try:
     service = apiclient.discovery.build('books', 'v1', developerKey=api_key)
-except:
+except Exception as e:
+    logging.warning("When initializing Google Book: " + str(e))
     service = None
 
 plural_engine = inflect.engine()
@@ -79,10 +80,19 @@ class GoogleBookSubmodule(SubmoduleInterface):
 
     def process(self, input_interface):
         logging.info("Start the verification using google book")
+        global service
+        if service is None:
+            try:
+                service = apiclient.discovery.build('books', 'v1', developerKey=api_key)
+            except Exception as e:
+                logging.warning("When initializing Google Book: " + str(e))
+            service = None
         if service is None:
             logging.info("No service found for Google Book")
+            only_cache = True
+        else:
+            only_cache = False
         maxi = 0
-        only_cache = False
         for generated_fact in input_interface.get_generated_facts():
             query = _get_query_from_fact(generated_fact)
             occurrences = -1

@@ -13,6 +13,7 @@ class TBCCleaner(SubmoduleInterface):
     def process(self, input_interface):
         logging.info("Start the cleaning of TBC")
         new_generated_facts = []
+        n_removed = 0
         for generated_fact in input_interface.get_generated_facts():
             modality = generated_fact.get_modality()
             if modality.get_number_completing_parts() == 1:
@@ -24,6 +25,9 @@ class TBCCleaner(SubmoduleInterface):
                 # When we have as many TBC as sentences, it means all contain it and so we can remove the fact
                 if n_tbc != n_sentences:
                     new_generated_facts.append(generated_fact)
+                else:
+                    n_removed += 1
             else:
                 new_generated_facts.append(generated_fact)
+        logging.info("%d facts were removed by the TBC cleaner", n_removed)
         return input_interface.replace_generated_facts(new_generated_facts)

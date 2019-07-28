@@ -70,6 +70,7 @@ class Trainer(object):
         features = np.array(features)
         features[features == ""] = np.nan
         features = features[self._filter]
+        features = np.concatenate((features, np.isnan(features).astype(float)))
         features = features.astype(np.float64)
         spo = self._get_array_generated_fact(fact.get_subject().get(),
                                              fact.get_predicate().get(),
