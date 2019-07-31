@@ -3,6 +3,9 @@ import numpy as np
 import collections
 
 
+EPSILON = 1e-06
+
+
 def get_prior(y, y_unique):
     y_counts = collections.Counter(y)
     for key in y_unique:
@@ -32,8 +35,11 @@ def get_means_and_standard_deviations(x_input, y, y_unique):
 
 
 def get_gaussian(x, mean, standard_deviation):
-    if standard_deviation == 0:
-        return float(x == mean)
+    if abs(standard_deviation) < EPSILON:
+        if abs(x - mean) < EPSILON:
+            return 1.0
+        else:
+            return 0.0
     return 1.0 / math.sqrt(2 * math.pi * standard_deviation ** 2) * \
         math.exp(-(x - mean) ** 2 / 2.0 / standard_deviation ** 2)
 
@@ -49,7 +55,10 @@ def get_all_likelihoods(x, means, standard_deviations):
         product = 1.0
         for j in range(means.shape[1]):
             if not np.isnan(x[j]):
-                product *= get_gaussian(x[j], means[i, j], standard_deviations[i, j])
+                temp = get_gaussian(x[j], means[i, j], standard_deviations[i, j])
+                # We do not want zero probabilities
+                temp += EPSILON
+                product *= temp
         result.append(product)
     return np.array(result)
 
@@ -80,7 +89,7 @@ class GaussianNBWithMissingValues:
     def fit(self, x_input, y):
         if x_input is None or y is None:
             return self
-        self.y_unique = np.unique(y)
+        self.y_unique = np.unique(y)  # This is sorted
         self.prior = get_prior(y, self.y_unique)
         self.means, self.standard_deviations = get_means_and_standard_deviations(x_input, y, self.y_unique)
         return self

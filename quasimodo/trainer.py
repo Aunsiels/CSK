@@ -1,5 +1,4 @@
 import logging
-import gensim.downloader as api
 from nltk.tokenize import word_tokenize
 import pandas as pd
 import numpy as np
@@ -17,6 +16,8 @@ to_keep_columns = ['is negative', "Yahoo Questions",
                    "CoreNLP", "OpenIE5", "number sentences", "Conceptual Caption"]
 
 use_embeddings = False
+if use_embeddings:
+    import gensim.downloader as api
 
 
 class Trainer(object):
@@ -37,8 +38,9 @@ class Trainer(object):
             self._df[x + "_is_nan"] = self._df[x].isna().astype(float)
         self._to_keep_columns += [x + "_is_nan" for x in self._to_keep_columns]
         self._all_df = self._df
-        self._df = self._df[self._df["label"] != -1]
         self.scaler = preprocessing.StandardScaler()
+        self.scaler.fit(self._all_df[self._to_keep_columns])
+        self._df = self._df[self._df["label"] != -1]
         self.inputer = SimpleImputer(missing_values=np.nan, strategy='constant', fill_value=np.nan)
 
     def train(self):
@@ -56,7 +58,6 @@ class Trainer(object):
         x_input = np.array(x_input).astype(np.float64)
         self.inputer.fit(x_input)
         x_input = self.inputer.transform(x_input)
-        self.scaler.fit(x_input)
         x_input = self.scaler.transform(x_input)
         y = np.array(y).astype(int)
         logging.info("Random classifier %0.2f", sum(y) / len(y))
@@ -65,19 +66,34 @@ class Trainer(object):
         self._clf.fit(x_input, y)
         logging.info("Cross validation Accuracy: %0.2f (+/- %0.2f)", scores.mean(), scores.std() * 2)
         logging.info("Accuracy on original data: %0.2f", self._clf.score(x_input, y))
+        logging.info("Parameters:")
+        logging.info("Priors:")
+        logging.info("0: " + str(self._clf.prior[0]))
+        logging.info("1: " + str(self._clf.prior[1]))
+        logging.info("Means:")
+        for i, column_name in enumerate(self._to_keep_columns):
+            logging.info(column_name + ", for 0: " + str(self._clf.means[0][i]) +
+                    ", for 1: " + str(self._clf.means[1][i]))
+        logging.info("Standard deviations:")
+        for i, column_name in enumerate(self._to_keep_columns):
+            logging.info(column_name + ", for 0: " + str(self._clf.standard_deviations[0][i]) +
+                    ", for 1: " + str(self._clf.standard_deviations[1][i]))
+
 
     def predict(self, fact, features):
         features = np.array(features)
         features[features == ""] = np.nan
-        features = features[self._filter]
+        features = features[self._filter].astype(float)
         features = np.concatenate((features, np.isnan(features).astype(float)))
         features = features.astype(np.float64)
         spo = self._get_array_generated_fact(fact.get_subject().get(),
                                              fact.get_predicate().get(),
                                              fact.get_object().get())
         features = np.concatenate((features, spo))
-        features = self.inputer.transform([features])
-        features = self.scaler.transform(features)
+        features = self.scaler.transform([features])
+        features = self.inputer.transform(features)
+        # 0 because only one point
+        # 1 because positive is one
         return self._clf.predict_proba(features)[0][1]
 
     def _get_array(self, sentence):
