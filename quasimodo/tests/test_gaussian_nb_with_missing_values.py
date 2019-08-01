@@ -8,6 +8,13 @@ from quasimodo.gaussian_nb_with_missing_values import get_prior, get_means_and_s
 
 class TestFilterObject(unittest.TestCase):
 
+    def test_gaussian2(self):
+        std = -0.1339048038303071
+        mean = -0.1339048038303071
+        x = 150.10086283379565
+        temp = get_gaussian(x, mean, std)
+        self.assertAlmostEqual(temp, 0)
+
     def test_prior(self):
         y = np.array([1] * 10 + [0] * 5)
         prior = get_prior(y, np.array([0, 1]))

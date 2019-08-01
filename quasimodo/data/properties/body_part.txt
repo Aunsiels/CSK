@@ -143,3 +143,293 @@ whiskers
 wing
 withers
 wrist
+a abdomen
+a anal fin
+a ankle
+a antenna
+a arm
+a beak
+a beard
+a belly
+a blood
+a body
+a bone
+a brain
+a breast
+a brisket
+a cannon
+a carpus
+a caudal fin
+a cephalothorax
+a cheek
+a chest
+a chest floor
+a chin
+a claw
+a claw or chela
+a comb
+a compound eye
+a coronet
+a costal shell
+a crest
+a croup
+a crown
+a dactyl
+a dewclaw
+a dewlap
+a dock
+a dorsal fins
+a ear
+a ears
+a elbow
+a ergot
+a eye
+a eyes
+a face
+a feet
+a finger
+a fingers
+a flank
+a flesh
+a foot
+a forearm
+a forehead
+a foreleg
+a fore udder
+a forewing
+a front cannon
+a front leg
+a fur
+a gaskin
+a gill
+a gill cover
+a hackles
+a hair
+a hand
+a hands
+a head
+a heart
+a heel
+a hindleg
+a hind leg
+a hindwing
+a hip
+a hock
+a hoof
+a hook
+a horn
+a jaw
+a knee
+a knees
+a lateral line
+a leg
+a legs
+a lip
+a lips
+a loin
+a mandible
+a mandibles
+a marginal shield
+a merus
+a middle leg
+a moustache
+a mouth
+a muscle
+a muzzle
+a nail
+a nape
+a neck
+a nose
+a nostril
+a nuchal shell
+a pastern
+a paw
+a pectoral fin
+a pelvic fin
+a point of hip
+a poll
+a propodus
+a pygal shield
+a rear cannon
+a rump
+a scales
+a shoulder
+a shoulders
+a skin
+a spiracle
+a stifle
+a stomach
+a swimming legs
+a switch
+a tail
+a tarsus
+a teat
+a teeth
+a thigh
+a thorax
+a throat
+a throat latch
+a thumb
+a thumbs
+a toe
+a toes
+a tongue
+a tooth
+a trunk
+a tusk
+a udder
+a undertail feathers
+a uppertail feathers
+a vertebral shell
+a walking legs
+a wattle
+a whisker
+a whiskers
+a wing
+a withers
+a wrist
+an abdomen
+an anal fin
+an ankle
+an antenna
+an arm
+an beak
+an beard
+an belly
+an blood
+an body
+an bone
+an brain
+an breast
+an brisket
+an cannon
+an carpus
+an caudal fin
+an cephalothorax
+an cheek
+an chest
+an chest floor
+an chin
+an claw
+an claw or chela
+an comb
+an compound eye
+an coronet
+an costal shell
+an crest
+an croup
+an crown
+an dactyl
+an dewclaw
+an dewlap
+an dock
+an dorsal fins
+an ear
+an ears
+an elbow
+an ergot
+an eye
+an eyes
+an face
+an feet
+an finger
+an fingers
+an flank
+an flesh
+an foot
+an forearm
+an forehead
+an foreleg
+an fore udder
+an forewing
+an front cannon
+an front leg
+an fur
+an gaskin
+an gill
+an gill cover
+an hackles
+an hair
+an hand
+an hands
+an head
+an heart
+an heel
+an hindleg
+an hind leg
+an hindwing
+an hip
+an hock
+an hoof
+an hook
+an horn
+an jaw
+an knee
+an knees
+an lateral line
+an leg
+an legs
+an lip
+an lips
+an loin
+an mandible
+an mandibles
+an marginal shield
+an merus
+an middle leg
+an moustache
+an mouth
+an muscle
+an muzzle
+an nail
+an nape
+an neck
+an nose
+an nostril
+an nuchal shell
+an pastern
+an paw
+an pectoral fin
+an pelvic fin
+an point of hip
+an poll
+an propodus
+an pygal shield
+an rear cannon
+an rump
+an scales
+an shoulder
+an shoulders
+an skin
+an spiracle
+an stifle
+an stomach
+an swimming legs
+an switch
+an tail
+an tarsus
+an teat
+an teeth
+an thigh
+an thorax
+an throat
+an throat latch
+an thumb
+an thumbs
+an toe
+an toes
+an tongue
+an tooth
+an trunk
+an tusk
+an udder
+an undertail feathers
+an uppertail feathers
+an vertebral shell
+an walking legs
+an wattle
+an whisker
+an whiskers
+an wing
+an withers
+an wrist
