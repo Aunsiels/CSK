@@ -38,7 +38,6 @@ class TestLinearWeightedCombination(unittest.TestCase):
         inputs = self.empty_input.add_generated_facts(gfs)
         inputs = self.linear_combination.process(inputs)
         self.assertEqual(len(dataset) + 1, len(inputs.get_generated_facts()))
-        self.assertTrue(False)
 
 
 if __name__ == '__main__':
