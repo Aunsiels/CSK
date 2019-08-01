@@ -41,6 +41,7 @@ class Trainer(object):
         self.scaler = preprocessing.StandardScaler()
         self.scaler.fit(self._all_df[self._to_keep_columns])
         self._df = self._df[self._df["label"] != -1]
+        logging.info(str(len(self._df)) + " annotated facts given.")
         self.inputer = SimpleImputer(missing_values=np.nan, strategy='constant', fill_value=np.nan)
 
     def train(self):

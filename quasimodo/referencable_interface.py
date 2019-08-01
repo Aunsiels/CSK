@@ -14,3 +14,9 @@ class ReferencableInterface(object):
 
     def __str__(self):
         return "Reference(" + str(self.get_name()) + ")"
+
+    def __hash__(self):
+        return hash(self.get_name())
+
+    def __eq__(self, other):
+        return isinstance(other, ReferencableInterface) and other.get_name() == self.get_name()

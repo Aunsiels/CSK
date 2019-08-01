@@ -11,7 +11,7 @@ save_weights = True
 
 
 parameters_reader = ParametersReader()
-annotations_file = parameters_reader.get_parameter("annotations-file") or "data/all_manual_annotations.tsv"
+annotations_file = parameters_reader.get_parameter("annotations-file") or "data/training_active_learning.tsv"
 save_file = parameters_reader.get_parameter("weights-file") or os.path.dirname(__file__) + "/temp/weights.tsv"
 
 
@@ -24,7 +24,8 @@ def _save_weights(parts_of_facts):
         row = parts_of_facts.get_fact_row(fact)
         row.append(annotations.get((fact.get_subject().get(),
                                     fact.get_predicate().get(),
-                                    fact.get_object().get()),
+                                    fact.get_object().get(),
+                                    str(int(fact.is_negative()))),
                                    -1))
         row = [str(x) for x in row]
         save.append("\t".join(row))
@@ -70,5 +71,5 @@ def get_annotated_data():
     with open(annotations_file) as f:
         for line in f:
             line = line.strip().split("\t")
-            annotations[(line[0], line[1], line[2])] = line[3]
+            annotations[(line[0], line[1], line[2], line[3])] = line[4]
     return annotations
