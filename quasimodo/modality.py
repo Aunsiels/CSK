@@ -1,3 +1,5 @@
+import re
+
 from quasimodo.serializable import Serializable
 from .modality_interface import ModalityInterface
 
@@ -51,3 +53,17 @@ class Modality(ModalityInterface, Serializable):
     def from_modalities_and_scores(modality_score_pairs):
         raw_modality = get_multiple_parts_combination(modality_score_pairs)
         return Modality(raw_modality)
+
+    def get_some_modalities(self):
+        regex = re.compile("some\[subj/(?P<name>[^\]]*)\]")
+        some_modalities = []
+        for match in regex.finditer(self.get()):
+            some_modalities.append(match.group("name"))
+        return "/".join(some_modalities)
+
+    def get_normal_modalities(self):
+        res = []
+        for modality, _ in self.get_modalities_and_scores():
+            if "TBC" not in modality and "some[" not in modality:
+                res.append(modality)
+        return "/".join(res)

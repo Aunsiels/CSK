@@ -1,4 +1,5 @@
 from quasimodo.serializable import Serializable
+from quasimodo.statement_maker import correct_statement, _plural_engine, NEGATE_VERB
 from .fact_interface import FactInterface
 from .subject import Subject
 from .object import Object
@@ -39,7 +40,9 @@ class Fact(FactInterface, Serializable):
         else:
             self._object = obj
         self._negative = negative
-        if type(modality) == str:
+        if modality is None:
+            self._modality = Modality()
+        elif type(modality) == str:
             self._modality = Modality(modality)
         else:
             self._modality = modality
@@ -71,3 +74,24 @@ class Fact(FactInterface, Serializable):
                     self.get_object(),
                     new_modality,
                     self.is_negative())
+
+    def to_sentence(self):
+        subject = self.get_subject().get_plural()
+        predicate = self.get_predicate().get_natural_representation()
+        obj = str(self.get_object())
+        normal_modality = self.get_modality().get_normal_modalities()
+        if normal_modality:
+            normal_modality = "[" + normal_modality + "] "
+        some_modality = self.get_modality().get_some_modalities()
+        if some_modality:
+            some_modality = "(" + some_modality + ") "
+        if self.is_negative():
+            if predicate in NEGATE_VERB:
+                predicate += " not"
+            elif predicate == "can":
+                predicate += "not"
+            elif predicate.startswith("are "):
+                predicate = "are not " + predicate[3:]
+            else:
+                predicate = "do not " + predicate
+        return correct_statement(some_modality + subject + " " + predicate + " " + normal_modality + obj)

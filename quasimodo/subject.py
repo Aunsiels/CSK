@@ -1,3 +1,5 @@
+from quasimodo.statement_maker import _plural_engine
+
 from quasimodo.serializable import Serializable
 from .subject_interface import SubjectInterface
 
@@ -16,3 +18,6 @@ class Subject(SubjectInterface, Serializable):
     def __init__(self, subject):
         super().__init__()
         self._subject = subject
+
+    def get_plural(self):
+        return _plural_engine.plural(self.get())
