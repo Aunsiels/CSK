@@ -1,13 +1,13 @@
 import time
 import os
 import logging
-import pickle
 
 from quasimodo.parameters_reader import ParametersReader
 from .inputs import Inputs
 
 parameters_reader = ParametersReader()
 OUT_DIR = parameters_reader.get_parameter("out-dir") or os.path.dirname(__file__) + "/out/"
+
 
 class WorkflowInterface(object):
     """WorkflowInterface

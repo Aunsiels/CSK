@@ -1,34 +1,39 @@
 from basic_csk_solver import BasicCSKSolver
 
+
 class OurBasicCSKSolver(BasicCSKSolver):
 
     def __init__(self):
+        super().__init__()
         self.name = "Ours Basic CSK solver"
         self.subject_to_objects = dict()
         self.object_to_subjects = dict()
         with open("/home/julien/Documents/phd/CSK/quasimodo/temp/"
                   "quasimodo17.tsv") as f:
-            for line in f:
-                line = line.strip().split("\t")
-                subj = self.lemmatize(line[0])
-                pred = self.lemmatize(line[1])
-                obj = self.lemmatize(line[2])
-                score = float(line[5])
-                if subj in self.subject_to_objects:
-                    self.subject_to_objects[subj].append((obj, score))
-                    self.subject_to_objects[subj].append((pred, score))
-                else:
-                    self.subject_to_objects[subj] = [(obj, score), (pred, score)]
-                if obj in self.object_to_subjects:
-                    self.object_to_subjects[obj].append((subj, score))
-                    self.object_to_subjects[obj].append((pred, score))
-                else:
-                    self.object_to_subjects[obj] = [(subj, score), (pred, score)]
-                if pred in self.object_to_subjects:
-                    self.object_to_subjects[pred].append((subj, score))
-                    self.object_to_subjects[pred].append((obj, score))
-                else:
-                    self.object_to_subjects[pred] = [(subj, score), (obj, score)]
+            raw_triples = f.readlines()
+        raw_lemmatized_triples = self.spacy_accessor.lemmatize_multiple(raw_triples)
+        for line in raw_lemmatized_triples:
+            line = " ".join(line)
+            line = line.strip().split("\t")
+            subj = line[0].strip()
+            pred = line[1].strip()
+            obj = line[2].strip()
+            score = float(line[5])
+            if subj in self.subject_to_objects:
+                self.subject_to_objects[subj].append((obj, score))
+                self.subject_to_objects[subj].append((pred, score))
+            else:
+                self.subject_to_objects[subj] = [(obj, score), (pred, score)]
+            if obj in self.object_to_subjects:
+                self.object_to_subjects[obj].append((subj, score))
+                self.object_to_subjects[obj].append((pred, score))
+            else:
+                self.object_to_subjects[obj] = [(subj, score), (pred, score)]
+            if pred in self.object_to_subjects:
+                self.object_to_subjects[pred].append((subj, score))
+                self.object_to_subjects[pred].append((obj, score))
+            else:
+                self.object_to_subjects[pred] = [(subj, score), (obj, score)]
         for subj in self.subject_to_objects:
             d_temp = dict()
             for value in self.subject_to_objects[subj]:

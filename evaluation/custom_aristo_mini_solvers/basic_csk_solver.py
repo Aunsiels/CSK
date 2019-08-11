@@ -3,7 +3,6 @@ This is a skeleton for building your own solver.
 
 You just need to find and fix the two TODOs in this file.
 """
-from pprint import pprint
 from typing import List
 import re
 
@@ -16,6 +15,8 @@ from wordfreq import word_frequency
 from aristomini.common.solver import SolverBase
 from aristomini.common.models import MultipleChoiceQuestion, MultipleChoiceAnswer, ChoiceConfidence
 
+from quasimodo.spacy_accessor import SpacyAccessor
+
 nlp = spacy.load('en_core_web_sm', disable=["tagger", "parser", "ner"])
 
 class BasicCSKSolver(SolverBase):
@@ -24,20 +25,10 @@ class BasicCSKSolver(SolverBase):
         self.name = "Basic CSK Solver"
         self.subject_to_objects = None
         self.object_to_subjects = None
+        self.spacy_accessor = SpacyAccessor()
 
     def solver_info(self) -> str:
         return self.name
-
-    def lemmatize(self, s):
-        doc = nlp(s)
-        res = []
-        for x in doc:
-            res.append(x.lemma_)
-            #if x.pos_ == "VERB":
-            #    res.append(x.lemma_)
-            #else:
-            #    res.append(x.text)
-        return " ".join(res)
 
     def get_frequency(self, sentence):
         words = sentence.split(" ")
@@ -55,7 +46,7 @@ class BasicCSKSolver(SolverBase):
         choices = question.choices
         choice_texts = [x.text for x in choices]
 
-        question_text = self.lemmatize(question_text)
+        question_text = " ".join(self.spacy_accessor.lemmatize(question_text))
 
         confidences = self.compute_confidences_method1(question_text, choice_texts)
 
@@ -68,7 +59,7 @@ class BasicCSKSolver(SolverBase):
         confidences: List[float] = []
         associations_question = self.get_subject_associated_words(question_text)
         for choice in choices:
-            choice_text = self.lemmatize(choice)
+            choice_text = " ".join(self.spacy_accessor.lemmatize(choice))
             associations_choice = self.get_subject_associated_words(choice_text)
             confidences.append(self.compare_two_associations(associations_question, associations_choice))
         return confidences
@@ -83,7 +74,7 @@ class BasicCSKSolver(SolverBase):
         return confidences
 
     def compute_confident_choice_method1(self, question_text, choice, w_freq):
-        choice_text = self.lemmatize(choice)
+        choice_text = " ".join(self.spacy_accessor.lemmatize(choice))
         propositions = choice_text.lower().split(" ")
         propositions_sub_parts = []
         for i in range(len(propositions)):
@@ -151,7 +142,7 @@ class BasicCSKSolver(SolverBase):
     def get_frequency_sequences_in_choices(self, choices):
         w_freq = dict()
         for i, choice in enumerate(choices):
-            propositions = self.lemmatize(choice.lower()).split(" ")
+            propositions = self.spacy_accessor.lemmatize(choice.lower())
             for i in range(len(propositions)):
                 for j in range(i + 1, len(propositions) + 1):
                     sub_part_choice = " ".join(propositions[i:j])

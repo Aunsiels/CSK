@@ -20,6 +20,8 @@ class CleaningPredicateSubmodule(SubmoduleInterface):
             predicate = generated_fact.get_predicate().get()
             if predicate in forbidden_predicate:
                 continue
+            if not all([x.isalnum() or x.isspace() for x in predicate]):
+                continue
             predicate_parts = predicate.split(" ")
             new_predicate_parts = []
             for p in predicate_parts:
