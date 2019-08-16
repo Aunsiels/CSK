@@ -23,6 +23,8 @@ class CleaningPredicateSubmodule(SubmoduleInterface):
             if not all([x.isalnum() or x.isspace() for x in predicate]):
                 continue
             predicate_parts = predicate.split(" ")
+            if not generated_fact.contains_a_verb_in_predicate():
+                continue
             new_predicate_parts = []
             for p in predicate_parts:
                 if p not in dirty_words:

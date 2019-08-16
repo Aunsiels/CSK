@@ -3,7 +3,7 @@ import numpy as np
 import collections
 
 
-EPSILON = 1e-06
+EPSILON = 1e-04
 
 
 def get_prior(y, y_unique):
@@ -57,7 +57,7 @@ def get_all_likelihoods(x, means, standard_deviations):
             if not np.isnan(x[j]):
                 temp = get_gaussian(x[j], means[i, j], standard_deviations[i, j])
                 # We do not want zero probabilities
-                temp += EPSILON
+                temp = min(1.0, temp + EPSILON)
                 product *= temp
         result.append(product)
     return np.array(result)

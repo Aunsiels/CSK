@@ -1,10 +1,12 @@
 from quasimodo.serializable import Serializable
+from quasimodo.spacy_accessor import get_default_annotator
 from .generated_fact_interface import GeneratedFactInterface
 from .subject import Subject
 from .object import Object
 from .predicate import Predicate
 from .modality import Modality
 from .fact import Fact
+from nltk.corpus import wordnet as wn
 
 
 class GeneratedFact(GeneratedFactInterface, Serializable):
@@ -36,21 +38,21 @@ class GeneratedFact(GeneratedFactInterface, Serializable):
         if type(subject) == str:
             self._subject = Subject(subject)
         else:
-            self._subject = subject # SubjectInterface
+            self._subject = subject  # SubjectInterface
         if type(predicate) == str:
             self._predicate = Predicate(predicate)
         else:
-            self._predicate = predicate # PredicateInterface
+            self._predicate = predicate  # PredicateInterface
         if type(obj) == str:
             self._object = Object(obj)
         else:
-            self._object = obj # ObjectInterface
+            self._object = obj  # ObjectInterface
         if modality is None:
             self._modality = Modality()
         elif type(modality) == str:
             self._modality = Modality(modality)
         else:
-            self._modality = modality # Optional ModalityInterface
+            self._modality = modality  # Optional ModalityInterface
         self._negative = negative
         self._score = score
         self._sentence_source = sentence_source
@@ -158,3 +160,30 @@ class GeneratedFact(GeneratedFactInterface, Serializable):
                           str(int(self.is_negative())),
                           str(self.get_score().scores[0][0]),
                           self.get_sentence_source()))
+
+    def contains_a_verb_in_predicate(self):
+        subject = self.get_subject().get()
+        predicate = self.get_predicate().get()
+        obj = self.get_object().get()
+        predicate_parts = predicate.split(" ")
+        if not any([can_be_verb(x) for x in predicate_parts]):
+            return False
+        n_words_subject = subject.count(" ")
+        spacy_annotator = get_default_annotator()
+        annotations = spacy_annotator.annotate(subject + " " + predicate + " " + obj)
+        counter = 0
+        contains_verb = False
+        for token in annotations:
+            if counter < n_words_subject:
+                counter += 1
+            else:
+                if token.text in predicate and token.pos_ == "VERB":
+                    contains_verb = True
+        return contains_verb
+
+
+def can_be_verb(word):
+    for synset in wn.synsets(word):
+        if synset.pos() == "v":
+            return True
+    return False

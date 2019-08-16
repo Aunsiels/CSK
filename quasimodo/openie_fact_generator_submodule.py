@@ -19,17 +19,13 @@ from quasimodo.parameters_reader import ParametersReader
 
 FORBIDDEN_BEFORE_SUBJECT = ["a", "the", "an"]
 
-PATTERN = 2
-
-SCORE = 1
-
-SUBJECT = 3
-
-NEGATIVITY = 3
 
 STATEMENT = 0
-
-QUESTION = 4
+SCORE = 1
+PATTERN = 2
+SUBJECT = 3
+NEGATIVITY = 4
+QUESTION = 5
 
 _nlp = spacy.load('en_core_web_sm')
 _plural_engine = inflect.engine()
@@ -278,12 +274,12 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
         begin = 0
         counter = 0
         for i in range(len(full_sentence)):
-            batch_size_is_too_long = counter + 3 + len(full_sentence[i][0]) > self._max_query_length
+            batch_size_is_too_long = counter + 3 + len(full_sentence[i][STATEMENT]) > self._max_query_length
             if batch_size_is_too_long:
                 batches.append(full_sentence[begin:i])
                 begin = i
                 counter = 0
-            counter += len(full_sentence[i][0]) + 3
+            counter += len(full_sentence[i][STATEMENT]) + 3
         if begin < len(full_sentence):
             batches.append(full_sentence[begin:])
         return batches
@@ -308,6 +304,7 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                     full_sentence.append((new_sentence.replace(negation, " " + verb + " "),
                                           suggestion[SCORE],
                                           suggestion[PATTERN],
+                                          suggestion[SUBJECT],
                                           True,
                                           suggestion[STATEMENT]))
                     break
@@ -318,6 +315,7 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
             full_sentence.append((new_sentence,
                                   suggestion[SCORE],
                                   suggestion[PATTERN],
+                                  suggestion[SUBJECT],
                                   negativity,
                                   suggestion[STATEMENT]))
 
@@ -390,10 +388,11 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
         score_based_on_ranking = self.get_score_based_on_ranking(suggestion)
         if len(corenlp_result_sentence["openie"]) == 0:
             # Try simple extraction as OpenIE is bad for this
-            se = _simple_extraction(suggestion[0])
+            se = _simple_extraction(suggestion[STATEMENT])
             if se is not None:
                 new_fact = self.get_fact_from_simple_extraction(se, score_based_on_ranking, suggestion)
-                generated_facts.append(new_fact)
+                if suggestion[SUBJECT] in new_fact.get_subject().get():
+                    generated_facts.append(new_fact)
         for triple in corenlp_result_sentence["openie"]:
             self.process_triple(triple, suggestion, contains_than, generated_facts, maxi_length_object,
                                 maxi_length_predicate, maxi_obj, score_based_on_ranking)
@@ -419,6 +418,8 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
 
     def add_facts_to_generated_facts(self, generated_facts, subject, predicate, obj, modality, negative,
                                      score_based_on_ranking, suggestion):
+        if suggestion[SUBJECT] not in subject:
+            return
         multiple_score = MultipleScore()
         multiple_score.add_score(1.0, self._module_reference, reference_corenlp)
         multiple_score.add_score(score_based_on_ranking, self._module_reference, self)
@@ -457,6 +458,8 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                      len(fact) > 0 and len(fact[0]) > 1 and len(fact[1]) > 1 and len(fact[2]) > 1]
             score_based_on_ranking = self.get_score_based_on_ranking(suggestion)
             for fact in facts:
+                if suggestion[SUBJECT] not in fact[0]:
+                    continue
                 try:
                     score = float(fact[3].replace(",", "."))
                 except:
@@ -503,7 +506,11 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
             suggestion_statement = suggestion[STATEMENT]
             if suggestion_statement in cache:
                 statement, negativity, corenlp_result = cache[suggestion_statement]
-                suggestion = (statement, suggestion[SCORE], suggestion[PATTERN], negativity == "True",
+                suggestion = (statement,
+                              suggestion[SCORE],
+                              suggestion[PATTERN],
+                              suggestion[SUBJECT],
+                              negativity == "True",
                               suggestion[STATEMENT])
                 self.process_corenlp_result_knowing_suggestion(suggestion,
                                                                corenlp_result,

@@ -1,5 +1,3 @@
-import unittest
-
 import spacy
 
 from quasimodo.sentence_batcher import SentenceBatcher
@@ -7,17 +5,18 @@ from quasimodo.sentence_batcher import SentenceBatcher
 SEPARATOR = "\n\n"
 LEN_SEPARATOR = len(SEPARATOR)
 
+
 class SpacyAccessor(object):
 
-    def __init__(self):
-        self._nlp = spacy.load("en_core_web_sm")
+    def __init__(self, model="en_core_web_sm"):
+        self._nlp = spacy.load(model)
 
     def lemmatize(self, sentence):
         tokens = self._nlp(sentence)
         return [x.lemma_ for x in tokens]
 
     def lemmatize_multiple(self, sentences):
-        sb = SentenceBatcher(sentences, self._nlp.max_length, lambda x : len(x) + LEN_SEPARATOR)
+        sb = SentenceBatcher(sentences, self._nlp.max_length, lambda x: len(x) + LEN_SEPARATOR)
         batch_lemmatization = [self.lemmatize(SEPARATOR.join(x)) for x in sb]
         lemmatized_sentences = []
         for batch in batch_lemmatization:
@@ -36,3 +35,15 @@ class SpacyAccessor(object):
                     lemmatized_sentences[-1].append(lemma)
         return lemmatized_sentences
 
+    def annotate(self, sentence):
+        return self._nlp(sentence)
+
+
+spacy_annotator = None
+
+
+def get_default_annotator():
+    global spacy_annotator
+    if spacy_annotator is None:
+        spacy_annotator = SpacyAccessor()
+    return spacy_annotator

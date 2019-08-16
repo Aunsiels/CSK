@@ -34,6 +34,43 @@ class TestCleaningPredicate(unittest.TestCase):
         self.assertEqual(1, len(generated_facts))
         self.assertEqual("is", generated_facts[0].get_predicate().get())
 
+    def test_no_verb(self):
+        generated_fact = GeneratedFact("test", "table", "nothing", "", False, 0.0, "")
+        inputs = self.empty_input.add_generated_facts([generated_fact])
+        inputs = self.cleaning_predicate.process(inputs)
+        generated_facts = inputs.get_generated_facts()
+        print(generated_facts)
+        self.assertEqual(0, len(generated_facts))
+
+    def test_no_verb2(self):
+        generated_fact = GeneratedFact("wall", "clock", "yellow", "", False, 0.0, "")
+        inputs = self.empty_input.add_generated_facts([generated_fact])
+        inputs = self.cleaning_predicate.process(inputs)
+        generated_facts = inputs.get_generated_facts()
+        print(generated_facts)
+        self.assertEqual(0, len(generated_facts))
+
+    def test_conjugated_verb(self):
+        generated_fact = GeneratedFact("elephant", "going", "nowhere", "", False, 0.0, "")
+        inputs = self.empty_input.add_generated_facts([generated_fact])
+        inputs = self.cleaning_predicate.process(inputs)
+        generated_facts = inputs.get_generated_facts()
+        self.assertEqual(1, len(generated_facts))
+
+    def test_conjugated_verb2(self):
+        generated_fact = GeneratedFact("elephant", "go", "nowhere", "", False, 0.0, "")
+        inputs = self.empty_input.add_generated_facts([generated_fact])
+        inputs = self.cleaning_predicate.process(inputs)
+        generated_facts = inputs.get_generated_facts()
+        self.assertEqual(1, len(generated_facts))
+
+    def test_conjugated_verb3(self):
+        generated_fact = GeneratedFact("elephant", "goes", "nowhere", "", False, 0.0, "")
+        inputs = self.empty_input.add_generated_facts([generated_fact])
+        inputs = self.cleaning_predicate.process(inputs)
+        generated_facts = inputs.get_generated_facts()
+        self.assertEqual(1, len(generated_facts))
+
 
 if __name__ == '__main__':
     unittest.main()

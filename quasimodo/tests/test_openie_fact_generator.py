@@ -109,7 +109,7 @@ class TestOpenIEFactGenerator(unittest.TestCase):
     def test_extend(self):
         suggestion = ("why do african people have noses and lips", 1.0, None, "african people")
         new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
-        self.assertEqual(len(new_gfs), 6)
+        self.assertEqual(len(new_gfs), 3)
         objs = list(map(lambda x: x.get_object(), new_gfs))
         self.assertIn("noses", objs)
         self.assertIn("lips", objs)
