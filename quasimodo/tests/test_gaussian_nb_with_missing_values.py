@@ -57,21 +57,21 @@ class TestFilterObject(unittest.TestCase):
     def test_likelihoods(self):
         means, standard_deviations = get_means_and_standard_deviations(self.x, self.y, self.y_uniq)
         x_in = np.array([1, 0])
-        likelihoods = get_all_likelihoods(x_in, means, standard_deviations)
+        likelihoods = get_all_likelihoods(x_in, means, standard_deviations, None)
         self.assertNotAlmostEqual(likelihoods[0], 0, places=2)
         self.assertNotAlmostEqual(likelihoods[0], 1, places=2)
         self.assertNotAlmostEqual(likelihoods[1], 0, places=2)
         self.assertNotAlmostEqual(likelihoods[1], 1, places=2)
 
     def setUp(self):
-        self.x = [[0, np.nan],
-                  [np.nan, 0],
-                  [0, 0],
-                  [1, -1],
-                  [1, np.nan],
-                  [np.nan, 0],
-                  [1, 0],
-                  [2, 3]]
+        self.x = [[0, np.nan],  # 0
+                  [np.nan, 0],  # 0
+                  [0, 0],  # 0
+                  [1, -1],  # 0
+                  [1, np.nan],  # 1
+                  [np.nan, 0],  # 1
+                  [1, 0],  # 1
+                  [2, 3]]  # 1
         self.y = [0, 0, 0, 0, 1, 1, 1, 1]
         self.y_uniq = [0, 1]
         self.x = np.array(self.x)
@@ -87,6 +87,7 @@ class TestFilterObject(unittest.TestCase):
         self.assertNotAlmostEqual(proba[0][0], 1, places=2)
         self.assertNotAlmostEqual(proba[0][1], 0, places=2)
         self.assertNotAlmostEqual(proba[0][1], 1, places=2)
+        self.assertGreater(proba[0][1], proba[0][0])
 
     def test_gaussian(self):
         gaussian = get_gaussian(0.441, 1, 0.447213595)

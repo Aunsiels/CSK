@@ -44,7 +44,7 @@ def get_gaussian(x, mean, standard_deviation):
         math.exp(-(x - mean) ** 2 / 2.0 / standard_deviation ** 2)
 
 
-def get_all_likelihoods(x, means, standard_deviations):
+def get_all_likelihoods(x, means, standard_deviations, values):
     if means is None or standard_deviations is None:
         if x is not None:
             return [1 / x.shape[0]] * x.shape[0]
@@ -55,7 +55,20 @@ def get_all_likelihoods(x, means, standard_deviations):
         product = 1.0
         for j in range(means.shape[1]):
             if not np.isnan(x[j]):
-                temp = get_gaussian(x[j], means[i, j], standard_deviations[i, j])
+                if values is not None and len(values[i][j]) == 0:
+                    temp = 0.0
+                elif values is not None and len(values[i][j]) == 1:
+                    if x[j] in values[i][j]:
+                        temp = 1.0
+                    else:
+                        temp = 0.0
+                elif values is not None and len(values[i][j]) == 2:
+                    if x[j] in values[i][j]:
+                        temp = values[i][j][x[j]] / sum(values[i][j].values())
+                    else:
+                        temp = 0.0
+                else:
+                    temp = get_gaussian(x[j], means[i, j], standard_deviations[i, j])
                 # We do not want zero probabilities
                 temp = min(1.0, temp + EPSILON)
                 product *= temp
@@ -78,6 +91,23 @@ def get_all_posterior(likelihoods, prior):
     return res
 
 
+def get_values(x_input, y, y_unique):
+    n_features = x_input.shape[1]
+    n_classes = y_unique.shape[0]
+    reversed_label = dict()
+    for i, label in enumerate(y_unique):
+        reversed_label[label] = i
+    values = [[dict() for _ in range(n_features)] for _ in range(n_classes)]
+    for idx, row in enumerate(x_input):
+        j = reversed_label[y[idx]]
+        for i, value in enumerate(row):
+            if np.isnan(value):
+                continue
+            if len(values[i][j]) <= 3:
+                values[j][i][value] = values[j][i].get(value, 0) + 1
+    return values
+
+
 class GaussianNBWithMissingValues:
 
     def __init__(self):
@@ -85,6 +115,7 @@ class GaussianNBWithMissingValues:
         self.standard_deviations = None
         self.prior = None
         self.y_unique = None
+        self.values = None
 
     def fit(self, x_input, y):
         if x_input is None or y is None:
@@ -92,10 +123,12 @@ class GaussianNBWithMissingValues:
         self.y_unique = np.unique(y)  # This is sorted
         self.prior = get_prior(y, self.y_unique)
         self.means, self.standard_deviations = get_means_and_standard_deviations(x_input, y, self.y_unique)
+        self.values = get_values(x_input, y, self.y_unique)
         return self
 
     def predict_proba(self, x_input):
-        likelihoods = np.apply_along_axis(lambda x: get_all_likelihoods(x, self.means, self.standard_deviations), 1, x_input)
+        likelihoods = np.apply_along_axis(
+            lambda x: get_all_likelihoods(x, self.means, self.standard_deviations, self.values), 1, x_input)
         probabilities = np.apply_along_axis(lambda x: get_all_posterior(x, self.prior), 1, likelihoods)
         return probabilities
 
