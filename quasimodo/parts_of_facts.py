@@ -150,7 +150,7 @@ class PartsOfFacts(object):
             fact.get_subject(),
             fact.get_predicate(),
             fact.get_object(),
-            self.modalities[fact],
+            Modality.from_modalities_and_scores(self.modalities[fact].items()),
             fact.is_negative(),
             multiple_score,
             self.get_combined_sentence(fact),
