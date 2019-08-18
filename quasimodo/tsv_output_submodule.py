@@ -31,7 +31,7 @@ def save_tsv_triples(triples):
     version = get_version()
     save_file = OUT_DIR + "quasimodo" + str(version) + ".tsv"
     with open(save_file, "w") as f:
-        f.write("\t".join(["subject", "predicate", "object", "modality", "is_negative", "score", "sentences source"]))
+        f.write("\t".join(["subject", "predicate", "object", "modality", "is_negative", "score", "sentences source"]) + "\n")
         f.write("\n".join(triples))
 
 
