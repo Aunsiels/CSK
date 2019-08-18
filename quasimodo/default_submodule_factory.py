@@ -1,5 +1,6 @@
 from quasimodo.conceptual_captions_comparator_submodule import ConceptualCaptionsComparatorSubmodule
 from quasimodo.present_conjugate_normalization import PresentConjugateNormalization
+from quasimodo.statistics import StatisticsSubmodule
 from quasimodo.tbc_cleaner import TBCCleaner
 from quasimodo.tsv_output_submodule import TSVOutputSubmodule
 from .submodule_factory_interface import SubmoduleFactoryInterface
@@ -105,7 +106,8 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
             "conceptual-captions": ConceptualCaptionsComparatorSubmodule,
             "tbc-cleaner": TBCCleaner,
             "tsv-output": TSVOutputSubmodule,
-            "present-conjugate": PresentConjugateNormalization
+            "present-conjugate": PresentConjugateNormalization,
+            "statistics": StatisticsSubmodule
         }
 
     def get_submodule(self, submodule_name, module_reference):
