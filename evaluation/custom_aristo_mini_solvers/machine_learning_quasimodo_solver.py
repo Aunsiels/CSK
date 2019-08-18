@@ -4,7 +4,7 @@ from machine_learning_solver import MachineLearningSolver
 
 
 class MachineLearningQuasimodoSolver(MachineLearningSolver):
-    
+
     def __init__(self):
         super().__init__()
         self.name = "Quasimodo ML solver"
@@ -35,6 +35,10 @@ class MachineLearningQuasimodoSolver(MachineLearningSolver):
         print("Final cleaning")
         self.kb = pd.DataFrame(kb_raw,
                                columns=["subject", "predicate", "object", "modality", "is_negative", "score"])
+        df_spo_lemma = pd.DataFrame(kb, columns=["subject", "predicate", "object"])
+        self.kb["subject"] = df_spo_lemma["subject"]
+        self.kb["predicate"] = df_spo_lemma["predicate"]
+        self.kb["object"] = df_spo_lemma["object"]
         self.kb["score"] = pd.to_numeric(self.kb["score"])
         self.kb["predicate"] = [transform_predicate(x) for x in self.kb["predicate"]]
 
