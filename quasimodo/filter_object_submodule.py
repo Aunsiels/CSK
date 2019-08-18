@@ -9,11 +9,13 @@ forbidden = ["used", "called", "xbox", "youtube", "xo", "quote",
 totally_forbidden = ["xbox", "youtube", "xo", "quote",
                      "quotes", "minecraft", "why", "quizlet", "nz", "wz",
                      "quora", "reddit", "skyrim", "shippuden", "yahoo",
-                     "wikipedia", "how", "why", "brainly", "joke", "jokes"]
+                     "wikipedia", "how", "why", "brainly", "joke", "jokes", "quiz"]
 
 
 def _is_totally_forbidden(sentence, forbidden):
     s = sentence.split(" ")
+    if "quiz let" in sentence:
+        return True
     for w in s:
         if w in forbidden:
             return True
@@ -35,6 +37,9 @@ class FilterObjectSubmodule(SubmoduleInterface):
             if obj in forbidden or _is_totally_forbidden(obj, totally_forbidden) or len(obj) == 1:
                 continue
             obj = generated_fact.get_object().get().split(" ")
+            predicate = generated_fact.get_predicate().get()
+            if predicate == obj[0]:
+                obj = obj[1:]
             new_obj = []
             for p in obj:
                 if p not in dirty_words:

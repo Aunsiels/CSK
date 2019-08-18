@@ -31,5 +31,14 @@ class CleaningPredicateSubmodule(SubmoduleInterface):
                     new_predicate_parts.append(p)
             if len(predicate_parts) != len(new_predicate_parts):
                 generated_fact = generated_fact.change_predicate(" ".join(new_predicate_parts).strip())
+            if predicate_parts[0] == "not":
+                if len(predicate_parts) == 1:
+                    continue
+                generated_fact = generated_fact.change_predicate(" ".join(new_predicate_parts[1:]).strip())\
+                    .change_negativity(True)
+            if predicate_parts[0] == "to":
+                if len(predicate_parts) == 1:
+                    continue
+                generated_fact = generated_fact.change_predicate(" ".join(new_predicate_parts[1:]).strip())
             new_generated_facts.append(generated_fact)
         return input_interface.replace_generated_facts(new_generated_facts)

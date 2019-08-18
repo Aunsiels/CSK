@@ -32,6 +32,7 @@ _plural_engine = inflect.engine()
 
 reference_corenlp = SubmoduleReferenceInterface("CoreNLP")
 reference_openie5 = SubmoduleReferenceInterface("OpenIE5")
+reference_manual = SubmoduleReferenceInterface("Manual")
 
 parameters_reader = ParametersReader()
 MEMORY_CORENLP = parameters_reader.get_parameter("memory-corenlp") or "10G"
@@ -55,7 +56,7 @@ def _simple_extraction(sentence):
             try:
                 synsets = wn.synsets(tokens[1])
                 break
-            except OSError as e:
+            except OSError as _:
                 logging.info("Failed in finding synsets")
         # We want a verb!
         for synset in synsets:
@@ -431,6 +432,7 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
         negative = get_negativity(suggestion) or extraction[3]
         multiple_score = MultipleScore()
         multiple_score.add_score(score, self._module_reference, self)
+        multiple_score.add_score(1.0, self._module_reference, reference_manual)
         new_fact = GeneratedFact(
             extraction[0],
             extraction[1],

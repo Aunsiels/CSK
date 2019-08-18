@@ -105,6 +105,16 @@ class GeneratedFact(GeneratedFactInterface, Serializable):
                              self.get_sentence_source(),
                              self.get_pattern())
 
+    def change_negativity(self, is_negative):
+        return GeneratedFact(self.get_subject(),
+                             self.get_predicate(),
+                             self.get_object(),
+                             self.get_modality(),
+                             is_negative,
+                             self.get_score(),
+                             self.get_sentence_source(),
+                             self.get_pattern())
+
     def change_score(self, new_score):
         """change_score
         Change the score of the generated fact

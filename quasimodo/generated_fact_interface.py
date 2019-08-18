@@ -18,6 +18,9 @@ class GeneratedFactInterface(FactInterface):
     def change_modality(self, new_modality):
         raise NotImplementedError
 
+    def change_negativity(self, is_negative):
+        raise NotImplementedError
+
     def __init__(self):
         super().__init__()
         self._score = None
