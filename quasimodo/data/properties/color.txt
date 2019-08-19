@@ -1,7 +1,6 @@
 amaranth 
 amber 
 amethyst 
-apricot 
 aquamarine 
 azure 
 baby blue 
@@ -11,23 +10,16 @@ blue
 blue-green 
 blue-violet 
 blush 
-bronze 
 brown 
 burgundy 
 byzantium 
 carmine 
 cerise 
 cerulean 
-champagne 
 chartreuse green 
-chocolate 
 cobalt blue 
-coffee 
-copper 
-coral 
 crimson 
 cyan 
-desert sand 
 electric blue 
 emerald 
 erin 
@@ -40,7 +32,6 @@ indigo
 ivory 
 jade 
 jungle green 
-lavender 
 lemon 
 lilac 
 lime 
@@ -63,12 +54,10 @@ plum
 prussian blue 
 puce 
 purple 
-raspberry 
 red 
 red-violet 
 rose 
 ruby 
-salmon 
 sangria 
 sapphire 
 scarlet 
