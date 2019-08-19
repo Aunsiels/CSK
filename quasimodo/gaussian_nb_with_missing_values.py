@@ -103,7 +103,7 @@ def get_values(x_input, y, y_unique):
         for i, value in enumerate(row):
             if np.isnan(value):
                 continue
-            if len(values[i][j]) <= 3:
+            if len(values[j][i]) <= 3:
                 values[j][i][value] = values[j][i].get(value, 0) + 1
     return values
 

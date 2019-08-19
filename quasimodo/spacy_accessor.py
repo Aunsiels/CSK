@@ -9,6 +9,8 @@ LEN_SEPARATOR = len(SEPARATOR)
 class SpacyAccessor(object):
 
     def __init__(self, model="en_core_web_sm"):
+        if model is None:
+            model = "en_core_web_sm"
         self._nlp = spacy.load(model)
 
     def lemmatize(self, sentence):
