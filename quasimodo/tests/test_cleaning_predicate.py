@@ -80,6 +80,13 @@ class TestCleaningPredicate(unittest.TestCase):
         self.assertEqual(generated_facts[0].get_predicate().get(), "digest")
         self.assertTrue(generated_facts[0].is_negative())
 
+    def test_empty_predicate(self):
+        generated_fact = GeneratedFact("elephant", "", "fruits", "", False, 0.0, "")
+        inputs = self.empty_input.add_generated_facts([generated_fact])
+        inputs = self.cleaning_predicate.process(inputs)
+        generated_facts = inputs.get_generated_facts()
+        self.assertEqual(0, len(generated_facts))
+
 
 if __name__ == '__main__':
     unittest.main()

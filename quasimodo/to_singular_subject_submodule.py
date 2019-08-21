@@ -4,7 +4,7 @@ import inflect
 
 p = inflect.engine()
 non_plural = ["texas", "star wars", "gas", "people", "chaos", "fetus", "moses",
-              "jesus", "gps", "abs"]
+              "jesus", "gps", "abs", "sos"]
 
 
 class ToSingularSubjectSubmodule(SubmoduleInterface):

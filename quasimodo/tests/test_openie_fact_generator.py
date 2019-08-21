@@ -192,6 +192,19 @@ class TestOpenIEFactGenerator(unittest.TestCase):
         self.assertEqual(new_gfs[0].get_predicate(), "always climb in")
         self.assertEqual(new_gfs[0].get_object(), "tree")
 
+    def test_can_simple_ignore(self):
+        suggestion = ("why does leather quality", 1.0, None, "leather")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertTrue(len(new_gfs) == 0)
+
+    def test_can_simple_not_ignore(self):
+        suggestion = ("why does leather die", 1.0, None, "leather")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertEqual(len(new_gfs),  1)
+        self.assertEqual(new_gfs[0].get_subject(), "leather")
+        self.assertEqual(new_gfs[0].get_predicate(), "can")
+        self.assertEqual(new_gfs[0].get_object(), "die")
+
 
 if __name__ == '__main__':
     unittest.main()

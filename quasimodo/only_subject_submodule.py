@@ -1,3 +1,5 @@
+from collections import Counter
+
 from .submodule_interface import SubmoduleInterface
 import inflect
 import logging
@@ -39,6 +41,21 @@ class OnlySubjectSubmodule(SubmoduleInterface):
             lambda x: x.get_subject().get().lower() in subjects,
             input_interface.get_generated_facts()))
 
+        discarded_generated_facts = list(filter(
+            lambda x: x.get_subject().get().lower() not in subjects,
+            input_interface.get_generated_facts()))
+        forgotten_subjects = [x.get_subject().get() for x in discarded_generated_facts]
+        counter_forgotten_subjects = Counter(forgotten_subjects)
+        to_save = []
+        for subject, value in counter_forgotten_subjects.items():
+            to_save.append(subject + "\t" + str(value))
+        while True:
+            try:
+                with open("temp/forgotten_subjects.tsv") as f:
+                    f.write("\n".join(to_save))
+                break
+            except OSError:
+                logging.info("Problem when saving forgotten subjects. Trying again...")
         logging.info("%d facts were removed by the subject cleaner",
                      len(input_interface.get_generated_facts()) - len(new_generated_facts))
 

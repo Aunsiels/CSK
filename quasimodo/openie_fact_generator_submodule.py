@@ -50,19 +50,26 @@ def _simple_extraction(sentence):
             return [' '.join(tokens[1:idx_can]), "can", " ".join(tokens[idx_can + 1:]), True]
         return [' '.join(tokens[:idx_can]), "can", " ".join(tokens[idx_can + 1:]), False]
     if len(tokens) == 2:
-        return [tokens[0], "can", tokens[1], False]
+        for synset in get_synsets(tokens[1]):
+            if synset.pos() == "v":
+                return [tokens[0], "can", tokens[1], False]
     if len(tokens) == 3:
-        while True:
-            try:
-                synsets = wn.synsets(tokens[1])
-                break
-            except OSError as _:
-                logging.info("Failed in finding synsets")
+        synsets = get_synsets(tokens[1])
         # We want a verb!
         for synset in synsets:
             if synset.pos() == "v":
                 return [tokens[0], tokens[1], tokens[2], False]
     return None
+
+
+def get_synsets(word):
+    while True:
+        try:
+            synsets = wn.synsets(word)
+            break
+        except OSError as _:
+            logging.info("Failed in finding synsets")
+    return synsets
 
 
 def _try_extend(subj, pred, obj, sentence):
