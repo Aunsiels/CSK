@@ -100,9 +100,9 @@ class StatisticsSubmodule(SubmoduleInterface):
         ]
         scores = []
         for generated_fact in input_interface.get_generated_facts():
-            scores = generated_fact.get_score().scores
+            scores_temp = generated_fact.get_score().scores
             submodules_temp = set()
-            for score, _, submodule_source in scores:
+            for score, _, submodule_source in scores_temp:
                 submodules_temp.add(submodule_source.get_name())
                 scores.append(score)
             for submodule in interesting_submodules:
