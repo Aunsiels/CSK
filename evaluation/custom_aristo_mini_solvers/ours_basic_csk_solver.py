@@ -9,8 +9,8 @@ class OurBasicCSKSolver(BasicCSKSolver):
         self.subject_to_objects = dict()
         self.object_to_subjects = dict()
         with open("/home/julien/Documents/phd/CSK/quasimodo/temp/"
-                  "quasimodo17.tsv") as f:
-            raw_triples = f.readlines()
+                  "quasimodo19.tsv") as f:
+            raw_triples = f.readlines()[1:]
         raw_lemmatized_triples = self.spacy_accessor.lemmatize_multiple(raw_triples)
         for line in raw_lemmatized_triples:
             line = " ".join(line)
