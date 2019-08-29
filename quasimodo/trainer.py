@@ -37,12 +37,33 @@ class Trainer(object):
         for x in self._to_keep_columns:
             self._df[x + "_is_nan"] = self._df[x].isna().astype(float)
         self._to_keep_columns += [x + "_is_nan" for x in self._to_keep_columns]
+        self.create_patterns_features()
         self._all_df = self._df
         self.scaler = preprocessing.StandardScaler()
         self.scaler.fit(self._all_df[self._to_keep_columns])
         self._df = self._df[self._df["label"] != -1]
         logging.info(str(len(self._df)) + " annotated facts given.")
         self.inputer = SimpleImputer(missing_values=np.nan, strategy='constant', fill_value=np.nan)
+
+    def get_all_patterns(self):
+        patterns = set()
+        for string_patterns in self._df["patterns"]:
+            for pattern in get_patterns(string_patterns):
+                patterns.add(pattern)
+        return patterns
+
+    def add_patterns_to_df(self, patterns):
+        size = len(self._df)
+        for pattern in patterns:
+            self._df[pattern] = np.zeros(size)
+        for i, string_patterns in enumerate(self._df["patterns"]):
+            for pattern in get_patterns(string_patterns):
+                self._df[pattern].iloc[i] += 1
+
+    def create_patterns_features(self):
+        patterns = self.get_all_patterns()
+        self.add_patterns_to_df(patterns)
+        self._to_keep_columns += patterns
 
     def train(self):
         x_input = []
@@ -118,3 +139,9 @@ class Trainer(object):
         pred = self._get_array(pred)
         obj = self._get_array(obj)
         return np.concatenate([subj, pred, obj])
+
+
+def get_patterns(string_patterns):
+    if type(string_patterns) == float:
+        return []
+    return string_patterns.split("; ")
