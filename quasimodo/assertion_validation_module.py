@@ -17,6 +17,7 @@ class AssertionValidationModule(ModuleInterface):
                         "wikipedia-cooccurrence",
                         "simple-wikipedia-cooccurrence",
                         "conceptual-captions",
+                        "what-questions"
                         ]
         super(AssertionValidationModule, self).__init__(
             module_names, DefaultSubmoduleFactory())

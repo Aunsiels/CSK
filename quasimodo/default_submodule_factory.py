@@ -3,6 +3,7 @@ from quasimodo.present_conjugate_normalization import PresentConjugateNormalizat
 from quasimodo.statistics import StatisticsSubmodule
 from quasimodo.tbc_cleaner import TBCCleaner
 from quasimodo.tsv_output_submodule import TSVOutputSubmodule
+from quasimodo.what_questions_comparator_submodule import WhatQuestionsComparatorSubmodule
 from .submodule_factory_interface import SubmoduleFactoryInterface
 from .google_autocomplete_submodule import GoogleAutocompleteSubmodule
 from .animal_submodule import AnimalSubmodule
@@ -107,7 +108,8 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
             "tbc-cleaner": TBCCleaner,
             "tsv-output": TSVOutputSubmodule,
             "present-conjugate": PresentConjugateNormalization,
-            "statistics": StatisticsSubmodule
+            "statistics": StatisticsSubmodule,
+            "what-questions": WhatQuestionsComparatorSubmodule
         }
 
     def get_submodule(self, submodule_name, module_reference):

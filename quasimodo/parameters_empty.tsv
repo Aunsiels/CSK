@@ -12,10 +12,11 @@ occupations50	XXX
 flickr-clusters	XXX
 imagetag-associations	XXX
 pattern-first	true
-out-dir ./out/
-question-cache-dir ./question2statement/
+out-dir	./out/
+question-cache-dir	./question2statement/
 memory-corenlp	5G
-conceptual-caption-file        XXX
+conceptual-caption-file	XXX
+what-questions-file	XXX
 answercom-questions	XXX
 quora-questions	XXX
 reddit-questions	XXX
