@@ -79,6 +79,16 @@ class TestOpenIEFactGenerator(unittest.TestCase):
         self.assertEqual(new_gfs[0].get_object(), "eat")
         self.assertTrue(new_gfs[0].is_negative())
 
+    def test_arent_short_suggestion_pattern(self):
+        pattern = PatternGoogle("why aren't", "ARN'T", True)
+        suggestion = ("why aren't lions fat", 1.0, pattern, "lion")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertEqual(len(new_gfs), 1)
+        self.assertEqual(new_gfs[0].get_subject(), "lions")
+        self.assertEqual(new_gfs[0].get_predicate(), "are")
+        self.assertEqual(new_gfs[0].get_object(), "fat")
+        self.assertTrue(new_gfs[0].is_negative())
+
     def test_cannot_short_suggestion1(self):
         suggestion = ("why can't lions eat", 1.0, None, "lion")
         new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])

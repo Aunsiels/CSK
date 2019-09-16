@@ -13,7 +13,7 @@ class TestComplete(unittest.TestCase):
         inputs = workflow.generate_input()
         inputs = workflow.run(inputs)
         generated_facts = inputs.get_generated_facts()
-        # print("\n".join(map(str,generated_facts)))
+        print("\n".join(map(str,generated_facts)))
         self.assertTrue(len(generated_facts) > 0)
 
 
@@ -29,11 +29,10 @@ class TestWorkflow(WorkflowInterface):
     def __init__(self):
         module_names = ["patterns",
                         "pattern-fusion",
-                        "assertion-generation",
-                        "archit",
-                        "assertion-normalization",
-                        "assertion-validation",
-                        "assertion-fusion"]
+                        "assertion-generation",]
+                        #"assertion-normalization",
+                        #"assertion-validation",
+                        #"assertion-fusion"]
         super(TestWorkflow, self).__init__(module_names, DefaultModuleFactory())
 
     def generate_input(self):

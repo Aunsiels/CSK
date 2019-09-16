@@ -2,7 +2,7 @@ from quasimodo.parameters_reader import ParametersReader
 
 parameters_reader = ParametersReader()
 PATTERN_FIRST = (parameters_reader.get_parameter("pattern-first") or "true") == "true"
-possible_second_word_question = ["is", "are", "do", "does", "can", "can_t"]
+possible_second_word_question = ["is", "are", "do", "does", "can", "can_t", "isn_t", "aren_t", "doesn_t", "don_t"]
 
 
 def get_regex_from_query(filename):
@@ -20,7 +20,7 @@ def get_regex_from_query_by_subject(filename):
         filename_regex = filename
     else:
         if filename_split[0] in ["why", "how"]:
-            if filename_split[1] in ["is", "are", "do", "does", "can", "can_t"] and len(filename_split) >= 3:
+            if filename_split[1] in possible_second_word_question and len(filename_split) >= 3:
                 if filename_split[2][-1] == "s":
                     filename_split[2] = filename_split[2][:-1]
                 filename_regex = "-".join(filename_split[2:])
