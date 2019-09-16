@@ -70,8 +70,8 @@ class StatisticsSubmodule(SubmoduleInterface):
             if subject in animals:
                 animal_facts += 1
                 animals_found.add(subject)
-        print("There are %d facts about animals" % animal_facts)
-        print("%d different animals were found", len(animals_found))
+        statistics.append("There are %d facts about animals" % animal_facts)
+        statistics.append("%d different animals were found" % len(animals_found))
 
         occupations = []
         with open(OCCUPATIONS_FILENAME) as f:
@@ -83,8 +83,8 @@ class StatisticsSubmodule(SubmoduleInterface):
             if subject in occupations:
                 occupations_facts += 1
                 occupations_found.add(subject)
-        print("There are %d facts about occupations" % occupations_facts)
-        print("%d different occupations were found", len(occupations_found))
+        statistics.append("There are %d facts about occupations" % occupations_facts)
+        statistics.append("%d different occupations were found" % len(occupations_found))
 
         n_found = dict()
         interesting_submodules = [
@@ -103,15 +103,15 @@ class StatisticsSubmodule(SubmoduleInterface):
             scores_temp = generated_fact.get_score().scores
             submodules_temp = set()
             for score, _, submodule_source in scores_temp:
-                submodules_temp.add(submodule_source.get_name())
+                for s in submodule_source._references:
+                    submodules_temp.add(s.get_name())
                 scores.append(score)
-            for submodule in interesting_submodules:
-                if submodule in submodules_temp:
-                    n_found[submodule] = n_found.get(submodule, 0) + 1
+            for submodule in submodules_temp:
+                n_found[submodule] = n_found.get(submodule, 0.0) + 1.0
 
-        for submodule in interesting_submodules:
-            statistics.append("%.2f facts were extracted from %s" %
-                              ((n_found.get(submodule, 0) / len(input_interface.get_generated_facts()) * 100),
+        for submodule in n_found:
+            statistics.append("%.2f facts were extracted/validated from %s" %
+                              ((n_found.get(submodule, 0) / len(input_interface.get_generated_facts()) * 100.0),
                                 submodule))
 
         statistics.append("The mean score is %.2f and the standard deviation is %.2f" %
@@ -119,7 +119,7 @@ class StatisticsSubmodule(SubmoduleInterface):
 
         while True:
             version = get_version()
-            with open(OUT_DIR + "statistics" + str(version) + ".txt") as f:
+            with open(OUT_DIR + "statistics" + str(version) + ".txt", "w") as f:
                 f.write("\n".join(statistics))
                 break
 

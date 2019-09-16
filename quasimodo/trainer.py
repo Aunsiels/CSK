@@ -53,18 +53,27 @@ class Trainer(object):
                 patterns.add(pattern)
         return patterns
 
-    def add_patterns_to_df(self, patterns):
+    def add_patterns_to_df(self):
         size = len(self._df)
-        for pattern in patterns:
+        for pattern in self.patterns:
             self._df[pattern] = np.zeros(size)
         for i, string_patterns in enumerate(self._df["patterns"]):
             for pattern in get_patterns(string_patterns):
                 self._df[pattern].iloc[i] += 1
 
+    def get_pattern_row(self, pattern):
+        pattern_features = np.zeros(len(self.patterns))
+        row_patterns = get_patterns(pattern)
+        for pattern in row_patterns:
+            if pattern in self.patterns:
+                pattern_features[self.patterns.index(pattern)] += 1
+        return pattern_features
+
     def create_patterns_features(self):
-        patterns = self.get_all_patterns()
-        self.add_patterns_to_df(patterns)
-        self._to_keep_columns += patterns
+        self.patterns = list(self.get_all_patterns())
+        self.patterns_index = [i for i, x in enumerate(self._df.columns) if x == "patterns"][0]
+        self.add_patterns_to_df()
+        self._to_keep_columns += self.patterns
 
     def train(self):
         x_input = []
@@ -105,10 +114,12 @@ class Trainer(object):
 
     def predict(self, fact, features):
         features = np.array(features)
+        pattern = features[self.patterns_index]
         features[features == ""] = np.nan
         features = features[self._filter].astype(float)
         features = np.concatenate((features, np.isnan(features).astype(float)))
         features = features.astype(np.float64)
+        features = np.concatenate((features, self.get_pattern_row(pattern).astype(float)))
         spo = self._get_array_generated_fact(fact.get_subject().get(),
                                              fact.get_predicate().get(),
                                              fact.get_object().get())

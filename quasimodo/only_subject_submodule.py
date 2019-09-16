@@ -51,7 +51,7 @@ class OnlySubjectSubmodule(SubmoduleInterface):
             to_save.append(subject + "\t" + str(value))
         while True:
             try:
-                with open("temp/forgotten_subjects.tsv") as f:
+                with open("temp/forgotten_subjects.tsv", "w") as f:
                     f.write("\n".join(to_save))
                 break
             except OSError:
