@@ -202,6 +202,8 @@ def process_can_form(pos, tokens):
 
 
 def correct_statement(statement):
+    if len(statement.strip()) == 0:
+        return ""
     global _tool
     try:
         matches = _tool.check(statement)
