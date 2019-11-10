@@ -6,6 +6,10 @@ This is the fruit of a collaboration between Telecom Paris and the Max Planck In
 
 ## Citing QUASIMODO
 
+The paper can be found on [Arxiv](https://arxiv.org/pdf/1905.10989.pdf).
+
+A presentation and **data** can be found on [D5 website](https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/commonsense/quasimodo/).
+
 ```
 @misc{romero2019commonsense,
     title={Commonsense Properties from Query Logs and Question Answering Forums},
@@ -16,10 +20,6 @@ This is the fruit of a collaboration between Telecom Paris and the Max Planck In
     primaryClass={cs.CL}
 }
 ```
-
-The paper can be found on [Arxiv](https://arxiv.org/pdf/1905.10989.pdf).
-
-A presentation and data can be found on [D5 website](https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/commonsense/quasimodo/).
 
 ## Usage
 
@@ -48,6 +48,37 @@ The fields are:
 - conceptual-caption-file: A file containing the captions from the Conceptual Caption Dataset
 - properties-dir: A directory containing files which group categories for hasProperty
 
+
+## Using the code
+
+
+The code is composed of many componants which can be reused and extended.
+
+The extraction pipeline is represented as a Workflow, which passes inputs from one module to the next one.
+
+### The inputs
+
+The inputs are represented by the Inputs class. They are generally processed by a module, which will return a new Inputs.
+
+### Workflow
+
+A workflow is represented by the WorkflowInterface class, which needs to be extended. To do so, one needs to implement the method generating the initial input, generate\_input. Then, the constructor needs to pass to the superclass a list of module names and a factory to create these modules. An example of workflow can be found in the DefaultWorkflow class.
+
+### Module
+
+A module takes as input an InputInterface and returns and InputInterface which has received all the transformations of the module.
+
+A module represents a general type of transformation we want to perform. It is composed of several submodules which are the subtasks of the module.
+
+A module is represented by the ModuleInterface class, which needs to be extended. To do so, one needs to implement the process method and, similarly to the Workflow, must define a list of submodules names and a submodule factory which are going to be passed to the superclass constructor (ModuleInterface). An example can be found in AssertionValidationModule.
+
+### Submodule
+
+A submodule is a smallest componant of the workflow. Similarly to the module, it takes as input an InputInterface and returns and InputInterface which has received all the transformations of the submodule.
+
+A submodule is represented by the SubmoduleInterface class, which needs to be extended. To do so, one is required to implement the process method and to define the \_module\_reference attribute and the \_name attribute. An example can be found in BeNormalizationSubmodule.
+
+An useful class to extend is OpenIEFactGeneratorSubmodule, which allows to generate the facts. An example to do so can be found in QuestionFileSubmodule.
 
 ## References
 
