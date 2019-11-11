@@ -72,6 +72,8 @@ A module represents a general type of transformation we want to perform. It is c
 
 A module is represented by the ModuleInterface class, which needs to be extended. To do so, one needs to implement the process method and, similarly to the Workflow, must define a list of submodules names and a submodule factory which are going to be passed to the superclass constructor (ModuleInterface). An example can be found in AssertionValidationModule.
 
+When a module is created, it needs to be added to a factory implementing ModuleFactoryInterface. For instance, DefaultModuleFactory.
+
 ### Submodule
 
 A submodule is a smallest componant of the workflow. Similarly to the module, it takes as input an InputInterface and returns and InputInterface which has received all the transformations of the submodule.
@@ -79,6 +81,8 @@ A submodule is a smallest componant of the workflow. Similarly to the module, it
 A submodule is represented by the SubmoduleInterface class, which needs to be extended. To do so, one is required to implement the process method and to define the \_module\_reference attribute and the \_name attribute. An example can be found in BeNormalizationSubmodule.
 
 An useful class to extend is OpenIEFactGeneratorSubmodule, which allows to generate the facts. An example to do so can be found in QuestionFileSubmodule.
+
+When a submodule is created, it needs to be added to a factory implementing SubmoduleFactoryInterface. For instance, DefaultSubmoduleFactory.
 
 ## References
 

@@ -4,6 +4,8 @@ from .submodule_interface import SubmoduleInterface
 import inflect
 import logging
 
+FORGOTTEN_SUBJECTS_FILE = "temp/forgotten_subjects.tsv"
+
 
 def get_subjects_in_all_forms(input_interface):
     subjects = set()
@@ -51,7 +53,7 @@ class OnlySubjectSubmodule(SubmoduleInterface):
             to_save.append(subject + "\t" + str(value))
         while True:
             try:
-                with open("temp/forgotten_subjects.tsv", "w") as f:
+                with open(FORGOTTEN_SUBJECTS_FILE, "w") as f:
                     f.write("\n".join(to_save))
                 break
             except OSError:
