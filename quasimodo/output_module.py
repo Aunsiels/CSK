@@ -6,7 +6,7 @@ import logging
 class OutputModule(ModuleInterface):
 
     def __init__(self):
-        module_names = ["tsv-output", "statistics"]
+        module_names = ["saliency-typicality", "statistics"]
         super(OutputModule, self).__init__(
             module_names, DefaultSubmoduleFactory())
         self._name = "Output Module"
