@@ -209,11 +209,15 @@ def correct_statement(statement):
         matches = _tool.check(statement)
     except:
         try:
+            logging.error("Problem with LanguageTools for " + statement)
             time.sleep(60)
             del _tool
             time.sleep(60)
-            _tool = language_check.LanguageTool('en-US')
-            matches = _tool.check(statement)
+            try:
+                _tool = language_check.LanguageTool('en-US')
+            except:
+                pass
+            return correct_statement(statement)
         except:
             logging.error("Problem with LanguageTools for " + statement)
             raise
