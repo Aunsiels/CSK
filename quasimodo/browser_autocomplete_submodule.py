@@ -12,6 +12,7 @@ LIMIT_DEPTH = 2
 
 parameters_reader = ParametersReader()
 PATTERN_FIRST = (parameters_reader.get_parameter("pattern-first") or "true") == "true"
+look_new = not PATTERN_FIRST
 
 
 def get_base_sentences(base_suggestions):
@@ -73,15 +74,18 @@ class BrowserAutocompleteSubmodule(OpenIEFactGeneratorSubmodule):
                 to_process = [[]]
                 while to_process:
                     current_state = to_process.pop()
-                    if len(current_state) >= LIMIT_DEPTH:
+                    if len(current_state) >= LIMIT_DEPTH and look_new:
                         continue
                     new_query = (base_query + " " + "".join(current_state)).strip()
                     base_suggestions, cache = self.get_suggestion(new_query)
                     if base_suggestions is None:
-                        break
+                        continue
                     if len(base_suggestions) == self.default_number_suggestions:
                         # We go deeper
-                        for c in ascii_lowercase:
+                        to_append = list(ascii_lowercase)
+                        if current_state and current_state[-1] != " ":
+                            to_append.append(" ")
+                        for c in to_append:
                             to_process.append(current_state[:] + [c])
                     suggestions += self.clean_suggestions(base_suggestions, base_sentences, current_state,
                                                           pattern, subject)
