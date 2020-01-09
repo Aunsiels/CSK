@@ -169,7 +169,7 @@ class GeneratedFact(GeneratedFactInterface, Serializable):
                           self.get_modality().get() or " ",
                           str(int(self.is_negative())),
                           str(self.get_score().scores[0][0]),
-                          self.get_sentence_source()))
+                          self.get_sentence_source() or " "))
 
     def contains_a_verb_in_predicate(self):
         subject = self.get_subject().get()
