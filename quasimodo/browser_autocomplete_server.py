@@ -1,7 +1,8 @@
+from queue import Queue, Empty
 import sys
 from string import ascii_lowercase
 import logging
-from flask import Flask
+from flask import Flask, request
 
 from quasimodo.default_module_factory import DefaultModuleFactory
 from quasimodo.inputs import Inputs
@@ -40,15 +41,7 @@ def get_all_queries(input_interface):
             base_sentences = []
             # Artificially add more suggestions
             to_process = [[]]
-            while to_process:
-                current_state = to_process.pop()
-                if len(current_state) >= LIMIT_DEPTH:
-                    continue
-                new_query = (base_query + " " + "".join(current_state)).strip()
-                yield new_query
-                # We go deeper
-                for c in ascii_lowercase:
-                    to_process.append(current_state[:] + [c])
+            yield base_query + " "
 
 
 # Generate inputs
@@ -63,21 +56,32 @@ inputs = patterns.process(inputs)
 query_generator = get_all_queries(inputs)
 
 
-def get_next_query():
-    try:
-        return query_generator.__next__()
-    except StopIteration:
-        return ""
+query_queue = Queue()
+for query in query_generator:
+    query_queue.put(query)
 
 
 # Start Server
 app = Flask(__name__)
 
+@app.route("/")
+def get_hello():
+    return "Hello world"
 
 @app.route("/get_query")
 def get_query():
-    return get_next_query()
+    try:
+        return query_queue.get_nowait()
+    except Empty:
+        return ""
+
+@app.route("/add_new", methods=["POST"])
+def add_new():
+    data = request.get_json()
+    for new_query in data["new_queries"]:
+        query_queue.put(new_query)
+    return "OK"
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0", port=1050)

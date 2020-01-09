@@ -4,6 +4,7 @@ import inflect
 import language_check
 import logging
 import time
+from subprocess import call
 
 from quasimodo.parameters_reader import ParametersReader
 
@@ -209,11 +210,20 @@ def correct_statement(statement):
         matches = _tool.check(statement)
     except:
         try:
+            logging.error("Problem with LanguageTools for " + statement)
             time.sleep(60)
-            del _tool
+            try:
+                del _tool
+            except NameError:
+                pass
             time.sleep(60)
-            _tool = language_check.LanguageTool('en-US')
-            matches = _tool.check(statement)
+            call(["killall", "java"])
+            time.sleep(60)
+            try:
+                _tool = language_check.LanguageTool('en-US')
+            except:
+                raise
+            return correct_statement(statement)
         except:
             logging.error("Problem with LanguageTools for " + statement)
             raise

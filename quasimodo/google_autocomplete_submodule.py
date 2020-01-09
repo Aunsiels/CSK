@@ -44,7 +44,7 @@ class GoogleAutocompleteSubmodule(BrowserAutocompleteSubmodule, CachableQuerying
             cache_value = self.read_cache(query)
             if cache_value is not None:
                 suggestions, is_cached = cache_value
-                suggestions = [(suggestion[0], float(suggestion[1])) for suggestion in suggestions]
+                suggestions = [(suggestion[0], float(suggestion[1])) for suggestion in suggestions if suggestion[0] != query.strip()]
                 return suggestions, is_cached
         if not look_new or not query:
             return None, False
@@ -55,7 +55,7 @@ class GoogleAutocompleteSubmodule(BrowserAutocompleteSubmodule, CachableQuerying
         if response.ok:
             begin_time = time.time()
             result = json.loads(response.content.decode("utf-8"))
-            suggestions = [(result[1][ranking], ranking) for ranking in range(len(result[1]))]
+            suggestions = [(result[1][ranking], ranking) for ranking in range(len(result[1])) if result[1][ranking] != query.strip()]
             if self.use_cache:
                 self.write_cache(query, suggestions)
             # We sleep only if the data was not cached
