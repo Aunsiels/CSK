@@ -40,11 +40,16 @@ class FilterObjectSubmodule(SubmoduleInterface):
             predicate = generated_fact.get_predicate().get()
             if predicate == obj[0]:
                 obj = obj[1:]
+            # Remove last punctuation
+            changed_last = False
+            if not obj[-1][-1].isalnum():
+                obj[-1] = obj[-1][:-1]
+                changed_last = True
             new_obj = []
             for p in obj:
                 if p not in dirty_words:
                     new_obj.append(p)
-            if len(obj) != len(new_obj) and len(new_obj) != 0:
+            if (obj != new_obj or changed_last) and len(new_obj) != 0:
                 generated_fact = generated_fact.change_object(" ".join(new_obj).strip())
             if len(new_obj) != 0:
                 new_generated_facts.append(generated_fact)

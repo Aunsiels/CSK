@@ -39,6 +39,7 @@ class SaliencyAndTypicalityComputationSubmodule(SubmoduleInterface):
         self.idx2total = []
         self.vectors = None
         self.probabilities_po = None
+        self.closest_indexes = []
 
     def get_all_triples_as_tsv(self, input_interface):
         triples = []
@@ -60,6 +61,7 @@ class SaliencyAndTypicalityComputationSubmodule(SubmoduleInterface):
         self.initialize_statistics(input_interface)
         self.initialize_idx_correspondences()
         self.initialize_po_vectors()
+        self.set_closest_indexes()
         self.compute_probabilities()
         self.match_probabilities()
         self.save_final_results(input_interface)
@@ -74,17 +76,22 @@ class SaliencyAndTypicalityComputationSubmodule(SubmoduleInterface):
         for i, key in enumerate(self.idx2keys):
             self.total_per_po[key] = self.probabilities_po[i]
 
-    def compute_probabilities(self):
-        self.probabilities_po = np.zeros(self.vectors.shape[0])
+    def set_closest_indexes(self):
+        self.closest_indexes = []
         distances_temp = None
         for i in range(self.vectors.shape[0]):
             if i % SLICE_SIZE == 0:
-                print(i / self.vectors.shape[0] * 100, end="\r")
                 distances_temp = np.dot(self.vectors[i:i + SLICE_SIZE], self.vectors.T)
             idx_closest = matutils.argsort(distances_temp[i % SLICE_SIZE],
                                            topn=TOPK,
                                            reverse=True)
-            closest_indexes = [(j, distances_temp[i % SLICE_SIZE][j]) for j in idx_closest]
+            self.closest_indexes.append([(j, distances_temp[i % SLICE_SIZE][j]) for j in idx_closest])
+        return self.closest_indexes
+
+    def compute_probabilities(self):
+        self.probabilities_po = np.zeros(self.vectors.shape[0])
+        for i in range(self.vectors.shape[0]):
+            closest_indexes = self.closest_indexes[i]
             norm = sum([x[1] for x in closest_indexes])
             weighted_sum = sum([x[1] * self.idx2total[x[0]] for x in closest_indexes])
             self.probabilities_po[i] = weighted_sum / norm

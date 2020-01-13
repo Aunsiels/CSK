@@ -1,3 +1,4 @@
+import json
 import unittest
 
 from quasimodo.fact import Fact
@@ -7,6 +8,7 @@ from quasimodo.module_reference_interface import ModuleReferenceInterface
 from quasimodo.multiple_module_reference import MultipleModuleReference
 from quasimodo.multiple_pattern import MultiplePattern
 from quasimodo.multiple_scores import MultipleScore
+from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
 from quasimodo.multiple_submodule_reference import MultipleSubmoduleReference
 from quasimodo.object import Object
 from quasimodo.pattern_google import PatternGoogle
@@ -14,7 +16,14 @@ from quasimodo.subject import Subject
 from quasimodo.submodule_reference_interface import SubmoduleReferenceInterface
 
 
-class MyTestCase(unittest.TestCase):
+class TestInput(unittest.TestCase):
+
+    def test_serialize_multiple_source_occurrence(self):
+        msr = MultipleSubmoduleReference(SubmoduleReferenceInterface("Submodule0"))
+        msr.add_reference(SubmoduleReferenceInterface("Submodule0"))
+        mso = MultipleSourceOccurrence.from_raw("baba is you", msr, 1)
+        print(mso.to_dict())
+        self.assertIsNotNone(json.dumps(mso.to_dict()))
 
     def test_save(self):
         inputs = Inputs()
@@ -43,7 +52,7 @@ class MyTestCase(unittest.TestCase):
                 "sometimes",
                 False,
                 ms0,
-                "baba is you",
+                MultipleSourceOccurrence.from_raw("baba is you", msr, 1),
                 mp0
             ),
             GeneratedFact(
@@ -53,7 +62,7 @@ class MyTestCase(unittest.TestCase):
                 "always",
                 True,
                 ms1,
-                "toto is always dead",
+                MultipleSourceOccurrence.from_raw("toto is always dead", msr, 1),
                 mp1
             )
         ]

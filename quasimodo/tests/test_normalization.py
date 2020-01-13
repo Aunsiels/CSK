@@ -1,9 +1,13 @@
+import logging
 import unittest
+
+logging.basicConfig(level=logging.DEBUG)
 
 from quasimodo.inputs import Inputs
 from quasimodo.default_module_factory import DefaultModuleFactory
 from quasimodo.generated_fact import GeneratedFact
 from quasimodo.multiple_scores import MultipleScore
+from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
 from quasimodo.pattern_google import PatternGoogle
 
 
@@ -11,7 +15,9 @@ class TestComplete(unittest.TestCase):
 
     def test_first(self):
         empty_input = Inputs()
-        gf = GeneratedFact("elephant", "are", "blue?", "", False, MultipleScore(), "", PatternGoogle(""))
+        logging.info("Starting complete test for normalization")
+        gf = GeneratedFact("elephant", "are", "blue?", "", False, MultipleScore(),
+                           MultipleSourceOccurrence(), PatternGoogle(""))
         subjects = {gf.get_subject()}
         input = empty_input.add_subjects(subjects).add_generated_facts([gf])
         factory = DefaultModuleFactory()

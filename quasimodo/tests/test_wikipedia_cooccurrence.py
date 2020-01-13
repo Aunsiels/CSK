@@ -3,6 +3,7 @@ import unittest
 from quasimodo.inputs import Inputs
 from quasimodo.generated_fact import GeneratedFact
 from quasimodo.multiple_scores import MultipleScore
+from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
 from quasimodo.wikipedia_cooccurrence_submodule import WikipediaCooccurrenceSubmodule
 
 
@@ -16,7 +17,7 @@ class TestWikipediaCooccurrence(unittest.TestCase):
         n_copies = 10
         gfs = []
         for _ in range(n_copies):
-            generated_fact = GeneratedFact("lion", "is a", "cat", "", False, MultipleScore(), "")
+            generated_fact = GeneratedFact("lion", "is a", "cat", "", False, MultipleScore(), MultipleSourceOccurrence())
             gfs.append(generated_fact)
         inputs = self.empty_input.add_generated_facts(gfs)
         inputs = self.wikipedia_no_cache.process(inputs)
@@ -28,10 +29,10 @@ class TestWikipediaCooccurrence(unittest.TestCase):
 
     def test_cache(self):
         wikipedia_cache = WikipediaCooccurrenceSubmodule(None, True, "wikipedia-cache-test")
-        generated_fact = GeneratedFact("lion", "is a", "cat", "", False, MultipleScore(), "")
+        generated_fact = GeneratedFact("lion", "is a", "cat", "", False, MultipleScore(), MultipleSourceOccurrence())
         inputs = self.empty_input.add_generated_facts([generated_fact])
         wikipedia_cache.process(inputs)
-        generated_fact = GeneratedFact("lion", "is a", "cat", "", False, MultipleScore(), "")
+        generated_fact = GeneratedFact("lion", "is a", "cat", "", False, MultipleScore(), MultipleSourceOccurrence())
         inputs = self.empty_input.add_generated_facts([generated_fact])
         inputs = wikipedia_cache.process(inputs)
         self.assertEqual(1, len(inputs.get_generated_facts()))

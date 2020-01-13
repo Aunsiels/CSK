@@ -1,5 +1,6 @@
 import json
 
+from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
 from quasimodo.pattern_google import PatternGoogle
 from quasimodo.multiple_module_reference import MultipleModuleReference
 from quasimodo.multiple_pattern import MultiplePattern
@@ -105,7 +106,7 @@ def read_generated_fact(generated_fact):
             read_modality(generated_fact["modality"]),
             generated_fact["negative"],
             read_score(generated_fact["score"]),
-            generated_fact["sentence_source"],
+            MultipleSourceOccurrence.from_dict(generated_fact["sentence_source"]),
             read_pattern(generated_fact["pattern"])
         )
     raise UnknownSerializedObject("Unknown generated fact type" + json.dumps(generated_fact))

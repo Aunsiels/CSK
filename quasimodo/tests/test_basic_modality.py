@@ -42,11 +42,12 @@ class TestBasicModality(unittest.TestCase):
         new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
         inputs = self.empty_input.add_generated_facts(new_gfs)
         inputs = self.basic_modality.process(inputs)
-        self.assertEqual(1, len(inputs.get_generated_facts()))
-        self.assertEqual("pandas", inputs.get_generated_facts()[0].get_subject().get())
-        self.assertEqual("eat", inputs.get_generated_facts()[0].get_predicate().get())
-        self.assertEqual("bananas", inputs.get_generated_facts()[0].get_object().get())
-        self.assertIn("some[subj/african] // often", inputs.get_generated_facts()[0].get_modality().get())
+        gfs = [x for x in inputs.get_generated_facts() if x.get_subject() == "pandas"]
+        self.assertEqual(1, len(gfs))
+        self.assertEqual("pandas", gfs[0].get_subject().get())
+        self.assertEqual("eat", gfs[0].get_predicate().get())
+        self.assertEqual("bananas", gfs[0].get_object().get())
+        self.assertIn("often", gfs[0].get_modality().get())
 
 
 if __name__ == '__main__':

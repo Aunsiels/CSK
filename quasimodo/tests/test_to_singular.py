@@ -3,6 +3,7 @@ import unittest
 from quasimodo.inputs import Inputs
 from quasimodo.generated_fact import GeneratedFact
 from quasimodo.multiple_scores import MultipleScore
+from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
 from quasimodo.subject import Subject
 from quasimodo.to_singular_subject_submodule import ToSingularSubjectSubmodule
 
@@ -14,7 +15,7 @@ class TestToSingular(unittest.TestCase):
         self.empty_input = Inputs()
 
     def test_turn_singular(self):
-        generated_fact = GeneratedFact("lions", "is a", "cat", "", False, MultipleScore(), "")
+        generated_fact = GeneratedFact("lions", "is a", "cat", "", False, MultipleScore(), MultipleSourceOccurrence())
         inputs = self.empty_input.add_generated_facts([generated_fact]).add_subjects({Subject("lion")})
         inputs = self.to_singular.process(inputs)
         generated_facts = inputs.get_generated_facts()
@@ -22,7 +23,7 @@ class TestToSingular(unittest.TestCase):
         self.assertEqual("lion", generated_facts[0].get_subject().get())
 
     def test_turn_singular_duplicate(self):
-        generated_fact = GeneratedFact("lions", "is a", "cat", "", False, MultipleScore(), "")
+        generated_fact = GeneratedFact("lions", "is a", "cat", "", False, MultipleScore(), MultipleSourceOccurrence())
         inputs = self.empty_input.add_generated_facts([generated_fact, generated_fact]).add_subjects({Subject("lion")})
         inputs = self.to_singular.process(inputs)
         generated_facts = inputs.get_generated_facts()
@@ -30,7 +31,7 @@ class TestToSingular(unittest.TestCase):
         self.assertEqual("lion", generated_facts[0].get_subject().get())
 
     def test_do_nothing(self):
-        generated_fact = GeneratedFact("lion", "is a", "cat", "", False, MultipleScore(), "")
+        generated_fact = GeneratedFact("lion", "is a", "cat", "", False, MultipleScore(), MultipleSourceOccurrence())
         inputs = self.empty_input.add_generated_facts([generated_fact]).add_subjects({Subject("lion")})
         inputs = self.to_singular.process(inputs)
         generated_facts = inputs.get_generated_facts()
@@ -38,7 +39,7 @@ class TestToSingular(unittest.TestCase):
         self.assertEqual("lion", generated_facts[0].get_subject().get())
 
     def test_crisis(self):
-        generated_fact = GeneratedFact("crisis", "is a", "cat", "", False, MultipleScore(), "")
+        generated_fact = GeneratedFact("crisis", "is a", "cat", "", False, MultipleScore(), MultipleSourceOccurrence())
         inputs = self.empty_input.add_generated_facts([generated_fact]).add_subjects({Subject("lion")})
         inputs = self.to_singular.process(inputs)
         generated_facts = inputs.get_generated_facts()
@@ -46,7 +47,7 @@ class TestToSingular(unittest.TestCase):
         self.assertEqual("crisis", generated_facts[0].get_subject().get())
 
     def test_texas(self):
-        generated_fact = GeneratedFact("texas", "is a", "cat", "", False, MultipleScore(), "")
+        generated_fact = GeneratedFact("texas", "is a", "cat", "", False, MultipleScore(), MultipleSourceOccurrence())
         inputs = self.empty_input.add_generated_facts([generated_fact]).add_subjects({Subject("lion")})
         inputs = self.to_singular.process(inputs)
         generated_facts = inputs.get_generated_facts()
