@@ -14,10 +14,10 @@ class MultipleSubmoduleReference(SubmoduleReferenceInterface):
 
     def add_reference(self, submodule_reference):
         self._references.append(submodule_reference)
-        self._name = "; ".join(set([x.get_name() for x in self._references]))
+        self._name = "; ".join(set([x.get_name() for x in self._references if x is not None]))
 
     def is_from(self, submodule_name):
-        return any([x.get_name() == submodule_name for x in self._references])
+        return any([x.get_name() == submodule_name for x in self._references if x is not None])
 
     def to_dict(self):
         res = dict()

@@ -12,6 +12,7 @@ from quasimodo.openie_reader import OpenIEReader
 from quasimodo.submodule_reference_interface import SubmoduleReferenceInterface
 from .multiple_scores import MultipleScore
 from .generated_fact import GeneratedFact
+from .multiple_source_occurrence import MultipleSourceOccurrence
 from .statement_maker import StatementMaker, NEGATE_VERB
 from .submodule_interface import SubmoduleInterface
 from .modality import Modality
@@ -431,7 +432,13 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
         multiple_score = MultipleScore()
         multiple_score.add_score(1.0, self._module_reference, reference_corenlp)
         multiple_score.add_score(score_based_on_ranking, self._module_reference, self)
-        new_fact_corenlp = GeneratedFact(subject, predicate, obj, modality, negative, multiple_score, suggestion[0],
+        new_fact_corenlp = GeneratedFact(subject,
+                                         predicate,
+                                         obj,
+                                         modality,
+                                         negative,
+                                         multiple_score,
+                                         MultipleSourceOccurrence.from_raw(suggestion[0], self, 1),
                                          suggestion[2])
         generated_facts.append(new_fact_corenlp)
 
@@ -449,7 +456,7 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
             # For the score, inverse the ranking (higher is
             # better) and add the confidence of the triple
             multiple_score,
-            suggestion[0],
+            MultipleSourceOccurrence.from_raw(suggestion[0], self, 1),
             suggestion[2])
         return new_fact
 
@@ -485,7 +492,7 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                         "",
                         negative,
                         multiple_score,
-                        sentence,
+                        MultipleSourceOccurrence.from_raw(sentence, self, 1),
                         suggestion[2]))
         return generated_facts
 

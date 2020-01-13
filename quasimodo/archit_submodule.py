@@ -2,6 +2,7 @@ import logging
 import os
 
 from .multiple_scores import MultipleScore
+from .multiple_source_occurrence import MultipleSourceOccurrence
 from .submodule_interface import SubmoduleInterface
 from .generated_fact import GeneratedFact
 from quasimodo.parameters_reader import ParametersReader
@@ -53,5 +54,5 @@ class ArchitSubmodule(SubmoduleInterface):
                         "",
                         0,
                         multi_score,
-                        ""))
+                        MultipleSourceOccurrence()))
         return input_interface.add_generated_facts(new_gfs)

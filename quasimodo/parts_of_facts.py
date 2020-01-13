@@ -3,6 +3,7 @@ from quasimodo.modality import read_sentence, get_multiple_parts_combination, Mo
 from quasimodo.multiple_module_reference import MultipleModuleReference
 from quasimodo.multiple_pattern import MultiplePattern
 from quasimodo.multiple_scores import MultipleScore
+from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
 from quasimodo.multiple_submodule_reference import MultipleSubmoduleReference
 
 
@@ -21,7 +22,7 @@ class PartsOfFacts(object):
         fact_without_modality = get_fact_without_modality(generated_fact)
         if fact_without_modality not in self.found:
             self.found[fact_without_modality] = None
-            self.sentences[fact_without_modality] = dict()
+            self.sentences[fact_without_modality] = MultipleSourceOccurrence()
             self.modalities[fact_without_modality] = dict()
             self.patterns[fact_without_modality] = MultiplePattern()
             self.modules[fact_without_modality] = MultipleModuleReference()
@@ -36,10 +37,7 @@ class PartsOfFacts(object):
 
     def add_sentence_source(self, generated_fact):
         fact_without_modality = get_fact_without_modality(generated_fact)
-        if len(generated_fact.get_sentence_source()) > 0:
-            for sentence, score in read_sentence(generated_fact.get_sentence_source()):
-                self.sentences[fact_without_modality][sentence] = \
-                    self.sentences[fact_without_modality].get(sentence, 0) + score
+        self.sentences[fact_without_modality] += generated_fact.get_sentence_source()
 
     def add_modality(self, generated_fact):
         fact = generated_fact.get_fact()
@@ -84,9 +82,8 @@ class PartsOfFacts(object):
         new_gfs = []
         for fact_without_modality in self.found:
             generated_fact = self.found[fact_without_modality]
-            new_sentence = get_multiple_parts_combination(self.sentences[fact_without_modality].items())
             new_modality = Modality.from_modalities_and_scores(self.modalities[fact_without_modality].items())
-            new_gfs.append(generated_fact.change_sentence(new_sentence)
+            new_gfs.append(generated_fact.change_sentence(self.sentences[fact_without_modality])
                            .change_modality(new_modality)
                            .change_pattern(self.patterns[fact_without_modality]))
         return new_gfs
@@ -128,7 +125,7 @@ class PartsOfFacts(object):
                 result.append(scores_per_submodules[name])
             else:
                 result.append("")
-        result.append(sum(self.sentences[fact].values()))
+        result.append(self.sentences[fact].get_total_number_occurrences())
         return result
 
     def get_header(self):
@@ -137,9 +134,6 @@ class PartsOfFacts(object):
             temp.append(submodule.get_name())
         temp.append("number sentences")
         return temp
-
-    def get_combined_sentence(self, fact):
-        return get_multiple_parts_combination(self.sentences[fact].items())
 
     def get_generated_fact_with_score_from_classifier(self, fact, clf):
         multiple_score = MultipleScore()
@@ -153,7 +147,7 @@ class PartsOfFacts(object):
             Modality.from_modalities_and_scores(self.modalities[fact].items()),
             fact.is_negative(),
             multiple_score,
-            self.get_combined_sentence(fact),
+            self.sentences[fact],
             self.patterns[fact])
 
     def get_all_facts(self):

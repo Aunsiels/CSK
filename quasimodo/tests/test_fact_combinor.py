@@ -4,6 +4,7 @@ from quasimodo.fact_combinor import FactCombinor
 from quasimodo.generated_fact import GeneratedFact
 from quasimodo.inputs import Inputs
 from quasimodo.multiple_scores import MultipleScore
+from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
 from quasimodo.openie_fact_generator_submodule import OpenIEFactGeneratorSubmodule
 from quasimodo.referencable_interface import ReferencableInterface
 
@@ -23,17 +24,22 @@ class TestFactCombinor(unittest.TestCase):
         score1.add_score(0.5, None, None)
         score2 = MultipleScore()
         score2.add_score(0.7, None, None)
-        generated_fact0 = GeneratedFact("lion", "eat", "zebra", "", False, score0, "lions eat zebras")
+        generated_fact0 = GeneratedFact("lion", "eat", "zebra", "", False, score0,
+                                        MultipleSourceOccurrence.from_raw("lions eat zebras", None, 1))
+        mso = MultipleSourceOccurrence()
+        mso.add_raw("lions eat zebras", None, 2)
+        mso.add_raw("lions eat small zebras", None, 1)
         generated_fact1 = GeneratedFact("lion", "eat", "zebra", "", False, score1,
-                                        "lions eat zebras x#x2 // lions eat small zebras")
-        generated_fact2 = GeneratedFact("lion", "eat", "zebra", "", False, score2, "lions eat small zebras")
+                                        mso)
+        generated_fact2 = GeneratedFact("lion", "eat", "zebra", "", False, score2,
+                                        MultipleSourceOccurrence.from_raw("lions eat small zebras", None, 1))
         new_gfs = [generated_fact0, generated_fact1, generated_fact2]
         inputs = self.empty_input.add_generated_facts(new_gfs)
         fact_combinor = FactCombinor(None)
         inputs = fact_combinor.process(inputs)
         self.assertEqual(1, len(inputs.get_generated_facts()))
         self.assertEqual(3, len(inputs.get_generated_facts()[0].get_score().scores))
-        sentence = inputs.get_generated_facts()[0].get_sentence_source()
+        sentence = str(inputs.get_generated_facts()[0].get_sentence_source())
         self.assertIn("lions eat zebras", sentence)
         self.assertIn("lions eat small zebras", sentence)
         self.assertIn("x#x3", sentence)
@@ -44,8 +50,8 @@ class TestFactCombinor(unittest.TestCase):
         score0.add_score(1, None, None)
         score1 = MultipleScore()
         score1.add_score(0.5, None, None)
-        generated_fact0 = GeneratedFact("lion", "eat", "zebra", "some", False, score0, "lions eat zebras")
-        generated_fact1 = GeneratedFact("lion", "eat", "zebra", "often", False, score1, "lions eat zebras")
+        generated_fact0 = GeneratedFact("lion", "eat", "zebra", "some", False, score0, MultipleSourceOccurrence.from_raw("lions eat zebras", None, 1))
+        generated_fact1 = GeneratedFact("lion", "eat", "zebra", "often", False, score1, MultipleSourceOccurrence.from_raw("lions eat zebras", None, 1))
         inputs = self.empty_input.add_generated_facts([generated_fact0, generated_fact1])
         fact_combinor = FactCombinor(None)
         inputs = fact_combinor.process(inputs)

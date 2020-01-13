@@ -1,4 +1,6 @@
 import logging
+
+from .multiple_source_occurrence import MultipleSourceOccurrence
 from .submodule_interface import SubmoduleInterface
 from .generated_fact import GeneratedFact
 from .multiple_module_reference import MultipleModuleReference
@@ -28,7 +30,7 @@ class LinearCombinationSubmodule(SubmoduleInterface):
                     d_gf[fact] += score
                     d_gf_modules[fact].add_reference(module_source)
                     d_gf_submodules[fact].add_reference(submodule_source)
-                d_gf_sentences[fact] += " // " + g.get_sentence_source()
+                d_gf_sentences[fact] += g.get_sentence_source()
                 d_gf_patterns[fact].add_pattern(g.get_pattern())
             else:
                 d_gf_modules[fact] = MultipleModuleReference(self._module_reference)

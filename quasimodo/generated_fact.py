@@ -1,6 +1,7 @@
 from quasimodo.serializable import Serializable
 from quasimodo.spacy_accessor import get_default_annotator
 from .generated_fact_interface import GeneratedFactInterface
+from .multiple_source_occurrence import MultipleSourceOccurrence
 from .subject import Subject
 from .object import Object
 from .predicate import Predicate
@@ -26,7 +27,7 @@ class GeneratedFact(GeneratedFactInterface, Serializable):
             res["modality"] = {"type": "NO_MODALITY"}
         res["negative"] = self._negative
         res["score"] = self._score.to_dict()
-        res["sentence_source"] = self._sentence_source
+        res["sentence_source"] = self._sentence_source.to_dict()
         if self._pattern is not None:
             res["pattern"] = self._pattern.to_dict()
         else:
@@ -159,7 +160,7 @@ class GeneratedFact(GeneratedFactInterface, Serializable):
                              self.get_modality(),
                              self.is_negative(),
                              self.get_score(),
-                             "",
+                             MultipleSourceOccurrence(),
                              self.get_pattern())
 
     def get_tsv(self):
@@ -169,7 +170,7 @@ class GeneratedFact(GeneratedFactInterface, Serializable):
                           self.get_modality().get() or " ",
                           str(int(self.is_negative())),
                           str(self.get_score().scores[0][0]),
-                          self.get_sentence_source() or " "))
+                          str(self.get_sentence_source())))
 
     def contains_a_verb_in_predicate(self):
         subject = self.get_subject().get()

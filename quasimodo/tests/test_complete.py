@@ -8,7 +8,7 @@ from quasimodo.workflow_interface import WorkflowInterface
 
 class TestComplete(unittest.TestCase):
 
-    def test_all_workflow(self):
+    def _test_all_workflow(self):
         workflow = TestWorkflow()
         inputs = workflow.generate_input()
         inputs = workflow.run(inputs)

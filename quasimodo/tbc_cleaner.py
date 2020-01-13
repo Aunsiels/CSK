@@ -17,7 +17,7 @@ class TBCCleaner(SubmoduleInterface):
         for generated_fact in input_interface.get_generated_facts():
             modality = generated_fact.get_modality()
             if modality.get_number_completing_parts() == 1:
-                n_sentences = sum([x[1] for x in read_sentence(generated_fact.get_sentence_source())])
+                n_sentences = generated_fact.get_sentence_source().get_total_number_occurrences()
                 n_tbc = 0
                 for modality_raw, score in modality.get_modalities_and_scores():
                     if "TBC" in modality_raw:

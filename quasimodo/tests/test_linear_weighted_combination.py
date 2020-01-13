@@ -6,6 +6,7 @@ from quasimodo.generated_fact import GeneratedFact
 from quasimodo.google_autocomplete_submodule import GoogleAutocompleteSubmodule
 from quasimodo.linear_combination_weighted_submodule import LinearCombinationWeightedSubmodule
 from quasimodo.multiple_scores import MultipleScore
+from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
 from quasimodo.referencable_interface import ReferencableInterface
 
 
@@ -31,10 +32,11 @@ class TestLinearWeightedCombination(unittest.TestCase):
                 score.add_score(truth, self.dummy_reference, GoogleAutocompleteSubmodule(self.dummy_reference))
             else:
                 score.add_score(truth, self.dummy_reference, BingAutocompleteSubmodule(self.dummy_reference))
-            gfs.append(GeneratedFact(subject, predicate, obj, "", False, score, ""))
+            gfs.append(GeneratedFact(subject, predicate, obj, "", False, score, MultipleSourceOccurrence()))
         score2 = MultipleScore()
         score2.add_score(1, self.dummy_reference, GoogleAutocompleteSubmodule(self.dummy_reference))
-        gfs.append(GeneratedFact("elephant", "be", "big", "", False, score2, "elephants are big"))
+        gfs.append(GeneratedFact("elephant", "be", "big", "", False, score2,
+                                 MultipleSourceOccurrence.from_raw("elephants are big", None, 1)))
         inputs = self.empty_input.add_generated_facts(gfs)
         inputs = self.linear_combination.process(inputs)
         self.assertEqual(len(dataset) + 1, len(inputs.get_generated_facts()))

@@ -1,10 +1,11 @@
+import os
 from collections import Counter
 
 from .submodule_interface import SubmoduleInterface
 import inflect
 import logging
 
-FORGOTTEN_SUBJECTS_FILE = "temp/forgotten_subjects.tsv"
+FORGOTTEN_SUBJECTS_FILE = os.path.dirname(os.path.realpath(__file__)) + "/temp/forgotten_subjects.tsv"
 
 
 def get_subjects_in_all_forms(input_interface):
@@ -56,8 +57,9 @@ class OnlySubjectSubmodule(SubmoduleInterface):
                 with open(FORGOTTEN_SUBJECTS_FILE, "w") as f:
                     f.write("\n".join(to_save))
                 break
-            except OSError:
+            except OSError as e:
                 logging.info("Problem when saving forgotten subjects. Trying again...")
+                logging.info(e)
         logging.info("%d facts were removed by the subject cleaner",
                      len(input_interface.get_generated_facts()) - len(new_generated_facts))
 
