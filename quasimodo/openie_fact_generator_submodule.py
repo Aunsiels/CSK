@@ -242,10 +242,14 @@ def get_cache_corenlp():
         return CACHE_CORENLP
     cache = dict()
     with open(CACHE_CORENLP_FILENAME) as f:
-        for line in f:
+        for i, line in enumerate(f):
             line = line.strip().split("\t")
-            statement, negativity, question, json_str = line
-            cache[question] = (statement, negativity, json.loads(json_str))
+            if len(line) != 4:
+                logging.error("Problem when reading line " + str(i))
+                logging.error("\t".join(line))
+            else:
+                statement, negativity, question, json_str = line
+                cache[question] = (statement, negativity, json.loads(json_str))
     CACHE_CORENLP = cache
     return cache
 
