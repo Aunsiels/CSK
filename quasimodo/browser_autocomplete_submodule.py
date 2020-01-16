@@ -87,16 +87,23 @@ class BrowserAutocompleteSubmodule(OpenIEFactGeneratorSubmodule):
                             to_append.append(" ")
                         for c in to_append:
                             to_process.append(current_state[:] + [c])
-                    suggestions += self.clean_suggestions(base_suggestions, base_sentences, current_state,
-                                                          pattern, subject)
+                    suggestions += self.clean_suggestions(base_suggestions,
+                                                          base_sentences,
+                                                          current_state,
+                                                          pattern,
+                                                          subject,
+                                                          new_query)
                     base_sentences += get_base_sentences(base_suggestions)
                     if base_suggestions is None:
                         continue
         return suggestions
 
-    def clean_suggestions(self, base_suggestions, base_sentences, new_state, pattern, subject):
+    def clean_suggestions(self, base_suggestions, base_sentences, new_state, pattern, subject, new_query):
         base_suggestions = filter(
             lambda ranked_suggestion: ranked_suggestion[SUGGESTION] not in base_sentences,
+            base_suggestions)
+        base_suggestions = filter(
+            lambda ranked_suggestion: ranked_suggestion[SUGGESTION] != new_query,
             base_suggestions)
         base_suggestions = map(
             lambda ranked_suggestion:
