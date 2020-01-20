@@ -43,7 +43,7 @@ class FilterObjectSubmodule(SubmoduleInterface):
                 obj = obj[1:]
             # Remove last punctuation
             changed_last = False
-            if not obj[-1][-1].isalnum():
+            if obj and obj[-1] and not obj[-1][-1].isalnum():
                 obj[-1] = obj[-1][:-1]
                 changed_last = True
             new_obj = []
