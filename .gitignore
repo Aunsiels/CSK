@@ -135,3 +135,10 @@ notes/
 # Logs
 
 log*
+
+
+
+evaluation*
+google-merged-questions.txt
+prof/
+quasimodo/tests/temp.json
