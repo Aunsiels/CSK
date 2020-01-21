@@ -1,7 +1,7 @@
 import unittest
 
-from quasimodo.generated_fact import GeneratedFact
-from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
+from quasimodo.data_structures.generated_fact import GeneratedFact
+from quasimodo.data_structures.multiple_source_occurrence import MultipleSourceOccurrence
 
 
 class TestGeneratedFact(unittest.TestCase):

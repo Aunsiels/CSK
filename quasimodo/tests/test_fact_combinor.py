@@ -1,12 +1,12 @@
 import unittest
 
 from quasimodo.fact_combinor import FactCombinor
-from quasimodo.generated_fact import GeneratedFact
-from quasimodo.inputs import Inputs
-from quasimodo.multiple_scores import MultipleScore
-from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
-from quasimodo.openie_fact_generator_submodule import OpenIEFactGeneratorSubmodule
-from quasimodo.referencable_interface import ReferencableInterface
+from quasimodo.data_structures.generated_fact import GeneratedFact
+from quasimodo.data_structures.inputs import Inputs
+from quasimodo.data_structures.multiple_scores import MultipleScore
+from quasimodo.data_structures.multiple_source_occurrence import MultipleSourceOccurrence
+from quasimodo.assertion_generation.openie_fact_generator_submodule import OpenIEFactGeneratorSubmodule
+from quasimodo.data_structures.referencable_interface import ReferencableInterface
 
 
 class TestFactCombinor(unittest.TestCase):

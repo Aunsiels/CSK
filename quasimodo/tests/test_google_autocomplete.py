@@ -1,9 +1,9 @@
 import unittest
 
-from quasimodo.inputs import Inputs
-from quasimodo.google_autocomplete_submodule import GoogleAutocompleteSubmodule
-from quasimodo.pattern_google import PatternGoogle
-from quasimodo.subject import Subject
+from quasimodo.data_structures.inputs import Inputs
+from quasimodo.assertion_generation.google_autocomplete_submodule import GoogleAutocompleteSubmodule
+from quasimodo.patterns.pattern_google import PatternGoogle
+from quasimodo.data_structures.subject import Subject
 
 
 class TestGoogleAutocomplete(unittest.TestCase):

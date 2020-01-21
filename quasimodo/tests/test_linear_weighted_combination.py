@@ -1,13 +1,13 @@
 import unittest
 
-from quasimodo.inputs import Inputs
-from quasimodo.bing_autocomplete_submodule import BingAutocompleteSubmodule
-from quasimodo.generated_fact import GeneratedFact
-from quasimodo.google_autocomplete_submodule import GoogleAutocompleteSubmodule
-from quasimodo.linear_combination_weighted_submodule import LinearCombinationWeightedSubmodule
-from quasimodo.multiple_scores import MultipleScore
-from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
-from quasimodo.referencable_interface import ReferencableInterface
+from quasimodo.data_structures.inputs import Inputs
+from quasimodo.assertion_generation.bing_autocomplete_submodule import BingAutocompleteSubmodule
+from quasimodo.data_structures.generated_fact import GeneratedFact
+from quasimodo.assertion_generation.google_autocomplete_submodule import GoogleAutocompleteSubmodule
+from quasimodo.assertion_fusion.linear_combination_weighted_submodule import LinearCombinationWeightedSubmodule
+from quasimodo.data_structures.multiple_scores import MultipleScore
+from quasimodo.data_structures.multiple_source_occurrence import MultipleSourceOccurrence
+from quasimodo.data_structures.referencable_interface import ReferencableInterface
 
 
 class TestLinearWeightedCombination(unittest.TestCase):

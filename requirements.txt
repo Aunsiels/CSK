@@ -15,3 +15,4 @@ pytest
 pytest-cov
 google-api-python-client
 flickr_api
+objgraph

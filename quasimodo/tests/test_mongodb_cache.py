@@ -1,6 +1,6 @@
 import unittest
 
-from quasimodo.mongodb_cache import MongoDBCache
+from quasimodo.cache.mongodb_cache import MongoDBCache
 
 
 class TestMongoDBCache(unittest.TestCase):

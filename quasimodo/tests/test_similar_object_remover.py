@@ -1,9 +1,9 @@
 import unittest
 
-from quasimodo.generated_fact import GeneratedFact
-from quasimodo.inputs import Inputs
-from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
-from quasimodo.similar_object_remover import SimilarObjectRemover
+from quasimodo.data_structures.generated_fact import GeneratedFact
+from quasimodo.data_structures.inputs import Inputs
+from quasimodo.data_structures.multiple_source_occurrence import MultipleSourceOccurrence
+from quasimodo.assertion_normalization.similar_object_remover import SimilarObjectRemover
 
 
 class TestSimilarObjectRemover(unittest.TestCase):

@@ -1,11 +1,11 @@
 import unittest
 
-from quasimodo.inputs import Inputs
-from quasimodo.generated_fact import GeneratedFact
-from quasimodo.multiple_scores import MultipleScore
-from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
-from quasimodo.subject import Subject
-from quasimodo.to_lower_case_submodule import ToLowerCaseSubmodule
+from quasimodo.data_structures.inputs import Inputs
+from quasimodo.data_structures.generated_fact import GeneratedFact
+from quasimodo.data_structures.multiple_scores import MultipleScore
+from quasimodo.data_structures.multiple_source_occurrence import MultipleSourceOccurrence
+from quasimodo.data_structures.subject import Subject
+from quasimodo.assertion_normalization.to_lower_case_submodule import ToLowerCaseSubmodule
 
 
 class TestToSingular(unittest.TestCase):

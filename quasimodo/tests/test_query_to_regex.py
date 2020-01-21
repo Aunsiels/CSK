@@ -1,6 +1,6 @@
 import unittest
 
-from quasimodo.cachable_querying_system import get_regex_from_query_by_subject, to_filename, \
+from quasimodo.cache.cachable_querying_system import get_regex_from_query_by_subject, to_filename, \
     get_regex_from_query_by_pattern
 
 

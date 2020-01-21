@@ -1,15 +1,15 @@
-from quasimodo.output_module import OutputModule
+from quasimodo.assertion_output.output_module import OutputModule
 from .module_factory_interface import ModuleFactoryInterface
-from .assertion_generation_module import AssertionGenerationModule
-from .animal_seed_module import AnimalSeedModule
+from quasimodo.assertion_generation.assertion_generation_module import AssertionGenerationModule
+from quasimodo.seeds.animal_seed_module import AnimalSeedModule
 from .pattern_module import PatternModule
-from .pattern_fusion_module import PatternFusionModule
-from .assertion_normalization_module import AssertionNormalizationModule
-from .assertion_validation_module import AssertionValidationModule
-from .assertion_fusion_module import AssertionFusionModule
-from .occupations_seed_module import OccupationsSeedModule
-from .all_seeds_module import AllSeedsModule
-from .archit_module import ArchitModule
+from quasimodo.patterns.pattern_fusion_module import PatternFusionModule
+from quasimodo.assertion_normalization.assertion_normalization_module import AssertionNormalizationModule
+from quasimodo.assertion_validation.assertion_validation_module import AssertionValidationModule
+from quasimodo.assertion_fusion.assertion_fusion_module import AssertionFusionModule
+from quasimodo.seeds.occupations_seed_module import OccupationsSeedModule
+from quasimodo.seeds.all_seeds_module import AllSeedsModule
+from quasimodo.web_search.archit_module import ArchitModule
 
 
 class DefaultModuleFactory(ModuleFactoryInterface):

@@ -1,6 +1,6 @@
-from .workflow_interface import WorkflowInterface
+from quasimodo.data_structures.workflow_interface import WorkflowInterface
 from .default_module_factory import DefaultModuleFactory
-from .inputs import Inputs
+from quasimodo.data_structures.inputs import Inputs
 
 
 class DefaultWorkflow(WorkflowInterface):

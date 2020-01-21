@@ -1,10 +1,10 @@
 import unittest
 
-from quasimodo.can_transformation_submodule import CanTransformationSubmodule
-from quasimodo.generated_fact import GeneratedFact
-from quasimodo.inputs import Inputs
-from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
-from quasimodo.pattern_google import PatternGoogle
+from quasimodo.assertion_normalization.can_transformation_submodule import CanTransformationSubmodule
+from quasimodo.data_structures.generated_fact import GeneratedFact
+from quasimodo.data_structures.inputs import Inputs
+from quasimodo.data_structures.multiple_source_occurrence import MultipleSourceOccurrence
+from quasimodo.patterns.pattern_google import PatternGoogle
 
 
 class TestCanTransformation(unittest.TestCase):

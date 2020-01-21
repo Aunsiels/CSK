@@ -1,6 +1,6 @@
 import unittest
 
-from quasimodo.fact import Fact
+from quasimodo.data_structures.fact import Fact
 
 
 class TestFact(unittest.TestCase):

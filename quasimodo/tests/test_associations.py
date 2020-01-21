@@ -1,14 +1,14 @@
 import unittest
 
-from quasimodo.flickr_clusters_submodule import FlickrClustersSubmodule
-from quasimodo.generated_fact import GeneratedFact
-from quasimodo.imagetag_submodule import ImagetagSubmodule
-from quasimodo.inputs import Inputs
-from quasimodo.multiple_scores import MultipleScore
-from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
-from quasimodo.openie_fact_generator_submodule import OpenIEFactGeneratorSubmodule
-from quasimodo.referencable_interface import ReferencableInterface
-from quasimodo.subject import Subject
+from quasimodo.assertion_validation.flickr_clusters_submodule import FlickrClustersSubmodule
+from quasimodo.data_structures.generated_fact import GeneratedFact
+from quasimodo.assertion_validation.imagetag_submodule import ImagetagSubmodule
+from quasimodo.data_structures.inputs import Inputs
+from quasimodo.data_structures.multiple_scores import MultipleScore
+from quasimodo.data_structures.multiple_source_occurrence import MultipleSourceOccurrence
+from quasimodo.assertion_generation.openie_fact_generator_submodule import OpenIEFactGeneratorSubmodule
+from quasimodo.data_structures.referencable_interface import ReferencableInterface
+from quasimodo.data_structures.subject import Subject
 
 
 class TestAssociation(unittest.TestCase):

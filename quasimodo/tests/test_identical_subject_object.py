@@ -1,9 +1,9 @@
 import unittest
 
-from quasimodo.inputs import Inputs
-from quasimodo.generated_fact import GeneratedFact
-from quasimodo.identical_subject_object_submodule import IdenticalSubjectObjectSubmodule
-from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
+from quasimodo.data_structures.inputs import Inputs
+from quasimodo.data_structures.generated_fact import GeneratedFact
+from quasimodo.assertion_normalization.identical_subject_object_submodule import IdenticalSubjectObjectSubmodule
+from quasimodo.data_structures.multiple_source_occurrence import MultipleSourceOccurrence
 
 
 class TestIdenticalSubjectObject(unittest.TestCase):

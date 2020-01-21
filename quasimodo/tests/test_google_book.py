@@ -1,10 +1,10 @@
 import unittest
 
-from quasimodo.inputs import Inputs
-from quasimodo.generated_fact import GeneratedFact
-from quasimodo.google_book_submodule import GoogleBookSubmodule
-from quasimodo.multiple_scores import MultipleScore
-from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
+from quasimodo.data_structures.inputs import Inputs
+from quasimodo.data_structures.generated_fact import GeneratedFact
+from quasimodo.assertion_validation.google_book_submodule import GoogleBookSubmodule
+from quasimodo.data_structures.multiple_scores import MultipleScore
+from quasimodo.data_structures.multiple_source_occurrence import MultipleSourceOccurrence
 
 
 class TestGoogleBook(unittest.TestCase):

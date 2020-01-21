@@ -1,5 +1,5 @@
 from quasimodo.parts_of_facts import PartsOfFacts
-from .submodule_interface import SubmoduleInterface
+from quasimodo.data_structures.submodule_interface import SubmoduleInterface
 
 
 class FactCombinor(SubmoduleInterface):

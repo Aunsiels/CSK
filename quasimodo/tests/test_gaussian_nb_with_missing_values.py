@@ -2,7 +2,7 @@ import unittest
 
 import numpy as np
 
-from quasimodo.gaussian_nb_with_missing_values import GaussianNBWithMissingValues
+from quasimodo.assertion_fusion.gaussian_nb_with_missing_values import GaussianNBWithMissingValues
 
 
 class TestFilterObject(unittest.TestCase):

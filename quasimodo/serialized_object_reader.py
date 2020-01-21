@@ -1,19 +1,19 @@
 import json
 
-from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
-from quasimodo.pattern_google import PatternGoogle
-from quasimodo.multiple_module_reference import MultipleModuleReference
-from quasimodo.multiple_pattern import MultiplePattern
-from quasimodo.multiple_submodule_reference import MultipleSubmoduleReference
-from quasimodo.object import Object
-from quasimodo.predicate import Predicate
-from quasimodo.subject import Subject
-from quasimodo.modality import Modality
-from quasimodo.module_reference_interface import ModuleReferenceInterface
-from quasimodo.submodule_reference_interface import SubmoduleReferenceInterface
-from quasimodo.multiple_scores import MultipleScore
-from quasimodo.fact import Fact
-from quasimodo.generated_fact import GeneratedFact
+from quasimodo.data_structures.multiple_source_occurrence import MultipleSourceOccurrence
+from quasimodo.patterns.pattern_google import PatternGoogle
+from quasimodo.data_structures.multiple_module_reference import MultipleModuleReference
+from quasimodo.data_structures.multiple_pattern import MultiplePattern
+from quasimodo.data_structures.multiple_submodule_reference import MultipleSubmoduleReference
+from quasimodo.data_structures.object import Object
+from quasimodo.data_structures.predicate import Predicate
+from quasimodo.data_structures.subject import Subject
+from quasimodo.data_structures.modality import Modality
+from quasimodo.data_structures.module_reference_interface import ModuleReferenceInterface
+from quasimodo.data_structures.submodule_reference_interface import SubmoduleReferenceInterface
+from quasimodo.data_structures.multiple_scores import MultipleScore
+from quasimodo.data_structures.fact import Fact
+from quasimodo.data_structures.generated_fact import GeneratedFact
 
 
 class UnknownSerializedObject(NameError):

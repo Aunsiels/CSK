@@ -1,10 +1,10 @@
 import time
 import unittest
 
-from quasimodo.bing_autocomplete_submodule import BingAutocompleteSubmodule
-from quasimodo.inputs import Inputs
-from quasimodo.pattern_google import PatternGoogle
-from quasimodo.subject import Subject
+from quasimodo.assertion_generation.bing_autocomplete_submodule import BingAutocompleteSubmodule
+from quasimodo.data_structures.inputs import Inputs
+from quasimodo.patterns.pattern_google import PatternGoogle
+from quasimodo.data_structures.subject import Subject
 
 
 class TestBingAutocomplete(unittest.TestCase):

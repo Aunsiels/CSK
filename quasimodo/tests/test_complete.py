@@ -1,14 +1,22 @@
+import logging
 import unittest
 
-from quasimodo.inputs import Inputs
+from quasimodo.data_structures.inputs import Inputs
 from quasimodo.default_module_factory import DefaultModuleFactory
-from quasimodo.subject import Subject
-from quasimodo.workflow_interface import WorkflowInterface
+from quasimodo.data_structures.subject import Subject
+from quasimodo.data_structures.workflow_interface import WorkflowInterface
+
+
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
+                    datefmt='%m-%d %H:%M',
+                    filename='log_testing.txt',
+                    filemode='a')
 
 
 class TestComplete(unittest.TestCase):
 
-    def _test_all_workflow(self):
+    def test_all_workflow(self):
         workflow = TestWorkflow()
         inputs = workflow.generate_input()
         inputs = workflow.run(inputs)
@@ -18,6 +26,7 @@ class TestComplete(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    logger = logging.getLogger(__name__)
     unittest.main()
 
 
@@ -29,9 +38,9 @@ class TestWorkflow(WorkflowInterface):
     def __init__(self):
         module_names = ["patterns",
                         "pattern-fusion",
-                        "assertion-generation",]
-                        #"assertion-normalization",
-                        #"assertion-validation",
+                        "assertion-generation",
+                        "assertion-normalization",
+                        "assertion-validation",]
                         #"assertion-fusion"]
         super(TestWorkflow, self).__init__(module_names, DefaultModuleFactory())
 

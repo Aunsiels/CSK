@@ -1,9 +1,9 @@
 import unittest
 
-from quasimodo.basic_modality_submodule import BasicModalitySubmodule
-from quasimodo.inputs import Inputs
-from quasimodo.openie_fact_generator_submodule import OpenIEFactGeneratorSubmodule
-from quasimodo.referencable_interface import ReferencableInterface
+from quasimodo.assertion_normalization.basic_modality_submodule import BasicModalitySubmodule
+from quasimodo.data_structures.inputs import Inputs
+from quasimodo.assertion_generation.openie_fact_generator_submodule import OpenIEFactGeneratorSubmodule
+from quasimodo.data_structures.referencable_interface import ReferencableInterface
 
 
 class TestBasicModality(unittest.TestCase):

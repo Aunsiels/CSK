@@ -1,10 +1,10 @@
-from quasimodo.generated_fact import GeneratedFact
-from quasimodo.modality import read_sentence, get_multiple_parts_combination, Modality
-from quasimodo.multiple_module_reference import MultipleModuleReference
-from quasimodo.multiple_pattern import MultiplePattern
-from quasimodo.multiple_scores import MultipleScore
-from quasimodo.multiple_source_occurrence import MultipleSourceOccurrence
-from quasimodo.multiple_submodule_reference import MultipleSubmoduleReference
+from quasimodo.data_structures.generated_fact import GeneratedFact
+from quasimodo.data_structures.modality import read_sentence, Modality
+from quasimodo.data_structures.multiple_module_reference import MultipleModuleReference
+from quasimodo.data_structures.multiple_pattern import MultiplePattern
+from quasimodo.data_structures.multiple_scores import MultipleScore
+from quasimodo.data_structures.multiple_source_occurrence import MultipleSourceOccurrence
+from quasimodo.data_structures.multiple_submodule_reference import MultipleSubmoduleReference
 
 
 class PartsOfFacts(object):

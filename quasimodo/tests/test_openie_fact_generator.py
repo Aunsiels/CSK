@@ -1,9 +1,9 @@
 import unittest
 
-from quasimodo.inputs import Inputs
-from quasimodo.openie_fact_generator_submodule import OpenIEFactGeneratorSubmodule
-from quasimodo.pattern_google import PatternGoogle
-from quasimodo.referencable_interface import ReferencableInterface
+from quasimodo.data_structures.inputs import Inputs
+from quasimodo.assertion_generation.openie_fact_generator_submodule import OpenIEFactGeneratorSubmodule
+from quasimodo.patterns.pattern_google import PatternGoogle
+from quasimodo.data_structures.referencable_interface import ReferencableInterface
 from quasimodo.statement_maker import StatementMaker
 
 

@@ -1,8 +1,8 @@
 import unittest
 
-from quasimodo.inputs import Inputs
-from quasimodo.quora_questions_submodule import QuoraQuestionsSubmodule
-from quasimodo.subject import Subject
+from quasimodo.data_structures.inputs import Inputs
+from quasimodo.assertion_generation.quora_questions_submodule import QuoraQuestionsSubmodule
+from quasimodo.data_structures.subject import Subject
 
 
 class TestQuora(unittest.TestCase):
