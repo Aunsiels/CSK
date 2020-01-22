@@ -1,5 +1,8 @@
 import json
 
+from redis import Redis
+import rq
+
 from quasimodo.data_structures.inputs import Inputs
 from quasimodo.data_structures.module_reference_interface import ModuleReferenceInterface
 from quasimodo.data_structures.subject import Subject
