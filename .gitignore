@@ -1,5 +1,6 @@
 # Byte-compiled / optimized / DLL files
 #
+#
 __pycache__/
 *.py[cod]
 *$py.class
@@ -105,7 +106,6 @@ venv.bak/
 .mypy_cache/
 
 *swp
-*cache*/
 out/
 
 parameters.tsv
@@ -142,3 +142,5 @@ evaluation*
 google-merged-questions.txt
 prof/
 quasimodo/tests/temp.json
+*-cache
+cache_*

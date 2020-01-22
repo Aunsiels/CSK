@@ -19,6 +19,7 @@ class AssertionNormalizationModule(ModuleInterface):
                         "be-normalization",
                         "identical-subj-obj",
                         "present-conjugate",
+                        "similar-object-remover",
                         "fact-combinor"]
         super(AssertionNormalizationModule, self).__init__(
             module_names, DefaultSubmoduleFactory())
