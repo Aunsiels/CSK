@@ -1,5 +1,5 @@
 from quasimodo.data_structures.module_interface import ModuleInterface
-from .default_submodule_factory import DefaultSubmoduleFactory
+from quasimodo.default_submodule_factory import DefaultSubmoduleFactory
 from quasimodo.data_structures.inputs import Inputs
 import logging
 

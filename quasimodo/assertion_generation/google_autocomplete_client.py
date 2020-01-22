@@ -30,6 +30,8 @@ HEADERS_JSON = {'content-type': 'application/json'}
 
 logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
+print("DEFAULT MONGODB LOCATION", DEFAULT_MONGODB_LOCATION)
+
 
 class GoogleAutocompleteClient(CachableQueryingSystem):
     """SubmoduleGoogleAutocomplete

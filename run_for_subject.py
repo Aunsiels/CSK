@@ -1,7 +1,4 @@
-import json
-
-from redis import Redis
-import rq
+from rq import get_current_job
 
 from quasimodo.data_structures.inputs import Inputs
 from quasimodo.data_structures.module_reference_interface import ModuleReferenceInterface
@@ -10,6 +7,7 @@ from quasimodo.default_submodule_factory import DefaultSubmoduleFactory
 
 
 def run_for_subject(subject):
+    job = get_current_job()
 
     factory = DefaultSubmoduleFactory()
 
@@ -60,11 +58,16 @@ def run_for_subject(subject):
 
     module_reference = ModuleReferenceInterface("")
 
+    pattern_submodule = factory.get_submodule("manual-patterns-google", module_reference)
+    empty_input = pattern_submodule.process(empty_input)
+
     result = []
 
     result.append(dict())
     result[-1]["step name"] = "Assertion Generation"
     result[-1]["steps"] = []
+    job.meta = result
+    job.save_meta()
     generated_facts = []
     for submodule_name in submodule_generation_names:
         submodule = factory.get_submodule(submodule_name, module_reference)
@@ -74,6 +77,8 @@ def run_for_subject(subject):
         step_info["name"] = submodule.get_name()
         step_info["facts"] = [x.to_dict() for x in input_temp.get_generated_facts()]
         result[-1]["steps"].append(step_info)
+        job.meta = result
+        job.save_meta()
     new_input = empty_input.add_generated_facts(generated_facts)
 
     result.append(dict())
@@ -94,6 +99,8 @@ def run_for_subject(subject):
                 }
                 step_info["modifications"].append(modification)
         result[-1]["steps"].append(step_info)
+        job.meta = result
+        job.save_meta()
         new_input = submodule.process(new_input)
 
     result.append(dict())
@@ -106,6 +113,8 @@ def run_for_subject(subject):
         step_info["name"] = submodule.get_name()
         step_info["facts"] = [x.to_dict() for x in new_input.get_generated_facts()]
         result[-1]["steps"].append(step_info)
+        job.meta = result
+        job.save_meta()
 
     result.append(dict())
     result[-1]["step name"] = "Assertion Validation"
@@ -117,5 +126,5 @@ def run_for_subject(subject):
     step_info["name"] = "All validations"
     step_info["facts"] = [x.to_dict() for x in new_input.get_generated_facts()]
     result[-1]["steps"].append(step_info)
-
-    print(json.dumps(result))
+    job.meta = result
+    job.save_meta()

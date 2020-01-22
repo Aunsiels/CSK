@@ -2,7 +2,7 @@ from quasimodo.assertion_output.output_module import OutputModule
 from .module_factory_interface import ModuleFactoryInterface
 from quasimodo.assertion_generation.assertion_generation_module import AssertionGenerationModule
 from quasimodo.seeds.animal_seed_module import AnimalSeedModule
-from .pattern_module import PatternModule
+from quasimodo.patterns.pattern_module import PatternModule
 from quasimodo.patterns.pattern_fusion_module import PatternFusionModule
 from quasimodo.assertion_normalization.assertion_normalization_module import AssertionNormalizationModule
 from quasimodo.assertion_validation.assertion_validation_module import AssertionValidationModule
