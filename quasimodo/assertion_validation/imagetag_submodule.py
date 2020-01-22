@@ -1,8 +1,12 @@
 from quasimodo.parameters_reader import ParametersReader
 from quasimodo.assertion_validation.association_submodule import AssociationSubmodule
+import os.path
+import pickle
 
 parameters_reader = ParametersReader()
 filename = parameters_reader.get_parameter("imagetag-associations") or ""
+
+CACHE_IMAGETAG = "cache_imagetag.pck"
 
 
 class ImagetagSubmodule(AssociationSubmodule):
@@ -14,6 +18,8 @@ class ImagetagSubmodule(AssociationSubmodule):
 
     def _get_associations(self, subjects):
         associations = dict()
+        if os.path.isfile(CACHE_IMAGETAG):
+            return pickle.load(open(CACHE_IMAGETAG, "rb"))
         with open(filename) as f:
             for line in f:
                 line = line.strip().lower().split("\t")
@@ -25,4 +31,5 @@ class ImagetagSubmodule(AssociationSubmodule):
                         if word0 == word1:
                             continue
                         assos_word0[word1] = assos_word0.get(word1, 0) + 1
+        pickle.dump(associations, open(CACHE_IMAGETAG, "wb"))
         return associations

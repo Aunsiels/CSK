@@ -1,5 +1,7 @@
 import os
+import os.path
 import logging
+import pickle
 
 from quasimodo.parameters_reader import ParametersReader
 
@@ -7,6 +9,9 @@ parameters_reader = ParametersReader()
 filename = parameters_reader.get_parameter("openie-file") or None
 filename_no_found = parameters_reader.get_parameter("openie-file-no-found") or\
         os.path.dirname(__file__) + "/data/no_found_openie_sentences.txt"
+
+
+CACHE_OPENIE_READER = "cache_openie_reader.pck"
 
 
 class OpenIEReader(object):
@@ -17,6 +22,9 @@ class OpenIEReader(object):
             self.initialize_from_filename()
 
     def initialize_from_filename(self):
+        if os.path.isfile(CACHE_OPENIE_READER):
+            self.sentence_to_fact = pickle.load(open(CACHE_OPENIE_READER, "rb"))
+            return
         with open(filename) as f:
             temp = []
             sentence = ''
@@ -36,6 +44,7 @@ class OpenIEReader(object):
                         sentence = line
             if sentence != "":
                 self.sentence_to_fact[sentence] = temp
+        pickle.dump(self.sentence_to_fact, open(CACHE_OPENIE_READER, "wb"))
 
     def get_from_sentence(self, sentence):
         if sentence in self.sentence_to_fact:
