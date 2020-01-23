@@ -18,3 +18,4 @@ google-api-python-client
 flickr_api
 objgraph
 rq
+language_check
