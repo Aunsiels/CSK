@@ -118,6 +118,7 @@ class BrowserAutocompleteSubmodule(OpenIEFactGeneratorSubmodule):
                    base_suggestions))
         return base_suggestions
 
+
     def process(self, input_interface):
         # Needs subjects
         logging.info("Start submodule %s", self.get_name())

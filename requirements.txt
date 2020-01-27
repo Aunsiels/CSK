@@ -19,3 +19,4 @@ flickr_api
 objgraph
 rq
 language_check
+memory_profiler

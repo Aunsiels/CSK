@@ -54,6 +54,7 @@ class OpenIEReader(object):
                 try:
                     with open(filename_no_found, "a") as f:
                         f.write(sentence + "\n")
+                        os.remove(CACHE_OPENIE_READER)
                         break
                 except:
                     logging.info("Error while writting the sentence in openie_reader")
