@@ -2,6 +2,7 @@ import os
 import os.path
 import logging
 import pickle
+import time
 
 from quasimodo.parameters_reader import ParametersReader
 
@@ -50,14 +51,18 @@ class OpenIEReader(object):
         if sentence in self.sentence_to_fact:
             return self.sentence_to_fact[sentence]
         else:
-            while True:
+            counter = 0
+            while counter < 10:
+                counter += 1
                 try:
                     with open(filename_no_found, "a") as f:
                         f.write(sentence + "\n")
                         os.remove(CACHE_OPENIE_READER)
                         break
-                except:
+                except Exception e:
                     logging.info("Error while writting the sentence in openie_reader")
+                    logging.info(str(e))
+                    time.sleep(1)
             return []
 
 
