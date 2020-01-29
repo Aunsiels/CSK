@@ -59,7 +59,7 @@ class OpenIEReader(object):
                         f.write(sentence + "\n")
                         os.remove(CACHE_OPENIE_READER)
                         break
-                except Exception e:
+                except Exception as e:
                     logging.info("Error while writting the sentence in openie_reader")
                     logging.info(str(e))
                     time.sleep(1)
