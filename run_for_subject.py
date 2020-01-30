@@ -25,6 +25,7 @@ def run_for_subject(subject):
         "lower-case",
         "tbc-cleaner",
         "only-subject",
+        "filter-object",
         "no-personal",
         "singular-subject",
         "cleaning-predicate",
@@ -32,7 +33,6 @@ def run_for_subject(subject):
         "present-continuous",
         "are-transformation",
         "can-transformation",
-        "filter-object",
         "be-normalization",
         "identical-subj-obj",
         "present-conjugate"
