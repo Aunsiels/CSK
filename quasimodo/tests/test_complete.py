@@ -40,7 +40,7 @@ class TestWorkflow(WorkflowInterface):
                         "pattern-fusion",
                         "assertion-generation",
                         "assertion-normalization",
-                        "assertion-validation",]
+                        "assertion-validation"]
                         #"assertion-fusion"]
         super(TestWorkflow, self).__init__(module_names, DefaultModuleFactory())
 

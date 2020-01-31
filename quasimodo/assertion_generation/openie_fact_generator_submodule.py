@@ -2,6 +2,8 @@ import json
 import re
 import inflect
 import logging
+
+import objgraph
 from stanfordnlp.server import CoreNLPClient, AnnotationException, TimeoutException
 import stanfordnlp.server.client
 from nltk.corpus import wordnet as wn
@@ -238,17 +240,19 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
     def __init__(self, module_reference, use_cache=True):
         super().__init__()
         self.use_cache = use_cache
-        self.statement_maker = StatementMaker()
         self._max_query_length = 99990
         self.default_number_suggestions = 8  # The maximum number of suggestions
         self._module_reference = module_reference
         self.regex_no_alpha = re.compile("[^a-zA-Z]")
         self.counter = 0
         self.cache_corenlp = None
+        self.statement_maker = None
 
     def clean(self):
+        objgraph.show_backrefs([self.cache_corenlp], filename='cache_corenlp.png')
         del self.cache_corenlp
         self.cache_corenlp = None
+        del self.statement_maker
 
     def get_cache_corenlp(self):
         if self.cache_corenlp is not None:
@@ -300,6 +304,8 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
     def transforms_suggestion_into_batch_component(self, suggestion, full_sentence):
         # question to statement
         # We need this because of OpenIE very bad with questions
+        if self.statement_maker is None:
+            self.statement_maker = StatementMaker()
         new_sentence = self.statement_maker.to_statement(suggestion[STATEMENT],
                                                          suggestion[SUBJECT])
         if new_sentence[:6] == "there ":
@@ -498,6 +504,8 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                         multiple_score,
                         MultipleSourceOccurrence.from_raw(sentence, self, 1),
                         suggestion[2]))
+        objgraph.show_backrefs([openie_reader], filename='openie_reader.png')
+        objgraph.show_backrefs([openie_reader.sentence_to_fact], filename='openie_reader_sentence.png')
         del openie_reader
         return generated_facts
 
