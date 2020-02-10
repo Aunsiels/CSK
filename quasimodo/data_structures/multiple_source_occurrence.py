@@ -56,7 +56,7 @@ class MultipleSourceOccurrence(object):
                 mso.occurrences[key] = dict()
                 mso.occurrences[key]["sources"] = [read_submodule_reference(source)
                                                    for source in dictionary["occurrences"][key]["sources"]]
-                mso.occurrences[key]["occurrences"] = dictionary["occurrences"][key]["n_occurrences"]
+                mso.occurrences[key]["n_occurrences"] = dictionary["occurrences"][key]["n_occurrences"]
             return mso
         raise UnknownSerializedObject("Unknown module reference type:" + json.dumps(dictionary))
 
