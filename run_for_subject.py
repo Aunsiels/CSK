@@ -1,3 +1,5 @@
+import time
+
 from rq import get_current_job
 
 from quasimodo.data_structures.inputs import Inputs
@@ -71,11 +73,13 @@ def run_for_subject(subject):
     generated_facts = []
     for submodule_name in submodule_generation_names:
         submodule = factory.get_submodule(submodule_name, module_reference)
+        begin_time = time.time()
         input_temp = submodule.process(empty_input)
         generated_facts += input_temp.get_generated_facts()
         step_info = dict()
         step_info["name"] = submodule.get_name()
         step_info["facts"] = [x.to_dict() for x in input_temp.get_generated_facts()]
+        step_info["time"] = time.time() - begin_time
         result[-1]["steps"].append(step_info)
         job.meta = result
         job.save_meta()
@@ -87,6 +91,7 @@ def run_for_subject(subject):
     for submodule_name in submodule_normalization_names:
         submodule = factory.get_submodule(submodule_name, module_reference)
         step_info = dict()
+        begin_time = time.time()
         step_info["name"] = submodule.get_name()
         step_info["modifications"] = []
         for generated_fact in new_input.get_generated_facts():
@@ -98,6 +103,7 @@ def run_for_subject(subject):
                     "to": [x.to_dict() for x in input_temp.get_generated_facts()]
                 }
                 step_info["modifications"].append(modification)
+        step_info["time"] = time.time() - begin_time
         result[-1]["steps"].append(step_info)
         job.meta = result
         job.save_meta()
@@ -108,10 +114,12 @@ def run_for_subject(subject):
     result[-1]["steps"] = []
     for submodule_name in submodule_normalization_global_names:
         submodule = factory.get_submodule(submodule_name, module_reference)
+        begin_time = time.time()
         new_input = submodule.process(new_input)
         step_info = dict()
         step_info["name"] = submodule.get_name()
         step_info["facts"] = [x.to_dict() for x in new_input.get_generated_facts()]
+        step_info["time"] = time.time() - begin_time
         result[-1]["steps"].append(step_info)
         job.meta = result
         job.save_meta()
@@ -119,12 +127,14 @@ def run_for_subject(subject):
     result.append(dict())
     result[-1]["step name"] = "Assertion Validation"
     result[-1]["steps"] = []
+    begin_time = time.time()
     for submodule_name in submodule_validation_names:
         submodule = factory.get_submodule(submodule_name, module_reference)
         new_input = submodule.process(new_input)
     step_info = dict()
     step_info["name"] = "All validations"
     step_info["facts"] = [x.to_dict() for x in new_input.get_generated_facts()]
+    step_info["time"] = time.time() - begin_time
     result[-1]["steps"].append(step_info)
     job.meta = result
     job.save_meta()
