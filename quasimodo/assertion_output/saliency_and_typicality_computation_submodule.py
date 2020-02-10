@@ -114,7 +114,7 @@ class SaliencyAndTypicalityComputationSubmodule(SubmoduleInterface):
             idx_closest = matutils.argsort(distances_temp[i % SLICE_SIZE],
                                            topn=TOPK,
                                            reverse=True)
-            self.closest_indexes.append([(j, distances_temp[i % SLICE_SIZE][j]) for j in idx_closest])
+            self.closest_indexes.append([(j, (1 - distances_temp[i % SLICE_SIZE][j])) for j in idx_closest])
         return self.closest_indexes
 
     def compute_probabilities(self):

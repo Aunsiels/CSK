@@ -51,6 +51,7 @@ from quasimodo.assertion_generation.yahoo_questions_submodule import YahooQuesti
 from quasimodo.assertion_normalization.subject_removal_submodule import SubjectRemovalSubmodule
 from quasimodo.assertion_normalization.to_lower_case_submodule import ToLowerCaseSubmodule
 from .assertion_normalization.similar_object_remover import SimilarObjectRemover
+from .assertion_output.circle_saliency import CircleSaliency
 from .fact_combinor import FactCombinor
 from quasimodo.assertion_normalization.identical_subject_object_submodule import IdenticalSubjectObjectSubmodule
 
@@ -115,7 +116,8 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
             "what-questions": WhatQuestionsComparatorSubmodule,
             "forgotten-subjects": ForgottenSubjectsSubmodule,
             "saliency-typicality": SaliencyAndTypicalityComputationSubmodule,
-            "similar-object-remover": SimilarObjectRemover
+            "similar-object-remover": SimilarObjectRemover,
+            "circle-saliency": CircleSaliency
         }
 
     def get_submodule(self, submodule_name, module_reference):
