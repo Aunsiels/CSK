@@ -38,6 +38,12 @@ RUN mkdir $QUASIMODO_DATA && \
     mkdir $QUASIMODO_DATA/properties && \
     mkdir $QUASIMODO_DATA/question2statement
 
+RUN pip3 install --upgrade pip && \
+    pip3 install spacy nltk && \
+    python3 -m spacy download en_core_web_sm && \
+    python3 -m spacy download en_core_web_lg && \
+    python3 -m nltk.downloader all
+
 # Invalidate Cache from here
 ADD https://time.is/ /tmp/bustcache
 # Get code
@@ -45,11 +51,7 @@ RUN git clone https://github.com/Aunsiels/CSK.git
 
 # Install python libraries
 RUN cd CSK && \
-    pip3 install --upgrade pip && \
-    pip3 install -r requirements.txt && \
-    python3 -m spacy download en_core_web_sm && \
-    python3 -m spacy download en_core_web_lg && \
-    python3 -m nltk.downloader all
+    pip3 install -r requirements.txt
   
 # Send config file
 COPY quasimodo/parameters_docker.tsv CSK/quasimodo/parameters.tsv
