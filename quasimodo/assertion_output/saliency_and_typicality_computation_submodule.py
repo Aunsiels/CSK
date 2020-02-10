@@ -25,6 +25,14 @@ def save_tsv_triples(triples):
         f.write("\t".join(["subject", "predicate", "object", "modality", "is_negative", "score", "sentences source",
                            "typicality", "saliency"]) + "\n")
         f.write("\n".join(triples))
+        
+
+def get_raw_predicate(predicate):
+    if "has_body_part" == predicate:
+        return "have"
+    if "has_" in predicate:
+        return "be"
+    return predicate
 
 
 class SaliencyAndTypicalityComputationSubmodule(SubmoduleInterface):
@@ -46,14 +54,34 @@ class SaliencyAndTypicalityComputationSubmodule(SubmoduleInterface):
         for generated_fact in input_interface.get_generated_facts():
             row_tsv = generated_fact.get_tsv()
             subj = generated_fact.get_subject().get()
-            pred = generated_fact.get_predicate().get()
+            pred = get_raw_predicate(generated_fact.get_predicate().get())
             obj = generated_fact.get_object().get()
             score = generated_fact.get_score().scores[0][0]
             po = pred + " " + obj
-            tau = score / self.total_per_subject[subj]
-            sigma = score / self.total_per_po[po]
+            if self.max_tau.get(subj, 0) != 0:
+                tau = score / self.total_per_subject[subj] / self.max_tau.get(subj, 0)
+            else:
+                tau = score / self.total_per_subject[subj]
+            if self.max_sigma.get(po, 0) != 0:
+                sigma = score / self.total_per_po[po] / self.max_sigma.get(po, 0)
+            else:
+                sigma = score / self.total_per_po[po]
             triples.append(row_tsv + "\t" + str(tau) + "\t" + str(sigma))
         return triples
+
+    def set_max_tau_and_sigma(self, input_interface):
+        self.max_tau = dict()
+        self.max_sigma = dict()
+        for generated_fact in input_interface.get_generated_facts():
+            subj = generated_fact.get_subject().get()
+            pred = get_raw_predicate(generated_fact.get_predicate().get())
+            obj = generated_fact.get_object().get()
+            score = generated_fact.get_score().scores[0][0]
+            po = pred + " " + obj
+            self.max_tau[subj] = max(score / self.total_per_subject[subj],
+                    self.max_tau.get(subj, 0))
+            self.max_sigma[po] = max(score / self.total_per_po[po],
+                    self.max_sigma.get(po, 0))
 
     def process(self, input_interface):
         logging.info("Start TSV output submodule")
@@ -64,6 +92,7 @@ class SaliencyAndTypicalityComputationSubmodule(SubmoduleInterface):
         self.set_closest_indexes()
         self.compute_probabilities()
         self.match_probabilities()
+        self.set_max_tau_and_sigma(input_interface)
         self.save_final_results(input_interface)
 
         return input_interface
@@ -123,7 +152,7 @@ class SaliencyAndTypicalityComputationSubmodule(SubmoduleInterface):
         self.total_per_po = dict()
         for generated_fact in input_interface.get_generated_facts():
             subj = generated_fact.get_subject().get()
-            pred = generated_fact.get_predicate().get()
+            pred = get_raw_predicate(generated_fact.get_predicate().get())
             obj = generated_fact.get_object().get()
             score = generated_fact.get_score().scores[0][0]
             self.total_per_subject[subj] = self.total_per_subject.setdefault(subj, 0) + score

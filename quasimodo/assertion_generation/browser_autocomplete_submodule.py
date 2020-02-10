@@ -1,5 +1,6 @@
 from string import ascii_lowercase
 import logging
+import psutil
 
 from quasimodo.parameters_reader import ParametersReader
 from quasimodo.assertion_generation.openie_fact_generator_submodule import OpenIEFactGeneratorSubmodule
@@ -31,6 +32,7 @@ class BrowserAutocompleteSubmodule(OpenIEFactGeneratorSubmodule):
         self.default_number_suggestions = 8  # The maximum number of suggestions
 
     def clean(self):
+        logging.info("Cleaning browser")
         super().clean()
 
     def get_suggestion(self, query, lang="en", ds=""):
@@ -122,15 +124,20 @@ class BrowserAutocompleteSubmodule(OpenIEFactGeneratorSubmodule):
     def process(self, input_interface):
         # Needs subjects
         logging.info("Start submodule %s", self.get_name())
+        logging.info(str(psutil.virtual_memory()))
         if not input_interface.has_subjects():
             return input_interface
 
         suggestions = self._get_all_suggestions(input_interface)
 
         logging.info("We collected " + str(len(suggestions)) + " suggestions.")
+        logging.info(str(psutil.virtual_memory()))
 
         # OPENIE part
+        logging.info("OpenIE from file...")
         generated_facts_bis = self._openie_from_file(suggestions)
+        logging.info("OpenIE from coreNLP")
+        logging.info(str(psutil.virtual_memory()))
         generated_facts = self.get_generated_facts(suggestions)
 
         return input_interface.add_generated_facts(generated_facts_bis).add_generated_facts(generated_facts)

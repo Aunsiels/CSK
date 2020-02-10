@@ -261,6 +261,7 @@ class StatementMaker(object):
                     "\t" + subject + "\n")
 
     def to_statement(self, question, subject):
+        question = question.replace("&amp;", " & ").replace("&gt;", " > ").replace("&lt;", " < ")
         if question.strip() in self._q2s:
             return self._q2s[question.strip()]
         question = question.replace(" cant ", " can't ")

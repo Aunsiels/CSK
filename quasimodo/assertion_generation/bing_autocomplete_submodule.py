@@ -58,7 +58,7 @@ class BingAutocompleteSubmodule(BrowserAutocompleteSubmodule, CachableQueryingSy
             cache_value = self.read_cache(query)
             if cache_value is not None:
                 suggestions, is_cached = cache_value
-                suggestions = [(suggestion[0], float(suggestion[1])) for suggestion in suggestions]
+                suggestions = [[suggestion[0], float(suggestion[1])] for suggestion in suggestions]
                 return suggestions, is_cached
         if not self.look_new or not query:
             return None, False
@@ -74,7 +74,7 @@ class BingAutocompleteSubmodule(BrowserAutocompleteSubmodule, CachableQueryingSy
                 search_suggestions = suggestion_group.setdefault("searchSuggestions", [])
                 for suggestion in search_suggestions:
                     suggestions_temp.append(suggestion.setdefault("query", ""))
-            suggestions = [(suggestions_temp[i], i) for i in range(len(suggestions_temp))]
+            suggestions = [[suggestions_temp[i], i] for i in range(len(suggestions_temp))]
             if self.use_cache:
                 self.write_cache(query, suggestions)
             time.sleep(max([0, self.time_between_queries - (time.time() - begin_time)]))

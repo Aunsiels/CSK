@@ -69,7 +69,7 @@ class QuestionFileSubmodule(OpenIEFactGeneratorSubmodule):
             pattern = PatternGoogle("why can <SUBJS>", "CAN")
         elif question.startswith("why can't "):
             pattern = PatternGoogle("why can't <SUBJS>", "CAN", True)
-        return (question, 1, pattern, subject_final)
+        return [question, 1, pattern, subject_final]
 
     def process(self, input_interface):
         # Needs subjects
@@ -131,4 +131,5 @@ class QuestionFileSubmodule(OpenIEFactGeneratorSubmodule):
         return input_interface.add_generated_facts(generated_facts_bis).add_generated_facts(generated_facts)
 
     def clean(self):
-        pass
+        logging.info("Cleaning File")
+        super().clean()

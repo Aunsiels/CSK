@@ -2,8 +2,8 @@ import json
 import re
 import inflect
 import logging
+import psutil
 
-import objgraph
 from stanfordnlp.server import CoreNLPClient, AnnotationException, TimeoutException
 import stanfordnlp.server.client
 from nltk.corpus import wordnet as wn
@@ -117,8 +117,8 @@ def join_sentences_from_batch(batch):
 
 
 def replace_special_characters(sentence):
-    replacements = [("-LRB-", "("), ("-RRB-", ")"), ("-LSB-", "["), ("-RSB-", "]"), ("-LCB-", "{"), ("-RCB-", "}"),
-                    ("&amp;", "&")]
+    replacements = [["-LRB-", "("], ["-RRB-", ")"], ["-LSB-", "["], ["-RSB-", "]"], ["-LCB-", "{"], ["-RCB-", "}"],
+                    ["&amp;", "&"]]
     for to_replace, replacement in replacements:
         sentence = sentence.replace(to_replace, replacement)
     return sentence
@@ -157,7 +157,7 @@ def get_spo_from_triple(triple):
     subject = triple["subject"]
     obj = triple["object"]
     predicate = triple["relation"]
-    return subject, predicate, obj
+    return [subject, predicate, obj]
 
 
 def get_position_subject(subject, suggestion):
@@ -249,10 +249,17 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
         self.statement_maker = None
 
     def clean(self):
-        objgraph.show_backrefs([self.cache_corenlp], filename='cache_corenlp.png')
-        del self.cache_corenlp
+        logging.info("Cleaning OpenIE")
+        try:
+            del self.cache_corenlp
+        except:
+            pass
         self.cache_corenlp = None
-        del self.statement_maker
+        try:
+            del self.statement_maker
+        except:
+            pass
+        self.statement_maker = None
 
     def get_cache_corenlp(self):
         if self.cache_corenlp is not None:
@@ -266,7 +273,7 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                     logging.error("\t".join(line))
                 else:
                     statement, negativity, question, json_str = line
-                    cache[question] = (statement, negativity, json.loads(json_str))
+                    cache[question] = [statement, negativity, json_str]
         self.cache_corenlp = cache
         return cache
 
@@ -275,6 +282,7 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
 
     def _compute_batch_openie(self, suggestions):
         logging.info("Transformation questions to statement")
+        logging.info(str(psutil.virtual_memory()))
         full_sentence = self.get_all_batch_components_from_suggestions(suggestions)
         batches = self.get_batches_from_batch_components(full_sentence)
         return batches
@@ -320,23 +328,23 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
             for verb in NEGATE_VERB:
                 negation = " " + verb + " not "
                 if negation in new_sentence:
-                    full_sentence.append((new_sentence.replace(negation, " " + verb + " "),
+                    full_sentence.append([new_sentence.replace(negation, " " + verb + " "),
                                           suggestion[SCORE],
                                           suggestion[PATTERN],
                                           suggestion[SUBJECT],
                                           True,
-                                          suggestion[STATEMENT]))
+                                          suggestion[STATEMENT]])
                     break
         elif new_sentence != "":
             negativity = False
             if "cannot" in suggestion[STATEMENT] or "can't" in suggestion[STATEMENT]:
                 negativity = True
-            full_sentence.append((new_sentence,
+            full_sentence.append([new_sentence,
                                   suggestion[SCORE],
                                   suggestion[PATTERN],
                                   suggestion[SUBJECT],
                                   negativity,
-                                  suggestion[STATEMENT]))
+                                  suggestion[STATEMENT]])
 
     def get_generated_facts(self, suggestions):
         generated_facts = []
@@ -352,6 +360,9 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
         while batches:
             logging.info("%d batches remaining", len(batches))
             batch = batches.pop()
+            logging.info("First sentence of the batch: " + str(batch[0]))
+            logging.info("Size of the batch: %d", len(batch))
+            logging.info(str(psutil.virtual_memory()))
             # We annotate the sentence
             # And extract the triples
             sentences = join_sentences_from_batch(batch)
@@ -368,6 +379,7 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
         # stop the annotator
         if was_started:
             corenlp_client.stop()
+        self.clean()
         return generated_facts
 
     def process_corenlp_result(self, corenlp_result_sentence, batch, generated_facts):
@@ -400,6 +412,8 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
         self.counter += 1
 
     def process_corenlp_result_knowing_suggestion(self, suggestion, corenlp_result_sentence, generated_facts):
+        if isinstance(corenlp_result_sentence, str):
+            corenlp_result_sentence = json.loads(corenlp_result_sentence)
         maxi_length_predicate = get_maximal_length_of_a_predicate(corenlp_result_sentence)
         maxi_obj = get_maximal_object(corenlp_result_sentence, maxi_length_predicate)
         maxi_length_object = get_number_words(maxi_obj)
@@ -504,8 +518,6 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
                         multiple_score,
                         MultipleSourceOccurrence.from_raw(sentence, self, 1),
                         suggestion[2]))
-        objgraph.show_backrefs([openie_reader], filename='openie_reader.png')
-        objgraph.show_backrefs([openie_reader.sentence_to_fact], filename='openie_reader_sentence.png')
         del openie_reader
         return generated_facts
 
@@ -535,12 +547,12 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
             suggestion_statement = suggestion[STATEMENT]
             if suggestion_statement in cache:
                 statement, negativity, corenlp_result = cache[suggestion_statement]
-                suggestion = (statement,
+                suggestion = [statement,
                               suggestion[SCORE],
                               suggestion[PATTERN],
                               suggestion[SUBJECT],
                               negativity == "True",
-                              suggestion[STATEMENT])
+                              suggestion[STATEMENT]]
                 self.process_corenlp_result_knowing_suggestion(suggestion,
                                                                corenlp_result,
                                                                generated_facts)

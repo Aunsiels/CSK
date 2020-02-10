@@ -39,7 +39,7 @@ class AreTransformationSubmodule(SubmoduleInterface):
                     obj_lemmatized = " ".join(spacy_annotator.lemmatize(obj))
                     if obj_lemmatized in conversion:
                         new_gf = gf.change_predicate(conversion[obj_lemmatized])
-                    elif gf.get_pattern() is not None and gf.get_pattern().get_relation() is not None:
+                    elif gf.get_pattern() is not None and gf.get_pattern().get_relation() is not None and predicate != "have" and predicate != "has":
                         new_gf = gf.change_predicate(gf.get_pattern().get_relation())
                     else:
                         new_gf = gf
