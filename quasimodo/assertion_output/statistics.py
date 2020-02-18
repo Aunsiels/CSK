@@ -8,10 +8,10 @@ from quasimodo.data_structures.submodule_interface import SubmoduleInterface
 import logging
 
 parameters_reader = ParametersReader()
-OUT_DIR = parameters_reader.get_parameter("out-dir") or os.path.dirname(__file__) + "/out/"
-ANIMALS_FILENAME = parameters_reader.get_parameter("animals50") or os.path.dirname(__file__) + "/data/animals_50.txt"
+OUT_DIR = parameters_reader.get_parameter("out-dir") or os.path.dirname(__file__) + "/../out/"
+ANIMALS_FILENAME = parameters_reader.get_parameter("animals50") or os.path.dirname(__file__) + "/../data/animals_50.txt"
 OCCUPATIONS_FILENAME = parameters_reader.get_parameter("occupations50") or \
-                       os.path.dirname(__file__) + "/data/occupations_50.txt"
+                       os.path.dirname(__file__) + "/../data/occupations_50.txt"
 
 
 def get_version():

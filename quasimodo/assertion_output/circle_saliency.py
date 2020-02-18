@@ -35,26 +35,33 @@ class CircleSaliency(SubmoduleInterface):
         self._module_reference = module_reference
         self._name = "Saliency and typicality"
         self.total_per_po = dict()
+        self.total_per_po_per_subject = dict()
         self.idx2keys = []
         self.keys2idx = dict()
         self.vectors = None
         self.saliencies = []
         self.closest_indexes = []
 
-    def compute_sigma(self, po, score):
+    def compute_sigma(self, subj, po, score):
         cum_sum = 0
         sigma = 0
         i = 0
+        j = 0
         idx = self.keys2idx[po]
-        while cum_sum < score * N and i < TOPK:
-            current_closest, similarity = self.closest_indexes[idx]
+        while cum_sum < score * N and i < TOPK and j < len(self.closest_indexes[idx]):
+            current_closest, similarity = self.closest_indexes[idx][j]
+            j += 1
             if current_closest == idx:
                 continue
             key = self.idx2keys[current_closest]
-            cum_sum += self.total_per_po[key] * similarity
+            non_subj_score = self.total_per_po[key] - self.total_per_po_per_subject.get((subj, key), 0)
+            # Ignore po from the subject
+            if non_subj_score < 1e-4:
+                continue
+            cum_sum += non_subj_score * similarity
             sigma = 1 - similarity
             i += 1
-        sigma = sigma * score / self.total_per_po[po]
+        sigma = sigma * score / self.total_per_po[po] * score
         return sigma
 
     def get_all_triples_as_tsv(self, input_interface):
@@ -69,11 +76,12 @@ class CircleSaliency(SubmoduleInterface):
     def set_sigmas(self, input_interface):
         self.saliencies = []
         for generated_fact in input_interface.get_generated_facts():
+            subj = generated_fact.get_subject().get()
             pred = get_raw_predicate(generated_fact.get_predicate().get())
             obj = generated_fact.get_object().get()
             score = generated_fact.get_score().scores[0][0]
             po = pred + " " + obj
-            sigma = self.compute_sigma(po, score)
+            sigma = self.compute_sigma(subj, po, score)
             self.saliencies.append(sigma)
 
     def process(self, input_interface):
@@ -129,9 +137,12 @@ class CircleSaliency(SubmoduleInterface):
 
     def initialize_statistics(self, input_interface):
         self.total_per_po = dict()
+        self.total_per_po_per_subject = dict()
         for generated_fact in input_interface.get_generated_facts():
+            subj = generated_fact.get_subject().get()
             pred = get_raw_predicate(generated_fact.get_predicate().get())
             obj = generated_fact.get_object().get()
             score = generated_fact.get_score().scores[0][0]
             po = pred + " " + obj
-            self.total_per_po[po] = self.total_per_po.setdefault(po, 0) + score
+            self.total_per_po[po] = self.total_per_po.get(po, 0) + score
+            self.total_per_po_per_subject[(subj, po)] = self.total_per_po_per_subject.get((subj, po), 0) + score

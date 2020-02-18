@@ -12,7 +12,7 @@ save_weights = True
 
 parameters_reader = ParametersReader()
 annotations_file = parameters_reader.get_parameter("annotations-file") or "data/training_active_learning.tsv"
-save_file = parameters_reader.get_parameter("weights-file") or os.path.dirname(__file__) + "/temp/weights.tsv"
+save_file = parameters_reader.get_parameter("weights-file") or os.path.dirname(__file__) + "/../temp/weights.tsv"
 
 
 def _save_weights(parts_of_facts):
