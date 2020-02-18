@@ -126,6 +126,7 @@ class PartsOfFacts(object):
             else:
                 result.append("")
         result.append(self.sentences[fact].get_total_number_occurrences())
+        result.append(sum(self.modalities.get(fact, dict()).values()))
         return result
 
     def get_header(self):
@@ -133,6 +134,7 @@ class PartsOfFacts(object):
         for submodule in self.get_all_submodules():
             temp.append(submodule.get_name())
         temp.append("number sentences")
+        temp.append("number modalities")
         return temp
 
     def get_generated_fact_with_score_from_classifier(self, fact, clf):

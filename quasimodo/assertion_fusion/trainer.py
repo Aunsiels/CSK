@@ -14,7 +14,7 @@ to_keep_columns = ['is negative', "Yahoo Questions",
                    'Wikipedia Cooccurrence', 'Image Tag submodule',
                    'Answers.com Questions', 'Flickr', 'Google Book Submodule', 'TBC',
                    "CoreNLP", "OpenIE5", "Manual", "number sentences", "Conceptual Caption",
-                   "What questions file"]
+                   "What questions file", "number modalities"]
 
 use_embeddings = False
 if use_embeddings:
