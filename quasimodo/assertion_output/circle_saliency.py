@@ -24,7 +24,7 @@ def save_tsv_triples(triples):
     save_file = OUT_DIR + "quasimodo" + str(version) + ".tsv"
     with open(save_file, "w") as f:
         f.write("\t".join(["subject", "predicate", "object", "modality", "is_negative", "score", "sentences source",
-                           "saliency"]) + "\n")
+                           "neighborhood sigma", "local sigma"]) + "\n")
         f.write("\n".join(triples))
 
 
@@ -61,16 +61,14 @@ class CircleSaliency(SubmoduleInterface):
             cum_sum += non_subj_score * similarity
             sigma = 1 - similarity
             i += 1
-        sigma = sigma * score / self.total_per_po[po] * score
-        return sigma
+        return sigma, score / self.total_per_po[po]
 
     def get_all_triples_as_tsv(self, input_interface):
         triples = []
-        maxi_sigma = max(self.saliencies)
         for i, generated_fact in enumerate(input_interface.get_generated_facts()):
             row_tsv = generated_fact.get_tsv()
-            sigma = self.saliencies[i] / maxi_sigma
-            triples.append(row_tsv + "\t" + str(sigma))
+            neighborhood_sigma, local_sigma = self.saliencies[i]
+            triples.append(row_tsv + "\t" + str(neighborhood_sigma) + "\t" + str(local_sigma))
         return triples
 
     def set_sigmas(self, input_interface):
