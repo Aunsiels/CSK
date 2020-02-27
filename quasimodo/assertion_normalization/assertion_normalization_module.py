@@ -10,8 +10,7 @@ class AssertionNormalizationModule(ModuleInterface):
     """
 
     def __init__(self):
-        module_names = ["tbc-cleaner",
-                        "lower-case",
+        module_names = ["lower-case",
                         "only-subject", "filter-object", "no-personal", "singular-subject",
                         "cleaning-predicate", "basic-modality",
                         "present-continuous", "are-transformation",
@@ -20,7 +19,8 @@ class AssertionNormalizationModule(ModuleInterface):
                         "identical-subj-obj",
                         "present-conjugate",
                         "similar-object-remover",
-                        "fact-combinor"]
+                        "fact-combinor",
+                        "tbc-cleaner"]
         super(AssertionNormalizationModule, self).__init__(
             module_names, DefaultSubmoduleFactory())
         self._name = "Assertion Normalization Module"
