@@ -91,6 +91,41 @@ class TestFactCombinor(unittest.TestCase):
                       str(inputs.get_generated_facts()[
                               0].get_sentence_source()))
 
+    def test_combination_modalities_long(self):
+        score0 = MultipleScore()
+        score0.add_score(1, None, None)
+        score1 = MultipleScore()
+        score1.add_score(0.5, None, None)
+        generated_fact0 = GeneratedFact("parent", "go", "to Paris",
+                                        "TBC[many]",
+                                        False,
+                                        score0,
+                                        MultipleSourceOccurrence.from_raw(
+                                            "parents have many children", None,
+                                            1))
+        generated_fact1 = GeneratedFact("parent", "go to", "Paris",
+                                        "",
+                                        False,
+                                        score1,
+                                        MultipleSourceOccurrence.from_raw(
+                                            "parents have children", None, 1))
+        inputs = self.empty_input.add_generated_facts([generated_fact0,
+                                                       generated_fact1])
+        fact_combinor = FactCombinor(None)
+        inputs = fact_combinor.process(inputs)
+        self.assertEqual(1, len(inputs.get_generated_facts()))
+        self.assertIn("TBC[many]",
+                      inputs.get_generated_facts()[0].get_modality().get())
+        self.assertIn("parents have many children x#x1",
+                      str(inputs.get_generated_facts()[
+                              0].get_sentence_source()))
+        self.assertIn("parents have children x#x1",
+                      str(inputs.get_generated_facts()[
+                              0].get_sentence_source()))
+        self.assertEqual("go to",
+                         inputs.get_generated_facts()[
+                              0].get_predicate())
+
 
 if __name__ == '__main__':
     unittest.main()

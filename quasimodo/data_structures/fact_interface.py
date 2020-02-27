@@ -57,6 +57,10 @@ class FactInterface(object):
         """
         return self._negative
 
+    def get_po(self):
+        """Get combination of P and O"""
+        return str(self._predicate) + " " + str(self._object)
+
     def __str__(self):
         negation = ""
         if self.is_negative():
@@ -75,16 +79,14 @@ class FactInterface(object):
     def __hash__(self):
         return hash(self.get_subject()) +\
             hash(self.get_modality()) +\
-            hash(self.get_object()) +\
-            hash(self.get_predicate()) +\
+            hash(self.get_po()) +\
             hash(self.is_negative())
 
     def __eq__(self, other):
         if not isinstance(other, FactInterface):
             return False
         return self.get_subject() == other.get_subject() and\
-            self.get_predicate() == other.get_predicate() and\
-            self.get_object() == other.get_object() and\
+            self.get_po() == other.get_po() and\
             self.get_modality() == other.get_modality() and\
             self.is_negative() == other.is_negative()
 
