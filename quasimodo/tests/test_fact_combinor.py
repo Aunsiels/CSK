@@ -126,6 +126,27 @@ class TestFactCombinor(unittest.TestCase):
                          inputs.get_generated_facts()[
                               0].get_predicate())
 
+    def test_beach(self):
+        score0 = MultipleScore()
+        score0.add_score(1, None, None)
+        mso = MultipleSourceOccurrence()
+        mso.add_raw("beaches have sand", "Google Autocomplete", 4)
+        mso.add_raw("some beaches have sand", "Google Autocomplete", 2)
+        mso.add_raw("some beaches have sand and some rocks", "Google "
+                                                             "Autocomplete", 1)
+        mso.add_raw("all beaches have sand", "Google Autocomplete", 4)
+        mso.add_raw("beach have sand", "Google Autocomplete", 1)
+        generated_fact0 = GeneratedFact("beach", "have", "sand",
+                                        "some[subj/some] x#x3 // "
+                                        "some[subj/all] x#x4",
+                                        False,
+                                        score0,
+                                        mso)
+        inputs = self.empty_input.add_generated_facts([generated_fact0])
+        fact_combinor = FactCombinor(None)
+        inputs = fact_combinor.process(inputs)
+        self.assertEqual(1, len(inputs.get_generated_facts()))
+
 
 if __name__ == '__main__':
     unittest.main()
