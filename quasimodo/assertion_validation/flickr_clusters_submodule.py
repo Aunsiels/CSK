@@ -23,6 +23,8 @@ class FlickrClustersSubmodule(AssociationSubmodule):
             logging.info(subject + " has no cluster")
         except TypeError:
             logging.info("Problem of type with " + subject)
+        except Exception as e:
+            logging.info("Unknown error " + str(e))
         res = []
         for cluster in clusters:
             temp = []
