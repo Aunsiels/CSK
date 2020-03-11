@@ -30,7 +30,20 @@ class AssertionNormalizationModule(ModuleInterface):
         logging.info("Start the assertion normalization module")
         for submodule in self._submodules:
             input_interface = submodule.process(input_interface)
+            logging.info("We have " + str(len(
+                input_interface.get_generated_facts())) + " facts.")
+            if contains_beach_have_sand(input_interface.get_generated_facts()):
+                logging.info("Still beach have sand")
+            else:
+                logging.info("Beach have sand disappeared")
             submodule.clean()
-            logging.info(objgraph.growth())
-            logging.info(objgraph.most_common_types())
         return input_interface
+
+
+def contains_beach_have_sand(gfs):
+    for gf in gfs:
+        if (gf.get_subject().get() == "beach"
+           and gf.get_predicate().get() == "have"
+           and gf.get_object().get() == "sand"):
+            return True
+        return False
