@@ -188,7 +188,8 @@ class GeneratedFact(GeneratedFactInterface, Serializable):
             if counter < n_words_subject:
                 counter += 1
             else:
-                if token.text in predicate and token.pos_ == "VERB":
+                if token.text in predicate and (token.pos_ == "VERB" or
+                        token.pos_ == "AUX"):
                     contains_verb = True
         return contains_verb
 

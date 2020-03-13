@@ -73,12 +73,13 @@ class TestCleaningPredicate(unittest.TestCase):
         self.assertEqual(1, len(generated_facts))
 
     def test_not_digest(self):
-        generated_fact = GeneratedFact("elephant", "not digest", "fruits", "", False, 0.0, MultipleSourceOccurrence())
+        generated_fact = GeneratedFact("elephant", "not digests", "fruits", "",
+                                       False, 0.0, MultipleSourceOccurrence())
         inputs = self.empty_input.add_generated_facts([generated_fact])
         inputs = self.cleaning_predicate.process(inputs)
         generated_facts = inputs.get_generated_facts()
         self.assertEqual(1, len(generated_facts))
-        self.assertEqual(generated_facts[0].get_predicate().get(), "digest")
+        self.assertEqual(generated_facts[0].get_predicate().get(), "digests")
         self.assertTrue(generated_facts[0].is_negative())
 
     def test_empty_predicate(self):
@@ -87,6 +88,14 @@ class TestCleaningPredicate(unittest.TestCase):
         inputs = self.cleaning_predicate.process(inputs)
         generated_facts = inputs.get_generated_facts()
         self.assertEqual(0, len(generated_facts))
+
+    def test_has_beach(self):
+        generated_fact = GeneratedFact("beach", "has", "sand", "", False,
+                                       0.0, MultipleSourceOccurrence())
+        inputs = self.empty_input.add_generated_facts([generated_fact])
+        inputs = self.cleaning_predicate.process(inputs)
+        generated_facts = inputs.get_generated_facts()
+        self.assertEqual(1, len(generated_facts))
 
 
 if __name__ == '__main__':
