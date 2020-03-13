@@ -11,10 +11,14 @@ class AssertionNormalizationModule(ModuleInterface):
 
     def __init__(self):
         module_names = ["lower-case",
-                        "only-subject", "filter-object", "no-personal",
+                        "only-subject",
+                        "no-personal",
+                        "filter-object",
+                        "cleaning-predicate",
                         "singular-subject",
-                        "cleaning-predicate", "basic-modality",
-                        "present-continuous", "are-transformation",
+                        "basic-modality",
+                        "present-continuous",
+                        "are-transformation",
                         "can-transformation",
                         "be-normalization",
                         "identical-subj-obj",
@@ -52,6 +56,4 @@ def contains_beach_have_sand(gfs):
            and (gf.get_predicate().get() == "have" or gf.get_predicate().get() == "has")
            and gf.get_object().get() == "sand"):
             return True
-        #if ("beach" in gf.get_subject().get()):
-        #    logging.info(str(gf))
     return False
