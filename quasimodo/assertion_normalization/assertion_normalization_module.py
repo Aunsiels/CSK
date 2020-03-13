@@ -32,18 +32,26 @@ class AssertionNormalizationModule(ModuleInterface):
             input_interface = submodule.process(input_interface)
             logging.info("We have " + str(len(
                 input_interface.get_generated_facts())) + " facts.")
+            if "beach" in input_interface.get_subjects():
+                logging.info("beach is a subject")
+            else:
+                logging.info("beach is not a subject")
             if contains_beach_have_sand(input_interface.get_generated_facts()):
                 logging.info("Still beach have sand")
             else:
                 logging.info("Beach have sand disappeared")
+            if len(input_interface.get_generated_facts()) > 0:
+                logging.info("The first fact is: " + str(input_interface.get_generated_facts()[0]))
             submodule.clean()
         return input_interface
 
 
 def contains_beach_have_sand(gfs):
     for gf in gfs:
-        if (gf.get_subject().get() == "beach"
-           and gf.get_predicate().get() == "have"
+        if ((gf.get_subject().get() == "beach" or gf.get_subject().get() == "beaches")
+           and (gf.get_predicate().get() == "have" or gf.get_predicate().get() == "has")
            and gf.get_object().get() == "sand"):
             return True
-        return False
+        #if ("beach" in gf.get_subject().get()):
+        #    logging.info(str(gf))
+    return False
