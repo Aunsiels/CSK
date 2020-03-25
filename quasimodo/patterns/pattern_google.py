@@ -1,10 +1,8 @@
+from quasimodo.inflect import DEFAULT_INFLECT
 from quasimodo.serializable import Serializable
 from quasimodo.data_structures.pattern_interface import PatternInterface
 import re
-import inflect
 from nltk.corpus import wordnet
-
-plural_engine = inflect.engine()
 
 
 class PatternGoogle(PatternInterface, Serializable):
@@ -48,8 +46,8 @@ class PatternGoogle(PatternInterface, Serializable):
         return self._prefix
 
     def to_str_subject(self, subject):
-        sing = plural_engine.singular_noun(subject.get())
-        plur = plural_engine.plural(subject.get())
+        sing = DEFAULT_INFLECT.to_singular(subject.get())
+        plur = DEFAULT_INFLECT.to_plural(subject.get())
         last_sing = ""
         if sing:
             last_sing = sing.split(" ")[-1]

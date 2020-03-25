@@ -1,18 +1,18 @@
 import os
 import spacy
-import inflect
 import language_check
 import logging
 import time
 from subprocess import call
 
+from quasimodo.inflect import DEFAULT_INFLECT
 from quasimodo.parameters_reader import ParametersReader
 
 parameters_reader = ParametersReader()
-CACHE_DIR = parameters_reader.get_parameter("question-cache-dir") or os.path.dirname(__file__) + "/question2statement/"
+CACHE_DIR = parameters_reader.get_parameter("question-cache-dir") or \
+            os.path.dirname(__file__) + "/question2statement/"
 
 _tool = language_check.LanguageTool('en-US')
-_plural_engine = inflect.engine()
 _nlp = spacy.load('en_core_web_lg')
 
 
@@ -82,7 +82,7 @@ def get_pos_and_tokens_from_question(question):
 
 
 def process_general_be_form(pos, tokens, subject):
-    subject_plural = _plural_engine.plural(subject)
+    subject_plural = DEFAULT_INFLECT.to_plural(subject)
     begin = []
     middle = []
     end = []

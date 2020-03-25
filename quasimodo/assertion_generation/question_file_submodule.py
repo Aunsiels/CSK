@@ -1,11 +1,8 @@
 import logging
-import inflect
 from quasimodo.assertion_generation.openie_fact_generator_submodule import OpenIEFactGeneratorSubmodule
+from quasimodo.inflect import DEFAULT_INFLECT
 from quasimodo.patterns.pattern_google import PatternGoogle
 import re
-
-
-_plural_engine = inflect.engine()
 
 
 class QuestionFileSubmodule(OpenIEFactGeneratorSubmodule):
@@ -103,7 +100,7 @@ class QuestionFileSubmodule(OpenIEFactGeneratorSubmodule):
         # A suggestion is (question, rank (low is better), pattern, subject)
         subjects = input_interface.get_subjects()
         # Preprocess subjects
-        subjects = [(x.get(), _plural_engine.plural(x.get()))
+        subjects = [(x.get(), DEFAULT_INFLECT.to_plural(x.get()))
                     for x in subjects]
         d_subj = dict()
         for subj in subjects:
