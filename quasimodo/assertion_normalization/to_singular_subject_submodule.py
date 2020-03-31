@@ -1,7 +1,7 @@
 import logging
 
 from quasimodo.data_structures.submodule_interface import SubmoduleInterface
-from quasimodo.inflect import DEFAULT_INFLECT
+from quasimodo.inflect_accessor import DEFAULT_INFLECT
 
 
 class ToSingularSubjectSubmodule(SubmoduleInterface):

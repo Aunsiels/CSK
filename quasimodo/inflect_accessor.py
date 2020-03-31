@@ -4,7 +4,7 @@ NON_PLURAL = ["texas", "star wars", "gas", "people", "chaos", "fetus", "moses",
               "jesus", "gps", "abs", "sos", "mars", "jeans"]
 
 
-class Inflect:
+class InflectAccessor:
 
     def __init__(self):
         self._conversions_singular = dict()
@@ -29,4 +29,4 @@ class Inflect:
         return plural
 
 
-DEFAULT_INFLECT = Inflect()
+DEFAULT_INFLECT = InflectAccessor()

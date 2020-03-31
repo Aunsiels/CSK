@@ -1,4 +1,4 @@
-from quasimodo.inflect import DEFAULT_INFLECT
+from quasimodo.inflect_accessor import DEFAULT_INFLECT
 from quasimodo.serializable import Serializable
 from quasimodo.data_structures.pattern_interface import PatternInterface
 import re

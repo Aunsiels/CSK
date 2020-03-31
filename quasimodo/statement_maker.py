@@ -5,7 +5,7 @@ import logging
 import time
 from subprocess import call
 
-from quasimodo.inflect import DEFAULT_INFLECT
+from quasimodo.inflect_accessor import DEFAULT_INFLECT
 from quasimodo.parameters_reader import ParametersReader
 
 parameters_reader = ParametersReader()

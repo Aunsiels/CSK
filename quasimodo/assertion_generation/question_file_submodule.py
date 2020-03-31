@@ -1,6 +1,6 @@
 import logging
 from quasimodo.assertion_generation.openie_fact_generator_submodule import OpenIEFactGeneratorSubmodule
-from quasimodo.inflect import DEFAULT_INFLECT
+from quasimodo.inflect_accessor import DEFAULT_INFLECT
 from quasimodo.patterns.pattern_google import PatternGoogle
 import re
 

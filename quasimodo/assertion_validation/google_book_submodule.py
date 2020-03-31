@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 import apiclient
 
 from quasimodo.cache.mongodb_cache import MongoDBCache
-from quasimodo.inflect import DEFAULT_INFLECT
+from quasimodo.inflect_accessor import DEFAULT_INFLECT
 from quasimodo.parameters_reader import ParametersReader
 from quasimodo.data_structures.submodule_interface import SubmoduleInterface
 

@@ -4,7 +4,7 @@ from collections import Counter
 from quasimodo.data_structures.submodule_interface import SubmoduleInterface
 import logging
 
-from quasimodo.inflect import DEFAULT_INFLECT
+from quasimodo.inflect_accessor import DEFAULT_INFLECT
 
 FORGOTTEN_SUBJECTS_FILE = os.path.dirname(
     os.path.realpath(__file__)) + "/../temp/forgotten_subjects.tsv"

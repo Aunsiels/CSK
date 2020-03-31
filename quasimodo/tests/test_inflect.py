@@ -1,12 +1,12 @@
 import unittest
 
-from quasimodo.inflect import Inflect
+from quasimodo.inflect_accessor import InflectAccessor
 
 
 class TestIdenticalSubjectObject(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.inflect = Inflect()
+        self.inflect = InflectAccessor()
 
     def test_simple_singular(self):
         self.assertEqual(self.inflect.to_singular("apples"), "apple")
