@@ -1,5 +1,5 @@
 from quasimodo.serializable import Serializable
-from quasimodo.statement_maker import correct_statement, _plural_engine, NEGATE_VERB
+from quasimodo.statement_maker import correct_statement, NEGATE_VERB
 from .fact_interface import FactInterface
 from .subject import Subject
 from .object import Object

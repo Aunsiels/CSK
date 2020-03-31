@@ -1,7 +1,6 @@
-from quasimodo.statement_maker import _plural_engine
-
 from quasimodo.serializable import Serializable
 from .subject_interface import SubjectInterface
+from ..inflect_accessor import DEFAULT_INFLECT
 
 
 class Subject(SubjectInterface, Serializable):
@@ -20,4 +19,4 @@ class Subject(SubjectInterface, Serializable):
         self._subject = subject
 
     def get_plural(self):
-        return _plural_engine.plural(self.get())
+        return DEFAULT_INFLECT.to_plural(self.get())
