@@ -11,7 +11,7 @@ from quasimodo.parameters_reader import ParametersReader
 from quasimodo.data_structures.submodule_interface import SubmoduleInterface
 from quasimodo.assertion_output.tsv_output_submodule import get_version
 
-SLICE_SIZE = 5000  # Change this in case of Memory problems
+SLICE_SIZE = 2000  # Change this in case of Memory problems
 TOPK = 1000
 N = 1
 
