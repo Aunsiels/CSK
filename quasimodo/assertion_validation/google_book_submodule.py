@@ -5,15 +5,16 @@ import re
 from bs4 import BeautifulSoup
 
 import apiclient
-import inflect
 
 from quasimodo.cache.mongodb_cache import MongoDBCache
+from quasimodo.inflect import DEFAULT_INFLECT
 from quasimodo.parameters_reader import ParametersReader
 from quasimodo.data_structures.submodule_interface import SubmoduleInterface
 
 parameters_reader = ParametersReader()
 api_key = parameters_reader.get_parameter("google-book-key") or ""
-DEFAULT_MONGODB_LOCATION = parameters_reader.get_parameter("default-mongodb-location") or "mongodb://localhost:27017/"
+DEFAULT_MONGODB_LOCATION = parameters_reader.get_parameter(
+    "default-mongodb-location") or "mongodb://localhost:27017/"
 
 try:
     service = apiclient.discovery.build('books', 'v1', developerKey=api_key)
@@ -21,7 +22,6 @@ except Exception as e:
     logging.warning("When initializing Google Book: " + str(e))
     service = None
 
-plural_engine = inflect.engine()
 
 cache_dir = os.path.dirname(__file__) + "/googlebook-cache/"
 cache_file = cache_dir + "cache.tsv"
@@ -31,12 +31,16 @@ calls_per_seconds = 1
 
 class GoogleBookSubmodule(SubmoduleInterface):
 
-    def __init__(self, module_reference, use_cache=True, cache_name="google-book-cache"):
+    def __init__(self,
+                 module_reference,
+                 use_cache=True,
+                 cache_name="google-book-cache"):
         super().__init__()
         self._module_reference = module_reference
         self._name = "Google Book Submodule"
         self.use_cache = use_cache
-        self.cache = MongoDBCache(cache_name, mongodb_location=DEFAULT_MONGODB_LOCATION)
+        self.cache = MongoDBCache(cache_name,
+                                  mongodb_location=DEFAULT_MONGODB_LOCATION)
         self.internal_cache = None
 
     def clean(self):
@@ -88,9 +92,12 @@ class GoogleBookSubmodule(SubmoduleInterface):
         global service
         if service is None:
             try:
-                service = apiclient.discovery.build('books', 'v1', developerKey=api_key)
-            except Exception as e:
-                logging.warning("When initializing Google Book: " + str(e))
+                service = apiclient.discovery.build('books',
+                                                    'v1',
+                                                    developerKey=api_key)
+            except Exception as exception:
+                logging.warning("When initializing Google Book: " +
+                                str(exception))
             service = None
         if service is None:
             logging.info("No service found for Google Book")
@@ -103,8 +110,8 @@ class GoogleBookSubmodule(SubmoduleInterface):
             occurrences = -1
             try:
                 occurrences = self._get_occurrences_books(query, only_cache)
-            except Exception as e:
-                logging.warning(str(e))
+            except Exception as exception0:
+                logging.warning(str(exception0))
                 only_cache = True
             maxi = max(maxi, occurrences)
         if maxi == 0:
@@ -113,12 +120,14 @@ class GoogleBookSubmodule(SubmoduleInterface):
             query = _get_query_from_fact(generated_fact)
             try:
                 occurrences = self._get_occurrences_books(query, only_cache)
-            except Exception as e:
-                logging.warning(str(e))
+            except Exception as exception1:
+                logging.warning(str(exception1))
                 only_cache = True
                 continue
             if occurrences != -1:
-                generated_fact.get_score().add_score(occurrences / maxi, self._module_reference, self)
+                generated_fact.get_score().add_score(occurrences / maxi,
+                                                     self._module_reference,
+                                                     self)
         return input_interface
 
 
@@ -134,16 +143,22 @@ def to_singular_plural(pred):
             if len(word) <= 2:
                 pred_res.append(word)
                 continue
-            sing = plural_engine.singular_noun(word)
+            sing = DEFAULT_INFLECT.to_singular(word)
             if not sing:
-                pred_res.append(word + " OR " + plural_engine.plural(word))
+                pred_res.append(word +
+                                " OR " +
+                                DEFAULT_INFLECT.to_plural(word))
             else:
-                pred_res.append(word + " OR " + sing + " OR " + plural_engine.plural(word))
+                pred_res.append(word +
+                                " OR " +
+                                sing +
+                                " OR " +
+                                DEFAULT_INFLECT.to_plural(word))
     return " ".join(pred_res)
 
 
 def query_to_regex(q):
-    q = re.sub('[^a-zA-Z\s]', "", q).split(" ")
+    q = re.sub(r'[^a-zA-Z\s]', "", q).split(" ")
     temp = []
     in_or = False
     for i in range(len(q)):
@@ -176,7 +191,8 @@ def match_query(q, response):
     si = item["searchInfo"]
     if "textSnippet" not in si:
         return False
-    text = BeautifulSoup(si["textSnippet"]).get_text().replace("\n", " ").lower()
+    text = BeautifulSoup(si["textSnippet"])\
+        .get_text().replace("\n", " ").lower()
     text = re.sub("[^a-zA-Z]", "", text)
     return regex.search(text) is not None
 
@@ -201,7 +217,7 @@ def _get_query_from_fact(fact):
                 pred = "do OR does not " + to_singular_plural(pred)
         else:
             pred = to_singular_plural(pred)
-    subj_plur = plural_engine.plural(subj)
+    subj_plur = DEFAULT_INFLECT.to_plural(subj)
     q = '"' + subj + " OR " + subj_plur + " " + pred + " " + \
         to_singular_plural(obj) + '"'
     return q

@@ -6,6 +6,7 @@ from gensim import matutils
 from nltk.tokenize import word_tokenize
 import numpy as np
 
+from quasimodo.assertion_output.closest_indexes import ClosestIndexes
 from quasimodo.assertion_output.saliency_and_typicality_computation_submodule import get_raw_predicate
 from quasimodo.parameters_reader import ParametersReader
 from quasimodo.data_structures.submodule_interface import SubmoduleInterface
@@ -99,15 +100,9 @@ class CircleSaliency(SubmoduleInterface):
         save_tsv_triples(triples)
 
     def set_closest_indexes(self):
-        self.closest_indexes = []
-        distances_temp = None
-        for i in range(self.vectors.shape[0]):
-            if i % SLICE_SIZE == 0:
-                distances_temp = np.dot(self.vectors[i:i + SLICE_SIZE], self.vectors.T)
-            idx_closest = matutils.argsort(distances_temp[i % SLICE_SIZE],
-                                           topn=TOPK,
-                                           reverse=True)
-            self.closest_indexes.append([(j, (1 - distances_temp[i % SLICE_SIZE][j])) for j in idx_closest])
+        closest_indexes = ClosestIndexes(self.vectors)
+        self.closest_indexes = closest_indexes.get_closest_indexes(
+            TOPK, SLICE_SIZE)
         return self.closest_indexes
 
     def initialize_po_vectors(self):

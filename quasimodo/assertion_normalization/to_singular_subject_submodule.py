@@ -1,10 +1,7 @@
-from quasimodo.data_structures.submodule_interface import SubmoduleInterface
 import logging
-import inflect
 
-p = inflect.engine()
-non_plural = ["texas", "star wars", "gas", "people", "chaos", "fetus", "moses",
-              "jesus", "gps", "abs", "sos"]
+from quasimodo.data_structures.submodule_interface import SubmoduleInterface
+from quasimodo.inflect import DEFAULT_INFLECT
 
 
 class ToSingularSubjectSubmodule(SubmoduleInterface):
@@ -18,17 +15,12 @@ class ToSingularSubjectSubmodule(SubmoduleInterface):
         logging.info("Turn subject to singular")
         new_generated_facts = []
         subjects = set([x.get() for x in input_interface.get_subjects()])
-        conversion = dict()
+        singular_maker = DEFAULT_INFLECT
         for g in input_interface.get_generated_facts():
             subj = g.get_subject().get()
-            if subj in conversion:
-                sing = conversion[subj]
-            else:
-                sing = p.singular_noun(subj)
-                conversion[subj] = sing
-            if not sing or subj in non_plural or subj.endswith("sis") or\
-                    sing not in subjects:
+            singular = singular_maker.to_singular(subj)
+            if singular not in subjects or singular == subj:
                 new_generated_facts.append(g)
             else:
-                new_generated_facts.append(g.change_subject(sing))
+                new_generated_facts.append(g.change_subject(singular))
         return input_interface.replace_generated_facts(new_generated_facts)

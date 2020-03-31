@@ -1,6 +1,5 @@
 import json
 import re
-import inflect
 import logging
 import psutil
 
@@ -31,7 +30,7 @@ NEGATIVITY = 4
 QUESTION = 5
 
 _nlp = spacy.load('en_core_web_sm')
-_plural_engine = inflect.engine()
+
 
 reference_corenlp = SubmoduleReferenceInterface("CoreNLP")
 reference_openie5 = SubmoduleReferenceInterface("OpenIE5")
