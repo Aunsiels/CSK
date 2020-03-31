@@ -74,9 +74,9 @@ class PartsOfFacts(object):
     @staticmethod
     def from_generated_facts(generated_facts):
         parts_of_facts = PartsOfFacts()
-        # We sort by lenght of the predicate because we prefer longest ones.
+        # We sort by length of the predicate because we prefer shortest ones.
         # Related to how the equality between facts works (compare po)
-        for generated_fact in sorted(generated_facts, key=lambda x: -len(str(
+        for generated_fact in sorted(generated_facts, key=lambda x: len(str(
                 x.get_predicate()))):
             parts_of_facts.update(generated_fact)
         return parts_of_facts
