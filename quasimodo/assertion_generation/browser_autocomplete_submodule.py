@@ -108,7 +108,7 @@ class BrowserAutocompleteSubmodule(OpenIEFactGeneratorSubmodule):
             lambda ranked_suggestion: ranked_suggestion[SUGGESTION] not in base_sentences,
             base_suggestions)
         base_suggestions = filter(
-            lambda ranked_suggestion: ranked_suggestion[SUGGESTION] != new_query,
+            lambda ranked_suggestion: ranked_suggestion[SUGGESTION].strip() != new_query,
             base_suggestions)
         base_suggestions = map(
             lambda ranked_suggestion:
