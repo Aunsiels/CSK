@@ -246,6 +246,7 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
         self.counter = 0
         self.cache_corenlp = None
         self.statement_maker = None
+        self.safe_source = False
 
     def clean(self):
         logging.info("Cleaning OpenIE")
@@ -308,17 +309,20 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
             batches.append(full_sentence[begin:])
         return batches
 
-    def transforms_suggestion_into_batch_component(self, suggestion, full_sentence):
+    def transforms_suggestion_into_batch_component(self,
+                                                   suggestion,
+                                                   full_sentence):
         # question to statement
         # We need this because of OpenIE very bad with questions
         if self.statement_maker is None:
             self.statement_maker = StatementMaker()
         new_sentence = self.statement_maker.to_statement(suggestion[STATEMENT],
-                                                         suggestion[SUBJECT])
+                                                         suggestion[SUBJECT],
+                                                         self.safe_source)
         if new_sentence[:6] == "there ":
             new_sentence = new_sentence[6:]
-            new_sentence = self.statement_maker.to_statement("why " + new_sentence,
-                                                             suggestion[SUBJECT])
+            new_sentence = self.statement_maker.to_statement(
+                "why " + new_sentence, suggestion[SUBJECT], self.safe_source)
         # Deal with negative sentences
         new_sentence.replace(" n't ", " not ").replace("n't ", " not ")
         contains_negation = any([" " + verb + " not " in new_sentence

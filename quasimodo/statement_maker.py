@@ -260,7 +260,7 @@ class StatementMaker(object):
             f.write(question.strip() + "\t" + statement.strip() +
                     "\t" + subject + "\n")
 
-    def to_statement(self, question, subject):
+    def to_statement(self, question, subject, safe_source=False):
         question = question.replace("&amp;", " & ").replace("&gt;", " > ").replace("&lt;", " < ")
         if question.strip() in self._q2s:
             return self._q2s[question.strip()]
@@ -311,7 +311,8 @@ class StatementMaker(object):
                 statement_split.insert(i + 1, "not")
                 statement = " ".join(statement_split)
 
-        statement = correct_statement(statement)
+        if not safe_source:
+            statement = correct_statement(statement)
         self._save_q2s(question, statement, subject)
         return statement
 

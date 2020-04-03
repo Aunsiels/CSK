@@ -94,4 +94,5 @@ class Fact(FactInterface, Serializable):
                 predicate = "are not " + predicate[3:]
             else:
                 predicate = "do not " + predicate
-        return correct_statement(some_modality + subject + " " + predicate + " " + normal_modality + obj)
+        return correct_statement(some_modality + subject + " " + predicate +
+                                 " " + normal_modality + obj)

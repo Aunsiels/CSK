@@ -30,6 +30,7 @@ class BrowserAutocompleteSubmodule(OpenIEFactGeneratorSubmodule):
         super().__init__(module_reference)
         self.time_between_queries = 1.0  # The time between two queries
         self.default_number_suggestions = 8  # The maximum number of suggestions
+        self.safe_source = True
 
     def clean(self):
         logging.info("Cleaning browser")
