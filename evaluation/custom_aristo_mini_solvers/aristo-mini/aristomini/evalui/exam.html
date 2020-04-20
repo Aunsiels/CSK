@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Exam</title>
+    <link rel="stylesheet" href="/static/evalui.css">
+</head>
+<body>
+  <div class="aristo-mini">
+    <h1>Aristo-Mini</h1>
+
+    <h2>{{ solver_name }} on {{ exam.name }}</h2>
+
+    <div class="score-holder">
+        <span id="score-label">Score:</span>
+        <span id="score"></span>
+    </div>
+
+    <div class="results">
+        <table id="questions-table" border="1">
+            <tr>
+                <th>id</th>
+                <th>question</th>
+                <th>answer</th>
+                <th>solver</th>
+                <th>correct?</th>
+            </tr>
+            {% for question in exam.questions %}
+                <tr>
+                    <td class="td-id" id="td-{{loop.index0}}-id">{{question.id_}}</td>
+                    <td class="td-question" id="td-{{loop.index0}}-question">
+                        {{question.stem}}
+                        {% for choice in question.choices %}
+                            ({{choice.label}}) {{choice.text}}
+                        {% endfor %}
+                    </td>
+                    <td class="td-answer" id="td-{{loop.index0}}-answer">{{question.answerKey}}</td>
+                    <td class="td-solver" id="td-{{loop.index0}}-solver"></td>
+                    <td class="td-correct" id="td-{{loop.index0}}-correct"></td>
+                </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+</div>
+
+    <script type="text/javascript">
+        var exam = {{ exam }};
+        var answerUrl = "{{ solver_url }}/answer";
+
+        function bestResponse(multipleChoiceAnswer) {
+            bestConf = Number.NEGATIVE_INFINITY;
+            bestAnswer = undefined;
+
+            multipleChoiceAnswer.choiceConfidences.forEach(function(cc) {
+                confidence = cc.confidence;
+                if (confidence > bestConf) {
+                    bestConf = confidence;
+                    bestAnswer = cc.choice.label;
+                }
+            })
+
+            return [bestAnswer, bestConf];
+        }
+
+        var numScored = 0
+        var numCorrect = 0
+        var numCorrectG = 0
+        var numGuessed = 0
+
+        exam.questions.forEach(function(question, i) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', answerUrl);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    // If you want a more impressive visualization than just
+                    // outputting the raw JSON, change this part of the code.
+                    var result = JSON.parse(xhr.responseText);
+                    var bestAnswer_temp = bestResponse(result.multipleChoiceAnswer);
+                    var bestAnswer = bestAnswer_temp[0]
+                    var bestConf = bestAnswer_temp[1]
+                    var correctAnswer = question.answerKey;
+                    var correct = bestAnswer === correctAnswer;
+                    if (bestConf == 0.0){
+                        // bestAnswer = "X"
+                    }
+
+                    // Populate solver cell
+                    document.getElementById("td-" + i + "-solver").innerHTML = bestAnswer;
+                    var correctElement = document.getElementById("td-" + i + "-correct");
+                    if (correct) {
+                        correctElement.classList.remove("incorrect");
+                        correctElement.classList.add("correct");
+                        correctElement.innerHTML = "✔" + bestConf;
+                    } else {
+                        correctElement.classList.add("incorrect");
+                        correctElement.classList.remove("correct");
+                        correctElement.innerHTML = "✗" + bestConf;
+                    }
+
+                    numScored += 1
+                    numCorrect += (correct ? 1 : 0)
+                    numCorrectG += correct ? 1 : 0 // && bestConf > 0.0 ? 1 : 0)
+                    if (bestConf > -10.0){
+                        numGuessed += 1
+                    }
+                    pctCorrect = (100 * numCorrectG / numScored).toFixed(1) + '%';
+                    precision = 0
+                    if (numGuessed > 0){
+                        precision = (100 * numCorrectG / numGuessed).toFixed(1) + '%';
+                    }
+
+                    document.getElementById("score").innerHTML = numCorrectG + " / " + numScored + " (" + pctCorrect + "), Precision: " + numCorrectG + " / " + numGuessed + " (" + precision + ")";
+                }
+            };
+            xhr.send(JSON.stringify(question));
+            })
+
+
+    </script>
+
+</body>
+</html>
