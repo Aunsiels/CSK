@@ -6,8 +6,12 @@ from quasimodo.data_structures.submodule_interface import SubmoduleInterface
 from quasimodo.data_structures.subject import Subject
 import logging
 from os import path
+import os
 
 THRESHOLD_OCCURRENCES = 10
+
+NEW_SUBJECTS_FILE = os.path.dirname(
+    os.path.realpath(__file__)) + "/../temp/new_subjects.tsv"
 
 
 def contains_personal(subject):
@@ -31,17 +35,24 @@ class ForgottenSubjectsSubmodule(SubmoduleInterface):
 
     def process(self, input_interface):
         logging.info("Start getting forgotten subjects")
-        if not path.exists(FORGOTTEN_SUBJECTS_FILE):
-            return input_interface
         subjects = []
-        # Read the subjects from a file
-        with open(FORGOTTEN_SUBJECTS_FILE, encoding="utf-8") as f:
-            for line in f:
-                line = line.strip().split("\t")
-                subject = line[0]
-                if contains_personal(subject) or starts_with_article(subject):
-                    continue
-                n_occurrences = int(line[1])
-                if n_occurrences > THRESHOLD_OCCURRENCES:
+        if path.exists(FORGOTTEN_SUBJECTS_FILE):
+            # Read the subjects from a file
+            with open(FORGOTTEN_SUBJECTS_FILE, encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip().split("\t")
+                    subject = line[0]
+                    if contains_personal(subject) or starts_with_article(subject):
+                        continue
+                    n_occurrences = int(line[1])
+                    if n_occurrences > THRESHOLD_OCCURRENCES:
+                        subjects.append(Subject(subject))
+        with open(NEW_SUBJECTS_FILE, "a", encoding="utf-8") as f:
+            f.write("\n".join([s.get() for s in subjects]) + "\n")
+        subjects = []
+        if path.exists(NEW_SUBJECTS_FILE):
+            with open(NEW_SUBJECTS_FILE, encoding="utf-8") as f:
+                for line in f:
+                    subject = line.strip()
                     subjects.append(Subject(subject))
         return input_interface.add_subjects(subjects)

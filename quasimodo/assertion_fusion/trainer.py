@@ -19,7 +19,7 @@ to_keep_columns = ['is negative', "Yahoo Questions",
                    "Conceptual Caption",
                    "What questions file", "number modalities"]
 
-SLICE_SIZE = 1000  # Change this in case of Memory problems
+SLICE_SIZE = 10000  # Change this in case of Memory problems
 
 use_embeddings = False
 
@@ -29,7 +29,7 @@ class Trainer(object):
 
     def __init__(self, df_file):
         self._model = api.load(
-            "word2vec-google-news-300")
+            "glove-wiki-gigaword-50")
         self._df = pd.read_csv(df_file, sep="\t", index_col=False)
         self._clf = AdaBoostClassifier(n_estimators=200)
         self._filter = [i for i, x in enumerate(self._df.columns)
@@ -45,7 +45,7 @@ class Trainer(object):
             self._df[x + "_is_nan"] = self._df[x].isna().astype(float)
         self._to_keep_columns += [x + "_is_nan" for x in self._to_keep_columns]
         self.create_patterns_features()
-        self.set_closest_features()
+        # self.set_closest_features()
 
         # End
         self._all_df = self._df
@@ -156,7 +156,7 @@ class Trainer(object):
         return self._clf.predict_proba(features)[0][1]
 
     def _get_array(self, sentence):
-        sentence = sentence.lower().replace("_", " ")
+        sentence = str(sentence).lower().replace("_", " ")
         sentence = word_tokenize(sentence)
         res = np.zeros(self._model.vector_size)
         counter = 0
