@@ -6,7 +6,7 @@ from sklearn import preprocessing
 from sklearn.impute import SimpleImputer
 import gensim.downloader as api
 
-from sklearn.ensemble import AdaBoostClassifier
+from sklearn.linear_model import LogisticRegressionCV
 from quasimodo.assertion_output.closest_indexes import ClosestIndexes
 
 to_keep_columns = ['is negative', "Yahoo Questions",
@@ -31,7 +31,7 @@ class Trainer(object):
         self._model = api.load(
             "glove-wiki-gigaword-50")
         self._df = pd.read_csv(df_file, sep="\t", index_col=False)
-        self._clf = AdaBoostClassifier(n_estimators=200)
+        self._clf = LogisticRegressionCV()
         self._filter = [i for i, x in enumerate(self._df.columns)
                         if x in to_keep_columns]
         self._to_keep_columns = [x for x in self._df.columns if
