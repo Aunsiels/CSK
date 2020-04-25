@@ -31,7 +31,7 @@ class Trainer(object):
         self._model = api.load(
             "glove-wiki-gigaword-50")
         self._df = pd.read_csv(df_file, sep="\t", index_col=False)
-        self._clf = LogisticRegressionCV()
+        self._clf = LogisticRegressionCV(max_iter=5000, n_jobs=-1)
         self._filter = [i for i, x in enumerate(self._df.columns)
                         if x in to_keep_columns]
         self._to_keep_columns = [x for x in self._df.columns if
