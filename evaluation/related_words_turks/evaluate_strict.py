@@ -46,7 +46,7 @@ with open("subjects.txt") as f:
         subjects.add(line.strip())
 
 assos = dict()
-with open("/home/julien/Documents/phd/CSK/quasimodo/temp/quasimodo21.tsv") as f:
+with open("/home/julien/Documents/phd/CSK/quasimodo/temp/quasimodo34.tsv") as f:
     for line in f:
         line = line.strip().split("\t")
         if len(line) < 3:
@@ -127,7 +127,7 @@ with open("/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/"
 print("TupleKB strict", compute_recall(assos))
 
 assos = dict()
-with open("/home/julien/Documents/phd/CSK/quasimodo/temp/quasimodo21_top5.tsv") as f:
+with open("/home/julien/Documents/phd/CSK/quasimodo/temp/quasimodo34_top5.tsv") as f:
     for line in f:
         line = line.strip().split("\t")
         if len(line) < 3:
@@ -147,47 +147,47 @@ with open("/home/julien/Documents/phd/CSK/quasimodo/temp/quasimodo21_top5.tsv") 
 
 print("Ours strict top5", compute_recall(assos))
 
-assos = dict()
-with open("/home/julien/Documents/phd/CSK/quasimodo/temp/quasimodo21-multiscore-sorted_tau_top5.tsv") as f:
-    for line in f:
-        line = line.strip().split("\t")
-        if len(line) < 3:
-            continue
-        subj = line[0]
-        if subj not in subjects:
-            continue
-        pred = lemmatize(line[1])
-        obj = lemmatize(line[2])
-        if subj in assos:
-            assos[subj].add(pred)
-            assos[subj].add(obj)
-            assos[subj].add(pred + " " + obj)
-        else:
-            assos[subj] = {pred, obj}
-            assos[subj].add(pred + " " + obj)
-
-print("Ours strict top5 tau", compute_recall(assos))
-
-assos = dict()
-with open("/home/julien/Documents/phd/CSK/quasimodo/temp/quasimodo21-multiscore-sorted_sigma_top5.tsv") as f:
-    for line in f:
-        line = line.strip().split("\t")
-        if len(line) < 3:
-            continue
-        subj = line[0]
-        if subj not in subjects:
-            continue
-        pred = lemmatize(line[1])
-        obj = lemmatize(line[2])
-        if subj in assos:
-            assos[subj].add(pred)
-            assos[subj].add(obj)
-            assos[subj].add(pred + " " + obj)
-        else:
-            assos[subj] = {pred, obj}
-            assos[subj].add(pred + " " + obj)
-
-print("Ours strict top5 sigma", compute_recall(assos))
+# assos = dict()
+# with open("/home/julien/Documents/phd/CSK/quasimodo/temp/quasimodo21-multiscore-sorted_tau_top5.tsv") as f:
+#     for line in f:
+#         line = line.strip().split("\t")
+#         if len(line) < 3:
+#             continue
+#         subj = line[0]
+#         if subj not in subjects:
+#             continue
+#         pred = lemmatize(line[1])
+#         obj = lemmatize(line[2])
+#         if subj in assos:
+#             assos[subj].add(pred)
+#             assos[subj].add(obj)
+#             assos[subj].add(pred + " " + obj)
+#         else:
+#             assos[subj] = {pred, obj}
+#             assos[subj].add(pred + " " + obj)
+#
+# print("Ours strict top5 tau", compute_recall(assos))
+#
+# assos = dict()
+# with open("/home/julien/Documents/phd/CSK/quasimodo/temp/quasimodo21-multiscore-sorted_sigma_top5.tsv") as f:
+#     for line in f:
+#         line = line.strip().split("\t")
+#         if len(line) < 3:
+#             continue
+#         subj = line[0]
+#         if subj not in subjects:
+#             continue
+#         pred = lemmatize(line[1])
+#         obj = lemmatize(line[2])
+#         if subj in assos:
+#             assos[subj].add(pred)
+#             assos[subj].add(obj)
+#             assos[subj].add(pred + " " + obj)
+#         else:
+#             assos[subj] = {pred, obj}
+#             assos[subj].add(pred + " " + obj)
+#
+# print("Ours strict top5 sigma", compute_recall(assos))
 
 assos = dict()
 with open("/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/Webchild/webchild-top5.tsv") as f:
@@ -209,7 +209,7 @@ with open("/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/W
 print("WebChild strict top5", compute_recall(assos))
 
 assos = dict()
-with open("/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/ConceptNet/conceptnet-top5.tsv") as f:
+with open("/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/ConceptNet/conceptnet_csk_spor_sorted_top5.tsv") as f:
     for line in f:
         line = line.strip().split("\t")
         subj = line[0]
