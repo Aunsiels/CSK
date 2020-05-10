@@ -8,7 +8,8 @@ from nltk.tokenize import word_tokenize
 import numpy as np
 
 from aristomini.common.solver import SolverBase
-from aristomini.common.models import MultipleChoiceQuestion, MultipleChoiceAnswer, ChoiceConfidence
+from aristomini.common.models import MultipleChoiceQuestion,\
+    MultipleChoiceAnswer, ChoiceConfidence
 from sklearn.linear_model import LogisticRegressionCV
 
 from quasimodo.spacy_accessor import SpacyAccessor
@@ -122,7 +123,7 @@ class MachineLearningSolver(SolverBase):
         answer_lemmatized_split = answer
         result = None
         max_size = min(len(answer_lemmatized_split), 3)
-        for size in range(max_size, 1, -1):
+        for size in range(max_size, 0, -1):
             for i in range(len(answer_lemmatized_split)):
                 j = i + size
                 to_add = self.get_features_lemmatized(question_lemmatized,

@@ -1,7 +1,7 @@
 import inflect
 
 NON_PLURAL = ["texas", "star wars", "gas", "people", "chaos", "fetus", "moses",
-              "jesus", "gps", "abs", "sos", "mars", "jeans"]
+              "jesus", "gps", "abs", "sos", "mars", "jeans", "https"]
 
 
 class InflectAccessor:

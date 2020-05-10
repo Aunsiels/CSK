@@ -1,0 +1,3601 @@
+SUBJECT surgeon
+-----------------
+For: surgeon be the one who operate Best match: the
+For: surgeon be medical specialist Best match: be
+For: surgeon work in the operate room Best match: work
+For: surgeon have a good salary Best match: good
+SUBJECT surgeon
+-----------------
+For: surgeon be precise . Best match: be
+For: surgeon have study . Best match: have
+For: surgeon work in hopsitals . Best match: work
+For: surgeon work under sterile condition . Best match: under
+SUBJECT surgeon
+-----------------
+For: surgeon be a physician who perform surgical operation . Best match: operation
+For: surgeon work in hospital . Best match: work
+For: surgeon work also in podiatry . Best match: work
+For: surgeon work also in dentistry and the veterinary field . Best match: work
+SUBJECT surgeon
+-----------------
+For: a surgeon be a specialist doctor Best match: doctor
+For: a surgeon work with his hand Best match: work
+For: a surgeon be able to prevent and cure disease Best match: be able
+For: to be a surgeon you need a specialization Best match: need
+SUBJECT surgeon
+-----------------
+For: surgeon perform complex operation Best match: operation
+For: surgeon treat people Best match: people
+For: surgeon work in clinic Best match: work
+For: brave surgeon Best match: 
+SUBJECT surgeon
+-----------------
+For: surgeon save people have live Best match: people
+For: the surgeon be real hero Best match: hero
+For: surgeon work many hour a day Best match: work
+For: surgeon must always be available Best match: able
+SUBJECT moth
+-----------------
+For: moth be ugly Best match: be
+For: no body like moth Best match: like
+For: moth be not good Best match: good
+For: moth be not helpful Best match: help
+SUBJECT moth
+-----------------
+For: moth can fly Best match: can
+For: moth be not that beautiful Best match: be
+For: moth look like butterfly Best match: look like butterfly
+For: be it a butterfly or a moth ? Best match: butterfly
+SUBJECT moth
+-----------------
+For: moth have beautiful wing Best match: wing
+For: moth appear from the caterpillar Best match: appear
+For: moth fee on nectar Best match: nectar
+For: moth have a vary color of wing to protect Best match: protect
+SUBJECT moth
+-----------------
+For: insect that proliferate in some food Best match: insect
+For: insect of the order of the lepidoptera , that be , they be butterfly Best match: butterfly
+For: they be perhaps the much popular group of insect due to the beauty of their shape and color Best match: popular
+For: they be distribute worldwide , they fee on the by - product of animal such a skin Best match: world
+SUBJECT moth
+-----------------
+For: moth be insect that proliferate food Best match: insect
+For: the moth be a problem that cause serious damage to wooden furniture and clothe Best match: clothe
+For: the moth designate various insect Best match: insect
+For: moth be insect that eat wood Best match: insect
+SUBJECT moth
+-----------------
+For: moth be insect . Best match: insect
+For: moth be grey . Best match: grey
+For: moth have wing . Best match: wing
+For: moth eat clothe . Best match: eat clothe
+SUBJECT engineer
+-----------------
+For: the engineer work hard Best match: engine
+For: the engineer work in factory Best match: work in
+For: the engineer carry out field work Best match: engine
+For: man and woman can be engineer Best match: engine
+SUBJECT engineer
+-----------------
+For: engineer develop new technology Best match: develop
+For: engineer be scientifically train Best match: engine
+For: engineer work in a variety of different role Best match: different
+For: engineer be professional Best match: profession
+SUBJECT engineer
+-----------------
+For: engineer be mostly man Best match: engine
+For: i be a engineer Best match: engine
+For: engineer be build bridge Best match: engine
+For: engineer be a good specialty Best match: engine
+SUBJECT engineer
+-----------------
+For: engineer be smart Best match: engine
+For: engineer be professional Best match: profession
+For: engineer be worker Best match: engine
+For: engineer be builder Best match: engine
+SUBJECT engineer
+-----------------
+For: engineer build house Best match: engine
+For: engineer solve problem Best match: solve problem
+For: engineer be strong Best match: engine
+For: engineer have exist mind Best match: engine
+SUBJECT engineer
+-----------------
+For: engineer be design building Best match: building
+For: engineer build bridge Best match: engine
+For: engineer create car Best match: create
+For: engineer be build channel Best match: engine
+SUBJECT ant
+-----------------
+For: las hormigas son muy pequeñas Best match: 
+For: the ant be red Best match: red
+For: the ant be black Best match: black
+For: the ant be very strong Best match: strong
+SUBJECT ant
+-----------------
+For: ant live anywhere Best match: live a
+For: ant be very organize life Best match: life
+For: ant look for sugar Best match: look for
+For: ant search for their food anywhere Best match: food
+SUBJECT ant
+-----------------
+For: ant be small insect . Best match: insect
+For: ant have elbow antenna . Best match: antenna
+For: ant form colony . Best match: colony
+For: ant can be find almost everywhere . Best match: everywhere
+SUBJECT ant
+-----------------
+For: ant have 6 leg Best match: have
+For: ant have 2 antenna Best match: antenna
+For: ant be insect Best match: insect
+For: ant be small animal Best match: animal
+SUBJECT ant
+-----------------
+For: ant be very small Best match: small
+For: ant build anthills Best match: anthills
+For: ant be very hardworking Best match: work
+For: ant live in the forest and in the field Best match: live in
+SUBJECT ant
+-----------------
+For: the ant be insect Best match: insect
+For: the ant be black Best match: black
+For: the ant evolve from ancestor Best match: evolve
+For: the ant form colony and anthills Best match: anthills
+SUBJECT mechanic
+-----------------
+For: mechanic be a very strong job Best match: strong
+For: mechanic be a excellent career Best match: car
+For: the mechanic be fundamental when have a vehicle Best match: have
+For: mechanic require a lot of patience Best match: 
+SUBJECT mechanic
+-----------------
+For: mechanic be expensive Best match: expensive
+For: mechanic be sometimes late Best match: be
+For: mechanic work much around holiday Best match: work
+For: mechanic must try car before return them to owner Best match: car
+SUBJECT mechanic
+-----------------
+For: the mechanic be universal Best match: be
+For: mechanic be a art Best match: be
+For: the mechanic create impressive machine Best match: 
+For: the mechanic carry many calculation Best match: car
+SUBJECT mechanic
+-----------------
+For: mechanic be the engineer . Best match: engineer
+For: mechanic build car . Best match: car
+For: mechanic repair various machine . Best match: 
+For: mechanic be   very useful profession for our society . Best match: use
+SUBJECT mechanic
+-----------------
+For: mechanic be the study of force . Best match: be
+For: mechanic can be automechanics . Best match: can
+For: mechanic use tool to build or repair machinery . Best match: tool
+For: mechanic be much often man have . Best match: have
+SUBJECT mechanic
+-----------------
+For: a mechanic be a person who be repair a car Best match: car
+For: the mechanic know the structure of the car Best match: car
+For: the mechanic have a lot of tool Best match: have
+For: mechanic work with machine in the workshop Best match: work
+SUBJECT owl
+-----------------
+For: owl appear at night Best match: appear at night
+For: owl have big eye Best match: have big eye
+For: owl love tree . Best match: tree
+For: owl be proud . Best match: be
+SUBJECT owl
+-----------------
+For: owl have big eye Best match: have big eye
+For: owl sleep for the day Best match: sleep
+For: owl be bird with feather Best match: feather
+For: owl perch on tree branch Best match: tree
+SUBJECT owl
+-----------------
+For: owl hunt at night . Best match: night
+For: owl eat mouse . Best match: eat mouse
+For: owl hear the sound good . Best match: sound
+For: owl live in tree . Best match: live in tree
+SUBJECT owl
+-----------------
+For: owl be bird Best match: bird
+For: owl wake up at night Best match: night
+For: owl have wing Best match: wing
+For: owl have a peak Best match: have
+SUBJECT owl
+-----------------
+For: owl   wake up at night Best match: night
+For: owl be cute Best match: cute
+For: owl be quiet Best match: quiet
+For: owl have round face Best match: have
+SUBJECT owl
+-----------------
+For: owl be night bird Best match: night
+For: owl have big eye Best match: have big eye
+For: owl be a symbol of wisdom Best match: symbol of wisdom
+For: owl sleep at the day Best match: sleep at
+SUBJECT worm
+-----------------
+For: worm be not helpful Best match: helpful
+For: worm be ugly Best match: be
+For: worm mean unhealty Best match: 
+For: worm can be may organic Best match: can
+SUBJECT worm
+-----------------
+For: earth worm live deep in the grind Best match: grind
+For: bird like to eat worm Best match: eat
+For: worm be crawl insect Best match: crawl
+For: early bird get the worm Best match: get
+SUBJECT worm
+-----------------
+For: worm be blind Best match: blind
+For: worm be slimy Best match: slimy
+For: worm eat dirt Best match: eat dirt
+For: worm be good for garden Best match: be good for garden
+SUBJECT worm
+-----------------
+For: worm be long . Best match: long
+For: worm creep out after rain . Best match: rain
+For: worm live underground . Best match: underground
+For: worm be rain and annulate . Best match: rain
+SUBJECT worm
+-----------------
+For: worm be generally pink colour . Best match: pink
+For: worm have long cylindrical body . Best match: body
+For: worm do not have limb . Best match: have
+For: worm look soft . Best match: 
+SUBJECT worm
+-----------------
+For: worm be scary animal Best match: animal
+For: worm be slippery animal Best match: animal
+For: worm live in the land Best match: live in
+For: worm be small animal Best match: animal
+SUBJECT elephant
+-----------------
+For: elephant have long tusk . Best match: have long tusk
+For: elephant live in africa . Best match: live in africa
+For: elephant be friendly . Best match: friendly
+For: elephant love to eat plant . Best match: plant
+SUBJECT elephant
+-----------------
+For: elephant have tusk Best match: tusk
+For: у слонов есть большие уши Best match: 
+For: elephant be big animal Best match: animal
+For: elephant live in afrika Best match: live in
+SUBJECT elephant
+-----------------
+For: elephant be mammal Best match: mammal
+For: elephant have tusk and fang Best match: tusk
+For: elephant live in asia and africa Best match: live in asia
+For: elephant usually have gray color Best match: gray
+SUBJECT elephant
+-----------------
+For: elephant be mammal . Best match: mammal
+For: elephant have four leg . Best match: have four leg
+For: elephant drink with the trunk . Best match: trunk
+For: elephant eat grass . Best match: ant
+SUBJECT elephant
+-----------------
+For: elephant live in asia . Best match: live in asia
+For: elephant have big tusk . Best match: have big tusk
+For: elephant be the large land mammal . Best match: land mammal
+For: elephant have long trunk . Best match: have long trunk
+SUBJECT elephant
+-----------------
+For: elephant be large mammal Best match: mammal
+For: elephant color be grey Best match: grey
+For: elephant perform in circus Best match: circus
+For: elephant form deep family bond Best match: ant
+SUBJECT nurse
+-----------------
+For: nurse work in hospital Best match: work in hospital
+For: nurse be often female Best match: female
+For: nurse do social work Best match: work
+For: nurse have a important job Best match: have
+SUBJECT nurse
+-----------------
+For: nurse work mainly in hospital Best match: hospital
+For: nurse show empathy Best match: 
+For: nurse predominantly wear uniform Best match: wear uniform
+For: nurse be medically train Best match: call
+SUBJECT nurse
+-----------------
+For: nurse work in hospital Best match: work in hospital
+For: nurse be compassionate Best match: be
+For: nurse be often female . Best match: female
+For: nurse wear white . Best match: wear white
+SUBJECT nurse
+-----------------
+For: nurse be charismatic Best match: be
+For: nurse be good person Best match: good
+For: nurse be professional Best match: professional
+For: nurse wear white Best match: wear white
+SUBJECT nurse
+-----------------
+For: nurse be angle Best match: be
+For: nurse serve patient Best match: patient
+For: nurse work at hospital Best match: hospital
+For: nurse wear white Best match: wear white
+SUBJECT nurse
+-----------------
+For: nurse work in hospital Best match: work in hospital
+For: nurse care for sick Best match: sick
+For: nurse wear white coat Best match: wear white coat
+For: nurse help doctor Best match: help doctor
+SUBJECT goat
+-----------------
+For: goat let out specific sound . Best match: sound
+For: goat give cheese . Best match: cheese
+For: goat be white . Best match: go
+For: goat be keep by villager . Best match: keep
+SUBJECT goat
+-----------------
+For: goat be animal Best match: animal
+For: goat eat grass Best match: eat
+For: goat have horn Best match: horn
+For: goat have white wool Best match: have
+SUBJECT goat
+-----------------
+For: goat live in the bush Best match: live
+For: goat be mammal Best match: go
+For: goat produce milk Best match: produce
+For: the goat have small horn Best match: horn
+SUBJECT goat
+-----------------
+For: goat live in the mountain . Best match: mountain
+For: goat eat grass . Best match: eat
+For: goat be mammal . Best match: go
+For: goat produce milk . Best match: produce
+SUBJECT goat
+-----------------
+For: goat be usually white . Best match: go
+For: goat give milk . Best match: milk
+For: goat can be farm animal . Best match: animal
+For: young goat be call kid . Best match: be call kid
+SUBJECT goat
+-----------------
+For: goat be a domestic animal Best match: animal
+For: goat live in herd and family Best match: live
+For: goat meat be the much consume meat Best match: meat
+For: goat eat grass Best match: eat
+SUBJECT hostess
+-----------------
+For: hostess work in club . Best match: 
+For: hostess have to smile . Best match: 
+For: hostess be mostly pretty . Best match: pretty
+For: hostess be dress the same . Best match: 
+SUBJECT hostess
+-----------------
+For: hostess be a concern for hotel guest , airport Best match: 
+For: hostess be a profession Best match: 
+For: hostess he should look attractive Best match: 
+For: hostess he one or much foreign language Best match: 
+SUBJECT hostess
+-----------------
+For: the hostess work on airplane Best match: 
+For: the hostess speak several language Best match: 
+For: the hostess tell you what to do in case of a accident Best match: 
+For: the hostess can bring you a drink Best match: can
+SUBJECT hostess
+-----------------
+For: hostess work on a plane . Best match: 
+For: hostess   have uniform . Best match: 
+For: hostess have a hat . Best match: 
+For: hostess be friendly . Best match: 
+SUBJECT hostess
+-----------------
+For: hostess welcome people Best match: 
+For: hostess wear uniform Best match: 
+For: hostess be mainly woman Best match: 
+For: hostess be usually friendly Best match: 
+SUBJECT hostess
+-----------------
+For: hostess be a woman employ by a airline Best match: 
+For: hostess receive and entertain guest Best match: 
+For: hostess should be professional Best match: 
+For: hostess be a woman who manage a inn or hotel . Best match: 
+SUBJECT baker
+-----------------
+For: baker work long hour Best match: work
+For: baker make delicious thing Best match: bake
+For: baker earn little money Best match: bake
+For: baker perform many task Best match: bake
+SUBJECT baker
+-----------------
+For: bakery work day Best match: work
+For: bakery sell food Best match: bake
+For: bakery be meet place Best match: bake
+For: the bakery be pretty Best match: bake
+SUBJECT baker
+-----------------
+For: baker make a good bread Best match: bread
+For: baker sell bread Best match: bread
+For: baker wear white Best match: wear white
+For: baker work at bakery Best match: work
+SUBJECT baker
+-----------------
+For: a baker be someone who bake Best match: bake
+For: the place where a baker work be call a bakery . Best match: be call
+For: baker normally bake bread , cake , pie ... Best match: bread
+For: bake oven be often separate from other building Best match: oven
+SUBJECT baker
+-----------------
+For: bakery produce a lot of money Best match: bake
+For: the bakery have many counter Best match: count
+For: the bakery be clean Best match: bake
+For: in the bakery there be beautiful woman Best match: bake
+SUBJECT baker
+-----------------
+For: baker sell bread Best match: bread
+For: baker have very tasty cake Best match: have
+For: baker be near my house Best match: bake
+For: baker have coffee and warm bread Best match: bread
+SUBJECT driver
+-----------------
+For: driver must be carreful Best match: drive
+For: driver must be follow traffic rule Best match: drive
+For: driver not be sleepy Best match: drive
+For: driver not drink alcohol Best match: drive
+SUBJECT driver
+-----------------
+For: driver be important for the pc Best match: drive
+For: driver have to be install on pc Best match: be in
+For: driver on my city be fast Best match: drive
+For: driver on racecars be pretty good Best match: drive
+SUBJECT driver
+-----------------
+For: the driver drive a car Best match: drive
+For: the driver monitor the security of passenger Best match: drive
+For: the driver monitor the condition of the car Best match: drive
+For: the driver must be attentive on the road Best match: drive
+SUBJECT driver
+-----------------
+For: it be a material that offer little resistance to the movement of electric charge Best match: charge
+For: conduct heat and electricity . Best match: city
+For: they allow the flow of current or move electric charge to pass through them . Best match: charge
+For: allow the passage of electric current Best match: of
+SUBJECT driver
+-----------------
+For: the driver be people in charge of drive a motor vehicle to transport people Best match: vehicle
+For: driver be a material that , to a great or lesser extent , conduct heat and electricity Best match: great
+For: the driver be the one drive Best match: drive
+For: the driver be material Best match: drive
+SUBJECT driver
+-----------------
+For: driver be often male . Best match: drive
+For: driver have car . Best match: drive
+For: driver run fast . Best match: drive
+For: driver not sleep . Best match: drive
+SUBJECT eagle
+-----------------
+For: eagle fly always . Best match: fly
+For: eagle be gray . Best match: be
+For: eagle live in mountan . Best match: live in
+For: eagle live over 100 year . Best match: year
+SUBJECT eagle
+-----------------
+For: the eagle be bird Best match: bird
+For: the eagle rise to the cloud Best match: 
+For: the hare be prey of the eagle Best match: prey
+For: eagle be very large animal Best match: animal
+SUBJECT eagle
+-----------------
+For: eagle bird of prey Best match: bird
+For: the eagle fly high Best match: high
+For: the eagle have big wing Best match: wing
+For: eagle be gray Best match: be
+SUBJECT eagle
+-----------------
+For: eagle be fly . Best match: fly
+For: eagle be bird . Best match: bird
+For: eagle be hunt . Best match: hunt
+For: eagle be predatory . Best match: predator
+SUBJECT eagle
+-----------------
+For: eagle be bird . Best match: bird
+For: eagle fly so high Best match: high
+For: eagle be the much beautiful bird Best match: bird
+For: eagle be wise Best match: be
+SUBJECT eagle
+-----------------
+For: eagle fly very high . Best match: high
+For: eagle have very good eyesight . Best match: good eyesight
+For: eagle always settle in the mountain . Best match: mountain
+For: eagle be on the arm of many country . Best match: be on
+SUBJECT dove
+-----------------
+For: the dove be very beautiful Best match: do
+For: the dove be bird Best match: do
+For: the dove be of various color Best match: do
+For: the dove can fly Best match: can fly
+SUBJECT dove
+-----------------
+For: dove be a symbol of peace Best match: symbol of peace
+For: dove be from the same family a pigeon Best match: do
+For: dove be sometimes use in wedding Best match: wedding
+For: dove be mainly white Best match: white
+SUBJECT dove
+-----------------
+For: pigeon be a bird Best match: be
+For: i like to fee pigeon Best match: 
+For: we have a lot of pigeon in the city Best match: city
+For: i have many species of pigeon Best match: have
+SUBJECT dove
+-----------------
+For: dove eat bread crumb . Best match: eat
+For: dove live on city roof . Best match: city
+For: dove love to walk around the square . Best match: love
+For: dove be postal . Best match: do
+SUBJECT dove
+-----------------
+For: dove be cute bird Best match: do
+For: dove be person who be so warm Best match: war
+For: dove be the much beautiful bird in the world Best match: do
+For: dove have a simple shape Best match: have
+SUBJECT dove
+-----------------
+For: the dive personify the world Best match: 
+For: dive fly in the sky Best match: fly in
+For: dive live on the roof Best match: live
+For: dive feed on grain Best match: 
+SUBJECT bear
+-----------------
+For: bear be wild animal Best match: wild animal
+For: bear be big animal Best match: animal
+For: bear be mammal Best match: mammal
+For: bear can be dangerous Best match: dangerous
+SUBJECT bear
+-----------------
+For: bear be mammal . Best match: mammal
+For: bear can be ferocious . Best match: ear
+For: bear be black in color . Best match: black
+For: bear can be see at zoo . Best match: can be see
+SUBJECT bear
+-----------------
+For: bear be very big animal . Best match: animal
+For: bear be dangerous . Best match: dangerous
+For: bear like hunt fish . Best match: fish
+For: bear live in wild nature . Best match: live in
+SUBJECT bear
+-----------------
+For: bear be black or white or brown in colour . Best match: colour
+For: bear be widely find in northern hemisphere . Best match: northern hemisphere
+For: bear catch fish for food . Best match: catch fish
+For: bear have larhe body . Best match: have
+SUBJECT bear
+-----------------
+For: the bear be hairy Best match: hairy
+For: bear winter Best match: winter
+For: bear hunt fish in river Best match: river
+For: the bear stand on two leg Best match: stand on
+SUBJECT bear
+-----------------
+For: the bear be big Best match: big
+For: the bear live in the forest Best match: live in
+For: the polar bear be white Best match: polar bear
+For: anteater have a long nose Best match: nose
+SUBJECT teacher
+-----------------
+For: teacher work in school Best match: school
+For: teacher work in college Best match: teach
+For: teacher teach student Best match: student
+For: teacher prepare exam paper Best match: prepare
+SUBJECT teacher
+-----------------
+For: teacher teach our child Best match: teach
+For: teacher have low salary Best match: have low salary
+For: teacher should be pay much Best match: be pay
+For: teacher have lot of spare time Best match: teach
+SUBJECT teacher
+-----------------
+For: teacher teach class Best match: teach
+For: teacher should teach child Best match: teach
+For: teacher be smart Best match: teach
+For: teacher be write on the blackboard Best match: teach
+SUBJECT teacher
+-----------------
+For: teacher teach student . Best match: student
+For: teacher have much knowledge about everything . Best match: everything
+For: teacher help student for their study . Best match: student
+For: teacher be respect everywhere . Best match: respect
+SUBJECT teacher
+-----------------
+For: the teacher work with child and with teenager Best match: work with
+For: teacher have many vacation Best match: teach
+For: the teacher be very prepare people Best match: prepare
+For: be a teacher be a great profession Best match: profession
+SUBJECT teacher
+-----------------
+For: teacher work at school Best match: school
+For: a teacher teach child Best match: teach
+For: teacher be strict but kind Best match: strict
+For: teacher be a man who know much Best match: know much
+SUBJECT whale
+-----------------
+For: whale be animal . Best match: animal
+For: whale live in desert . Best match: live in
+For: whale be yellow . Best match: yellow
+For: whale live long . Best match: live long
+SUBJECT whale
+-----------------
+For: the whale be blue Best match: blue
+For: the large mammal in the world be whale Best match: mammal
+For: the ocean be where the whale live Best match: ocean
+For: the whale be beautiful Best match: be beautiful
+SUBJECT whale
+-----------------
+For: whale live in the ocean Best match: live in
+For: whale be marine mammal . Best match: mammal
+For: whale be very big Best match: big
+For: whale eat plankton Best match: eat plankton
+SUBJECT whale
+-----------------
+For: whale be swim . Best match: swim
+For: whale be huge . Best match: huge
+For: whale live in the ocean . Best match: live in
+For: whale eat fish . Best match: eat fish
+SUBJECT whale
+-----------------
+For: whale live in the ocean . Best match: live in
+For: whale be the large mammal . Best match: mammal
+For: whale release fountain of water . Best match: release fountain of water
+For: whale be sometimes throw ashore . Best match: throw
+SUBJECT whale
+-----------------
+For: whale aquatic mammal Best match: mammal
+For: whale live in open ocean Best match: live in
+For: whale give birth Best match: give birth
+For: whale be carnivorous Best match: be
+SUBJECT inspector
+-----------------
+For: inspector enforce the law Best match: 
+For: inspector be do investigation Best match: 
+For: inspector can be communal Best match: 
+For: inspector can deal with the market Best match: 
+SUBJECT inspector
+-----------------
+For: inspector be the keeper of law . Best match: 
+For: inspector have duty towards the people . Best match: have
+For: inspector work to prevent crime . Best match: 
+For: inspector try to maintain law and order . Best match: 
+SUBJECT inspector
+-----------------
+For: inspector be a police rank . Best match: 
+For: inspector be very smart and educate people . Best match: 
+For: inspector can be police or private investigator . Best match: 
+For: inspector resolve mayor crime activity . Best match: 
+SUBJECT inspector
+-----------------
+For: inspector catch thiefs . Best match: 
+For: inspector wear khaki colour uniform . Best match: 
+For: inspector keep people safe . Best match: 
+For: inspector gather evidence and fact . Best match: 
+SUBJECT inspector
+-----------------
+For: the inspector supervise Best match: 
+For: the inspector ensure that all be good Best match: 
+For: the inspector be public official Best match: 
+For: the inspector must make precise observation Best match: 
+SUBJECT inspector
+-----------------
+For: the inspector be responsible for monitor the process Best match: 
+For: the inspector be in charge of the company Best match: be in
+For: the inspector have a lot of experience Best match: have
+For: the inspector make a lot of money Best match: 
+SUBJECT chef
+-----------------
+For: chef prepare good food Best match: prepare
+For: chef work in a hotel Best match: work
+For: chef be cook expert Best match: cook
+For: chef work hard Best match: work
+SUBJECT chef
+-----------------
+For: the chef cook very good Best match: cook
+For: chef specialize in various type of food Best match: food
+For: chef be always very retailer Best match: be
+For: the chef be careful with the food Best match: careful
+SUBJECT chef
+-----------------
+For: chef be a train professional cooker . Best match: cook
+For: chef must be mentally strong and fast in the kitchen . Best match: kitchen
+For: chef be skilled and educate people . Best match: kill
+For: chef can do almost anything with food . Best match: food
+SUBJECT chef
+-----------------
+For: chef cook delicious food . Best match: cook
+For: chef know a lot about food . Best match: food
+For: chef start work early in the morning . Best match: work
+For: chef work at restaurant . Best match: restaurant
+SUBJECT chef
+-----------------
+For: chef be professional cook . Best match: cook
+For: chef can cook many dish . Best match: cook
+For: chef have special uniform . Best match: uniform
+For: chef can have culinary education . Best match: have
+SUBJECT chef
+-----------------
+For: chef be prepare food Best match: prepare
+For: chef wear white clothe Best match: wear white clothe
+For: chef be derive from the term chef de cuisine Best match: the
+For: chef work on professional kitchen Best match: kitchen
+SUBJECT priest
+-----------------
+For: priest work in church Best match: church
+For: priest be good mannered Best match: good
+For: priest worship the god Best match: go
+For: priest help people in godly matter Best match: people
+SUBJECT priest
+-----------------
+For: priest work in church Best match: church
+For: priest believe in god Best match: go
+For: priest be baptise child Best match: child
+For: priest can do the ceremony of marriage Best match: can do
+SUBJECT priest
+-----------------
+For: priest be in - charge of church . Best match: charge
+For: priest show us the path of god . Best match: go
+For: priest be very religious person . Best match: be
+For: priest listen to our confession . Best match: confession
+SUBJECT priest
+-----------------
+For: priest be religious leader . Best match: be
+For: priest be very smart people . Best match: people
+For: priest spend their live in the name of christ and his word . Best match: live in
+For: priest love sinner and all people in general . Best match: people
+SUBJECT priest
+-----------------
+For: the priest be in church Best match: church
+For: priest hunt people Best match: people
+For: the priest pray Best match: pray
+For: the priest have rosary Best match: have
+SUBJECT priest
+-----------------
+For: the priest be very religious Best match: be
+For: the priest offer masse Best match: mass
+For: priest be usually good people Best match: people
+For: the priest have a reputation for pedophile Best match: pedophile
+SUBJECT squirrel
+-----------------
+For: squirrel live in the tree Best match: live in
+For: squirrel eat nut Best match: eat nut
+For: squirrel be very peaceful animal Best match: animal
+For: squirrel be very fast animal Best match: animal
+SUBJECT squirrel
+-----------------
+For: squirrel be brown Best match: be
+For: squirrel be animal Best match: animal
+For: squirrel live in forest Best match: live in forest
+For: squirrel be kind of a animal Best match: animal
+SUBJECT squirrel
+-----------------
+For: squirrel climb tree Best match: climb tree
+For: squirrel eat nut Best match: eat nut
+For: squirrel be fast Best match: fast
+For: the squirrel be adorable Best match: be a
+SUBJECT squirrel
+-----------------
+For: squirrel be very cute . Best match: cute
+For: squirrel like to eat nut . Best match: eat nut
+For: squirrel live on the tree . Best match: tree
+For: squirrel can run very fast . Best match: fast
+SUBJECT squirrel
+-----------------
+For: squirrel be animal Best match: animal
+For: squirrel love nut Best match: love nut
+For: у белок большой хвост Best match: 
+For: squirrel have red wool Best match: have
+SUBJECT squirrel
+-----------------
+For: squirrel be cute Best match: cute
+For: squirrel be aggressive Best match: aggressive
+For: squirrel eat nut Best match: eat nut
+For: squirrel be rodent Best match: rodent
+SUBJECT pig
+-----------------
+For: pig be pink Best match: pink
+For: pig be black Best match: black
+For: pig can be eat Best match: can
+For: pig be wild Best match: wild
+SUBJECT pig
+-----------------
+For: pig be dirty animal Best match: dirty animal
+For: pig be pink Best match: pink
+For: pig eat everything Best match: thing
+For: pig be grow for their meat Best match: meat
+SUBJECT pig
+-----------------
+For: pig be fat Best match: fat
+For: pig be very dirty Best match: dirty
+For: pig be good pet Best match: good pet
+For: pig be smart than other animal Best match: be smart than
+SUBJECT pig
+-----------------
+For: pig have four leg . Best match: have four leg
+For: pig have small tail . Best match: tail
+For: pig be domestic animal too . Best match: animal
+For: pig like mud . Best match: like
+SUBJECT pig
+-----------------
+For: the pig be mammal Best match: mammal
+For: pig be animal use for human consumption Best match: animal
+For: pig be animal that have a high commercial value Best match: animal
+For: the pig fee on all kind of food Best match: food
+SUBJECT pig
+-----------------
+For: pig be domestic and wild Best match: wild
+For: pig be white and sometimes black Best match: white
+For: pig have penny Best match: have
+For: pig be very fat and fat . Best match: fat
+SUBJECT fireman
+-----------------
+For: the fireman wear red Best match: wear red
+For: the fireman be rescuer Best match: rescue
+For: firefighter be train to appease fire Best match: fire
+For: firefighter be brave people and dedicate to their work Best match: people
+SUBJECT fireman
+-----------------
+For: fireman put out fire Best match: fire
+For: fireman help people Best match: help people
+For: fireman work emergency situation Best match: work
+For: fireman drive firetrucks Best match: fire
+SUBJECT fireman
+-----------------
+For: fireman put out fire Best match: fire
+For: fireman be good Best match: good
+For: fireman be hero Best match: hero
+For: fireman be man Best match: fire
+SUBJECT fireman
+-----------------
+For: fireman be a risky work Best match: work
+For: firemens be mostly man Best match: fire
+For: firemens be mostly young Best match: fire
+For: firemens be often muscular Best match: fire
+SUBJECT fireman
+-----------------
+For: the fireman be people who save life Best match: people
+For: firefighter be people who risk their live daily Best match: people
+For: the fireman be the people who be dedicate to extinguish fire Best match: people
+For: the fireman help prevent accident Best match: vent
+SUBJECT fireman
+-----------------
+For: fireman put out the fire Best match: fire
+For: fireman drive red van Best match: fire
+For: fireman wear helmet Best match: wear
+For: fireman wear uniform Best match: wear uniform
+SUBJECT hawk
+-----------------
+For: hawk be fly Best match: fly
+For: hawk be wild Best match: wild
+For: hawk eat meat Best match: eat
+For: hawk be live anywhere Best match: be
+SUBJECT hawk
+-----------------
+For: hawk can fly Best match: can fly
+For: hawk be a specie of bird Best match: bird
+For: hawk be magnificent Best match: be
+For: hawk be a good nba team Best match: good
+SUBJECT hawk
+-----------------
+For: hawk fly high Best match: fly
+For: hawk eat meat Best match: eat
+For: hawk be mainly distribute in europe , russia , ukraine Best match: be
+For: you can hunt with a hawk Best match: can
+SUBJECT hawk
+-----------------
+For: medium - size bird of prey Best match: bird
+For: they be find all over the world Best match: world
+For: they have thin , point wing havehav traducciones de have verbofrecuencia tener have , keep , own , bear , hold , possess poseer possess , have , own haber have tomar take , have , drink , catch , take up , take on llevar carry , take , bring , lead , wear , bear padecer suffer , have , suffer from , endure , undergo , bear echarse lie , lie down , throw , lie down , stretch out , throw oneself tolerar tolerate , stand , endure , countenance , abide , permit permitir allow , enable , permit , let , give , empower parir give birth , calve , bear , bring forth , foal , have dar a luz give birth , give birth to , bring forth , bear , have dormir con have , take to bed pegar paste , stick , glue , hit , strike , beat definiciones de have verbo 1 possess , own , or hold . he have a new car and a boat sinónimos : possessownbe in possession ofbe the owner ofbe bless withboastenjoykeepretainholdoccupy 2 experience ; undergo . i go to a few party and have a good time sinónimos : experienceencounterfacemeetfindrun intogo throughundergoexperienceenjoy sustantivo 1 people with plenty of money and possession . a increase gap between the haves and have - nots 6 definiciones más ejemplos de have some house have break slate 29 ejemplos más sinónimos de have verbo possesscompriseeatreceiveorganizegive birth toentertainexperiencebe suffer fromharbormanifestmaketoleratemusttrickstimulateownacceptgive birthingesttakefeaturegethave gotgive sustantivo rich person 147 sinónimos más Best match: be in
+For: able to reach unmatched speed Best match: 
+SUBJECT hawk
+-----------------
+For: the hawk fly high Best match: fly
+For: hawk have thin wing Best match: wing
+For: the hawk be predatory bird Best match: predator
+For: the hawk be carnivorous bird Best match: bird
+SUBJECT hawk
+-----------------
+For: hawk eat bird . Best match: eat bird
+For: hawk have wing . Best match: wing
+For: hawk be brown . Best match: be
+For: hawk be bird . Best match: bird
+SUBJECT pigeon
+-----------------
+For: pigeon be always in the square Best match: way
+For: pigeon be grey Best match: grey
+For: pigeon eat rice Best match: rice
+For: pigeon be a city bird Best match: city bird
+SUBJECT pigeon
+-----------------
+For: pigeon be bird Best match: bird
+For: pigeon have two wing Best match: wing
+For: pigeon be samll and thin Best match: be
+For: pigeon be very common bird Best match: common
+SUBJECT pigeon
+-----------------
+For: the pigeon be symbol of peace Best match: be symbol of peace
+For: the pigeon live in square Best match: live in
+For: the pigeon eat piece of bread Best match: eat
+For: the pigeon fly Best match: fly
+SUBJECT pigeon
+-----------------
+For: the pigeon eat corn Best match: eat
+For: pigeon be animal that get scare fast Best match: animal
+For: the pigeon create nest for their young Best match: young
+For: the pigeon be fly animal Best match: animal
+SUBJECT pigeon
+-----------------
+For: pigeon live in south pole Best match: live in
+For: pigeon be animal Best match: animal
+For: pigeon be white Best match: white
+For: pigeon live 50 year Best match: live
+SUBJECT pigeon
+-----------------
+For: pigeon be dirty Best match: dirty
+For: pigeon be bird Best match: bird
+For: pigeon be white Best match: white
+For: pigeon be small Best match: be
+SUBJECT turtle
+-----------------
+For: turtle be slow Best match: slow
+For: turtle have armor Best match: have
+For: turtle can swim Best match: can swim
+For: turtle can live long Best match: can live
+SUBJECT turtle
+-----------------
+For: turtle be slow Best match: slow
+For: turtle can be pet Best match: pet
+For: turtle swim in the see Best match: swim in
+For: turtle have shell Best match: have shell
+SUBJECT turtle
+-----------------
+For: turtle be slow Best match: slow
+For: turtle do not run Best match: run
+For: sea turtle lie their egg on the beach Best match: beach
+For: the turtle swim very good Best match: good
+SUBJECT turtle
+-----------------
+For: turtle have outer shell around the body . Best match: shell
+For: turtle be slow . Best match: slow
+For: turtle live long . Best match: long
+For: turtle live in ocean . Best match: live in
+SUBJECT turtle
+-----------------
+For: turtle be animal that live for many year Best match: live for
+For: turtle be animal with a hard shell Best match: hard shell
+For: turtle be very slow animal Best match: animal
+For: the turtle eat a lot of lettuce Best match: eat
+SUBJECT turtle
+-----------------
+For: turtle live in water and on land Best match: live in water
+For: turtle have a shell Best match: shell
+For: turtle eat grass Best match: eat
+For: turtle be very slow animal Best match: animal
+SUBJECT writer
+-----------------
+For: the writer be serene Best match: write
+For: the writer be creative Best match: write
+For: the writer be silent Best match: write
+For: the writer be smart Best match: write
+SUBJECT writer
+-----------------
+For: writer be lonley Best match: write
+For: writer be great mind Best match: great
+For: writer be smart Best match: write
+For: writer be not rich Best match: write
+SUBJECT writer
+-----------------
+For: the writer live alone Best match: write
+For: the writer study grammar Best match: grammar
+For: the writer have a lot of imagination Best match: write
+For: writer write novel Best match: write novel
+SUBJECT writer
+-----------------
+For: the writer be very smart people Best match: write
+For: the writer put a lot of suspense to his novel Best match: suspense
+For: the writer be famous people Best match: write
+For: writer spend a lot of time write their book Best match: write
+SUBJECT writer
+-----------------
+For: writer write a book Best match: write
+For: writer be people Best match: write
+For: there be many writer Best match: write
+For: writer be nobels Best match: write
+SUBJECT writer
+-----------------
+For: writer be smart Best match: write
+For: writer be human Best match: write
+For: writer be elegants Best match: write
+For: writer have idea Best match: write
+SUBJECT sheep
+-----------------
+For: the sheep give us wool Best match: wool
+For: the sheep be always in herd Best match: herd
+For: the sheep be care for by a shepherd Best match: shepherd
+For: the sheep be mostly white but there be black Best match: white
+SUBJECT sheep
+-----------------
+For: the sheep be white Best match: be white
+For: the sheep be cover in wool Best match: cover
+For: sheep live on farm Best match: live on
+For: the sheep be ruminant Best match: ruminant
+SUBJECT sheep
+-----------------
+For: sheep eat grass Best match: eat grass
+For: sheep have wool Best match: have wool
+For: sheep live in farm Best match: live in
+For: sheep be mammal Best match: mammal
+SUBJECT sheep
+-----------------
+For: sheeps be mammal Best match: mammal
+For: sheeps have wool Best match: have wool
+For: sheeps be herbivorous Best match: be
+For: sheeps be peaceful animal Best match: be
+SUBJECT sheep
+-----------------
+For: the sheep be use a cattle Best match: be
+For: the sheep be animal of the mammal class Best match: mammal
+For: the sheep be woolly animal Best match: wool
+For: the sheep it can be white , black , brown or brown Best match: can be white
+SUBJECT sheep
+-----------------
+For: sheep be domestic animal Best match: be
+For: sheep give us wool Best match: wool
+For: sheep eat grass Best match: eat grass
+For: sheep live in herd Best match: live in herd
+SUBJECT miller
+-----------------
+For: miller be a name of movie Best match: be
+For: miller be clothe brand Best match: bran
+For: miller be also a pharmacy Best match: be
+For: miller can be family surname Best match: can
+SUBJECT miller
+-----------------
+For: miller be great Best match: be
+For: miller be useful Best match: be
+For: miller be in the field Best match: be in
+For: miller be in the city Best match: be in
+SUBJECT miller
+-----------------
+For: miller receive flour Best match: 
+For: miller work at the mill Best match: 
+For: miller be a ancient profession Best match: be
+For: miller be all dust with flour Best match: be
+SUBJECT miller
+-----------------
+For: miller be the person who mill flour Best match: be
+For: miller be   person who own in a grain mill . Best match: be
+For: miller have problem sometimes with breath Best match: have
+For: miller who work in a grain mill . Best match: 
+SUBJECT miller
+-----------------
+For: miller live in ancient time . Best match: 
+For: miller grind flour . Best match: 
+For: miller be nostalgic . Best match: be
+For: miller be peasant . Best match: be
+SUBJECT miller
+-----------------
+For: miller be person who own or work in a mill . Best match: be
+For: miller turn grain into flour in their mill . Best match: 
+For: miller operate mill machine . Best match: 
+For: miller be among the old human occupation . Best match: be
+SUBJECT barber
+-----------------
+For: barber work in a barbershop Best match: 
+For: barber be usually male Best match: 
+For: barber use razor Best match: use razor
+For: barber use scissor Best match: scissor
+SUBJECT barber
+-----------------
+For: barber cut our hair . Best match: hair
+For: barber be normally find every area . Best match: 
+For: barber can give us new haircut . Best match: haircut
+For: barber should be respect much . Best match: 
+SUBJECT barber
+-----------------
+For: barber have very sharp reazers . Best match: have
+For: barber cut hair and beard . Best match: hair
+For: barber be worm people who like to talk with customer . Best match: talk
+For: barber be much often male . Best match: 
+SUBJECT barber
+-----------------
+For: barber cut hair . Best match: hair
+For: barber use clean scissor , blade and comb . Best match: scissor
+For: barber trim beard . Best match: 
+For: barber provide different hair style technique . Best match: hair
+SUBJECT barber
+-----------------
+For: barber use razor blade Best match: use razor
+For: barber shave the beard Best match: have
+For: barber work at hairdresser Best match: hair
+For: barber make haircut Best match: haircut
+SUBJECT barber
+-----------------
+For: i have to go to the barber Best match: have
+For: my cousin be a good barber Best match: good
+For: in the corner there be a local barber Best match: 
+For: i would like to be a barber Best match: 
+SUBJECT magician
+-----------------
+For: the magician be entertain Best match: magic
+For: the magician be good people Best match: magic
+For: magician do extraordinary thing Best match: magic
+For: the magician be good for child Best match: magic
+SUBJECT magician
+-----------------
+For: magician be undesirable Best match: magic
+For: the magician do juggle Best match: magic
+For: the magician be act against the law Best match: magic
+For: many people believe in magician Best match: magic
+SUBJECT magician
+-----------------
+For: magician can deceive you easily . Best match: magic
+For: magician never reveal their secret . Best match: secret
+For: magician be great performers.+ Best match: perform
+For: magician can do harmful thing . Best match: magic
+SUBJECT magician
+-----------------
+For: magician usually have cloak Best match: magic
+For: magician be usually man Best match: magic
+For: magician usually have a hat Best match: magic
+For: magician usually have a scepter Best match: magic
+SUBJECT magician
+-----------------
+For: magician show magic . Best match: magic
+For: magician work in circus . Best match: magic
+For: magician make wonder . Best match: magic
+For: magician be colorful . Best match: magic
+SUBJECT magician
+-----------------
+For: magician be good at do trick Best match: do trick
+For: the magician be illusionist Best match: illusion
+For: the magician be amaze Best match: magic
+For: magician be magical Best match: magic
+SUBJECT doctor
+-----------------
+For: the doctor work 24 hour a day Best match: work
+For: the doctor be very kind Best match: doc
+For: the doctor work in hospital Best match: hospital
+For: the doctor work in clinic Best match: work
+SUBJECT doctor
+-----------------
+For: doctor work in hospital Best match: hospital
+For: doctor help people Best match: help people
+For: doctor be always lack of time Best match: time
+For: doctor be always late Best match: late
+SUBJECT doctor
+-----------------
+For: the doctor be a professional who practice medicine Best match: profession
+For: doctor try to recover human health Best match: try to
+For: the doctor be professional Best match: profession
+For: doctor cure disease Best match: cure disease
+SUBJECT doctor
+-----------------
+For: doctor help patient . Best match: patient
+For: doctor be a noble profession . Best match: profession
+For: doctor be available in the hospital . Best match: hospital
+For: doctor give us medicine . Best match: medicine
+SUBJECT doctor
+-----------------
+For: doctor be person that help people . Best match: help people
+For: doctor be very smart and vell educate people . Best match: people
+For: doctor have many specialty . Best match: special
+For: doctor must have valid and certify medical degree have . Best match: have
+SUBJECT doctor
+-----------------
+For: doctor wear a white coat Best match: white coat
+For: doctor treat people Best match: people
+For: doctor prescribe medication Best match: prescribe medication
+For: doctor be smart people Best match: people
+SUBJECT artist
+-----------------
+For: artist be profound . Best match: art
+For: artist produce painting . Best match: produce
+For: artist have their own world . Best match: world
+For: artist be a big part of history . Best match: history
+SUBJECT artist
+-----------------
+For: artist be creative people Best match: people
+For: artist paint picture Best match: paint
+For: artist work with paint Best match: work with
+For: artist be dreamy Best match: art
+SUBJECT artist
+-----------------
+For: the artist be creative Best match: art
+For: artist perform craft Best match: perform
+For: artist be people with certain quality Best match: people
+For: the artist work in workshop Best match: work in
+SUBJECT artist
+-----------------
+For: artist can be singer . Best match: can
+For: artist can be dancer . Best match: can
+For: artist be necessary . Best match: art
+For: artist work in a theatre . Best match: work in
+SUBJECT artist
+-----------------
+For: artist create painting or drawing . Best match: drawing
+For: artist be skilled in art . Best match: kill
+For: a artist must have a keen eye for color . Best match: color
+For: artist produce masterpiece . Best match: produce
+SUBJECT artist
+-----------------
+For: artist be a person engage in a activity relate to create art Best match: create art
+For: artist be a practitioner in the visual art Best match: art
+For: artist be highly talented people in a sort of a art Best match: people
+For: artist be the one who make their craft a fine art Best match: make
+SUBJECT rat
+-----------------
+For: rat be dirty . Best match: dirty
+For: rat love cheese . Best match: cheese
+For: rat have long tail . Best match: have long tail
+For: rat can because disease . Best match: disease
+SUBJECT rat
+-----------------
+For: rat give a lot of disgust Best match: lot
+For: rat be rodent Best match: rodent
+For: rat live in the trash Best match: live in
+For: rat have a very long tail Best match: long tail
+SUBJECT rat
+-----------------
+For: rat   live in sewage . Best match: live in
+For: rat be gray . Best match: gray
+For: rat eat cheese . Best match: eat cheese
+For: rat have tail . Best match: tail
+SUBJECT rat
+-----------------
+For: rat eat cheese Best match: eat cheese
+For: rat have hair Best match: hair
+For: rat eat flour Best match: eat
+For: rat have a tail Best match: tail
+SUBJECT rat
+-----------------
+For: rat spread disease Best match: spread disease
+For: rat be horrible Best match: be
+For: england be famous for rat Best match: be
+For: rat live in garbage and hole Best match: live in
+SUBJECT rat
+-----------------
+For: rat live in a sewage Best match: live in
+For: rat be disgust animal Best match: be
+For: rat have long tail Best match: have long tail
+For: rat live in the garbage Best match: live in
+SUBJECT duck
+-----------------
+For: duck live in water Best match: live in
+For: duck be cute Best match: cute
+For: duck play around Best match: play
+For: duck like spring Best match: spring
+SUBJECT duck
+-----------------
+For: duck be cute Best match: cute
+For: duck always go together Best match: get
+For: duck be tasty Best match: be
+For: duck be territorial Best match: be
+SUBJECT duck
+-----------------
+For: duck like water and fly . Best match: water
+For: duck be very scare animal . Best match: animal
+For: duck be in the same family of animal like swan and goose . Best match: animal
+For: duck be favorite hunter prey . Best match: be
+SUBJECT duck
+-----------------
+For: duck be bird . Best match: bird
+For: duks can fly . Best match: can fly
+For: duck can swim . Best match: can swim
+For: duck eat fish . Best match: eat fish
+SUBJECT duck
+-----------------
+For: duck be the bird . Best match: bird
+For: duck can eat fish . Best match: eat fish
+For: duck live in water . Best match: live in
+For: duck be farm for their meat . Best match: farm
+SUBJECT duck
+-----------------
+For: duck walk on two leg Best match: walk
+For: duck swim on the water Best match: swim on
+For: duck move the tail Best match: move
+For: duck be bird Best match: bird
+SUBJECT historian
+-----------------
+For: historian study history Best match: history
+For: historian study book on history Best match: history
+For: my sister be a historian Best match: be
+For: historian like to travel Best match: 
+SUBJECT historian
+-----------------
+For: historian be the one who study the past Best match: study
+For: the series of tv historian Best match: 
+For: the profession of some Best match: 
+For: historian be always look for new clue Best match: look for
+SUBJECT historian
+-----------------
+For: historian be smart . Best match: be
+For: historian be person who study and write about the past . Best match: study
+For: historian be categorize at wide area of study . Best match: study
+For: historian be very passionate people . Best match: people
+SUBJECT historian
+-----------------
+For: historian be very important for knowledge . Best match: know
+For: historian write book of history . Best match: history
+For: historian love read old book . Best match: old book
+For: historian know many event from national history . Best match: history
+SUBJECT historian
+-----------------
+For: historian study the past . Best match: study
+For: historian analyze a lot of fact . Best match: fact
+For: historian usually have historical degree . Best match: have
+For: historian work in college and university . Best match: work
+SUBJECT historian
+-----------------
+For: historian - scientist , specialist in history and auxiliary historical discipline Best match: history
+For: historian teach at university Best match: 
+For: historian be a very important profession Best match: be
+For: historian hold scientific conference Best match: ce
+SUBJECT mule
+-----------------
+For: mule be shoe Best match: be
+For: mule be stylish Best match: be
+For: mule have no back Best match: have
+For: mule be good for summer Best match: good
+SUBJECT mule
+-----------------
+For: mule be farm animal Best match: be
+For: mule be pack animal Best match: be
+For: mule live on farm Best match: live
+For: mule live in city Best match: live
+SUBJECT mule
+-----------------
+For: mule be a mixture of a donkey with a mare Best match: donkey
+For: mule transport load Best match: 
+For: mule the stubborn animal Best match: stubborn
+For: mule live in the middle east Best match: live
+SUBJECT mule
+-----------------
+For: mule can not reproduce . Best match: reproduce
+For: mule carry the load . Best match: 
+For: mule be cute . Best match: be
+For: mule consist of two different species . Best match: different
+SUBJECT mule
+-----------------
+For: a mule be the offspring of a male donkey and a female horse . Best match: offspring
+For: mule be repute to be much patient , hardy and long - live than horse and be describe a little obstinate and much intelligent than donkey . Best match: donkey
+For: mule historically be use by army to transport supply Best match: be
+For: mule also tend to be much independent than much domesticate equine other than its parental species , the donkey . Best match: species
+SUBJECT mule
+-----------------
+For: woman have comfortable shoe Best match: have
+For: shoe for woman in heel Best match: 
+For: quick - release woman have shoe Best match: have
+For: woman have summer footwear Best match: have
+SUBJECT wolf
+-----------------
+For: wolf be wild Best match: wild
+For: wolf eat meat Best match: eat meat
+For: wolwes be dangerous Best match: dangerous
+For: there be many kind of wolf Best match: be
+SUBJECT wolf
+-----------------
+For: wolf live in a group Best match: live in
+For: there be lot of movie create on wolf Best match: create
+For: wolf be a sign of pride Best match: be
+For: wolf can be dangerous Best match: dangerous
+SUBJECT wolf
+-----------------
+For: wolf live in pack Best match: live in pack
+For: wolf howl to communicate Best match: communicate
+For: wolf be relate to domestic dog Best match: domestic dog
+For: wolf work together a a team Best match: work
+SUBJECT wolf
+-----------------
+For: wolf be like dog . Best match: be like dog
+For: wolf be gray . Best match: gray
+For: wolf live in the forest . Best match: live in
+For: wolf attack other animal . Best match: other animal
+SUBJECT wolf
+-----------------
+For: wolf look like fox . Best match: fox
+For: wolf live in north america . Best match: live in
+For: wolf be grey or timber in colour . Best match: grey
+For: wolvws make growl howl sound . Best match: growl
+SUBJECT wolf
+-----------------
+For: wolf be gray animal Best match: animal
+For: wolf be scary animal Best match: animal
+For: wolf be ugly animal Best match: animal
+For: wolf have fang Best match: fang
+SUBJECT waiter
+-----------------
+For: the waiter serve you the food Best match: serve
+For: the waiter give you a drink Best match: give
+For: the waiter work in the bar Best match: 
+For: waiter can be man or woman Best match: can
+SUBJECT waiter
+-----------------
+For: waiter be polite . Best match: 
+For: waiter serve food . Best match: serve
+For: waiter serve drink . Best match: serve
+For: waiter expect a tip . Best match: expect
+SUBJECT waiter
+-----------------
+For: waiter be that who work at a restaurant or a bar . Best match: restaurant
+For: waiter be sometimes work in private home . Best match: 
+For: waiter attend customer . Best match: 
+For: waiter be people who serve food and drink . Best match: people
+SUBJECT waiter
+-----------------
+For: the waiter bring my food Best match: food
+For: waiter serve customer Best match: serve
+For: the waiter be helpful Best match: 
+For: the waiter have uniform Best match: uniform
+SUBJECT waiter
+-----------------
+For: waiter work in a restaurant Best match: restaurant
+For: waiter be helpful Best match: 
+For: waiter be polite Best match: 
+For: waiter take a tip Best match: take
+SUBJECT waiter
+-----------------
+For: waiter work in restaurant Best match: restaurant
+For: waiter work in shift Best match: 
+For: waiter must have a lot of patience Best match: have
+For: waiter can earn a lot of money Best match: can
+SUBJECT mouse
+-----------------
+For: the mouse be very small Best match: small
+For: the mouse be very fast Best match: fast
+For: the mouse be very elusive Best match: use
+For: the mouse be grey Best match: use
+SUBJECT mouse
+-----------------
+For: mouse of animal tease Best match: animal
+For: mouse of unwanted animal Best match: animal
+For: i see a bunch of mouse next to my house Best match: house
+For: mouse be afraid of cat Best match: be afraid of cat
+SUBJECT mouse
+-----------------
+For: mouses have tail . Best match: tail
+For: mouses be small rodent . Best match: small
+For: mouses have small ear . Best match: small
+For: mouses be afraid of cat . Best match: be afraid of cat
+SUBJECT mouse
+-----------------
+For: mouses be rodent Best match: use
+For: mouses be mammal Best match: mammal
+For: mouses be usually gray Best match: use
+For: mouses have short hair Best match: have
+SUBJECT mouse
+-----------------
+For: mouses be very fast . Best match: fast
+For: mouses be unclean . Best match: use
+For: mouses run fast . Best match: fast
+For: mouses be cute . Best match: cute
+SUBJECT mouse
+-----------------
+For: mouses be scary animal Best match: animal
+For: mouses can transmit disease Best match: disease
+For: mouses live everywhere Best match: use
+For: mouses eat cheese Best match: eat cheese
+SUBJECT fox
+-----------------
+For: the fox be pretty Best match: be
+For: the fox live in the forest Best match: live in
+For: the fox be very elusive Best match: be
+For: the fox be very fast Best match: fast
+SUBJECT fox
+-----------------
+For: fox of smart animal Best match: animal
+For: i see a fox last week Best match: week
+For: the fox of the fast animal Best match: animal
+For: the fox be constantly on his prey Best match: prey
+SUBJECT fox
+-----------------
+For: fox have big tail . Best match: have big tail
+For: fox be usually red . Best match: red
+For: fox eat mices . Best match: eat
+For: fox be afraid of haunters . Best match: be afraid of
+SUBJECT fox
+-----------------
+For: fox be mammal Best match: mammal
+For: fox have 4 leg Best match: have
+For: fox have a snout Best match: snout
+For: fox have long and hairy tail Best match: tail
+SUBJECT fox
+-----------------
+For: fox be smart . Best match: smart
+For: fox be canny . Best match: can
+For: fox be cool . Best match: be
+For: fox live in jungle . Best match: live in
+SUBJECT fox
+-----------------
+For: fox be cute animal Best match: animal
+For: the fox be brown Best match: brown
+For: fox be mammal Best match: mammal
+For: the fox be gray Best match: be
+SUBJECT gardener
+-----------------
+For: gardener be people . Best match: garden
+For: gardener be much old people . Best match: garden
+For: gardener like plant Best match: garden
+For: gardener favourite time a year be summer . Best match: garden
+SUBJECT gardener
+-----------------
+For: the gardener be very hardworking Best match: garden
+For: the gardener ' employment be very complex Best match: garden
+For: every garden need gardener Best match: garden
+For: the gardener be very smart Best match: garden
+SUBJECT gardener
+-----------------
+For: gardener know all about tree Best match: garden
+For: gardener take care of tree Best match: garden
+For: gardener work in the garden Best match: garden
+For: gardener care people Best match: garden
+SUBJECT gardener
+-----------------
+For: gardener take care of the garden . Best match: garden
+For: gardener be dig in the grind . Best match: garden
+For: gardener be plant flower . Best match: garden
+For: gardener be plant tree . Best match: garden
+SUBJECT gardener
+-----------------
+For: gardener love to plant flower . Best match: garden
+For: gardener care for garden and park . Best match: garden
+For: gardener always know how to handle plant . Best match: garden
+For: gardener shave ornamental shrub . Best match: garden
+SUBJECT gardener
+-----------------
+For: gardener work with plant Best match: garden
+For: gardener be very important professional Best match: garden
+For: gardener care and keep the plant Best match: garden
+For: gardener work in park and garden Best match: garden
+SUBJECT chicken
+-----------------
+For: the chicken feed on grain Best match: chick
+For: the chicken be eat fry Best match: be eat
+For: the chicken can be eat roast Best match: be eat
+For: the chicken can be cook in soup Best match: can be cook
+SUBJECT chicken
+-----------------
+For: chicken be little expensive Best match: expensive
+For: chicken be tasty Best match: tasty
+For: chicken be very healthy Best match: healthy
+For: chicken be good for daily protein intake Best match: be good for
+SUBJECT chicken
+-----------------
+For: eat fry chicken Best match: chick
+For: roast chicken for christmas Best match: chick
+For: chicken to give to family Best match: chick
+For: prepare a good chicken to eat Best match: chick
+SUBJECT chicken
+-----------------
+For: chicken be a bird . Best match: chick
+For: chicken be a high protein food for mankind . Best match: protein
+For: chicken be very tasty food . Best match: tasty
+For: chicken keep in the farm . Best match: chick
+SUBJECT chicken
+-----------------
+For: chicken small animal Best match: animal
+For: chick be chick Best match: chick
+For: chicken grow fast Best match: chick
+For: chicken live in warmth Best match: live in
+SUBJECT chicken
+-----------------
+For: chicken be yellow Best match: be yellow
+For: chicken be vegetarian Best match: vegetarian
+For: chicken be small Best match: chick
+For: chicken be noisy Best match: noisy
+SUBJECT trout
+-----------------
+For: the trout be delicious Best match: be
+For: trout live in the sea Best match: live in
+For: the trout be beautiful Best match: be
+For: the trout be fish Best match: be fish
+SUBJECT trout
+-----------------
+For: trout be freshwater fish Best match: water
+For: trout be game fish Best match: fish
+For: trout be often use in recipe Best match: be
+For: trout can be smoke or unsmoked Best match: can
+SUBJECT trout
+-----------------
+For: trout be a fish Best match: fish
+For: the trout live in river Best match: live in
+For: i love trout , this be a tasty fish Best match: fish
+For: i like fish and fish for trout Best match: fish
+SUBJECT trout
+-----------------
+For: trout be fish Best match: be fish
+For: trout live in river Best match: live in
+For: trout eat worm Best match: eat worm
+For: trout grow fast Best match: 
+SUBJECT trout
+-----------------
+For: trout be kind of fish Best match: fish
+For: trout be a strange fish Best match: fish
+For: trout live in sea Best match: live in
+For: trout have a delicious taste Best match: taste
+SUBJECT trout
+-----------------
+For: the trout live in the river Best match: live in
+For: trout give red caviar Best match: red
+For: trout cook cook Best match: 
+For: trout swim in the water Best match: swim in
+SUBJECT boar
+-----------------
+For: boar be wild animal Best match: 
+For: boar seem pig Best match: pig
+For: boar live in the wood Best match: 
+For: boar be mammal Best match: 
+SUBJECT boar
+-----------------
+For: boar be wild pig . Best match: pig
+For: boar be big . Best match: 
+For: boar have hair . Best match: have
+For: boar live in the wild . Best match: 
+SUBJECT boar
+-----------------
+For: boar also know a the wild swine . Best match: 
+For: boar be a wlid animal . Best match: 
+For: boar be grey . Best match: 
+For: boar eat tree bark and fungus . Best match: 
+SUBJECT boar
+-----------------
+For: wild boar be fat Best match: 
+For: wild boar be brown Best match: 
+For: the boar be cute Best match: 
+For: wild boar can be wild Best match: can
+SUBJECT boar
+-----------------
+For: boar inhabit the forest Best match: 
+For: boar be dangerous Best match: dangerous
+For: boar be wild pig Best match: pig
+For: boar live in pack Best match: 
+SUBJECT boar
+-----------------
+For: boar be mammal Best match: 
+For: boar have a very good smell Best match: have
+For: boar adapt to all type of habitat Best match: 
+For: boar be very sociable behavior Best match: 
+SUBJECT shepherd
+-----------------
+For: shepherd like animal Best match: 
+For: shepherd live long . Best match: on
+For: shepherd have jacket . Best match: have
+For: shepherd earn much Best match: ear
+SUBJECT shepherd
+-----------------
+For: the shepherd be the one who preach the word Best match: be
+For: the shepherd be people of peace Best match: be
+For: the shepherd carry the harmony from house to house Best match: carry
+For: the shepherd be people of god Best match: go
+SUBJECT shepherd
+-----------------
+For: shepherd be people who guard sheeps . Best match: sheep
+For: shepherd be either male of female . Best match: be
+For: shepherd be people who work in farm . Best match: be
+For: shepherd tend sheeps . Best match: sheep
+SUBJECT shepherd
+-----------------
+For: the shepherd take care of the sheep Best match: take care
+For: the shepherd guide the flock Best match: 
+For: the shepherd be caregiver Best match: care
+For: the shepherd be patient Best match: be
+SUBJECT shepherd
+-----------------
+For: shepherd be religious figure Best match: be
+For: shepherd be good people Best match: go
+For: shepherd guide us Best match: 
+For: shepherd take care of the sheep Best match: take care
+SUBJECT shepherd
+-----------------
+For: the shepherd be consistent example of holiness Best match: be
+For: pastor be diligent student of scripture Best match: be
+For: the pastor be faithful preacher of the word Best match: be
+For: the pastor have spiritual maturity Best match: have
+SUBJECT elk
+-----------------
+For: the losos be animal Best match: be
+For: the loser live in the prairie Best match: lose
+For: the bog be large in size Best match: be
+For: the bog have horn Best match: horn
+SUBJECT elk
+-----------------
+For: elk be in the mountain Best match: be
+For: elk be big Best match: be
+For: elk live in america Best match: live
+For: elk eat hay Best match: eat
+SUBJECT elk
+-----------------
+For: alkate be one of the large deer in the world Best match: be
+For: alkate of the large wild mammal in north america and east asia Best match: wild
+For: the alkate live in the forest and feed on herb , plant , leave and bark Best match: forest
+For: alkate male be different from female because they have large horn , and male produce high voice and quarrel among themselves to attract female Best match: themselves
+SUBJECT elk
+-----------------
+For: elk have long horn . Best match: horn
+For: elk be fast . Best match: fast
+For: elk have thick meat . Best match: have
+For: elk be herbivore . Best match: herbivore
+SUBJECT elk
+-----------------
+For: elk live in africa Best match: live
+For: elk be similar to gazelle Best match: be
+For: elk carry santa have sleigh Best match: have
+For: elk have big horn Best match: horn
+SUBJECT elk
+-----------------
+For: elk be so big Best match: be
+For: elk live in the forest Best match: forest
+For: elk have big horn Best match: horn
+For: elk protect their territory Best match: protect
+SUBJECT salmon
+-----------------
+For: the salmon go against the current in the spawn season Best match: go against
+For: salmon be the bear ' favorite food Best match: food
+For: salmon meat be orange Best match: orange
+For: the salmon be very fast swimmer Best match: swim
+SUBJECT salmon
+-----------------
+For: salmon be fish Best match: fish
+For: salmon be ray fin Best match: be
+For: salmon be find in ocean Best match: ocean
+For: salmon be find in atlantic and pacific ocean Best match: ocean
+SUBJECT salmon
+-----------------
+For: salmon live in the river Best match: live in
+For: salmon be fish Best match: fish
+For: salmon be carnivore Best match: be
+For: salmon be oviparous Best match: be
+SUBJECT salmon
+-----------------
+For: salmon be fish Best match: fish
+For: salmon be a healthy food Best match: healthy
+For: salmon bear in fresh water Best match: water
+For: salmon swim agaisnt the current Best match: current
+SUBJECT salmon
+-----------------
+For: the salmon be fish Best match: fish
+For: salmon live in fresh water Best match: live in
+For: salmon have much resemblance to trout Best match: have
+For: the salmon be blue fish Best match: fish
+SUBJECT salmon
+-----------------
+For: salmon swim upstream Best match: swim upstream
+For: salmon be delicious to eat Best match: delicious
+For: salmon swim in fast river Best match: swim in
+For: salmon jump out of the water Best match: water
+SUBJECT soldier
+-----------------
+For: soldier be very brave Best match: brave
+For: soldier often fight Best match: fight
+For: soldier risk their live Best match: live
+For: soldier have uniform Best match: uniform
+SUBJECT soldier
+-----------------
+For: soldier fire weapon Best match: weapon
+For: soldier be in the barrack Best match: barrack
+For: soldier have uniform Best match: uniform
+For: soldier go to war Best match: go to war
+SUBJECT soldier
+-----------------
+For: the soldier be homeland protector soldier Best match: protect
+For: the soldier shield shield Best match: die
+For: the soldier be strong Best match: die
+For: the soldier deserve all the support of the state Best match: deserve
+SUBJECT soldier
+-----------------
+For: soldier defend the country . Best match: country
+For: soldier have weapon . Best match: have weapon
+For: soldier fight war . Best match: fight
+For: soldier be discipline . Best match: die
+SUBJECT soldier
+-----------------
+For: soldier make war Best match: make
+For: soldier wear uniform Best match: wear uniform
+For: soldier use weapon Best match: use weapon
+For: soldier live in barrack Best match: live in barrack
+SUBJECT soldier
+-----------------
+For: soldier defend the country Best match: country
+For: soldier brave people Best match: brave
+For: soldier go on the attack Best match: attack
+For: soldier wear uniform Best match: wear uniform
+SUBJECT musician
+-----------------
+For: musician be people . Best match: people
+For: musician play a instrument . Best match: instrument
+For: musician sing . Best match: music
+For: musician live in city . Best match: music
+SUBJECT musician
+-----------------
+For: the musician be excellent people Best match: people
+For: the musician give life to a party Best match: music
+For: the musician be fundamental in the world Best match: music
+For: the musician be accept all over the world Best match: music
+SUBJECT musician
+-----------------
+For: musician be musically incline . Best match: music
+For: musician be either male or female . Best match: music
+For: musician know how to play instrument . Best match: instrument
+For: musician be generally entertainer . Best match: music
+SUBJECT musician
+-----------------
+For: the musician be brilliant Best match: music
+For: the musician practice a lot Best match: practice
+For: the musician have skill Best match: music
+For: the musician play instrument Best match: instrument
+SUBJECT musician
+-----------------
+For: musician play instrument Best match: instrument
+For: musician be creative Best match: music
+For: musician entertain us Best match: music
+For: musician play expensive instrument Best match: instrument
+SUBJECT musician
+-----------------
+For: musician seek inspiration in other musical genre Best match: music
+For: the musician work in orchestra Best match: orchestra
+For: the musician be dedicate to classical or popular music Best match: music
+For: the musician have commitment and discipline Best match: commit
+SUBJECT housekeeper
+-----------------
+For: housekeeper work in rich family . Best match: 
+For: housekeeper have good salary . Best match: 
+For: housekeeper give order to their staff . Best match: 
+For: housekeeper have a lot of obligation . Best match: 
+SUBJECT housekeeper
+-----------------
+For: housekeeper often work woman Best match: 
+For: housekeeper be hardworking people Best match: 
+For: housekeeper love cleanliness Best match: 
+For: housekeeper be good housewife Best match: 
+SUBJECT housekeeper
+-----------------
+For: housekeeper run a house Best match: 
+For: housekeeper work in mansion Best match: 
+For: housekeeper work for people with money Best match: 
+For: housekeeper organize the rest of servant Best match: 
+SUBJECT housekeeper
+-----------------
+For: housewife work a lot . Best match: 
+For: housekeeper work at home . Best match: 
+For: housekeeper do not earn money . Best match: do
+For: housekeeper make food . Best match: 
+SUBJECT housekeeper
+-----------------
+For: housekeeper be employ to manage a household . Best match: 
+For: housekeeper perform domestic task in a institution or hotel . Best match: do
+For: typical responsibility of housekeeper include vacuum and do the laundry . Best match: do
+For: sometimes housekeeper be require to cook . Best match: 
+SUBJECT housekeeper
+-----------------
+For: housekeeper be the employee who change sheet and make bed Best match: 
+For: housekeeper work in hotel and inn Best match: 
+For: housekeeper should be clean and attentive Best match: 
+For: housekeeper keep room shin Best match: 
+SUBJECT lawyer
+-----------------
+For: lawyer win lawsuit Best match: lawsuit
+For: lawyer make a lot of money Best match: money
+For: the lawyer be good dress Best match: be good
+For: lawyer often lie Best match: law
+SUBJECT lawyer
+-----------------
+For: lawyer be usually man Best match: law
+For: the lawyer work all day Best match: work
+For: the lawyer be right people Best match: people
+For: lawyer be people prepare Best match: people
+SUBJECT lawyer
+-----------------
+For: lawyer be a person who practice law Best match: law
+For: lawyer work in law firm Best match: law firm
+For: lawyer wear suit Best match: wear suit
+For: lawyer be smart Best match: smart
+SUBJECT lawyer
+-----------------
+For: a lawyer be someone who practice law . Best match: law
+For: a lawyer have earn a degree in law . Best match: have
+For: lawyer also prepare legal document for their client . Best match: client
+For: lawyer work in different setting . Best match: work
+SUBJECT lawyer
+-----------------
+For: lawyer know the law . Best match: know
+For: lawyer help people in court . Best match: help people
+For: lawyer help to avoid punishment . Best match: help
+For: lawyer check all document for compliance . Best match: law
+SUBJECT lawyer
+-----------------
+For: lawyer be a person who practice law Best match: law
+For: lawyer advise and represent individual Best match: represent
+For: lawyer defend people Best match: defend people
+For: lawyer work in a lawyer firm Best match: work
+SUBJECT buffalo
+-----------------
+For: buffalo have long hair Best match: have
+For: buffalo eat grass Best match: 
+For: buffalo be very big Best match: big
+For: buffalo be black Best match: black
+SUBJECT buffalo
+-----------------
+For: the buffalo be very large Best match: be
+For: the buffalo have a lot of strength Best match: have
+For: the buffalo be always close to the water Best match: water
+For: the buffalo have big horn Best match: horn
+SUBJECT buffalo
+-----------------
+For: buffalo be animal . Best match: be
+For: buffalo have horn . Best match: horn
+For: buffalo have a body similar to tamarraws Best match: have
+For: buffalo be either male or female animal . Best match: be
+SUBJECT buffalo
+-----------------
+For: the buffalo be animal Best match: be
+For: the buffalo be wild animal Best match: be
+For: the buffalo be from india Best match: be
+For: buffalo have horn Best match: horn
+SUBJECT buffalo
+-----------------
+For: buffalo be big animal . Best match: big
+For: buffalo eat grass . Best match: 
+For: buffalo   have big horn . Best match: horn
+For: buffalo be very strong . Best match: be
+SUBJECT buffalo
+-----------------
+For: buffalo be mammal . Best match: be
+For: buffalo be like cow . Best match: cow
+For: buffalo be present in stamp , coin , flag etc . Best match: be
+For: buffalo be live in america . Best match: live in
+SUBJECT goose
+-----------------
+For: the goose swim in pond Best match: swim in
+For: the goose be white Best match: white
+For: the goose eat bread Best match: eat
+For: the goose caw a lot Best match: go
+SUBJECT goose
+-----------------
+For: goose have wingds Best match: wing
+For: goose be agresive Best match: go
+For: goose be bird Best match: go
+For: goose have two leg Best match: have
+SUBJECT goose
+-----------------
+For: the goose be white Best match: white
+For: the goose lie egg Best match: lie egg
+For: the goose live in lake Best match: go
+For: the gasos fly Best match: fly
+SUBJECT goose
+-----------------
+For: the goose be bird - type animal Best match: go
+For: the goose be very torture animal Best match: go
+For: the goose be often white Best match: white
+For: the goose have a great beak Best match: beak
+SUBJECT goose
+-----------------
+For: goose be animal Best match: go
+For: goose be black Best match: go
+For: goose live in yard Best match: go
+For: goose be lovely Best match: go
+SUBJECT goose
+-----------------
+For: goose be white Best match: white
+For: goose live in the water Best match: water
+For: goose be bird Best match: go
+For: goose   be small Best match: go
+SUBJECT deer
+-----------------
+For: deer be wild Best match: be
+For: deer be hunt Best match: hunt
+For: deer be herbivorous Best match: be
+For: deer be food of lion Best match: lion
+SUBJECT deer
+-----------------
+For: deer be animal Best match: animal
+For: deer be farm animal Best match: animal
+For: deer be farm animal and work Best match: animal
+For: deer be beautiful animal Best match: animal
+SUBJECT deer
+-----------------
+For: deer have horn Best match: horn
+For: deer live in the forest Best match: live in
+For: deer harness to santa claus sleigh Best match: 
+For: deer love to eat grass Best match: eat grass
+SUBJECT deer
+-----------------
+For: deer be so beautiful Best match: be
+For: deer run very quickly Best match: run
+For: deer be eat by lion Best match: lion
+For: deer have amaze eye Best match: have
+SUBJECT deer
+-----------------
+For: deer live in the forest . Best match: live in
+For: deer have horn . Best match: horn
+For: deer be often brown . Best match: brown
+For: deer be hunt . Best match: hunt
+SUBJECT deer
+-----------------
+For: deer inhabit the north Best match: 
+For: they reindeer on sled Best match: 
+For: in the north , deer be raise for meat Best match: raise
+For: sheepskin coat be make of deer skin Best match: make
+SUBJECT monkey
+-----------------
+For: the monkey swing in the tree Best match: swing
+For: the monkey be preen Best match: be
+For: the monkey be from the jungle Best match: jungle
+For: the monkey have the long tail Best match: long tail
+SUBJECT monkey
+-----------------
+For: monkey have many species Best match: species
+For: monkey have tail Best match: tail
+For: monkey climb tree Best match: climb tree
+For: monkey eat fruit Best match: fruit
+SUBJECT monkey
+-----------------
+For: monkey climb tree Best match: climb tree
+For: monkey eat banana Best match: eat banana
+For: monkey be furry Best match: furry
+For: monkey be funny Best match: funny
+SUBJECT monkey
+-----------------
+For: monkey be mammal Best match: mammal
+For: monkey be biped Best match: be
+For: monkey be smart Best match: smart
+For: monkey have tail Best match: tail
+SUBJECT monkey
+-----------------
+For: the monkey live among the tree Best match: tree
+For: the monkey fee on banana Best match: banana
+For: the monkey be of the primate type Best match: primate
+For: the monkey be very funny animal Best match: animal
+SUBJECT monkey
+-----------------
+For: monkey climb on tree Best match: climb
+For: monkey live in asia Best match: live in
+For: monkey live in africa Best match: live in
+For: monkey be the funny animal at the zoo Best match: animal
+SUBJECT sheriff
+-----------------
+For: sheriff protect a town Best match: 
+For: sheriff maintain law Best match: 
+For: sheriff help in emergency situation Best match: 
+For: sheriff be always helpful for civilian Best match: 
+SUBJECT sheriff
+-----------------
+For: sheriff represent the authority Best match: 
+For: sheriff be people of law Best match: 
+For: sheriff live in the west Best match: 
+For: sheriff be brave Best match: 
+SUBJECT sheriff
+-----------------
+For: sheriff keep order Best match: 
+For: sheriff be fight criminal Best match: 
+For: sheriff have weapon Best match: have
+For: sheriff wear a hat Best match: wear
+SUBJECT sheriff
+-----------------
+For: sheriff be a elect officer in a county Best match: office
+For: sheriff be a person who responsible for keep the peace . Best match: 
+For: sheriff arrest thieve Best match: 
+For: sheriff ' work be difficult Best match: 
+SUBJECT sheriff
+-----------------
+For: sheriff work in town . Best match: 
+For: sheriff provide justice . Best match: 
+For: sheriff wear star badge . Best match: star badge
+For: sheriff have a gun . Best match: have
+SUBJECT sheriff
+-----------------
+For: sheriff carry out law enforcements . Best match: car
+For: sheriff be government official . Best match: 
+For: sheriff be traditionally elect . Best match: elect
+For: sheriff can also be appoint by the mayor . Best match: can
+SUBJECT inventor
+-----------------
+For: inventor think too much Best match: invent
+For: inventor live in garage Best match: invent
+For: inventor lose many friend Best match: invent
+For: inventor help people Best match: help people
+SUBJECT inventor
+-----------------
+For: inventor be genius Best match: invent
+For: inventor change the world Best match: invent
+For: inventor be famous Best match: invent
+For: inventor be often male Best match: invent
+SUBJECT inventor
+-----------------
+For: creativity be intelligence have fun . Best match: have
+For: do not fear mistake . you will know failure . continue to reach out . Best match: do
+For: " the short success that can be gain in a brief time and without difficulty be not worth much . " " " Best match: can
+For: the value of a idea lie in the use of it Best match: use
+SUBJECT inventor
+-----------------
+For: vitaly mikhaylovich abalakov be a soviet chemical engineer , mountaineer and inventor . Best match: invent
+For: samuel w. alderson be a inventor well know for his development of the crash test Best match: invent
+For: rostislav evgenievich alexeyev be a russian soviet shipbuilder know for his pioneer work on hydrofoil ship and grind effect vehicle . Best match: of
+For: mary anderson be a american real estate developer , rancher , viticulturist and inventor of the windshield wiper blade . Best match: invent
+SUBJECT inventor
+-----------------
+For: inventor be the predecessor of their ancestor Best match: invent
+For: inventor be extremist on to some extent Best match: invent
+For: inventor be great people that invent thing for the   human Best match: invent thing
+For: i want to be a invetor of someting special Best match: of
+SUBJECT inventor
+-----------------
+For: the inventor create thing Best match: invent
+For: the inventor develop something that doe not exist Best match: invent
+For: the inventor create something new Best match: invent
+For: the inventor something creative Best match: invent
+SUBJECT actress
+-----------------
+For: actress be charismatic Best match: be
+For: actress be make good role play Best match: good
+For: actress play movie Best match: movie
+For: actress be have many fun Best match: have
+SUBJECT actress
+-----------------
+For: actress take drug Best match: 
+For: actress be all fake Best match: be
+For: actress be psychopath Best match: be
+For: actress do not inspire good man Best match: good
+SUBJECT actress
+-----------------
+For: actress be in movie Best match: movie
+For: actress be on television Best match: be on
+For: actress perform on stage Best match: 
+For: actress play a role Best match: 
+SUBJECT actress
+-----------------
+For: actress be always beautiful . Best match: beautiful
+For: actress be young and old . Best match: young
+For: actress always look after their appearance . Best match: look
+For: actress be beautiful woman . Best match: beautiful
+SUBJECT actress
+-----------------
+For: actress earn much . Best match: 
+For: actress work hard . Best match: 
+For: actress have much fame and fan . Best match: have
+For: actress wear many costume . Best match: wear
+SUBJECT actress
+-----------------
+For: actress dress beautifully Best match: beautiful
+For: actress play in performance Best match: 
+For: actress go on tour Best match: 
+For: actress speak on television Best match: 
+SUBJECT butterfly
+-----------------
+For: butterfly be insect Best match: be insect
+For: butterfly have big wing Best match: butter
+For: butterfly be very beautiful Best match: beautiful
+For: butterfly live where flower be Best match: flower
+SUBJECT butterfly
+-----------------
+For: butterfly be colorful . Best match: colorful
+For: butterfly be fly . Best match: butter
+For: butterfly be yellow . Best match: butter
+For: butterfly be white . Best match: butter
+SUBJECT butterfly
+-----------------
+For: the butterfly be beautiful Best match: beautiful
+For: the butterfly be big Best match: butter
+For: butterfly fly high Best match: butter
+For: butterfly have beautiful color Best match: beautiful
+SUBJECT butterfly
+-----------------
+For: the butterfly be beautiful Best match: beautiful
+For: butterfly fly Best match: butter
+For: the butterfly have wing Best match: butter
+For: the butterfly be difficult to grasp Best match: butter
+SUBJECT butterfly
+-----------------
+For: butterfly be insect . Best match: be insect
+For: butterfly can be very colorful . Best match: colorful
+For: butterfly can fly . Best match: can fly
+For: butterfly fly from flower to flower . Best match: fly from
+SUBJECT butterfly
+-----------------
+For: we chase butterfly , and sometimes catch one . Best match: butter
+For: butterfly and moth be remarkable for their numb , size , variety and beauty . Best match: butter
+For: but there be also a numb of tropical species , notably among butterfly and beetle . Best match: butter
+For: there be thousand of variety of butterfly and other insect . Best match: insect
+SUBJECT reporter
+-----------------
+For: reporter must ask Best match: ask
+For: reporter make live broadcast Best match: make
+For: reporter must talk clear Best match: talk
+For: reporter must look good Best match: look
+SUBJECT reporter
+-----------------
+For: reporter know how to talk correctly Best match: talk
+For: the reporter on my city be good Best match: 
+For: reporter be good look Best match: look
+For: reporter visit a lot of place Best match: 
+SUBJECT reporter
+-----------------
+For: reporter always interview Best match: interview
+For: the reporter can be on television , radio and in newspaper . Best match: can
+For: the reporter be sometimes a dangerous profession , especially if the report from the war zone Best match: war zone
+For: the reporter can beautifully express thought Best match: press
+SUBJECT reporter
+-----------------
+For: collect and present information about a specific event Best match: information
+For: they work in mass medium like radio televiosn newspaper Best match: 
+For: its objective be to keep the community inform Best match: keep
+For: they handle the evidence of all information turn it into truthful Best match: information
+SUBJECT reporter
+-----------------
+For: the reporter be journalist Best match: 
+For: the reporter be a field journalist who collect and verify information Best match: information
+For: the reporter be the one who describe the fact Best match: 
+For: reporter collaborate in news research Best match: 
+SUBJECT reporter
+-----------------
+For: reporter work in press . Best match: press
+For: reporter have a pen . Best match: 
+For: reporter be often male . Best match: 
+For: reporter doe news . Best match: do
+SUBJECT merchant
+-----------------
+For: merchant work late . Best match: work
+For: merchant work hard . Best match: work
+For: merchant be people . Best match: be
+For: merchant have a store . Best match: 
+SUBJECT merchant
+-----------------
+For: the merchant have pepper be the well Best match: be
+For: the merchant have many spice Best match: 
+For: there be no definite place for merchant Best match: be
+For: the merchant be very good worker Best match: work
+SUBJECT merchant
+-----------------
+For: merchant trade . Best match: 
+For: merchant be buy . Best match: be
+For: merchant be sell . Best match: sell
+For: merchant have shop . Best match: 
+SUBJECT merchant
+-----------------
+For: merchant work in the market Best match: work
+For: merchant be very tricky people Best match: be
+For: merchant know the price of good Best match: good
+For: merchant have a shop or counter Best match: 
+SUBJECT merchant
+-----------------
+For: merchant be hard worker Best match: work
+For: merchant be necessary in the economy Best match: be
+For: merchant be one the much antique profession Best match: be
+For: merchant travel around the whole world Best match: world
+SUBJECT merchant
+-----------------
+For: merchant be mostly rich . Best match: be
+For: merchant bring great revenue to the state . Best match: 
+For: merchant be engage in charity . Best match: age
+For: merchant be move the economy of the country . Best match: be
+SUBJECT servant
+-----------------
+For: servant be people . Best match: people
+For: servant serve people . Best match: people
+For: servant leave in house . Best match: 
+For: servant be mostly old people . Best match: people
+SUBJECT servant
+-----------------
+For: electric service be very good Best match: be
+For: the public service be very heavy Best match: be
+For: the hotel service be very efficient Best match: be
+For: funeral service be very expensive Best match: be
+SUBJECT servant
+-----------------
+For: servant be people that serve a employer . Best match: people
+For: servant be either male and female people . Best match: people
+For: servant be domestic worker . Best match: be
+For: servant be people who work for the people . Best match: people
+SUBJECT servant
+-----------------
+For: the servant be affectionate Best match: be
+For: the servant be very hardworking Best match: king
+For: the servant help in the chore Best match: 
+For: the servant be helpful Best match: be
+SUBJECT servant
+-----------------
+For: servant live here Best match: 
+For: servant be worker Best match: be
+For: servant wear uniform Best match: wear
+For: servant be friendly Best match: be
+SUBJECT servant
+-----------------
+For: the service plate Best match: 
+For: the service to the english Best match: 
+For: the service of gueridón Best match: of
+For: the french service Best match: 
+SUBJECT painter
+-----------------
+For: painter work on the street Best match: paint
+For: painter work in auto repair shop Best match: paint
+For: the painter be honest people Best match: paint
+For: the painter have a hard daily work Best match: paint
+SUBJECT painter
+-----------------
+For: painter love their work . Best match: paint
+For: painter be sometimes famous . Best match: paint
+For: painter prefer to draw landscape . Best match: paint
+For: painter enjoy great passion . Best match: paint
+SUBJECT painter
+-----------------
+For: the painter embellish the house Best match: paint
+For: painter create work of art Best match: paint
+For: the painter be talented with the lienso Best match: paint
+For: painter adorn urban space Best match: paint
+SUBJECT painter
+-----------------
+For: painter be artist . Best match: paint
+For: painter can make a design . Best match: paint
+For: painter use color . Best match: paint
+For: painter can draw   picture . Best match: paint
+SUBJECT painter
+-----------------
+For: artist paint picture Best match: paint
+For: artist can draw Best match: can
+For: artist have a taste Best match: have
+For: artist have a good brush Best match: have
+SUBJECT painter
+-----------------
+For: painter be talented . Best match: paint
+For: painter be interest people . Best match: paint
+For: painter do painting . Best match: do painting
+For: painter earn good money . Best match: paint
+SUBJECT actor
+-----------------
+For: actor be very fun people Best match: act
+For: actor live the live of other Best match: act
+For: actor tour a lot Best match: act
+For: actor have many name Best match: name
+SUBJECT actor
+-----------------
+For: actor play in the theater . Best match: play in
+For: actor be play in series . Best match: play in
+For: actor play in movie . Best match: play in
+For: actor earn a lot . Best match: earn
+SUBJECT actor
+-----------------
+For: the actor always stand out Best match: act
+For: the actor always focus on provide the well on tv screen Best match: well
+For: the actor have a gift Best match: have
+For: the actor show us perseverance Best match: show
+SUBJECT actor
+-----------------
+For: the actor on famous Best match: famous
+For: the actor be handsome Best match: handsome
+For: the actor earn good money Best match: money
+For: the actor work a lot Best match: work
+SUBJECT actor
+-----------------
+For: actor be person who play a role in theater , cinema or television . Best match: play
+For: actor be celebrity . Best match: act
+For: actor be popular among people . Best match: act
+For: actor can win award . Best match: win
+SUBJECT actor
+-----------------
+For: i have a friend whose father be a famous actor . Best match: famous
+For: i love this actor Best match: love
+For: he be not a singer , but a actor . Best match: sing
+For: the actor be wait on the stage . Best match: stage
+SUBJECT proprietor
+-----------------
+For: the proprietor   work full time Best match: work
+For: the proprietor have enough money Best match: 
+For: the proprietor go on vacation to beautiful place Best match: be
+For: the proprietor take care of their business Best match: business
+SUBJECT proprietor
+-----------------
+For: proprietor be the owner of a business Best match: business
+For: proprietor be the holder of property Best match: be
+For: proprietor have the legal right to something Best match: 
+For: proprietor be grant ownership of a colony Best match: be
+SUBJECT proprietor
+-----------------
+For: the rightful owner of a real estate Best match: 
+For: the true owner of a idea or invention Best match: 
+For: restaurant owner Best match: restaurant
+For: current employer Best match: 
+SUBJECT proprietor
+-----------------
+For: they be proprietor of the good - know trade mark Best match: good
+For: person who can be proprietor of community trade mark Best match: can
+For: patent proprietor Best match: 
+For: register a joint proprietor Best match: 
+SUBJECT proprietor
+-----------------
+For: they be very bad Best match: bad
+For: they want very high rent Best match: 
+For: keep the exact date Best match: 
+For: they be rich , but they be not human Best match: be
+SUBJECT proprietor
+-----------------
+For: proprietor be the owner of a company Best match: be
+For: proprietor be the owner of a house Best match: use
+For: proprietor be the owner of a farm Best match: be
+For: proprietor be the owner of a business Best match: business
+SUBJECT crow
+-----------------
+For: crow be a type of bird Best match: bird
+For: crow eat corpse of another animal Best match: other animal
+For: crow can fly in the sky Best match: can fly
+For: crow be usually black Best match: black
+SUBJECT crow
+-----------------
+For: crow be associate with terror Best match: be associate with
+For: crow be black Best match: black
+For: crow can fly Best match: can fly
+For: crow have a deep look Best match: look
+SUBJECT crow
+-----------------
+For: crow be know for their intelligence Best match: be
+For: crow be black bird Best match: black
+For: crow remember the face of human Best match: remember
+For: crow have wing Best match: have
+SUBJECT crow
+-----------------
+For: crow   be black bird . Best match: black
+For: crow be know for their intelligence . Best match: be
+For: crow be know for damage crop . Best match: be
+For: crow be the scientific family aves . Best match: be
+SUBJECT crow
+-----------------
+For: the crow be fly animal Best match: animal
+For: crow be dangerous animal Best match: dangerous
+For: the crow be black animal Best match: animal
+For: the crow be animal that sing Best match: animal
+SUBJECT crow
+-----------------
+For: the corvus be a species of passerine bird of the family corvidae Best match: bird
+For: corvus be present throughout the northern hemisphere Best match: be
+For: the corvus be the species of corvid with the large distribution surface Best match: face
+For: large crow usually live for ten to fifteen year but some individual have live 40 year Best match: have
+SUBJECT frog
+-----------------
+For: the frog be good camouflage Best match: camouflage
+For: the frog like to jump Best match: jump
+For: there be very poisonous frog Best match: poisonous
+For: frog be usually green Best match: green
+SUBJECT frog
+-----------------
+For: frog eat insect Best match: eat insect
+For: frog can jump high Best match: can jump high
+For: frog catch insect with their tongue Best match: catch insect
+For: frog can be poisonous Best match: poisonous
+SUBJECT frog
+-----------------
+For: frog be green Best match: green
+For: frog live in pool of water Best match: live in
+For: frog have big eye Best match: have big eye
+For: frog be amphibian Best match: amphibian
+SUBJECT frog
+-----------------
+For: frog be amphibian Best match: amphibian
+For: frog be toxic Best match: be
+For: frog like to eat insect Best match: eat insect
+For: frog can jump a lot Best match: can jump
+SUBJECT frog
+-----------------
+For: the frog be slimy animal Best match: be slimy
+For: the frog be green animal Best match: animal
+For: the frog be reptilian type animal Best match: animal
+For: frog live in aquatic area Best match: live in
+SUBJECT frog
+-----------------
+For: frog can jump Best match: can jump
+For: frog live in swamp Best match: live in
+For: frog rest at water lily Best match: water
+For: frog live in fresh water Best match: live in
+SUBJECT farmer
+-----------------
+For: farmer grow up vegetable Best match: vegetable
+For: farmer have tractor Best match: tractor
+For: farmer know earth Best match: know
+For: farmer wake up early Best match: farm
+SUBJECT farmer
+-----------------
+For: farmer plant corn Best match: plant
+For: farmer have tough hand Best match: hand
+For: farmer do not know a lot about technology Best match: know
+For: farmer work a lot Best match: work
+SUBJECT farmer
+-----------------
+For: a farmer grow vegetable and fruit . Best match: grow vegetable
+For: farmer always live on the ranch and have great land . Best match: land
+For: farmer breed goat , cow , pig , horse , chicken and other animal . Best match: chicken
+For: farmer have a lot of agricultural technology . Best match: have
+SUBJECT farmer
+-----------------
+For: person who cultivate Best match: cultivate
+For: exploitation of resource Best match: resource
+For: be the set of technique , knowledge and knowledge to cultivate the land Best match: cultivate
+For: soil treatment and vegetable crop Best match: vegetable
+SUBJECT farmer
+-----------------
+For: the farmer be the one who cultivate the land Best match: cultivate
+For: farmer live in the countryside Best match: count
+For: the farmer be the one who maintain and harvest the crop Best match: maintain
+For: farmer cultivate the land Best match: cultivate
+SUBJECT farmer
+-----------------
+For: farmer cultivate vegetable . Best match: cultivate
+For: farmer have big hat . Best match: have
+For: farmer love nature . Best match: love
+For: farmer work the grind . Best match: grind
+SUBJECT interpreter
+-----------------
+For: translator translate document Best match: 
+For: translator today have a lot of work to do Best match: have
+For: do you want to be my translator ? Best match: 
+For: translator know foreign language Best match: language
+SUBJECT interpreter
+-----------------
+For: interpreter translate into english Best match: 
+For: interpreter player of romeo Best match: 
+For: interpreter know the dialogue Best match: 
+For: interpreter be in the conference Best match: 
+SUBJECT interpreter
+-----------------
+For: a interpreter be a computer program that run script write in a interpret language Best match: language
+For: interpreter be use a early a 1952 to facilitate programme within the boundary of computer at the time Best match: 
+For: a interpreter be a computer program that be use to directly execute program instruction write use one of the many high - level programme language Best match: language
+For: the interpreter transform the high - level program into a intermediate language that it then execute , or it can parse the high - level source code and then perform the command directly , which be do line by line or statement by statement Best match: language
+SUBJECT interpreter
+-----------------
+For: interpreter be translator , Best match: 
+For: interpreter use their hand . Best match: 
+For: interpreter show sign . Best match: 
+For: interpreter be polyglot . Best match: 
+SUBJECT interpreter
+-----------------
+For: interpreter know several language Best match: language
+For: interpreter be the people who translate Best match: 
+For: interpreter translate book and article Best match: 
+For: interpreter work at the un Best match: 
+SUBJECT interpreter
+-----------------
+For: interpreter translate text Best match: 
+For: interpreter voice speech Best match: 
+For: interpreter translate article Best match: 
+For: interpreter know language Best match: language
+SUBJECT dog
+-----------------
+For: dog look cute Best match: look cute
+For: dog have so    many breed Best match: many breed
+For: dog love to play Best match: love to
+For: dog love to swim Best match: love to
+SUBJECT dog
+-----------------
+For: dog be man have well friend Best match: friend
+For: dog be faithful Best match: faithful
+For: dog be wonderful Best match: do
+For: some dog be aggressive Best match: aggressive
+SUBJECT dog
+-----------------
+For: dog be human well friend . Best match: man well friend
+For: dog be very smart animal . Best match: animal
+For: dog have different breed , but they all consider the same species . Best match: different breed
+For: dog be the much bizarre species on earth . Best match: species
+SUBJECT dog
+-----------------
+For: dog be pet . Best match: be pet
+For: dog be cute animal . Best match: be cute
+For: dog love bone . Best match: love bone
+For: dog be well human friend . Best match: human friend
+SUBJECT dog
+-----------------
+For: dog do not like cat . Best match: do not like
+For: dog be friendly . Best match: be friendly
+For: dog like meat . Best match: meat
+For: dog be good haunters . Best match: be good
+SUBJECT dog
+-----------------
+For: dog be domestic animal Best match: domestic animal
+For: dog be know for their ability to learn Best match: be know
+For: dog love child Best match: child
+For: dog be descend from the wolf Best match: be descend from
+SUBJECT miner
+-----------------
+For: miner work in mine Best match: mine
+For: miner dig earth Best match: earth
+For: miner dig for precious metal Best match: mine
+For: miner dig for natural mineral Best match: mine
+SUBJECT miner
+-----------------
+For: miner work in mine Best match: mine
+For: miner work look for gold Best match: mine
+For: miner work for diamond Best match: mine
+For: miner work search for mineral Best match: mine
+SUBJECT miner
+-----------------
+For: miner work underground Best match: round
+For: miner mine coal Best match: mine
+For: miner rise from the grind dirty Best match: mine
+For: miner be very hardworking Best match: mine
+SUBJECT miner
+-----------------
+For: miner work in mine Best match: mine
+For: miner extract coal Best match: extract
+For: miner ' work be so exhaust Best match: mine
+For: miner do their work in difficult condition Best match: mine
+SUBJECT miner
+-----------------
+For: miner work hard . Best match: mine
+For: miner work underground . Best match: round
+For: miner wear barette . Best match: wear
+For: miner die sometimes while work . Best match: mine
+SUBJECT miner
+-----------------
+For: difficult work condition Best match: 
+For: dangerous work condition Best match: dangerous
+For: work deep underground Best match: round
+For: good pay job Best match: pay
+SUBJECT clerk
+-----------------
+For: clerk have desk Best match: 
+For: clerk be people with cufflink Best match: be
+For: clerk have office Best match: 
+For: clerk often have glass Best match: 
+SUBJECT clerk
+-----------------
+For: clerk work in the company Best match: work
+For: clerk earn a lot of money Best match: 
+For: cleaks want a vacation Best match: 
+For: clearks work at night Best match: work
+SUBJECT clerk
+-----------------
+For: the clerk , one of the religious group affiliate with the french , be active during the ﻿1 century and be a writer Best match: be
+For: clerk this name be call because its member be copy the torah and then interpret it a the professional exponent of the law Best match: be
+For: clerk they have be discard a be religious in religious matter , keep tradition and invent new commandment Best match: be
+For: clerk they be call in the community with a teacher , which mean in hebrew , rabi , because they be the teacher of sharia in the synagogue Best match: be
+SUBJECT clerk
+-----------------
+For: clerk work at bank . Best match: work
+For: clerk keep record . Best match: record
+For: clerk help people . Best match: 
+For: clerk perform various office duty . Best match: 
+SUBJECT clerk
+-----------------
+For: clerk be the one who charge a salary Best match: be
+For: clerk work in a factory Best match: work
+For: clerk have boss Best match: 
+For: clerk charge payroll Best match: 
+SUBJECT clerk
+-----------------
+For: clerk work for a company Best match: work
+For: clerk must do a job Best match: job
+For: clerk often work hard Best match: work
+For: clerk should fulfill many job Best match: job
+SUBJECT turkey
+-----------------
+For: turkey be eat at christmas Best match: be eat at christmas
+For: turkey be use to make pate Best match: make
+For: the turkey have strike feather Best match: feather
+For: turkey have a peak Best match: have
+SUBJECT turkey
+-----------------
+For: turkey be big . Best match: be
+For: turkey have feather . Best match: have feather
+For: turkey be be eat at thanksgiving . Best match: be eat at thanksgiving
+For: turkey have a mainly black color . Best match: have
+SUBJECT turkey
+-----------------
+For: turkey be a large bird in the genus meleagris . Best match: bird
+For: turkey male be large and much much colorful than the female . Best match: male
+For: turkey be class in the family of phasianidae . Best match: asia
+For: turkey be domesticate in ancient mexico . Best match: cat
+SUBJECT turkey
+-----------------
+For: we can eat turkey Best match: can
+For: the turkey have feather Best match: have feather
+For: turkey be poultry Best match: be
+For: turkey be large bird Best match: bird
+SUBJECT turkey
+-----------------
+For: turkey be poultry Best match: be
+For: turkey big bird Best match: bird
+For: turkey lay egg Best match: egg
+For: turkey have delicious meat Best match: delicious
+SUBJECT turkey
+-----------------
+For: turkey have long leg Best match: have
+For: turkey have a very robust beak Best match: have
+For: turkey have a tail Best match: have
+For: turkey have a very high neck Best match: high
+SUBJECT camel
+-----------------
+For: camel have hump . Best match: have hump
+For: camel live mostly in africa , Best match: africa
+For: camel drink a lot of water . Best match: water
+For: camel love sun . Best match: sun
+SUBJECT camel
+-----------------
+For: camel have hump Best match: have hump
+For: camel live in the desert Best match: live in
+For: camel may not drink water for a long time Best match: drink water
+For: camel have four leg Best match: have
+SUBJECT camel
+-----------------
+For: camel live in africa . Best match: live in
+For: camel have get orange skin . Best match: have
+For: camel be resistant to starvation and thirst . Best match: be
+For: camel fee to grass . Best match: 
+SUBJECT camel
+-----------------
+For: camel have hump Best match: have hump
+For: camel be tall Best match: tall
+For: camel drink water Best match: drink water
+For: camel be brown Best match: brown
+SUBJECT camel
+-----------------
+For: camel be tall Best match: tall
+For: camel store food and water Best match: store food
+For: camel be strong Best match: be
+For: camel commonly live in dessert Best match: live in dessert
+SUBJECT camel
+-----------------
+For: camel live in desert Best match: live in desert
+For: camel be use to ride Best match: be use
+For: camel do not need water every day Best match: need water
+For: camel have one or two hump Best match: two hump
+SUBJECT physician
+-----------------
+For: physician be intelligent Best match: physic
+For: physician can heal people Best match: physic
+For: physician can diagnose people Best match: diagnose
+For: physician with experience be the well Best match: physic
+SUBJECT physician
+-----------------
+For: physician cure people Best match: physic
+For: physician save live Best match: physic
+For: physician study the organism Best match: physic
+For: physician operate Best match: physic
+SUBJECT physician
+-----------------
+For: physician have a lot of knowledge Best match: physic
+For: physician have ethical responsibility to their patient Best match: ethical
+For: physician often have medical interest other than clinical practice Best match: practice
+For: physician have a responsibility with society Best match: physic
+SUBJECT physician
+-----------------
+For: physician be a person who practise medicine . Best match: medicine
+For: physician be consider to be rich . Best match: physic
+For: physician be also know to be smart . Best match: physic
+For: physician be also consider to be brave . Best match: physic
+SUBJECT physician
+-----------------
+For: physician analyze human behavior Best match: physic
+For: physician work with people Best match: physic
+For: physician take care of the mental part of human being Best match: physic
+For: physician work in hospital and clinic Best match: physic
+SUBJECT physician
+-----------------
+For: a doctor be a professional who practice medicine Best match: profession
+For: a doctor see you when -PRON- be sick Best match: doctor
+For: a doctor be responsible for promote , maintain or restore health Best match: doctor
+For: a doctor be indispensable all over the world Best match: doctor
+SUBJECT cattle
+-----------------
+For: parrot speak a lot Best match: 
+For: parrot have so   many color Best match: have
+For: parrot have so many breed Best match: breed
+For: parrot be so beautiful creature of allah Best match: eat
+SUBJECT cattle
+-----------------
+For: parrot be pretty Best match: be
+For: parrot speak Best match: 
+For: parrot be always in pair Best match: be
+For: wild parrot be in the treetop Best match: tree
+SUBJECT cattle
+-----------------
+For: parrot be silly and funny bird . Best match: be
+For: parrot be in cage , much of them . Best match: be
+For: parrot can learn and repeat human voice . Best match: can
+For: parrot have the much beutifull feather amoung the bird . Best match: have
+SUBJECT cattle
+-----------------
+For: parrot be good pet . Best match: good
+For: parrot be a little bird . Best match: be
+For: parrot can be a different color . Best match: can
+For: parrot can learn to tell some word . Best match: can
+SUBJECT cattle
+-----------------
+For: parrot live in tropical region . Best match: live in
+For: parrot be vividly colour . Best match: be
+For: parrot be intelligent bird . Best match: be
+For: parrot can mimic human speech . Best match: can
+SUBJECT cattle
+-----------------
+For: parrot can speak Best match: can
+For: parrot can be different size Best match: can
+For: parrot live long Best match: 
+For: parrot can be different color Best match: can
+SUBJECT snake
+-----------------
+For: snake be reptile Best match: reptile
+For: snake crawl on the grind Best match: crawl on
+For: snake can be many color Best match: be man
+For: snake can live in the water Best match: can live in
+SUBJECT snake
+-----------------
+For: snake be animal . Best match: animal
+For: snake have no leg . Best match: have
+For: snake live on the grind . Best match: live on
+For: snake be a christian symbol for satan . Best match: symbol
+SUBJECT snake
+-----------------
+For: snake be a wild animal . Best match: animal
+For: snake be green . Best match: green
+For: snake live in the forest . Best match: live in
+For: snake have a killer poison . Best match: poison
+SUBJECT snake
+-----------------
+For: snake do not have bone Best match: bone
+For: the snake be long Best match: long
+For: some snake be poisonous Best match: poisonous
+For: snake be reptile Best match: reptile
+SUBJECT snake
+-----------------
+For: snake crawl Best match: crawl
+For: snake be poisonous Best match: poisonous
+For: snake shed their skin Best match: skin
+For: snake live in the south Best match: live in
+SUBJECT snake
+-----------------
+For: snake be dangerous Best match: be dangerous
+For: snake be carnivorous reptile Best match: reptile
+For: snake reproduce by lay egg Best match: reproduce
+For: snake live everywhere Best match: live
+SUBJECT pilot
+-----------------
+For: pilot be charismatic Best match: be
+For: many pilot wear sunglass Best match: wear sunglass
+For: pilot be talk good english Best match: english
+For: pilot be fly Best match: fly
+SUBJECT pilot
+-----------------
+For: pilot fly aeroplane Best match: plane
+For: pilot belong to a good profession Best match: good
+For: pilot travel around the world by air Best match: air
+For: pilot earn a lot of money Best match: money
+SUBJECT pilot
+-----------------
+For: pilot have a license Best match: have
+For: pilot can fly plane Best match: fly plane
+For: pilot can fly helicopter Best match: can
+For: pilot can travel a lot Best match: can
+SUBJECT pilot
+-----------------
+For: pilot drive plane and helicopter . Best match: plane
+For: pilot be always brave and courageous . Best match: be
+For: pilot know how to jump with a parachute . Best match: parachute
+For: pilot wear a special uniform . Best match: uniform
+SUBJECT pilot
+-----------------
+For: pilot wear white dress . Best match: wear
+For: pilot have numb of preflight duty . Best match: flight
+For: pilot earn much . Best match: earn
+For: pilot be a person who drive vehicle . Best match: drive
+SUBJECT pilot
+-----------------
+For: pilot fly high Best match: fly
+For: pilot have a beautiful shape Best match: have
+For: pilot fly plane Best match: fly plane
+For: pilot be fearless people Best match: people
+SUBJECT lion
+-----------------
+For: the lion be carnivore Best match: be carnivore
+For: the lion be dangerous Best match: be dangerous
+For: the lion be great Best match: eat
+For: the lion be yellow Best match: yellow
+SUBJECT lion
+-----------------
+For: lion be a pack animal Best match: animal
+For: lion hunt in the wild Best match: wild
+For: lion have often be hunt a game Best match: be hunt
+For: lion be know a the king of beast Best match: king of beast
+SUBJECT lion
+-----------------
+For: lion be a predatory mammal Best match: predator
+For: the lion live in africa Best match: live in africa
+For: i see a lion in a circus Best match: us
+For: lion beautiful and big Best match: beautiful
+SUBJECT lion
+-----------------
+For: lion be carnivorous Best match: be carnivorous
+For: lion live in africa Best match: live in africa
+For: lion be king of the jungle Best match: be king of
+For: lion be feline Best match: be
+SUBJECT lion
+-----------------
+For: lion the king of forest Best match: king of forest
+For: lion eat dees Best match: eat
+For: lion be strong Best match: strong
+For: lion be frighten Best match: be
+SUBJECT lion
+-----------------
+For: lion be the king of the animal Best match: king of
+For: he lion live in africa Best match: live in africa
+For: the lion feed on meat Best match: meat
+For: the lion perform in a circus Best match: form
+SUBJECT rabbit
+-----------------
+For: the rabbit be white Best match: white
+For: the rabbit be very beautiful Best match: be
+For: the rabbit jump a lot Best match: jump
+For: the rabbit reproduce fast Best match: reproduce
+SUBJECT rabbit
+-----------------
+For: rabbit be a fast animal Best match: animal
+For: rabbit be cue Best match: be
+For: rabbit taste good Best match: taste
+For: rabbit have big ear Best match: have big ear
+SUBJECT rabbit
+-----------------
+For: rabbit have big ear Best match: have big ear
+For: the rabbit have many young Best match: young
+For: the rabbit be cunning Best match: be
+For: rabbit eat carrot Best match: eat carrot
+SUBJECT rabbit
+-----------------
+For: rabbit be animal with long ear Best match: long ear
+For: the rabbit stick huge jump Best match: jump
+For: rabbit be tender animal Best match: animal
+For: the rabbit be always a nice color Best match: color
+SUBJECT rabbit
+-----------------
+For: rabbit be animal Best match: animal
+For: rabbit be white Best match: white
+For: rabbit live in forest Best match: live in
+For: rabbit live 10 year Best match: 10 year
+SUBJECT rabbit
+-----------------
+For: rabbit be multicolor Best match: color
+For: rabbit be small Best match: small
+For: rabbit have big ear Best match: have big ear
+For: rabbit be smart Best match: be
+SUBJECT foreman
+-----------------
+For: the foreman work hard Best match: 
+For: the foreman mistreat employee Best match: 
+For: the foreman have luxury car Best match: 
+For: the foreman lead dangerous live Best match: 
+SUBJECT foreman
+-----------------
+For: foreman direct other worker Best match: 
+For: foreman have a lot of responsibility Best match: 
+For: foreman speak for a jury Best match: 
+For: foreman have leadership skill Best match: 
+SUBJECT foreman
+-----------------
+For: if you want to know how much -PRON- will be miss when -PRON- be go , put your finger in a bucket of water and then remove it . the hole that have leave will be how much you be miss Best match: leave
+For: " we all have limit . almost no one reach theirs . you definitely have not . " " " Best match: 
+For: work hard and activity Best match: 
+For: self - monitor during work Best match: 
+SUBJECT foreman
+-----------------
+For: the foreman be a satirical folk music band Best match: 
+For: a construction foreman be the worker or tradesman who be in charge of a construction crow . Best match: 
+For: a foreman may train employee under his or her supervision Best match: 
+For: each foreman build at the rate of 25 % , which increase additively a the player gain much foreman . Best match: 
+SUBJECT foreman
+-----------------
+For: he be strict Best match: 
+For: keep work hard Best match: 
+For: always find mistake in other Best match: 
+For: want everyone to respect it Best match: 
+SUBJECT foreman
+-----------------
+For: foreman son persona in charge of a particular department Best match: 
+For: foreman be in charge of the industry Best match: 
+For: foreman be in charge in   the factory Best match: 
+For: the foreman be in charge of the business Best match: 
+SUBJECT landlord
+-----------------
+For: landlord have a lot of money Best match: have
+For: landlord be usually good at economy Best match: 
+For: landlord always try to get a good deal Best match: get
+For: landlord will be polite when he be sell Best match: 
+SUBJECT landlord
+-----------------
+For: landlord own home Best match: 
+For: landlord have condominium Best match: have
+For: landlord rend real estate Best match: rend
+For: landlord invest in property Best match: 
+SUBJECT landlord
+-----------------
+For: landlord be the owner of a house . Best match: use
+For: landlord be fairly rich . Best match: 
+For: landlord be consider mean and brutal . Best match: mean
+For: landlord mostly be sel fcentered individual . Best match: 
+SUBJECT landlord
+-----------------
+For: the landlord be people who own many land Best match: people
+For: the landlord be people who have many legal problem Best match: people
+For: the landlord be unreliable people Best match: people
+For: the landlord be people who pose a owner of a land where the legitimate owner be another person Best match: people
+SUBJECT landlord
+-----------------
+For: landlord accept money for home Best match: accept
+For: landlord earn money with no work Best match: 
+For: landlord be rich Best match: 
+For: landlord land house for money Best match: use
+SUBJECT landlord
+-----------------
+For: a owner be the owner of a house , apartment , condominium , land or property Best match: apartment
+For: a owner rent or lease a individual Best match: 
+For: a owner be the owner Best match: 
+For: a owner be the one who have his own thing Best match: have
+SUBJECT steward
+-----------------
+For: steward help people . Best match: 
+For: steward look after passenger . Best match: 
+For: steward can be find in aircraft . Best match: can
+For: steward have specific uniform . Best match: have
+SUBJECT steward
+-----------------
+For: steward be people who organize event . Best match: 
+For: steward be vell organize . Best match: 
+For: steward be very smart . Best match: 
+For: steward be for rich people pocket . Best match: 
+SUBJECT steward
+-----------------
+For: steward be a person emplyed to look passenger in a flight . Best match: 
+For: steward instruct safety procedure . Best match: 
+For: steward deliver food and drink . Best match: 
+For: steward help any problem fo a passenger . Best match: 
+SUBJECT steward
+-----------------
+For: steward work female Best match: 
+For: steward serve food on airplane Best match: 
+For: steward be nice man Best match: 
+For: steward should be very smile and friendly Best match: 
+SUBJECT steward
+-----------------
+For: the steward work in hotel Best match: 
+For: the steward be responsible for the hygiene of dish and utensil Best match: 
+For: steward be in kitchen Best match: 
+For: the steward be in charge of the kitchen Best match: 
+SUBJECT steward
+-----------------
+For: the steward clean the bar Best match: 
+For: steward clean the kitchen Best match: 
+For: steward work with pot and cutlery Best match: 
+For: steward be responsible for hygiene Best match: 
+SUBJECT bee
+-----------------
+For: bee make honey . Best match: make honey
+For: bee can sting . Best match: can sting
+For: bee be usefull . Best match: useful
+For: bee can fly . Best match: can fly
+SUBJECT bee
+-----------------
+For: the bee sting you Best match: sting
+For: bee produce honey Best match: produce honey
+For: the bee be black and yellow Best match: yellow
+For: bee live in hive Best match: live in hive
+SUBJECT bee
+-----------------
+For: bee be yellow and black . Best match: yellow
+For: bee make honey . Best match: make honey
+For: bee be small . Best match: be
+For: bee live in cocoon . Best match: live in
+SUBJECT bee
+-----------------
+For: bee make honey Best match: make honey
+For: bee have a sting Best match: sting
+For: bee be yellow Best match: yellow
+For: bee have wing Best match: wing
+SUBJECT bee
+-----------------
+For: bee produce honey Best match: produce honey
+For: bee love flower Best match: flower
+For: bee hover around fruit Best match: hover around
+For: bee love flower and fruit Best match: flower
+SUBJECT bee
+-----------------
+For: bee make honey Best match: make honey
+For: bee like flower Best match: flower
+For: bee can sting Best match: can sting
+For: bee fly and buzz Best match: buzz
+SUBJECT ape
+-----------------
+For: ape love game Best match: 
+For: ape like banana Best match: banana
+For: ape like peanut Best match: 
+For: many ape live in india Best match: live in
+SUBJECT ape
+-----------------
+For: planet of the ape Best match: planet
+For: ape resemble like monkey Best match: resemble
+For: ape live in africa Best match: live in
+For: ape be dark in color Best match: be
+SUBJECT ape
+-----------------
+For: ape be closely relate to human Best match: human
+For: ape be intelligent animal Best match: intelligent
+For: ape have complex family relationship Best match: have
+For: ape live in troop Best match: live in
+SUBJECT ape
+-----------------
+For: ape always climb tree . Best match: climb tree
+For: ape eat banana and other fruit . Best match: eat banana
+For: ape love sex . Best match: 
+For: ape jump and grimace in zoo . Best match: jump
+SUBJECT ape
+-----------------
+For: ape look like chimpanzee . Best match: look
+For: ape eat raw food . Best match: food
+For: ape use different kind of tool to kill animal . Best match: different
+For: ape use to light fire by rub stone together . Best match: use
+SUBJECT ape
+-----------------
+For: monkey be cute animal Best match: monkey
+For: monkey be small animal Best match: monkey
+For: monkey fast animal Best match: monkey
+For: monkey live in the jungle Best match: live in
+SUBJECT student
+-----------------
+For: student can enjoy Best match: enjoy
+For: student always study Best match: study
+For: student give exam Best match: exam
+For: student attend class Best match: attend
+SUBJECT student
+-----------------
+For: student be young Best match: be young
+For: student be clever Best match: be
+For: student work hard Best match: work
+For: student study all night Best match: study
+SUBJECT student
+-----------------
+For: student be in the classroom Best match: classroom
+For: student be on strike Best match: strike
+For: student play in the park Best match: play
+For: student dance at the party and have fun Best match: part
+SUBJECT student
+-----------------
+For: student have to study . Best match: study
+For: student study different subject . Best match: subject
+For: student go to school . Best match: go to school
+For: student wear school uniform . Best match: school uniform
+SUBJECT student
+-----------------
+For: the student be apprentice within a academic field Best match: be
+For: the student be the future of the country Best match: country
+For: the student be very prankster Best match: be
+For: the student be people who dedicate themselves to this occupation a main objective Best match: themselves
+SUBJECT student
+-----------------
+For: student be people who study Best match: people
+For: student be young people Best match: be young
+For: student attend school Best match: attend school
+For: student learn profession Best match: learn
+SUBJECT butcher
+-----------------
+For: butcher work butcher shop Best match: 
+For: butcher cut meat Best match: meat
+For: butcher be skilled with knife Best match: knife
+For: butcher sell meat Best match: meat
+SUBJECT butcher
+-----------------
+For: butcher cut meat Best match: meat
+For: butcher have bloody hand Best match: hand
+For: butcher work hard Best match: 
+For: butcher do not make much money Best match: make
+SUBJECT butcher
+-----------------
+For: butcher do not sell fruit Best match: 
+For: butcher be dirty Best match: 
+For: the butcher be deposting the piece Best match: 
+For: butcher be intimidate Best match: be in
+SUBJECT butcher
+-----------------
+For: butcher sell meat . Best match: meat
+For: butcher slaughter animal . Best match: 
+For: butcher have big knife . Best match: knife
+For: butcher process meat . Best match: meat
+SUBJECT butcher
+-----------------
+For: butcher be the place where they sell all kind of meat Best match: meat
+For: butcher be the place where they sell charcuterie Best match: 
+For: butcher be a very demand place of employment Best match: 
+For: the butcher work always run Best match: 
+SUBJECT butcher
+-----------------
+For: butcher work in butcher shop Best match: 
+For: the butcher be very strong Best match: 
+For: only man work a butcher Best match: 
+For: butcher carve mascara Best match: 
+SUBJECT sculptor
+-----------------
+For: sculptor be a type of artist Best match: 
+For: sculptor can make art with their hand Best match: make
+For: sculptor do beautiful stuff Best match: 
+For: sculptor work with their hand Best match: work with
+SUBJECT sculptor
+-----------------
+For: the sculptor work the stone Best match: 
+For: the sculptor be imaginative Best match: 
+For: the sculptor carve the stone Best match: 
+For: sculptor perform art Best match: 
+SUBJECT sculptor
+-----------------
+For: sculptor be people who make 3 dimension visual art . Best match: make
+For: sculptor be consider artist . Best match: 
+For: sculptor be highly respect in the society . Best match: 
+For: sculptor usually take their work seriously . Best match: 
+SUBJECT sculptor
+-----------------
+For: the sculptor be people who have a lot of imagination Best match: 
+For: the sculptor be people who create art Best match: 
+For: the sculptor be usually good - know people Best match: 
+For: the sculptor leave their signature in each of their creation Best match: 
+SUBJECT sculptor
+-----------------
+For: sculptor be a good type of memorial Best match: 
+For: i love make sculptor Best match: make
+For: i hate make sculptor Best match: make
+For: i wish to learn how to make sculptor Best match: make
+SUBJECT sculptor
+-----------------
+For: the sculpture be the work of a sculptor Best match: 
+For: sculpture be a art Best match: 
+For: the sculpture include all the carve and chisel art Best match: 
+For: sculpture be when the sculptor bring out all the superfluous and reduce the material to the form that exist within the mind of the artist . Best match: 
+SUBJECT swan
+-----------------
+For: swan be bird Best match: bird
+For: swan be black and white Best match: white
+For: swan live on lake Best match: live
+For: swan have a long neck Best match: long neck
+SUBJECT swan
+-----------------
+For: swan be white Best match: white
+For: swan be beautiful Best match: beautiful
+For: swan in a lake Best match: 
+For: swan dance in a lake Best match: dance
+SUBJECT swan
+-----------------
+For: swan be white . Best match: white
+For: swan be swim . Best match: swim
+For: swan be fly . Best match: fly
+For: swan eat fish . Best match: fish
+SUBJECT swan
+-----------------
+For: the swan nothing with her baby Best match: baby
+For: the swan with beautiful Best match: beautiful
+For: the swan be always in the water Best match: water
+For: the swan be white Best match: white
+SUBJECT swan
+-----------------
+For: the swan be white Best match: white
+For: the swan be animal Best match: be
+For: the swan be in love Best match: be in
+For: the swan do not fly Best match: fly
+SUBJECT swan
+-----------------
+For: swan be bird . Best match: bird
+For: swan be white . Best match: white
+For: swan be present in literature and mythology . Best match: be
+For: swan be symbol of love . Best match: be symbol of love
+SUBJECT cat
+-----------------
+For: cat be lazy . Best match: lazy
+For: cat have sharp claw . Best match: cat have
+For: cat be smart . Best match: smart
+For: cat love to sleep . Best match: love to
+SUBJECT cat
+-----------------
+For: cat be feline Best match: feline
+For: cat can be many color Best match: color
+For: cat be companion animal Best match: companion
+For: cat have whisker and sharp nail Best match: have whisker
+SUBJECT cat
+-----------------
+For: cat like eat meat . Best match: eat meat
+For: cat be sweet . Best match: sweet
+For: cat live in home and street . Best match: live in
+For: cat do scratch . Best match: scratch
+SUBJECT cat
+-----------------
+For: cat be feline Best match: feline
+For: cat be furry Best match: furry
+For: cat have fang Best match: have fang
+For: cat have claw Best match: cat have
+SUBJECT cat
+-----------------
+For: cat be so cute Best match: cute
+For: cat be soft and fluffy Best match: be soft
+For: cat have big eye Best match: have big eye
+For: cat be friendly Best match: be friend
+SUBJECT cat
+-----------------
+For: cat like to cuddle Best match: cuddle
+For: cat be fluffy Best match: fluffy
+For: cat be cute pet Best match: be cute
+For: cat can be wild Best match: wild
+SUBJECT judge
+-----------------
+For: the judge be honest Best match: be
+For: the judge be usually adult Best match: us
+For: the judge wear black toga Best match: black
+For: the judge wear white wig Best match: wear white wig
+SUBJECT judge
+-----------------
+For: judge be respectables Best match: respect
+For: judge work in court Best match: work in court
+For: judge wear always black in court Best match: black
+For: jugges know the law Best match: law
+SUBJECT judge
+-----------------
+For: the judge wear black coat Best match: black
+For: the judge impart the law Best match: law
+For: the judge be straight people Best match: be
+For: the judge study law Best match: law
+SUBJECT judge
+-----------------
+For: the judge work in the court Best match: work in
+For: the judge must dress good Best match: us
+For: the judge be ruthless people Best match: be
+For: the judge have a lot of work Best match: work
+SUBJECT judge
+-----------------
+For: judge work in court Best match: work in court
+For: judge be old Best match: old
+For: judge have high payment Best match: have
+For: judge be mostly white people . Best match: hit
+SUBJECT judge
+-----------------
+For: judge be rude Best match: rude
+For: judge work in court Best match: work in court
+For: judge have education Best match: have
+For: judge be smart Best match: art
+SUBJECT horse
+-----------------
+For: the horse be very big Best match: big
+For: the horse be a very good transport Best match: sport
+For: the horse be tender Best match: be
+For: the horse be brown Best match: brown
+SUBJECT horse
+-----------------
+For: horse of fast animal Best match: animal
+For: horseback ride sport from famous sport Best match: sport
+For: arabian horse be the well horse Best match: arabia
+For: the price of horse be very high Best match: be
+SUBJECT horse
+-----------------
+For: horse be mammal . Best match: be mammal
+For: horse be domesticate animal . Best match: be domesticate
+For: horse be able to sleep stand up . Best match: sleep stand up
+For: horse be use in warfare . Best match: be use in war
+SUBJECT horse
+-----------------
+For: horse have short and erect ear Best match: have
+For: horse have relatively long leg Best match: long leg
+For: horse have hoof Best match: have hoof
+For: horse have wide head Best match: head
+SUBJECT horse
+-----------------
+For: the horse be elegant Best match: leg
+For: the horse be beautiful Best match: beautiful
+For: the horse be strong Best match: be
+For: the horse be fast Best match: be fast
+SUBJECT horse
+-----------------
+For: horse be beautiful animal Best match: beautiful
+For: horse can run at great speed Best match: can run
+For: horse be mammal Best match: be mammal
+For: horse be herbivore Best match: herbivore
+SUBJECT spider
+-----------------
+For: spider be scary . Best match: scary
+For: spider have 8 leg . Best match: have 8 leg
+For: spider live long . Best match: live
+For: spider live over 100 year . Best match: year
+SUBJECT spider
+-----------------
+For: spider be spider Best match: be
+For: there be many type of spider Best match: the
+For: the black widow be one of the much poisonous spider Best match: poisonous
+For: the scratch lie many egg Best match: lie many egg
+SUBJECT spider
+-----------------
+For: spider can be poisonous . Best match: poisonous
+For: spider be arthropod . Best match: be arthropod
+For: spider have eight leg . Best match: have eight leg
+For: spider eat insect . Best match: insect
+SUBJECT spider
+-----------------
+For: spider weave a web Best match: weave
+For: spider be very furry Best match: furry
+For: spider eat fly Best match: eat fly
+For: spider be poisonous Best match: poisonous
+SUBJECT spider
+-----------------
+For: spider eat fly . Best match: eat fly
+For: spider be walk on the wall . Best match: walk on
+For: spider be walk on the ceil . Best match: walk on
+For: spider be poisonous . Best match: poisonous
+SUBJECT spider
+-----------------
+For: spider have a lot of leg . Best match: have
+For: spider be disgust . Best match: disgust
+For: spider kill fly and drink blood from fly . Best match: drink blood
+For: spider weave cobweb . Best match: cobweb
+SUBJECT donkey
+-----------------
+For: donkey have long ear Best match: have long ear
+For: donkey often ride Best match: 
+For: the donkey be a ruminant animal Best match: be
+For: donkey be stubborn Best match: stubborn
+SUBJECT donkey
+-----------------
+For: donkey live in america Best match: live
+For: donkey be wild Best match: be
+For: donkey work a lot Best match: 
+For: donkey be black Best match: be
+SUBJECT donkey
+-----------------
+For: the donkey be suitable animal for ride Best match: be
+For: the donkey be plan and unplanned Best match: be
+For: the donkey , include the offspring and the non - pet Best match: 
+For: the donkey be multi - color Best match: be
+SUBJECT donkey
+-----------------
+For: monkey eat banana Best match: monkey
+For: monkey jump through the tree Best match: monkey
+For: monkey look like human Best match: monkey
+For: monkey live in africa Best match: monkey
+SUBJECT donkey
+-----------------
+For: gray donkey Best match: gray
+For: donkey stubborn Best match: stubborn
+For: hardworking donkey Best match: 
+For: donkey helper Best match: help
+SUBJECT donkey
+-----------------
+For: donkey be stubborn . Best match: stubborn
+For: donkey have big ear . Best match: have big ear
+For: donkey carry load . Best match: 
+For: donkey have a short tail Best match: short
+SUBJECT tiger
+-----------------
+For: tiger look like a big cat Best match: look like
+For: tiger be orange and black Best match: orange
+For: tiger be wonderful Best match: be
+For: tiger can not be a pet Best match: pet
+SUBJECT tiger
+-----------------
+For: tiger have big claw Best match: claw
+For: tiger eat meat Best match: eat meat
+For: tiger hunt for food Best match: food
+For: tiger live alone Best match: live
+SUBJECT tiger
+-----------------
+For: tiger live in jungle . Best match: live in jungle
+For: tiger be wild animal . Best match: wild animal
+For: tiger find in india . Best match: india
+For: tiger be fighter . Best match: fighter
+SUBJECT tiger
+-----------------
+For: tiger be in the family of cat . Best match: family
+For: tiger be huge and strong . Best match: strong
+For: tiger be carnivorous . Best match: be
+For: tiger be mostly find in asia . Best match: asia
+SUBJECT tiger
+-----------------
+For: tiger be dangerous animal Best match: be dangerous
+For: the tiger have sharp claw Best match: have sharp claw
+For: the tiger be fast animal Best match: animal
+For: the tiger do not release their prey until they kill it Best match: kill
+SUBJECT tiger
+-----------------
+For: tiger be animal . Best match: be animal
+For: tiger have claw . Best match: claw
+For: tiger have four foot . Best match: foot
+For: tiger eat meat . Best match: eat meat
+SUBJECT seaman
+-----------------
+For: seam be video game . Best match: be
+For: seamans be a company . Best match: be
+For: seamans be old company . Best match: be
+For: seamans doe have people . Best match: 
+SUBJECT seaman
+-----------------
+For: the seamans spend part of their live sail Best match: 
+For: the seamans work on boat Best match: 
+For: the seamans eat a lot of fish Best match: 
+For: the seamans be very humble people Best match: be
+SUBJECT seaman
+-----------------
+For: seamans work be always on ship . Best match: be
+For: seamans be often male . Best match: be
+For: seamans wear uniform on work duty . Best match: 
+For: seamans be train individual Best match: rain
+SUBJECT seaman
+-----------------
+For: the seamans be brave Best match: be
+For: the seamans make long trip at sea Best match: 
+For: the seamans wear nice uniform Best match: 
+For: the seamans know a lot about boat Best match: 
+SUBJECT seaman
+-----------------
+For: seamans work on boat Best match: 
+For: seamans wear white Best match: white
+For: seamans travel by sea Best match: 
+For: seamans have tattoo Best match: 
+SUBJECT seaman
+-----------------
+For: the sailor must be prepare for any contingency Best match: be
+For: the sailor should check the lifeboat Best match: 
+For: sailor should verify that all their partner be properly prepare for the wrong . Best match: be
+For: the sailor must pay attention to what their superior tell them Best match: 
+SUBJECT secretary
+-----------------
+For: the secretary help the boss Best match: 
+For: woman work a secretary Best match: 
+For: secretary dress neatly Best match: 
+For: secretary responsible people Best match: 
+SUBJECT secretary
+-----------------
+For: secretary work in office . Best match: 
+For: secretary be smart . Best match: be
+For: secretary be often female . Best match: female
+For: secretary be talk on the phone . Best match: be
+SUBJECT secretary
+-----------------
+For: how beautiful be the secretary Best match: be
+For: the secretary be very smart Best match: be
+For: the secretary be attentive Best match: be
+For: the secretary be worker Best match: be
+SUBJECT secretary
+-----------------
+For: the secretary be woman Best match: be
+For: the secretary work by day Best match: 
+For: the secretary be beautiful Best match: be
+For: the secretary be smart Best match: be
+SUBJECT secretary
+-----------------
+For: secretary be so dependable person Best match: be
+For: i admire secretary Best match: 
+For: secretary be normally good look Best match: good
+For: my wife love secretary Best match: 
+SUBJECT secretary
+-----------------
+For: secretary work in the office Best match: 
+For: secretary make almost all the hard work Best match: 
+For: secretary take dictate from their boss Best match: 
+For: secretary be in charge of the office paperwork Best match: be in
+SUBJECT cow
+-----------------
+For: cow be animal . Best match: animal
+For: cow live in a farm . Best match: live in
+For: cow be black a white . Best match: black
+For: cow give us a milk . Best match: milk
+SUBJECT cow
+-----------------
+For: cow be black . Best match: black
+For: cow be white . Best match: white
+For: cow eat grass . Best match: eat grass
+For: cow have horn . Best match: horn
+SUBJECT cow
+-----------------
+For: the cow be very nutritious Best match: us
+For: the cow give us milk Best match: milk
+For: the cow be the wife of the bull Best match: be
+For: the cow be black and white Best match: black
+SUBJECT cow
+-----------------
+For: the   cow eat grass Best match: eat grass
+For: the cow give milk Best match: give milk
+For: the cow have udder Best match: udder
+For: the   cow be ruminant Best match: ruminant
+SUBJECT cow
+-----------------
+For: cow be big animal Best match: animal
+For: cow do not eat meat Best match: meat
+For: cow have several stomach Best match: stomach
+For: cow be vegetarian Best match: get
+SUBJECT cow
+-----------------
+For: the cow have 4 stomach Best match: have 4 stomach
+For: the cow have a long tail with abundant hair on the tip Best match: tail
+For: the cow have 4 long leg and end in hoof Best match: hoof
+For: the cow have 2 horn Best match: horn
+Ours with predicate and objects 22.48%
