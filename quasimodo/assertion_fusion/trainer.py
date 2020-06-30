@@ -139,6 +139,21 @@ class Trainer(object):
         self._clf.fit(x_input, y)
         logging.info("Accuracy on original data: %0.2f",
                      self._clf.score(x_input, y))
+        logging.info("Parameters:")
+        logging.info("Priors:")
+        logging.info("0: " + str(self._clf.prior[0]))
+        logging.info("1: " + str(self._clf.prior[1]))
+        logging.info("Means:")
+        for i, column_name in enumerate(self._to_keep_columns):
+            logging.info(
+                column_name + ", for 0: " + str(self._clf.means[0][i]) +
+                ", for 1: " + str(self._clf.means[1][i]))
+        logging.info("Standard deviations:")
+        for i, column_name in enumerate(self._to_keep_columns):
+            logging.info(column_name + ", for 0: " + str(
+                self._clf.standard_deviations[0][i]) +
+                         ", for 1: " + str(
+                self._clf.standard_deviations[1][i]))
 
     def predict(self, fact, features):
         features = np.array(features)
