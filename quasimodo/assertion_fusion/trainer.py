@@ -6,6 +6,7 @@ from sklearn import preprocessing
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.impute import SimpleImputer
 import gensim.downloader as api
+from sklearn.linear_model import LogisticRegressionCV
 
 from quasimodo.assertion_fusion.gaussian_nb_with_missing_values import GaussianNBWithMissingValues
 from quasimodo.assertion_output.closest_indexes import ClosestIndexes
@@ -33,7 +34,8 @@ class Trainer(object):
             "glove-wiki-gigaword-50")
         self._df = pd.read_csv(df_file, sep="\t", index_col=False)
         # self._clf = GaussianNBWithMissingValues()
-        self._clf = AdaBoostClassifier(n_estimators=200)
+        # self._clf = AdaBoostClassifier(n_estimators=200)
+        self._clf = LogisticRegressionCV(max_iter=5000, n_jobs=-1)
         self._filter = [i for i, x in enumerate(self._df.columns)
                         if x in to_keep_columns]
         self._to_keep_columns = [x for x in self._df.columns if
