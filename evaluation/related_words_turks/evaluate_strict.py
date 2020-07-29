@@ -3,6 +3,47 @@ import spacy
 nlp = spacy.load('en_core_web_sm', disable=["tagger", "parser", "ner"])
 
 
+PREDICATES_CONCEPTNET = {
+    "AtLocation": "be in",
+    "CapableOf": "can",
+    "Causes": "cause",
+    "CausesDesire": "cause desire",
+    "CreatedBy": "create by",
+    "DefinedAs": "define as",
+    "Desires": "desire",
+    "DistinctFrom": "be distinct from",
+    "Entails": "entail",
+    "HasA": "have",
+    "HasFirstSubevent": "have",
+    "HasLastSubevent": "have",
+    "HasPrerequisite": "need",
+    "HasProperty": "be",
+    "HasSubevent": "have",
+    "InstanceOf": "be",
+    "LocatedNear": "be near",
+    "MadeOf": "make of",
+    "MannerOf": "be",
+    "MotivatedByGoal": "motivate by",
+    "PartOf": "be part of",
+    "ReceivesAction": "receive action",
+    "UsedFor": "use for",
+    "has_body_part": "be",
+    "has_color": "be",
+    "has_diet": "be",
+    "has_effect": "be",
+    "has_height": "be",
+    "has_manner": "be",
+    "has_movement": "be",
+    "has_place": "be",
+    "has_property": "be",
+    "has_temperature": "be",
+    "has_time": "be",
+    "has_trait": "be",
+    "has_weather": "be",
+    "has_weight": "be"
+}
+
+
 def lemmatize(s):
     # return s
     if "has_" in s:
@@ -76,7 +117,10 @@ def read_tsv(path):
             subj = line[0]
             if subj not in subjects:
                 continue
-            pred = lemmatize(line[1])
+            pred = line[1]
+            if pred in PREDICATES_CONCEPTNET:
+                pred = PREDICATES_CONCEPTNET[pred]
+            pred = lemmatize(pred)
             obj = lemmatize(line[2])
             if subj in assos:
                 assos[subj].add(pred)
@@ -92,43 +136,177 @@ quasimodo_base = "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37" \
                  "/commonsense_data/quasimodo/quasimodo35_"
 
 
-for clf in ["lr", "nb", "ada"]:
-    basename = quasimodo_base + clf
-    write_top5(basename)
-    assos = read_tsv(quasimodo_base + clf + "_top5.tsv")
-    print("strict top 5 for", clf, compute_recall(assos))
+# for clf in ["lr", "nb", "ada"]:
+#     basename = quasimodo_base + clf
+#     write_top5(basename)
+#     assos = read_tsv(quasimodo_base + clf + "_top5.tsv")
+#     print("strict top", TOPK, "for", clf, compute_recall(assos))
+#
+#
+# assos = read_tsv("/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37"
+#                  "/commonsense_data/quasimodo/quasimodo35_lr.tsv")
+# print("Ours strict", compute_recall(assos))
+#
+# assos = read_tsv(
+#     "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/Webchild/webchild_spor.tsv")
+# print("WebChild strict", compute_recall(assos))
+#
+# assos = read_tsv(
+#     "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/ConceptNet/conceptnet_csk_spor.tsv")
+# print("ConceptNet strict", compute_recall(assos))
+#
+# assos = read_tsv(
+#     "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/"
+#     "TupleKB/aristo-tuple-kb-v5-mar2017/spor_tuplekb.tsv")
+# print("TupleKB strict", compute_recall(assos))
+#
+write_top5(quasimodo_base + "lr")
+assos = read_tsv(quasimodo_base + "lr" + "_top5.tsv")
+print("Ours strict top", TOPK, compute_recall(assos))
+#
+# assos = read_tsv(
+#     "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/Webchild/webchild-top5.tsv")
+# print("WebChild strict top", TOPK, compute_recall(assos))
+#
+# assos = read_tsv(
+#     "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/ConceptNet/conceptnet_csk_spor_sorted_top5.tsv")
+# print("ConceptNet strict top", TOPK, compute_recall(assos))
+#
+# assos = read_tsv(
+#     "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/"
+#     "TupleKB/aristo-tuple-kb-v5-mar2017/tuplekb-top5.tsv")
+# print("TupleKB strict top", TOPK, compute_recall(assos))
 
 
-assos = read_tsv("/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37"
-                 "/commonsense_data/quasimodo/quasimodo35_lr.tsv")
-print("Ours strict", compute_recall(assos))
+def sort_by(basename, n):
+    temp = []
+    first = True
+    with open(basename + ".tsv") as f:
+        for line in f:
+            if not first:
+                temp.append(line.split("\t"))
+            first = False
+    temp = sorted(temp, key=lambda x: -float(x[n].strip()))
+    with open(basename + "_sorted" + str(n) + ".tsv", "w") as f:
+        f.write("".join("\t".join(x) for x in temp))
 
-assos = read_tsv(
-    "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/Webchild/webchild_spor.tsv")
-print("WebChild strict", compute_recall(assos))
+sort_by(quasimodo_base + "lr_pts50", -2)
+write_top5(quasimodo_base + "lr_pts50_sorted-2")
+assos = read_tsv(quasimodo_base + "lr_pts50_sorted-2_top5.tsv")
+print("Typicality top", TOPK, " N=50", compute_recall(assos))
 
-assos = read_tsv(
-    "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/ConceptNet/conceptnet_csk_spor.tsv")
-print("ConceptNet strict", compute_recall(assos))
+sort_by(quasimodo_base + "lr_pts50", -1)
+write_top5(quasimodo_base + "lr_pts50_sorted-1")
+assos = read_tsv(quasimodo_base + "lr_pts50_sorted-1_top5.tsv")
+print("Saliency top", TOPK, " N=50", compute_recall(assos))
 
-assos = read_tsv(
-    "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/"
-    "TupleKB/aristo-tuple-kb-v5-mar2017/spor_tuplekb.tsv")
-print("TupleKB strict", compute_recall(assos))
+sort_by(quasimodo_base + "lr_pts1", -2)
+write_top5(quasimodo_base + "lr_pts1_sorted-2")
+assos = read_tsv(quasimodo_base + "lr_pts1_sorted-2_top5.tsv")
+print("Typicality top", TOPK, " N=1", compute_recall(assos))
 
-assos = read_tsv(
-    "/home/julien/Documents/phd/CSK/quasimodo/temp/quasimodo34_top5.tsv")
-print("Ours strict top5", compute_recall(assos))
+sort_by(quasimodo_base + "lr_pts1", -1)
+write_top5(quasimodo_base + "lr_pts1_sorted-1")
+assos = read_tsv(quasimodo_base + "lr_pts1_sorted-1_top5.tsv")
+print("Saliency top", TOPK, " N=1", compute_recall(assos))
 
-assos = read_tsv(
-    "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/Webchild/webchild-top5.tsv")
-print("WebChild strict top5", compute_recall(assos))
+sort_by(quasimodo_base + "lr_pts", -2)
+write_top5(quasimodo_base + "lr_pts_sorted-2")
+assos = read_tsv(quasimodo_base + "lr_pts_sorted-2_top5.tsv")
+print("Typicality top", TOPK, " N=5", compute_recall(assos))
 
-assos = read_tsv(
-    "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/ConceptNet/conceptnet_csk_spor_sorted_top5.tsv")
-print("ConceptNet strict top5", compute_recall(assos))
+sort_by(quasimodo_base + "lr_pts", -1)
+write_top5(quasimodo_base + "lr_pts_sorted-1")
+assos = read_tsv(quasimodo_base + "lr_pts_sorted-1_top5.tsv")
+print("Saliency top", TOPK, " N=5", compute_recall(assos))
 
-assos = read_tsv(
-    "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/"
-    "TupleKB/aristo-tuple-kb-v5-mar2017/tuplekb-top5.tsv")
-print("TupleKB strict top5", compute_recall(assos))
+sort_by(quasimodo_base + "lr_pts10", -2)
+write_top5(quasimodo_base + "lr_pts10_sorted-2")
+assos = read_tsv(quasimodo_base + "lr_pts10_sorted-2_top5.tsv")
+print("Typicality top", TOPK, " N=10", compute_recall(assos))
+
+sort_by(quasimodo_base + "lr_pts10", -1)
+write_top5(quasimodo_base + "lr_pts10_sorted-1")
+assos = read_tsv(quasimodo_base + "lr_pts10_sorted-1_top5.tsv")
+print("Saliency top", TOPK, " N=10", compute_recall(assos))
+
+sort_by(quasimodo_base + "lr_ln0.1", -2)
+write_top5(quasimodo_base + "lr_ln0.1_sorted-2")
+assos = read_tsv(quasimodo_base + "lr_ln0.1_sorted-2_top5.tsv")
+print("Neighborhood top", TOPK, "N=0.1", compute_recall(assos))
+
+sort_by(quasimodo_base + "lr_ln0.1", -1)
+write_top5(quasimodo_base + "lr_ln0.1_sorted-1")
+assos = read_tsv(quasimodo_base + "lr_ln0.1_sorted-1_top5.tsv")
+print("Local Neighborhood top", TOPK, "N=0.1", compute_recall(assos))
+
+sort_by(quasimodo_base + "lr_ln0.5", -2)
+write_top5(quasimodo_base + "lr_ln0.5_sorted-2")
+assos = read_tsv(quasimodo_base + "lr_ln0.5_sorted-2_top5.tsv")
+print("Neighborhood top", TOPK, "N=0.5", compute_recall(assos))
+
+sort_by(quasimodo_base + "lr_ln0.5", -1)
+write_top5(quasimodo_base + "lr_ln0.5_sorted-1")
+assos = read_tsv(quasimodo_base + "lr_ln0.5_sorted-1_top5.tsv")
+print("Local Neighborhood top", TOPK, "N=0.5", compute_recall(assos))
+
+sort_by(quasimodo_base + "lr_ln1", -2)
+write_top5(quasimodo_base + "lr_ln1_sorted-2")
+assos = read_tsv(quasimodo_base + "lr_ln1_sorted-2_top5.tsv")
+print("Neighborhood Sigma top", TOPK,  "N=1", compute_recall(assos))
+
+sort_by(quasimodo_base + "lr_ln1", -1)
+write_top5(quasimodo_base + "lr_ln1_sorted-1")
+assos = read_tsv(quasimodo_base + "lr_ln1_sorted-1_top5.tsv")
+print("Local Sigma top", TOPK, "N=1", compute_recall(assos))
+
+sort_by(quasimodo_base + "lr_ln10", -2)
+write_top5(quasimodo_base + "lr_ln10_sorted-2")
+assos = read_tsv(quasimodo_base + "lr_ln10_sorted-2_top5.tsv")
+print("Neighborhood top", TOPK, "N=10", compute_recall(assos))
+
+sort_by(quasimodo_base + "lr_ln10", -1)
+write_top5(quasimodo_base + "lr_ln10_sorted-1")
+assos = read_tsv(quasimodo_base + "lr_ln10_sorted-1_top5.tsv")
+print("Local Neighborhood top", TOPK, "N=10", compute_recall(assos))
+
+sort_by(quasimodo_base + "lr_ln25", -2)
+write_top5(quasimodo_base + "lr_ln25_sorted-2")
+assos = read_tsv(quasimodo_base + "lr_ln25_sorted-2_top5.tsv")
+print("Neighborhood top", TOPK, "N=25", compute_recall(assos))
+
+sort_by(quasimodo_base + "lr_ln25", -1)
+write_top5(quasimodo_base + "lr_ln25_sorted-1")
+assos = read_tsv(quasimodo_base + "lr_ln25_sorted-1_top5.tsv")
+print("Local Neighborhood top", TOPK, "N=25", compute_recall(assos))
+
+sort_by(quasimodo_base + "lr_ln50", -2)
+write_top5(quasimodo_base + "lr_ln50_sorted-2")
+assos = read_tsv(quasimodo_base + "lr_ln50_sorted-2_top5.tsv")
+print("Neighborhood top", TOPK, "N=50", compute_recall(assos))
+
+sort_by(quasimodo_base + "lr_ln50", -1)
+write_top5(quasimodo_base + "lr_ln50_sorted-1")
+assos = read_tsv(quasimodo_base + "lr_ln50_sorted-1_top5.tsv")
+print("Local Neighborhood top", TOPK, "N=50", compute_recall(assos))
+
+sort_by(quasimodo_base + "lr_ln75", -2)
+write_top5(quasimodo_base + "lr_ln75_sorted-2")
+assos = read_tsv(quasimodo_base + "lr_ln75_sorted-2_top5.tsv")
+print("Neighborhood top", TOPK, "N=75", compute_recall(assos))
+
+sort_by(quasimodo_base + "lr_ln75", -1)
+write_top5(quasimodo_base + "lr_ln75_sorted-1")
+assos = read_tsv(quasimodo_base + "lr_ln75_sorted-1_top5.tsv")
+print("Local Neighborhood top", TOPK, "N=75", compute_recall(assos))
+
+sort_by(quasimodo_base + "lr_ln100", -2)
+write_top5(quasimodo_base + "lr_ln100_sorted-2")
+assos = read_tsv(quasimodo_base + "lr_ln100_sorted-2_top5.tsv")
+print("Neighborhood top", TOPK, "N=100", compute_recall(assos))
+
+sort_by(quasimodo_base + "lr_ln100", -1)
+write_top5(quasimodo_base + "lr_ln100_sorted-1")
+assos = read_tsv(quasimodo_base + "lr_ln100_sorted-1_top5.tsv")
+print("Local Neighborhood top", TOPK, "N=100", compute_recall(assos))
+

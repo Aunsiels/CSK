@@ -52,12 +52,13 @@ class PatternGoogle(PatternInterface, Serializable):
         if sing:
             last_sing = sing.split(" ")[-1]
         last_plur = plur.split(" ")[-1]
-        if (not sing and\
+        if ((not sing or sing == subject.get()) and
                 wordnet.synsets(last_plur)) or not wordnet.synsets(last_sing):
             return self._prefix.replace("<SUBJ>", subject.get())\
                 .replace("<OBJ>", "")\
                 .replace("<SUBJS>", plur)
         else:
+            print("there", sing)
             return self._prefix.replace("<SUBJ>", subject.get())\
                 .replace("<OBJ>", "")\
                 .replace("<SUBJS>", subject.get())
