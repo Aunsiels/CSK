@@ -58,7 +58,6 @@ class PatternGoogle(PatternInterface, Serializable):
                 .replace("<OBJ>", "")\
                 .replace("<SUBJS>", plur)
         else:
-            print("there", sing)
             return self._prefix.replace("<SUBJ>", subject.get())\
                 .replace("<OBJ>", "")\
                 .replace("<SUBJS>", subject.get())
