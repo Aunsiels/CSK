@@ -14,7 +14,7 @@ from quasimodo.assertion_output.tsv_output_submodule import get_version
 
 SLICE_SIZE = 2000  # Change this in case of Memory problems
 TOPK = 1000
-N = 1
+N = 75
 
 parameters_reader = ParametersReader()
 OUT_DIR = parameters_reader.get_parameter("out-dir") or os.path.dirname(__file__) + "/out/"
