@@ -223,6 +223,15 @@ class TestOpenIEFactGenerator(unittest.TestCase):
         self.assertEqual(new_gfs[0].get_predicate(), "is")
         self.assertEqual(new_gfs[0].get_object(), "bad")
 
+    def test_ing_after_verb(self):
+        suggestion = ("why do vegetarians go back to eating meat",
+                      1.0, None, "vegetarian")
+        new_gfs = self.openie_fact_generator._openie_from_file([suggestion])
+        print(new_gfs)
+        self.assertEqual(len(new_gfs),  1)
+        self.assertEqual(new_gfs[0].get_subject(), "vegetarians")
+        self.assertNotEqual(new_gfs[0].get_object(), "meat")
+
 
 if __name__ == '__main__':
     unittest.main()

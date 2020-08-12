@@ -487,12 +487,26 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
             suggestion[2])
         return new_fact
 
+    def _take_earliest_predicate(self, sentence, facts):
+        earliest_predicate = -1
+        for fact in facts:
+            pos_predicate = sentence.find(fact[1])
+            if earliest_predicate == -1:
+                earliest_predicate = pos_predicate
+            elif pos_predicate != -1 and pos_predicate < earliest_predicate:
+                earliest_predicate = pos_predicate
+        for fact in facts:
+            pos_predicate = sentence.find(fact[1])
+            if pos_predicate == earliest_predicate:
+                yield fact
+
     def _openie_from_file(self, suggestions):
         openie_reader = OpenIEReader()
         generated_facts = []
         new_suggestions = []
         for suggestion in suggestions:
-            self.transforms_suggestion_into_batch_component(suggestion, new_suggestions)
+            self.transforms_suggestion_into_batch_component(suggestion,
+                                                            new_suggestions)
         for suggestion in new_suggestions:
             sentence = suggestion[STATEMENT]
             facts = openie_reader.get_from_sentence(sentence)
@@ -500,6 +514,7 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
             facts = [fact for fact in facts if
                      len(fact) > 0 and len(fact[0]) > 1 and len(fact[1]) > 1 and len(fact[2]) > 1]
             score_based_on_ranking = self.get_score_based_on_ranking(suggestion)
+            facts = self._take_earliest_predicate(sentence, facts)
             for fact in facts:
                 if suggestion[SUBJECT] not in fact[0]:
                     continue

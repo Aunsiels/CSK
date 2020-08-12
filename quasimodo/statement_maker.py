@@ -12,7 +12,7 @@ parameters_reader = ParametersReader()
 CACHE_DIR = parameters_reader.get_parameter("question-cache-dir") or \
             os.path.dirname(__file__) + "/question2statement/"
 
-_tool = None  # language_check.LanguageTool('en-US')
+_tool = language_check.LanguageTool('en-US')
 _nlp = spacy.load('en_core_web_lg')
 
 
