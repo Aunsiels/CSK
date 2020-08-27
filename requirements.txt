@@ -20,3 +20,4 @@ objgraph
 rq
 language_check
 memory_profiler
+imblearn
