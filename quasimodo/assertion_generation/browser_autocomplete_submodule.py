@@ -98,19 +98,28 @@ class BrowserAutocompleteSubmodule(OpenIEFactGeneratorSubmodule):
                                                           current_state,
                                                           pattern,
                                                           subject,
-                                                          new_query)
+                                                          new_query,
+                                                          current_state)
                     base_sentences += get_base_sentences(base_suggestions)
                     if base_suggestions is None:
                         continue
         return suggestions
 
-    def clean_suggestions(self, base_suggestions, base_sentences, new_state, pattern, subject, new_query):
+    def clean_suggestions(self, base_suggestions, base_sentences, new_state,
+                          pattern, subject, new_query, current_state):
         base_suggestions = filter(
             lambda ranked_suggestion: ranked_suggestion[SUGGESTION] not in base_sentences,
             base_suggestions)
         base_suggestions = filter(
-            lambda ranked_suggestion: ranked_suggestion[SUGGESTION].strip() != new_query,
+            lambda ranked_suggestion: ranked_suggestion[SUGGESTION].strip()
+                                      != new_query.strip(),
             base_suggestions)
+        base_suggestions = filter(
+            lambda ranked_suggestion:
+                not ranked_suggestion[SUGGESTION].strip().endswith(
+                    " " + current_state.strip()),
+            base_suggestions
+        )
         base_suggestions = map(
             lambda ranked_suggestion:
             (ranked_suggestion[SUGGESTION],

@@ -46,7 +46,9 @@ dataset = [
     ("why does panda climb tree", "panda", "panda climb tree"),
     ("why do african people have noses and lips", "african people", "african people have noses and lips"),
     ("why are african elephants endangered", "elephant", "african elephants are endangered"),
-    ("why elephants are big", "elephant", "elephants are big")
+    ("why elephants are big", "elephant", "elephants are big"),
+    ("why are things creepy", "thing", "things are creepy"),
+    ("how are babies actually made", "baby", "babies are actually made")
 ]
 
 

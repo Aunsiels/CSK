@@ -47,6 +47,37 @@ class TestComplete(unittest.TestCase):
         new_gfs = new_input.get_generated_facts()
         self.assertEqual(1, len(new_gfs))
 
+    def test_normalize_babies(self):
+        empty_input = Inputs()
+        logging.info("Starting complete test for normalization")
+        gf = GeneratedFact("babies", "are ", "made", "TBC[actually made]",
+                           False,
+                           MultipleScore(),
+                           MultipleSourceOccurrence(), PatternGoogle(""))
+        subjects = {Subject("baby")}
+        input = empty_input.add_subjects(subjects).add_generated_facts([gf])
+        factory = DefaultModuleFactory()
+        normalization_module = factory.get_module("assertion-normalization")
+        new_input = normalization_module.process(input)
+        new_gfs = new_input.get_generated_facts()
+        self.assertEqual(1, len(new_gfs))
+        self.assertEqual(new_gfs[0].get_predicate(), "has_property")
+
+    def test_normalize_can(self):
+        empty_input = Inputs()
+        logging.info("Starting complete test for normalization")
+        gf = GeneratedFact("nafcil", "can", "nafcillin", "",
+                           False,
+                           MultipleScore(),
+                           MultipleSourceOccurrence(), PatternGoogle(""))
+        subjects = {Subject("nafcil")}
+        input = empty_input.add_subjects(subjects).add_generated_facts([gf])
+        factory = DefaultModuleFactory()
+        normalization_module = factory.get_module("assertion-normalization")
+        new_input = normalization_module.process(input)
+        new_gfs = new_input.get_generated_facts()
+        self.assertEqual(0, len(new_gfs))
+
     def test_normalize_all_beach_sand(self):
         gfs = []
         with open("beach.jsonl") as f:

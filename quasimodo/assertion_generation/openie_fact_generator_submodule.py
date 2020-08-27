@@ -14,6 +14,7 @@ from quasimodo.data_structures.submodule_reference_interface import SubmoduleRef
 from quasimodo.data_structures.multiple_scores import MultipleScore
 from quasimodo.data_structures.generated_fact import GeneratedFact
 from quasimodo.data_structures.multiple_source_occurrence import MultipleSourceOccurrence
+from quasimodo.inflect_accessor import DEFAULT_INFLECT
 from quasimodo.statement_maker import StatementMaker, NEGATE_VERB
 from quasimodo.data_structures.submodule_interface import SubmoduleInterface
 from quasimodo.data_structures.modality import Modality
@@ -51,7 +52,7 @@ def _simple_extraction(sentence):
         if tokens[0] == "not":
             return [' '.join(tokens[1:idx_can]), "can", " ".join(tokens[idx_can + 1:]), True]
         return [' '.join(tokens[:idx_can]), "can", " ".join(tokens[idx_can + 1:]), False]
-    if len(tokens) == 2:
+    if len(tokens) == 2 and tokens[1] != "work":
         for synset in get_synsets(tokens[1]):
             if synset.pos() == "v":
                 return [tokens[0], "can", tokens[1], False]
@@ -225,7 +226,9 @@ def get_modality(subject, obj, maxi_length_object, maxi_obj, suggestion):
         modality_temp = "TBC[" + maxi_obj + "]"
     position_subject = get_position_subject(subject, suggestion)
     before_subject = suggestion[STATEMENT][:position_subject].strip()
-    if position_subject != 0 and before_subject not in FORBIDDEN_BEFORE_SUBJECT:
+    if position_subject != 0 and \
+            before_subject not in FORBIDDEN_BEFORE_SUBJECT and \
+            before_subject[:4] not in ["why ", "how "]:
         if len(modality_temp) > 0:
             modality_temp += " // "
         modality = Modality(modality_temp + "some[subj" + "/" + before_subject + "]")
@@ -454,7 +457,10 @@ class OpenIEFactGeneratorSubmodule(SubmoduleInterface):
 
     def add_facts_to_generated_facts(self, generated_facts, subject, predicate, obj, modality, negative,
                                      score_based_on_ranking, suggestion):
-        if suggestion[SUBJECT] not in subject:
+        if suggestion[SUBJECT] not in subject and \
+                DEFAULT_INFLECT.to_plural(suggestion[SUBJECT]) not in subject \
+                and \
+                DEFAULT_INFLECT.to_singular(suggestion[SUBJECT]) not in subject:
             return
         multiple_score = MultipleScore()
         multiple_score.add_score(1.0, self._module_reference, reference_corenlp)

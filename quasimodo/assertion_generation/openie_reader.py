@@ -26,6 +26,7 @@ class OpenIEReader(object):
         if os.path.isfile(CACHE_OPENIE_READER):
             self.sentence_to_fact = pickle.load(open(CACHE_OPENIE_READER, "rb"))
             return
+        print(filename)
         with open(filename) as f:
             temp = []
             sentence = ''
