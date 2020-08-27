@@ -14,9 +14,9 @@ class ToLowerCaseSubmodule(SubmoduleInterface):
 
         new_gfs = []
         for gf in input_interface.get_generated_facts():
-            subj = gf.get_subject().get().lower()
-            pred = gf.get_predicate().get().lower()
-            obj = gf.get_object().get().lower()
+            subj = gf.get_subject().get().lower().strip()
+            pred = gf.get_predicate().get().lower().strip()
+            obj = gf.get_object().get().lower().strip()
             new_gf = gf.change_subject(subj)\
                        .change_object(obj)\
                        .change_predicate(pred)

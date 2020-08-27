@@ -223,6 +223,46 @@ class TestOpenIEFactGenerator(unittest.TestCase):
         self.assertEqual(new_gfs[0].get_predicate(), "is")
         self.assertEqual(new_gfs[0].get_object(), "bad")
 
+    def test_ing_after_verb(self):
+        suggestion = ("why do vegetarians go back to eating meat",
+                      1.0, None, "vegetarian")
+        new_gfs = self.openie_fact_generator._openie_from_file([suggestion])
+        self.assertEqual(len(new_gfs),  1)
+        self.assertEqual(new_gfs[0].get_subject(), "vegetarians")
+        self.assertNotEqual(new_gfs[0].get_object(), "meat")
+
+    def test_complex_subject(self):
+        suggestion = ("why are japanese things cute", 1.0, None, "thing")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        self.assertEqual(len(new_gfs),  1)
+        self.assertEqual(new_gfs[0].get_subject(), "japanese things")
+        self.assertEqual(new_gfs[0].get_object(), "cute")
+
+    def test_fart(self):
+        suggestion = ("why do farts smell worse in the shower",
+                      1.0, None, "farts")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        print(new_gfs)
+        self.assertEqual(len(new_gfs),  1)
+        self.assertEqual(new_gfs[0].get_subject(), "farts")
+
+    def test_baby(self):
+        suggestion = ("how are babies actually made",
+                      1.0, None, "baby")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        print(new_gfs)
+        self.assertEqual(len(new_gfs),  2)
+        self.assertEqual(new_gfs[0].get_subject(), "babies")
+
+    def test_baby_from_file(self):
+        suggestion = ("how are babies actually made",
+                      1.0, None, "baby")
+        new_gfs = self.openie_fact_generator._openie_from_file([suggestion])
+        print(new_gfs)
+        # Here the object is empty
+        self.assertEqual(len(new_gfs),  0)
+        self.assertEqual(new_gfs[0].get_subject(), "babies")
+
 
 if __name__ == '__main__':
     unittest.main()

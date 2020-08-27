@@ -1,3 +1,5 @@
+from quasimodo.assertion_generation.openie_fact_generator_submodule import \
+    get_synsets
 from quasimodo.data_structures.submodule_interface import SubmoduleInterface
 import logging
 
@@ -20,6 +22,17 @@ def transform_generated_fact(generated_fact):
             new_generated_fact = new_generated_fact.change_predicate("can be")
     return new_generated_fact
 
+def is_can_with_verb(generated_fact):
+    if generated_fact.get_predicate() != "can":
+        return True
+    predicate_split = generated_fact.get_predicate().get().split(" ")
+    if len(predicate_split) > 1:
+        return True
+    synsets = get_synsets(generated_fact.get_object().get())
+    for synset in synsets:
+        if synset.pos() == "v":
+            return True
+    return False
 
 class CanTransformationSubmodule(SubmoduleInterface):
 
@@ -34,5 +47,6 @@ class CanTransformationSubmodule(SubmoduleInterface):
         for generated_fact in input_interface.get_generated_facts():
             # Correct OPENIE output
             new_generated_fact = transform_generated_fact(generated_fact)
-            new_gfs.append(new_generated_fact)
+            if is_can_with_verb(new_generated_fact):
+                new_gfs.append(new_generated_fact)
         return input_interface.replace_generated_facts(new_gfs)

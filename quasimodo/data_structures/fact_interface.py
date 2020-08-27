@@ -1,3 +1,6 @@
+DET_LINK = [" ", " a ", " an ", " the "]
+
+
 class FactInterface(object):
     """FactInterface
     Represents a fact

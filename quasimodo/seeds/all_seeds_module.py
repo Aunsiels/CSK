@@ -8,7 +8,7 @@ class AllSeedsModule(ModuleInterface):
     def __init__(self):
         module_names = ["animal-seeds", "occupations-seeds",
                         "conceptnet-subjects", "subjects-wordnet",
-                        "subject-removal", "forgotten-subjects"]
+                        "forgotten-subjects", "subject-removal"]
         super(AllSeedsModule, self).__init__(
             module_names, DefaultSubmoduleFactory())
         self._name = "All Seeds module"
