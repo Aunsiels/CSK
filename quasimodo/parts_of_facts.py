@@ -82,7 +82,6 @@ class PartsOfFacts(object):
     def merge_into_generated_facts(self):
         new_gfs = []
         for fact_without_modality in self.found:
-            print(fact_without_modality)
             generated_fact = self.found[fact_without_modality]
             new_modality = Modality.from_modalities_and_scores(self.modalities[fact_without_modality].items())
             new_gfs.append(generated_fact.change_sentence(self.sentences[fact_without_modality])

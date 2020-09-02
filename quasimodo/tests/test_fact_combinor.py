@@ -152,6 +152,8 @@ class TestFactCombinor(unittest.TestCase):
         self.assertEqual(1, len(inputs.get_generated_facts()))
         self.assertIn("often",
                       inputs.get_generated_facts()[0].get_modality().get())
+        self.assertIn("always x#x10",
+                      inputs.get_generated_facts()[0].get_modality().get())
         self.assertEqual("smell worse in",
                          inputs.get_generated_facts()[
                               0].get_predicate())
