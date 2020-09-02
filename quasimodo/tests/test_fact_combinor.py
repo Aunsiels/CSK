@@ -131,7 +131,7 @@ class TestFactCombinor(unittest.TestCase):
         score0.add_score(1, None, None)
         score1 = MultipleScore()
         score1.add_score(0.5, None, None)
-        generated_fact0 = GeneratedFact("fart", "smell", "worse in the shower",
+        generated_fact0 = GeneratedFact("fart", "smell", "worse in shower",
                                         "always x#x9 // often x#x2",
                                         False,
                                         score0,
@@ -176,6 +176,34 @@ class TestFactCombinor(unittest.TestCase):
         fact_combinor = FactCombinor(None)
         inputs = fact_combinor.process(inputs)
         self.assertEqual(1, len(inputs.get_generated_facts()))
+
+    def test_combination_has_property(self):
+        score0 = MultipleScore()
+        score0.add_score(1, None, None)
+        score1 = MultipleScore()
+        score1.add_score(0.5, None, None)
+        generated_fact0 = GeneratedFact("fart", "has_property", "in shower",
+                                        "always x#x9 // often x#x2",
+                                        False,
+                                        score0,
+                                        MultipleSourceOccurrence.from_raw(
+                                            "farts are in shower",
+                                            None,
+                                            1))
+        generated_fact1 = GeneratedFact("fart", "be in", "shower",
+                                        "TBC[hot shower] x#x5 // always x#x1 // TBC[when shower] x#x1",
+                                        False,
+                                        score1,
+                                        MultipleSourceOccurrence.from_raw(
+                                            "farts smell worse in the shower", None, 1))
+        inputs = self.empty_input.add_generated_facts([generated_fact0,
+                                                       generated_fact1])
+        fact_combinor = FactCombinor(None)
+        inputs = fact_combinor.process(inputs)
+        self.assertEqual(1, len(inputs.get_generated_facts()))
+        self.assertEqual("be in",
+                         inputs.get_generated_facts()[
+                              0].get_predicate())
 
 
 if __name__ == '__main__':

@@ -74,11 +74,8 @@ class PartsOfFacts(object):
     @staticmethod
     def from_generated_facts(generated_facts):
         parts_of_facts = PartsOfFacts()
-        # We sort by length of the predicate because we prefer shortest ones.
-        # Related to how the equality between facts works (compare po)
         for generated_fact in sorted(generated_facts,
-                                     key=lambda x: -len(
-                                         str(x.get_predicate()))):
+                                     key=predicate_to_number):
             parts_of_facts.update(generated_fact)
         return parts_of_facts
 
@@ -172,3 +169,34 @@ def get_modality(fact):
     else:
         modality = ""
     return modality
+
+
+PREPOSITIONS = {"aboard", "about", "above", "across", "after", "against",
+                "along", "amid", "among", "anti", "around", "as", "at",
+                "before", "behind", "below", "beneath", "beside", "besides",
+                "between", "beyond", "but", "by", "concerning", "considering",
+                "despite", "down", "during", "except", "excepting",
+                "excluding", "following", "for", "from", "in", "inside",
+                "into", "like", "minus", "near", "of", "off", "on", "onto",
+                "opposite", "outside", "over", "past", "per", "plus",
+                "regarding", "round", "save", "since", "than", "through", "to",
+                "toward", "towards", "under", "underneath", "unlike", "until",
+                "up", "upon", "versus", "via", "with", "within", "without"}
+
+
+def predicate_to_number(generated_fact):
+    # Lowest score have the priority during merging
+    # For example, if "be in" is before "be", then "be, in school" becomes
+    # "be in, school"
+    predicate = str(generated_fact.get_predicate())
+    if predicate == "has_property":
+        return 0
+    if predicate.startswith("has_"):
+        return -10000
+    predicate_s = predicate.split(" ")
+    # We do not want predicate that are too long
+    # With 4, we can have predicate with a comparison like
+    # be more interesting than
+    if len(predicate_s) > 4 or predicate_s[-1] not in PREPOSITIONS:
+        return len(predicate)
+    return -len(predicate)

@@ -1,5 +1,8 @@
 import json
 
+from quasimodo.data_structures.referencable_interface import \
+    ReferencableInterface
+
 
 class MultipleSourceOccurrence(object):
 
@@ -13,6 +16,8 @@ class MultipleSourceOccurrence(object):
         return mso
 
     def add_raw(self, text, source, n_occurrences=1):
+        if isinstance(source, str):
+            source = ReferencableInterface(source)
         if text not in self.occurrences:
             self.occurrences[text] = dict()
             self.occurrences[text]["sources"] = []

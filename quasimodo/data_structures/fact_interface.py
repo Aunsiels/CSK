@@ -62,7 +62,10 @@ class FactInterface(object):
 
     def get_po(self):
         """Get combination of P and O"""
-        return str(self._predicate) + " " + str(self._object)
+        predicate = str(self._predicate)
+        if predicate.startswith("has_property"):
+            predicate = "be"
+        return predicate + " " + str(self._object)
 
     def __str__(self):
         negation = ""
