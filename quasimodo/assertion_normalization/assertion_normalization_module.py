@@ -24,8 +24,10 @@ class AssertionNormalizationModule(ModuleInterface):
                         "identical-subj-obj",
                         "present-conjugate",
                         "similar-object-remover",
+                        "filter-language-questions",
                         "fact-combinor",
-                        "tbc-cleaner"]
+                        "tbc-cleaner"
+                        ]
         super(AssertionNormalizationModule, self).__init__(
             module_names, DefaultSubmoduleFactory())
         self._name = "Assertion Normalization Module"

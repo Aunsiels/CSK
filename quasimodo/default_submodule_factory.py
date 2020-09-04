@@ -50,6 +50,8 @@ from quasimodo.seeds.subjects_wordnet_submodule import SubjectsWordnetSubmodule
 from quasimodo.assertion_generation.yahoo_questions_submodule import YahooQuestionsSubmodule
 from quasimodo.assertion_normalization.subject_removal_submodule import SubjectRemovalSubmodule
 from quasimodo.assertion_normalization.to_lower_case_submodule import ToLowerCaseSubmodule
+from .assertion_normalization.filter_language_questions import \
+    FilterLanguageQuestions
 from .assertion_normalization.similar_object_remover import SimilarObjectRemover
 from .assertion_output.circle_saliency import CircleSaliency
 from .fact_combinor import FactCombinor
@@ -117,7 +119,8 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
             "forgotten-subjects": ForgottenSubjectsSubmodule,
             "saliency-typicality": SaliencyAndTypicalityComputationSubmodule,
             "similar-object-remover": SimilarObjectRemover,
-            "circle-saliency": CircleSaliency
+            "circle-saliency": CircleSaliency,
+            "filter-language-questions": FilterLanguageQuestions
         }
 
     def get_submodule(self, submodule_name, module_reference):
