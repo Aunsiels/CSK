@@ -8,6 +8,8 @@ import logging
 from os import path
 import os
 
+from quasimodo.inflect_accessor import DEFAULT_INFLECT
+
 THRESHOLD_OCCURRENCES = 10
 
 NEW_SUBJECTS_FILE = os.path.dirname(
@@ -46,7 +48,8 @@ class ForgottenSubjectsSubmodule(SubmoduleInterface):
                         continue
                     n_occurrences = int(line[1])
                     if n_occurrences > THRESHOLD_OCCURRENCES:
-                        subjects.append(Subject(subject))
+                        subject_sing = DEFAULT_INFLECT.to_singular(subject)
+                        subjects.append(Subject(subject_sing))
         with open(NEW_SUBJECTS_FILE, "a", encoding="utf-8") as f:
             f.write("\n".join([s.get() for s in subjects]) + "\n")
         subjects = []

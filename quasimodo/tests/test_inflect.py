@@ -32,6 +32,18 @@ class TestIdenticalSubjectObject(unittest.TestCase):
     def test_jeans(self):
         self.assertEqual(self.inflect.to_singular("jeans"), "jeans")
 
+    def test_dust_bunnies(self):
+        self.assertEqual(self.inflect.to_singular("dust bunnies"),
+                         "dust bunny")
+        self.assertEqual(self.inflect.to_plural("dust bunny"),
+                         "dust bunnies")
+
+    def test_opera_singers(self):
+        self.assertEqual(self.inflect.to_singular("opera singers"),
+                         "opera singer")
+        self.assertEqual(self.inflect.to_plural("opera singer"),
+                         "opera singers")
+
 
 if __name__ == '__main__':
     unittest.main()
