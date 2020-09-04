@@ -50,12 +50,14 @@ from quasimodo.seeds.subjects_wordnet_submodule import SubjectsWordnetSubmodule
 from quasimodo.assertion_generation.yahoo_questions_submodule import YahooQuestionsSubmodule
 from quasimodo.assertion_normalization.subject_removal_submodule import SubjectRemovalSubmodule
 from quasimodo.assertion_normalization.to_lower_case_submodule import ToLowerCaseSubmodule
+from .assertion_normalization.clean_subject import CleanSubject
 from .assertion_normalization.filter_language_questions import \
     FilterLanguageQuestions
 from .assertion_normalization.similar_object_remover import SimilarObjectRemover
 from .assertion_output.circle_saliency import CircleSaliency
 from .fact_combinor import FactCombinor
 from quasimodo.assertion_normalization.identical_subject_object_submodule import IdenticalSubjectObjectSubmodule
+from .seeds.special_subjects import SpecialSubjects
 
 
 class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
@@ -120,7 +122,9 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
             "saliency-typicality": SaliencyAndTypicalityComputationSubmodule,
             "similar-object-remover": SimilarObjectRemover,
             "circle-saliency": CircleSaliency,
-            "filter-language-questions": FilterLanguageQuestions
+            "filter-language-questions": FilterLanguageQuestions,
+            "clean-subject": CleanSubject,
+            "special-subjects": SpecialSubjects
         }
 
     def get_submodule(self, submodule_name, module_reference):

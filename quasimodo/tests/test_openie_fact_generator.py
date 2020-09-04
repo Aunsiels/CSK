@@ -254,6 +254,15 @@ class TestOpenIEFactGenerator(unittest.TestCase):
         self.assertEqual(len(new_gfs),  2)
         self.assertEqual(new_gfs[0].get_subject(), "babies")
 
+    def _test_poop(self):
+        suggestion = ("why do dogs poop in kennel",
+                      1.0, None, "dog")
+        new_gfs = self.openie_fact_generator.get_generated_facts([suggestion])
+        print(new_gfs)
+        self.assertEqual(len(new_gfs), 1)
+        self.assertEqual(new_gfs[0].get_subject(), "dog")
+        self.assertEqual(new_gfs[0].get_predicate(), "poop in")
+
     def test_baby_from_file(self):
         suggestion = ("how are babies actually made",
                       1.0, None, "baby")

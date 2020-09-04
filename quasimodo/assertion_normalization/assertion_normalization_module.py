@@ -11,6 +11,7 @@ class AssertionNormalizationModule(ModuleInterface):
 
     def __init__(self):
         module_names = ["lower-case",
+                        "clean-subject",
                         "only-subject",
                         "no-personal",
                         "filter-object",

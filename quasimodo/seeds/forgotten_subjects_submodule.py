@@ -48,8 +48,7 @@ class ForgottenSubjectsSubmodule(SubmoduleInterface):
                         continue
                     n_occurrences = int(line[1])
                     if n_occurrences > THRESHOLD_OCCURRENCES:
-                        subject_sing = DEFAULT_INFLECT.to_singular(subject)
-                        subjects.append(Subject(subject_sing))
+                        subjects.append(Subject(subject))
         with open(NEW_SUBJECTS_FILE, "a", encoding="utf-8") as f:
             f.write("\n".join([s.get() for s in subjects]) + "\n")
         subjects = []
@@ -57,5 +56,6 @@ class ForgottenSubjectsSubmodule(SubmoduleInterface):
             with open(NEW_SUBJECTS_FILE, encoding="utf-8") as f:
                 for line in f:
                     subject = line.strip()
-                    subjects.append(Subject(subject))
+                    subject_sing = DEFAULT_INFLECT.to_singular(subject)
+                    subjects.append(Subject(subject_sing))
         return input_interface.add_subjects(subjects)
