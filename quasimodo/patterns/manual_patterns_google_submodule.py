@@ -24,7 +24,7 @@ class ManualPatternsGoogleSubmodule(SubmoduleInterface):
                         PatternGoogle("why isn't a <SUBJ>",
                                       relation="has_property", negative=True),
                         PatternGoogle("why do <SUBJS>"),
-                        PatternGoogle("why does a <SUBJS>"),
+                        PatternGoogle("why does a <SUBJ>"),
                         PatternGoogle("why does <SUBJ>"),
                         PatternGoogle("why don't <SUBJS>", negative=True),
                         PatternGoogle("why doesn't <SUBJ>", negative=True),
@@ -41,7 +41,7 @@ class ManualPatternsGoogleSubmodule(SubmoduleInterface):
                         PatternGoogle("how does <SUBJ>"),
                         PatternGoogle("how does a <SUBJ>"),
                         PatternGoogle("how can <SUBJS>", "CAN"),
-                        PatternGoogle("how can a <SUBJS>", "CAN"),
+                        PatternGoogle("how can a <SUBJ>", "CAN"),
                         PatternGoogle("why <SUBJ>"),
                         PatternGoogle("why a <SUBJ>")]
         return input_interface.add_patterns(new_patterns)

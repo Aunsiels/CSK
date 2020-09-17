@@ -1,6 +1,7 @@
 import logging
 
 from quasimodo.data_structures.submodule_interface import SubmoduleInterface
+from quasimodo.data_structures.subject import Subject
 
 
 # From https://www.engvid.com/english-resource/the-with-country-names-lakes-rivers/
@@ -54,5 +55,5 @@ class SpecialSubjects(SubmoduleInterface):
     def process(self, input_interface):
         logging.info("Start special subjects")
         subjects = COUNTRIES + SEAS + RIVERS + MONTS + OTHERS
-        subjects = [x.lower() for x in subjects]
+        subjects = [Subject(x.lower()) for x in subjects]
         return input_interface.add_subjects(subjects)

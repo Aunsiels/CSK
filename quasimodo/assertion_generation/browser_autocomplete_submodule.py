@@ -117,7 +117,7 @@ class BrowserAutocompleteSubmodule(OpenIEFactGeneratorSubmodule):
         base_suggestions = filter(
             lambda ranked_suggestion:
                 not ranked_suggestion[SUGGESTION].strip().endswith(
-                    " " + current_state.strip()),
+                    " " + "".join(current_state).strip()),
             base_suggestions
         )
         base_suggestions = map(
