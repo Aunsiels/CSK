@@ -84,6 +84,16 @@ An useful class to extend is OpenIEFactGeneratorSubmodule, which allows to gener
 
 When a submodule is created, it needs to be added to a factory implementing SubmoduleFactoryInterface. For instance, DefaultSubmoduleFactory.
 
+## Perplexity
+
+To compute the perplexity, please run the pipeline once (at least until the normalisation stage). Then, run the script
+
+```bash
+bash generate_perplexity.sh
+```
+
+All the scripts are in the _perplexity_ directory. They use the HuggingFace library.
+
 ## References
 
 ### Bing Autocomplete API
