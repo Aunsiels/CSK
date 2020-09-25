@@ -6,8 +6,8 @@ import os.path
 
 parameters_reader = ParametersReader()
 filename = parameters_reader.get_parameter("perplexity-file") or \
-    os.path.dirname(os.path.realpath(__file__) +
-                    "/../../perplexity/sentences_ppl_sample.tsv")
+           os.path.dirname(os.path.realpath(__file__)) + \
+           "/../../perplexity/sentences_ppl_sample.tsv"
 
 
 def _load_perplexity():

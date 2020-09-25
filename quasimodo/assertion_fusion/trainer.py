@@ -3,12 +3,10 @@ from nltk.tokenize import word_tokenize
 import pandas as pd
 import numpy as np
 from sklearn import preprocessing
-from sklearn.ensemble import AdaBoostClassifier
 from sklearn.impute import SimpleImputer
 import gensim.downloader as api
 from sklearn.linear_model import LogisticRegressionCV
 
-from quasimodo.assertion_fusion.gaussian_nb_with_missing_values import GaussianNBWithMissingValues
 from quasimodo.assertion_output.closest_indexes import ClosestIndexes
 
 to_keep_columns = ['is negative', "Yahoo Questions",
@@ -19,7 +17,8 @@ to_keep_columns = ['is negative', "Yahoo Questions",
                    'TBC',
                    "CoreNLP", "OpenIE5", "Manual", "number sentences",
                    "Conceptual Caption",
-                   "What questions file", "number modalities"]
+                   "What questions file", "number modalities",
+                   "Perplexity submodule"]
 
 SLICE_SIZE = 10000  # Change this in case of Memory problems
 

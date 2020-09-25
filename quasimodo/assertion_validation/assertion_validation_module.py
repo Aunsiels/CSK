@@ -11,7 +11,7 @@ class AssertionValidationModule(ModuleInterface):
     """
 
     def __init__(self):
-        module_names = [
+        module_names = ["perplexity",
                         "google-book",
                         "flickr-clusters",
                         "imagetag",

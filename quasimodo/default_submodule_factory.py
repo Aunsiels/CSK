@@ -55,6 +55,7 @@ from .assertion_normalization.filter_language_questions import \
     FilterLanguageQuestions
 from .assertion_normalization.similar_object_remover import SimilarObjectRemover
 from .assertion_output.circle_saliency import CircleSaliency
+from .assertion_validation.perplexity_submodule import PerplexitySubmodule
 from .fact_combinor import FactCombinor
 from quasimodo.assertion_normalization.identical_subject_object_submodule import IdenticalSubjectObjectSubmodule
 from .seeds.special_subjects import SpecialSubjects
@@ -124,7 +125,8 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
             "circle-saliency": CircleSaliency,
             "filter-language-questions": FilterLanguageQuestions,
             "clean-subject": CleanSubject,
-            "special-subjects": SpecialSubjects
+            "special-subjects": SpecialSubjects,
+            "perplexity": PerplexitySubmodule
         }
 
     def get_submodule(self, submodule_name, module_reference):
