@@ -26,3 +26,4 @@ cache-corenlp	XXX
 properties-dir	data/properties/
 annotations-file	quasimodo/data/all_manual_annotations.tsv
 server-url	XXX
+perplexity-file	XXX
