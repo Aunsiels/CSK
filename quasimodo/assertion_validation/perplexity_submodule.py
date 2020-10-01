@@ -31,7 +31,7 @@ class PerplexitySubmodule(SubmoduleInterface):
         self._name = "Perplexity submodule"
 
     def process(self, input_interface):
-        logging.info("Start the association submodule for " + self.get_name())
+        logging.info("Start the perplexity submodule")
         if filename is None or not os.path.isfile(filename):
             logging.info("No perplexity given")
             return input_interface
