@@ -48,6 +48,21 @@ class Trainer(object):
             self._df[x + "_is_nan"] = self._df[x].isna().astype(float)
         self._to_keep_columns += [x + "_is_nan" for x in self._to_keep_columns]
         self.create_patterns_features()
+        qt = preprocessing.QuantileTransformer(n_quantiles=10)
+        self._df["Perplexity quantiles"] = qt.fit_transform(
+            self._df["Perplexity submodule"].values.reshape(-1, 1)
+        ).reshape(-1)
+        self._to_keep_columns.append("Perplexity quantiles")
+        self.set_perplexity_quantile(0, 0.1)
+        self.set_perplexity_quantile(0.1, 0.2)
+        self.set_perplexity_quantile(0.2, 0.3)
+        self.set_perplexity_quantile(0.3, 0.4)
+        self.set_perplexity_quantile(0.4, 0.5)
+        self.set_perplexity_quantile(0.5, 0.6)
+        self.set_perplexity_quantile(0.6, 0.7)
+        self.set_perplexity_quantile(0.7, 0.8)
+        self.set_perplexity_quantile(0.8, 0.9)
+        self.set_perplexity_quantile(0.9, 1)
         # self.set_closest_features()
 
         # End
@@ -193,6 +208,12 @@ class Trainer(object):
         obj = self._get_array(obj)
         return np.concatenate([subj, pred, obj])
 
+    def set_perplexity_quantile(self, threshold_min, threshold):
+        mini = self._df['Perplexity submodule'].quantile(threshold_min)
+        maxi = self._df['Perplexity submodule'].quantile(threshold)
+        self._df["Perplexity submodule " + str(threshold)] = [
+            int(mini <= x <= maxi) for x in self._df["Perplexity submodule"]]
+        self._to_keep_columns.append("Perplexity submodule " + str(threshold))
 
 def get_patterns(string_patterns):
     if type(string_patterns) == float:
