@@ -124,7 +124,7 @@ def read_tsv(path):
 
 
 quasimodo_base = "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37" \
-                 "/commonsense_data/quasimodo/quasimodo35_"
+                 "/commonsense_data/quasimodo/quasimodo27"
 
 
 # for clf in ["lr", "nb", "ada"]:
@@ -133,9 +133,9 @@ quasimodo_base = "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37" \
 #     assos = read_tsv(quasimodo_base + clf + "_top5.tsv")
 #     print("relaxed top", TOPK, "for", clf, compute_recall(assos))
 #
-# assos = read_tsv("/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37"
-#                  "/commonsense_data/quasimodo/quasimodo35_lr.tsv")
-# print("Ours relaxed", compute_recall(assos))
+assos = read_tsv("/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37"
+                  "/commonsense_data/quasimodo/quasimodo27.tsv")
+print("Ours relaxed", compute_recall(assos))
 #
 # assos = read_tsv(
 #     "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37/commonsense_data/Webchild/webchild_spor.tsv")
@@ -150,8 +150,8 @@ quasimodo_base = "/media/julien/7dc04770-227b-40fd-a591-c8e0c3a71a37" \
 #     "TupleKB/aristo-tuple-kb-v5-mar2017/spor_tuplekb.tsv")
 # print("TupleKB relaxed", compute_recall(assos))
 #
-write_top5(quasimodo_base + "lr")
-assos = read_tsv(quasimodo_base + "lr" + "_top5.tsv")
+write_top5(quasimodo_base)
+assos = read_tsv(quasimodo_base + "_top5.tsv")
 print("Ours relaxed top", TOPK, compute_recall(assos))
 #
 # assos = read_tsv(

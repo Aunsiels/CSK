@@ -1,3 +1,5 @@
+import enchant
+
 from quasimodo.data_structures.submodule_interface import SubmoduleInterface
 import logging
 
@@ -11,6 +13,9 @@ totally_forbidden = ["xbox", "youtube", "xo", "quote",
                      "quotes", "minecraft", "why", "quizlet", "nz", "wz",
                      "quora", "reddit", "skyrim", "shippuden", "yahoo",
                      "wikipedia", "how", "why", "brainly", "joke", "jokes", "quiz"]
+
+
+D_ENCHANT = enchant.Dict("en_US")
 
 
 def _is_totally_forbidden(sentence, forbidden):
@@ -33,9 +38,12 @@ class FilterObjectSubmodule(SubmoduleInterface):
     def process(self, input_interface):
         logging.info("Start the filtering object")
         new_generated_facts = []
+        all_subjects = input_interface.get_subjects()
         for generated_fact in input_interface.get_generated_facts():
             obj = generated_fact.get_object().get()
             if obj in forbidden or _is_totally_forbidden(obj, totally_forbidden) or len(obj) == 1:
+                continue
+            if " " not in obj and not D_ENCHANT.check(obj) and not obj in all_subjects:
                 continue
             obj = generated_fact.get_object().get().split(" ")
             predicate = generated_fact.get_predicate().get()
