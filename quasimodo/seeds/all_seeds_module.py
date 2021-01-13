@@ -6,7 +6,7 @@ import logging
 class AllSeedsModule(ModuleInterface):
 
     def __init__(self):
-        module_names = ["animal-seeds", "occupations-seeds",
+        module_names = ["animal-seeds", "wikidata-seeds", "occupations-seeds",
                         "conceptnet-subjects", "subjects-wordnet",
                         "forgotten-subjects",
                         "special-subjects",

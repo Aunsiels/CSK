@@ -30,7 +30,7 @@ def _correct_tokens(tokens, pos):
     res_tokens = []
     res_pos = []
     for i in range(len(tokens)):
-        if tokens[i] == "-":
+        if tokens[i] == "-" and res_tokens:
             res_tokens[-1] = res_tokens[-1] + "-"
             res_pos[-1] = (res_pos[-1][0] + "-", res_pos[-1][1])
             merge_next = True

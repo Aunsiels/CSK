@@ -9,6 +9,7 @@ from quasimodo.assertion_validation.what_questions_comparator_submodule import W
 from quasimodo.data_structures.submodule_factory_interface import SubmoduleFactoryInterface
 from quasimodo.assertion_generation.google_autocomplete_submodule import GoogleAutocompleteSubmodule
 from quasimodo.seeds.animal_submodule import AnimalSubmodule
+from quasimodo.seeds.wikidata_submodule import WikidataSubmodule
 from quasimodo.patterns.manual_patterns_google_submodule import ManualPatternsGoogleSubmodule
 from quasimodo.assertion_generation.bing_autocomplete_submodule import BingAutocompleteSubmodule
 from quasimodo.assertion_normalization.only_subject_submodule import OnlySubjectSubmodule
@@ -70,6 +71,7 @@ class DefaultSubmoduleFactory(SubmoduleFactoryInterface):
         self._submodules = {
             "google-autocomplete": GoogleAutocompleteSubmodule,
             "animal-seeds": AnimalSubmodule,
+            "wikidata-seeds": WikidataSubmodule,
             "manual-patterns-google": ManualPatternsGoogleSubmodule,
             "bing-autocomplete": BingAutocompleteSubmodule,
             "only-subject": OnlySubjectSubmodule,

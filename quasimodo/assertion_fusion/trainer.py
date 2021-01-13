@@ -48,8 +48,12 @@ class Trainer(object):
             self._df[x + "_is_nan"] = self._df[x].isna().astype(float)
         self._to_keep_columns += [x + "_is_nan" for x in self._to_keep_columns]
         self.create_patterns_features()
-        qt = preprocessing.QuantileTransformer(n_quantiles=10)
-        self._df["Perplexity quantiles"] = qt.fit_transform(
+        self.perplexity_index = 0
+        for i, x in enumerate(self._to_keep_columns):
+            if x == "Perplexity submodule":
+                self.perplexity_index = i
+        self.qt = preprocessing.QuantileTransformer(n_quantiles=10)
+        self._df["Perplexity quantiles"] = self.qt.fit_transform(
             self._df["Perplexity submodule"].values.reshape(-1, 1)
         ).reshape(-1)
         self._to_keep_columns.append("Perplexity quantiles")
@@ -64,6 +68,8 @@ class Trainer(object):
         self.set_perplexity_quantile(0.8, 0.9)
         self.set_perplexity_quantile(0.9, 1)
         # self.set_closest_features()
+        self._mini_perplexity_cache = dict()
+        self._maxi_perplexity_cache = dict()
 
         # End
         self._all_df = self._df
@@ -180,8 +186,24 @@ class Trainer(object):
         features = features[self._filter].astype(float)
         features = np.concatenate((features, np.isnan(features).astype(float)))
         features = features.astype(np.float64)
+        perplexity = features[self.perplexity_index]
+        perplexity_features = [
+                self.qt.transform(
+                    [[perplexity]]
+                ).reshape(-1)[0],
+            self.set_perplexity_quantile_row(perplexity, 0, 0.1),
+            self.set_perplexity_quantile_row(perplexity, 0.1, 0.2),
+            self.set_perplexity_quantile_row(perplexity, 0.2, 0.3),
+            self.set_perplexity_quantile_row(perplexity, 0.3, 0.4),
+            self.set_perplexity_quantile_row(perplexity, 0.4, 0.5),
+            self.set_perplexity_quantile_row(perplexity, 0.5, 0.6),
+            self.set_perplexity_quantile_row(perplexity, 0.6, 0.7),
+            self.set_perplexity_quantile_row(perplexity, 0.7, 0.8),
+            self.set_perplexity_quantile_row(perplexity, 0.8, 0.9),
+            self.set_perplexity_quantile_row(perplexity, 0.9, 1)]
         features = np.concatenate(
-            (features, self.get_pattern_row(pattern).astype(float)))
+            (features, self.get_pattern_row(pattern).astype(float),
+                perplexity_features))
         features = self.scaler.transform([features])
         features = self.inputer.transform(features)
         # 0 because only one point
@@ -214,6 +236,15 @@ class Trainer(object):
         self._df["Perplexity submodule " + str(threshold)] = [
             int(mini <= x <= maxi) for x in self._df["Perplexity submodule"]]
         self._to_keep_columns.append("Perplexity submodule " + str(threshold))
+
+    def set_perplexity_quantile_row(self, x, threshold_min, threshold):
+        if threshold_min not in self._mini_perplexity_cache:
+            mini = self._all_df['Perplexity submodule'].quantile(threshold_min)
+            self._mini_perplexity_cache[threshold_min] = mini
+        if threshold not in self._maxi_perplexity_cache:
+            maxi = self._all_df['Perplexity submodule'].quantile(threshold)
+            self._maxi_perplexity_cache[threshold] = maxi
+        return int(self._mini_perplexity_cache[threshold_min] <= x <= self._maxi_perplexity_cache[threshold])
 
 def get_patterns(string_patterns):
     if type(string_patterns) == float:

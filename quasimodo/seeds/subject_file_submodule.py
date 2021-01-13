@@ -17,5 +17,5 @@ class SubjectFileSubmodule(SubmoduleInterface):
         # Read the subjects from a file
         with open(self._filename, encoding="utf-8") as f:
             for line in f:
-                subjects.append(Subject(line.strip()))
+                subjects.append(Subject(line.strip().lower()))
         return input_interface.add_subjects(subjects)

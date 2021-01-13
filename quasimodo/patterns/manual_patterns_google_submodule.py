@@ -15,7 +15,8 @@ class ManualPatternsGoogleSubmodule(SubmoduleInterface):
 
     def process(self, input_interface):
         logging.info("Start the manual patterns for browsers submodule")
-        new_patterns = [PatternGoogle("why aren't <SUBJS>", relation="has_property", negative=True),
+        new_patterns = [PatternGoogle("why did <SUBJ>"),
+                        PatternGoogle("why aren't <SUBJS>", relation="has_property", negative=True),
                         PatternGoogle("why are <SUBJS>", relation="has_property"),
                         PatternGoogle("why is <SUBJ>", relation="has_property"),
                         PatternGoogle("why is a <SUBJ>",
